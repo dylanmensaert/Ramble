@@ -1,0 +1,10 @@
+bower_components/
+node_modules/
+.grunt/
+
+.idea/tasks.xml
+.idea/workspace.xml
+*.iws
+
+build/
+log/
