@@ -4,10 +4,10 @@ define([
     "use strict";
 
     return Ember.Route.extend({
-        title : "Videos",
+        title : "Lobbies",
         isLeaf : true,
         model : function () {
-            return App.Video.find();
+            return App.Lobby.find();
         }
     });
 });

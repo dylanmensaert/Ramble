@@ -1,221 +1,63 @@
 {
-    "videos" : [
+    "lobbies" : [
         {
             "id" : 1,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
+            "title" : "Game Dylan en Dimitri",
+            "password" : "zonneschijn",
+            "maxPlayers" : "13",
+            "player_ids" : [1, 2, 3]
         },
         {
             "id" : 2,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
+            "title" : "customgame",
+            "password" : "Peter",
+            "maxPlayers" : "13",
+            "player_ids" : [4, 8, 9]
         },
         {
             "id" : 3,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
+            "title" : "winners lobby!",
+            "password" : "Dolfijn",
+            "maxPlayers" : "13",
+            "player_ids" : [5, 6, 7]
+        }
+    ],
+    "players" : [
+        {
+            "id" : 1,
+            "name" : "donut"
+        },
+        {
+            "id" : 2,
+            "name" : "pizaa"
+        },
+        {
+            "id" : 3,
+            "name" : "zizima"
         },
         {
             "id" : 4,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
+            "name" : "madeentje"
         },
         {
             "id" : 5,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
+            "name" : "cryptex"
         },
         {
             "id" : 6,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
+            "name" : "heca"
         },
         {
             "id" : 7,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
+            "name" : "bosbes"
         },
         {
             "id" : 8,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
+            "name" : "graaaah"
         },
         {
             "id" : 9,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 10,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 11,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 12,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 13,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 14,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 15,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 16,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 17,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 18,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 19,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 20,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 21,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 22,
-            "title" : "First title",
-            "author" : "First author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-52qL9xLP.mp4",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 23,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 24,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 25,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 26,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 27,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 28,
-            "title" : "Third title",
-            "author" : "Third author",
-            "videoUrl" : "http://devimages.apple.com/iphone/samples/bipbop/gear1/prog_index.m3u8",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 29,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 30,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
-        },
-        {
-            "id" : 31,
-            "title" : "Second title",
-            "author" : "Second author",
-            "videoUrl" : "http://content.bitsontherun.com/videos/nfSyO85Q-27m5HpIu.webm",
-            "thumbnailUrl" : ""
+            "name" : "antiliaan"
         }
     ]
 }

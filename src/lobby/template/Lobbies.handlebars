@@ -1,0 +1,11 @@
+{{#each lobby in controller}}
+<div>
+    {{#linkTo 'lobby.show' lobby}}
+        {{lobby.title}}
+    {{/linkTo}}
+</div>
+{{/each}}
+
+<div>
+    {{outlet}}
+</div>

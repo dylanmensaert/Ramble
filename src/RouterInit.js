@@ -56,15 +56,19 @@ define([
                 }
             });
 
+            //TODO: show lobby in route
             App.Router.map(function () {
-                this.resource("videos");
-                this.resource("video",
-                    {
-                        path : "/video/:video_id"
-                    },
-                    function () {
-                        this.route("play");
-                    });
+                this.resource("lobbies", function () {
+                    this.resource("lobby",
+                        {
+                            path : "/:lobby_id"
+                        }, function () {
+                            this.route("show");
+                            this.route("remove");
+                        });
+                    this.route("search");
+                    this.route("add");
+                });
             });
         }
     };

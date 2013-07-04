@@ -46,25 +46,21 @@
             // Templates
             IndexTemplate : "src/index/template",
 
-            // Video
-            VideoInit : "src/video/VideoInit",
+            // Lobby
+            LobbyInit : "src/lobby/LobbyInit",
             // Routes
-            VideoRoute : "src/video/route/VideoRoute",
-            VideoPlayRoute : "src/video/route/VideoPlayRoute",
-            VideosRoute : "src/video/route/VideosRoute",
+            LobbyRoute : "src/lobby/route/LobbyRoute",
+            LobbiesRoute : "src/lobby/route/LobbiesRoute",
             // Models
-            Video : "src/video/model/Video",
+            Lobby : "src/lobby/model/Lobby",
             // Controllers
-            VideoController : "src/video/controller/VideoController",
-            VideoPlayController : "src/video/controller/VideoPlayController",
-            VideosController : "src/video/controller/VideosController",
+            LobbyController : "src/lobby/controller/LobbyController",
+            LobbiesController : "src/lobby/controller/LobbiesController",
             // Views
-            VideoView : "src/video/view/VideoView",
-            VideoPlayView : "src/video/view/VideoPlayView",
-            VideosView : "src/video/view/VideosView",
-            VideoItemView : "src/video/view/VideoItemView",
+            LobbyView : "src/lobby/view/LobbyView",
+            LobbiesView : "src/lobby/view/LobbiesView",
             // Templates
-            VideoTemplate : "src/video/template",
+            LobbyTemplate : "src/lobby/template",
 
             // Helpers
             SomeHelper : "src/helpers/SomeHelper"

@@ -1,6 +1,6 @@
 define([
-    "App", "text!config.json", "text!data.json", "RouterInit", "ApplicationInit", "IndexInit", "VideoInit"
-], function (App, config, data, RouterInit, ApplicationInit, IndexInit, VideoInit) {
+    "App", "text!config.json", "text!data.json", "RouterInit", "ApplicationInit", "IndexInit", "LobbyInit"
+], function (App, config, data, RouterInit, ApplicationInit, IndexInit, LobbyInit) {
     "use strict";
 
     return {
@@ -11,7 +11,7 @@ define([
             RouterInit.initialize();
             ApplicationInit.initialize();
             IndexInit.initialize();
-            VideoInit.initialize();
+            LobbyInit.initialize();
 
             App.advanceReadiness();
         }

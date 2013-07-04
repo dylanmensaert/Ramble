@@ -7,7 +7,7 @@ define([
         title : "Index",
         isLeaf : true,
         redirect : function () {
-            this.transitionTo("videos");
+            this.transitionTo("lobbies");
         }
     });
 });
