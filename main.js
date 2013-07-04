@@ -20,9 +20,8 @@
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
             // App
-            App : "src/App",
-            AppInit : "src/AppInit",
-            RouterInit : "src/RouterInit",
+            app : "src",
+            App : "src/app",
 
             // Application
             application : "src/application",
@@ -78,10 +77,10 @@
     });
 
     require([
-        "AppInit", "domReady"
-    ], function (AppInit, domReady) {
+        "app/init", "domReady"
+    ], function (init, domReady) {
         domReady(function () {
-            AppInit.initialize();
+            init.initialize();
 
             window.isAppInitialized = true;
         });
