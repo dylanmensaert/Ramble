@@ -5,7 +5,7 @@ define([
 
     return Ember.Route.extend({
         title : Ember.computed(function () {
-            return this.modelFor("lobby").get("title");
+            return "Edit - " + this.modelFor("lobby").get("title");
         }).property("controller.title"),
         isLeaf : true
     });

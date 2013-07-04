@@ -5,6 +5,7 @@ define([
 
     return Ember.Route.extend({
         title : "Lobbies",
+        //TODO: redirect to Search route
         isLeaf : true,
         model : function () {
             return App.Lobby.find();

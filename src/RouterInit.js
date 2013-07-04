@@ -56,14 +56,13 @@ define([
                 }
             });
 
-            //TODO: show lobby in route
             App.Router.map(function () {
                 this.resource("lobbies", function () {
                     this.resource("lobby",
                         {
                             path : "/:lobby_id"
                         }, function () {
-                            this.route("show");
+                            this.route("edit");
                             this.route("remove");
                         });
                     this.route("search");

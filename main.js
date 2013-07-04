@@ -50,15 +50,27 @@
             LobbyInit : "src/lobby/LobbyInit",
             // Routes
             LobbyRoute : "src/lobby/route/LobbyRoute",
+            LobbyEditRoute : "src/lobby/route/LobbyEditRoute",
+            LobbyRemoveRoute : "src/lobby/route/LobbyRemoveRoute",
             LobbiesRoute : "src/lobby/route/LobbiesRoute",
+            LobbiesSearchRoute: "src/lobby/route/LobbiesSearchRoute",
+            LobbiesAddRoute: "src/lobby/route/LobbiesAddRoute",
             // Models
             Lobby : "src/lobby/model/Lobby",
             // Controllers
             LobbyController : "src/lobby/controller/LobbyController",
+            LobbyEditController : "src/lobby/controller/LobbyEditController",
+            LobbyRemoveController : "src/lobby/controller/LobbyRemoveController",
             LobbiesController : "src/lobby/controller/LobbiesController",
+            LobbiesSearchController: "src/lobby/controller/LobbiesSearchController",
+            LobbiesAddController: "src/lobby/controller/LobbiesAddController",
             // Views
             LobbyView : "src/lobby/view/LobbyView",
+            LobbyEditView : "src/lobby/view/LobbyEditView",
+            LobbyRemoveView : "src/lobby/view/LobbyRemoveView",
             LobbiesView : "src/lobby/view/LobbiesView",
+            LobbiesSearchView: "src/lobby/view/LobbiesSearchView",
+            LobbiesAddView: "src/lobby/view/LobbiesAddView",
             // Templates
             LobbyTemplate : "src/lobby/template",
 
