@@ -98,14 +98,14 @@
                         mainConfigFile : "main.js",
                         include : ["bower_components/requirejs/require.js"],
                         excludeShallow : ["text!data.json", "text!config.json"],
-                        out : "build/myApp.min.js"
+                        out : "build/Ramble.min.js"
                     }
                 }
             },
             cssmin : {
                 all : {
                     files : {
-                        "build/myApp.min.css" : ["main.css"]
+                        "build/Ramble.min.css" : ["main.css"]
                     }
                 }
             },

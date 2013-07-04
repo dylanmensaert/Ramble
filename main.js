@@ -31,7 +31,8 @@
             index : "src/index",
             Index : "src/index/Index",
 
-            //Lobby
+            // TODO: Simplify folder structure so less aliases are needed? Example: lobby/edit/controller
+            // Lobby
             lobby : "src/lobby",
             Lobby : "src/lobby/Lobby",
             LobbyEdit : "src/lobby/LobbyEdit",

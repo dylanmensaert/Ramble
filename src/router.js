@@ -5,7 +5,7 @@ define([
 
     return {
         initialize : function () {
-            var applicationTitle = document.title;
+            var applicationTitle = document.title.replace("loading", "");
 
             GoogleAnalytics.push(["_setAccount", App.config.googleAnalyticsAccount]);
 
