@@ -1,5 +1,5 @@
 define([
-    "App", "text!config.json", "text!data.json", "RouterInit", "ApplicationInit", "IndexInit", "LobbyInit"
+    "App", "text!config.json", "text!data.json", "RouterInit", "application/init", "index/init", "lobby/init"
 ], function (App, config, data, RouterInit, ApplicationInit, IndexInit, LobbyInit) {
     "use strict";
 

@@ -25,21 +25,20 @@
             RouterInit : "src/RouterInit",
 
             // Application
-            ApplicationInit : "src/application/ApplicationInit",
-            ApplicationFolder :  "src/application/Application",
+            application : "src/application",
+            Application : "src/application/Application",
 
             // Index
-            IndexInit : "src/index/IndexInit",
-            IndexFolder : "src/index/Index",
+            index : "src/index",
+            Index : "src/index/Index",
 
             //Lobby
-            LobbyInit : "src/lobby/LobbyInit",
-            Lobby : "src/lobby/model/Lobby",
-            LobbyFolder : "src/lobby/Lobby",
-            LobbyEditFolder : "src/lobby/LobbyEdit",
-            LobbyRemoveFolder : "src/lobby/LobbyRemove",
-            LobbiesFolder : "src/lobby/Lobbies",
-            LobbiesAddFolder : "src/lobby/LobbiesAdd",
+            lobby : "src/lobby",
+            Lobby : "src/lobby/Lobby",
+            LobbyEdit : "src/lobby/LobbyEdit",
+            LobbyRemove : "src/lobby/LobbyRemove",
+            Lobbies : "src/lobby/Lobbies",
+            LobbiesAdd : "src/lobby/LobbiesAdd",
 
             // Helpers
             SomeHelper : "src/helpers/SomeHelper"

@@ -1,9 +1,9 @@
 define([
-    "App", "Lobby", "LobbyFolder/route", "LobbyFolder/controller", "LobbyFolder/view",
-    "LobbyEditFolder/route", "LobbyEditFolder/controller", "LobbyEditFolder/view",
-    "LobbyRemoveFolder/route", "LobbyRemoveFolder/controller", "LobbyRemoveFolder/view",
-    "LobbiesFolder/route", "LobbiesFolder/controller", "LobbiesFolder/view",
-    "LobbiesAddFolder/route", "LobbiesAddFolder/controller", "LobbiesAddFolder/view"
+    "App", "lobby/model", "Lobby/route", "Lobby/controller", "Lobby/view",
+    "LobbyEdit/route", "LobbyEdit/controller", "LobbyEdit/view",
+    "LobbyRemove/route", "LobbyRemove/controller", "LobbyRemove/view",
+    "Lobbies/route", "Lobbies/controller", "Lobbies/view",
+    "LobbiesAdd/route", "LobbiesAdd/controller", "LobbiesAdd/view"
 ], function (App, Lobby, LobbyRoute, LobbyController, LobbyView,
              LobbyEditRoute, LobbyEditController, LobbyEditView,
              LobbyRemoveRoute, LobbyRemoveController, LobbyRemoveView,
