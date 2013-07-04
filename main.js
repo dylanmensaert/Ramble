@@ -26,53 +26,20 @@
 
             // Application
             ApplicationInit : "src/application/ApplicationInit",
-            // Routes
-            ApplicationRoute : "src/application/route/ApplicationRoute",
-            // Controllers
-            ApplicationController : "src/application/controller/ApplicationController",
-            // Views
-            ApplicationView : "src/application/view/ApplicationView",
-            // Templates
-            ApplicationTemplate : "src/application/template",
+            ApplicationFolder :  "src/application/Application",
 
             // Index
             IndexInit : "src/index/IndexInit",
-            // Routes
-            IndexRoute : "src/index/route/IndexRoute",
-            // Controllers
-            IndexController : "src/index/controller/IndexController",
-            // Views
-            IndexView : "src/index/view/IndexView",
-            // Templates
-            IndexTemplate : "src/index/template",
+            IndexFolder : "src/index/Index",
 
-            // Lobby
+            //Lobby
             LobbyInit : "src/lobby/LobbyInit",
-            // Routes
-            LobbyRoute : "src/lobby/route/LobbyRoute",
-            LobbyEditRoute : "src/lobby/route/LobbyEditRoute",
-            LobbyRemoveRoute : "src/lobby/route/LobbyRemoveRoute",
-            LobbiesRoute : "src/lobby/route/LobbiesRoute",
-            LobbiesSearchRoute: "src/lobby/route/LobbiesSearchRoute",
-            LobbiesAddRoute: "src/lobby/route/LobbiesAddRoute",
-            // Models
             Lobby : "src/lobby/model/Lobby",
-            // Controllers
-            LobbyController : "src/lobby/controller/LobbyController",
-            LobbyEditController : "src/lobby/controller/LobbyEditController",
-            LobbyRemoveController : "src/lobby/controller/LobbyRemoveController",
-            LobbiesController : "src/lobby/controller/LobbiesController",
-            LobbiesSearchController: "src/lobby/controller/LobbiesSearchController",
-            LobbiesAddController: "src/lobby/controller/LobbiesAddController",
-            // Views
-            LobbyView : "src/lobby/view/LobbyView",
-            LobbyEditView : "src/lobby/view/LobbyEditView",
-            LobbyRemoveView : "src/lobby/view/LobbyRemoveView",
-            LobbiesView : "src/lobby/view/LobbiesView",
-            LobbiesSearchView: "src/lobby/view/LobbiesSearchView",
-            LobbiesAddView: "src/lobby/view/LobbiesAddView",
-            // Templates
-            LobbyTemplate : "src/lobby/template",
+            LobbyFolder : "src/lobby/Lobby",
+            LobbyEditFolder : "src/lobby/LobbyEdit",
+            LobbyRemoveFolder : "src/lobby/LobbyRemove",
+            LobbiesFolder : "src/lobby/Lobbies",
+            LobbiesAddFolder : "src/lobby/LobbiesAdd",
 
             // Helpers
             SomeHelper : "src/helpers/SomeHelper"

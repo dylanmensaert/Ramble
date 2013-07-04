@@ -65,7 +65,6 @@ define([
                             this.route("edit");
                             this.route("remove");
                         });
-                    this.route("search");
                     this.route("add");
                 });
             });

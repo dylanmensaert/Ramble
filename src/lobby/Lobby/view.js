@@ -1,5 +1,5 @@
 define([
-    "Ember", "text!LobbyTemplate/Lobbies.handlebars"
+    "Ember", "text!LobbyFolder/template.handlebars"
 ], function (Ember, template) {
     "use strict";
 

@@ -1,15 +1,13 @@
 define([
-    "App", "Lobby", "LobbyRoute", "LobbyController", "LobbyView",
-    "LobbyEditRoute", "LobbyEditController", "LobbyEditView",
-    "LobbyRemoveRoute", "LobbyRemoveController", "LobbyRemoveView",
-    "LobbiesRoute", "LobbiesController", "LobbiesView",
-    "LobbiesSearchRoute", "LobbiesSearchController", "LobbiesSearchView",
-    "LobbiesAddRoute", "LobbiesAddController", "LobbiesAddView"
+    "App", "Lobby", "LobbyFolder/route", "LobbyFolder/controller", "LobbyFolder/view",
+    "LobbyEditFolder/route", "LobbyEditFolder/controller", "LobbyEditFolder/view",
+    "LobbyRemoveFolder/route", "LobbyRemoveFolder/controller", "LobbyRemoveFolder/view",
+    "LobbiesFolder/route", "LobbiesFolder/controller", "LobbiesFolder/view",
+    "LobbiesAddFolder/route", "LobbiesAddFolder/controller", "LobbiesAddFolder/view"
 ], function (App, Lobby, LobbyRoute, LobbyController, LobbyView,
              LobbyEditRoute, LobbyEditController, LobbyEditView,
              LobbyRemoveRoute, LobbyRemoveController, LobbyRemoveView,
              LobbiesRoute, LobbiesController, LobbiesView,
-             LobbiesSearchRoute, LobbiesSearchController, LobbiesSearchView,
              LobbiesAddRoute, LobbiesAddController, LobbiesAddView) {
     "use strict";
 
@@ -34,10 +32,6 @@ define([
             App.LobbiesRoute = LobbiesRoute;
             App.LobbiesController = LobbiesController;
             App.LobbiesView = LobbiesView;
-
-            App.LobbiesSearchRoute = LobbiesSearchRoute;
-            App.LobbiesSearchController = LobbiesSearchController;
-            App.LobbiesSearchView = LobbiesSearchView;
 
             App.LobbiesAddRoute = LobbiesAddRoute;
             App.LobbiesAddController = LobbiesAddController;

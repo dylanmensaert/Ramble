@@ -1,5 +1,5 @@
 define([
-    "App", "IndexRoute", "IndexController", "IndexView"
+    "App", "IndexFolder/route", "IndexFolder/controller", "IndexFolder/view"
 ], function (App, IndexRoute, IndexController, IndexView) {
     "use strict";
 
