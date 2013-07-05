@@ -1,16 +1,14 @@
 define([
-    "App", "player/model", "Player/route", "Player/controller", "Player/view",
-    "PlayerIndex/route", "PlayerIndex/controller", "PlayerIndex/view",
-    "PlayerEdit/route", "PlayerEdit/controller", "PlayerEdit/view",
-    "PlayerRemove/route", "PlayerRemove/controller", "PlayerRemove/view",
-    "Players/route", "Players/controller", "Players/view",
-    "PlayersAdd/route", "PlayersAdd/controller", "PlayersAdd/view"
-], function (App, Player, PlayerRoute, PlayerController, PlayerView,
+    "App", "player/model",
+    "player/main/route", "player/main/controller", "player/main/view",
+    "player/index/route", "player/index/controller", "player/index/view",
+    "player/edit/route", "player/edit/controller", "player/edit/view",
+    "player/remove/route", "player/remove/controller", "player/remove/view"
+], function (App, Player,
+             PlayerRoute, PlayerController, PlayerView,
              PlayerIndexRoute, PlayerIndexController, PlayerIndexView,
              PlayerEditRoute, PlayerEditController, PlayerEditView,
-             PlayerRemoveRoute, PlayerRemoveController, PlayerRemoveView,
-             PlayersRoute, PlayersController, PlayersView,
-             PlayersAddRoute, PlayersAddController, PlayersAddView) {
+             PlayerRemoveRoute, PlayerRemoveController, PlayerRemoveView) {
     "use strict";
 
     return {
@@ -34,14 +32,6 @@ define([
             App.PlayerRemoveRoute = PlayerRemoveRoute;
             App.PlayerRemoveController = PlayerRemoveController;
             App.PlayerRemoveView = PlayerRemoveView;
-
-            App.PlayersRoute = PlayersRoute;
-            App.PlayersController = PlayersController;
-            App.PlayersView = PlayersView;
-
-            App.PlayersAddRoute = PlayersAddRoute;
-            App.PlayersAddController = PlayersAddController;
-            App.PlayersAddView = PlayersAddView;
         }
     };
 });

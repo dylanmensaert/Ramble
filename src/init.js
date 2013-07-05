@@ -1,6 +1,6 @@
 define([
-    "App", "text!config.json", "text!data.json", "app/router", "application/init", "index/init", "lobby/init", "lobbies/init", "player/init"
-], function (App, config, data, Router, Application, Index, Lobby, Lobbies, Player) {
+    "App", "text!config.json", "text!data.json", "app/router", "application/init", "index/init", "lobby/init", "lobbies/init", "player/init", "players/init"
+], function (App, config, data, Router, Application, Index, Lobby, Lobbies, Player, Players) {
     "use strict";
 
     return {
@@ -14,6 +14,7 @@ define([
             Lobby.initialize();
             Lobbies.initialize();
             Player.initialize();
+            Players.initialize();
 
             App.advanceReadiness();
         }

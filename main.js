@@ -25,25 +25,17 @@
 
             //Application
             application : "src/application",
-            Application : "src/application/Application",
 
             //Index
             index : "src/index",
-            Index : "src/index/Index",
 
-            //TODO: Simplify folder structure so less aliases are needed? Example: lobby/edit/controller
             //Lobby
             lobby : "src/lobby",
             lobbies : "src/lobbies",
 
             //Player
             player : "src/player",
-            Player : "src/player/Player",
-            PlayerIndex : "src/player/PlayerIndex",
-            PlayerEdit : "src/player/PlayerEdit",
-            PlayerRemove : "src/player/PlayerRemove",
-            Players : "src/player/Players",
-            PlayersAdd : "src/player/PlayersAdd",
+            players : "src/players",
 
             //Helpers
             SomeHelper : "src/helpers/SomeHelper"
