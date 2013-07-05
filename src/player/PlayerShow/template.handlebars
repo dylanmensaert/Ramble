@@ -1,5 +1,11 @@
-<h2>{{controllers.player.name}}</h2>
-
+<h2>
+    {{controllers.player.name}}
+</h2>
+<p>
+    {{#linkTo "player.edit" controllers.player classNames="btn"}}
+        Edit
+    {{/linkTo}}
+</p>
 <div>
     {{#each lobby in controllers.player.lobbies itemController="lobby"}}
     <p>
@@ -9,9 +15,3 @@
     </p>
     {{/each}}
 </div>
-
-<p>
-    {{#linkTo "player.edit" controllers.player}}
-        Edit
-    {{/linkTo}}
-</p>

@@ -4,8 +4,6 @@ define([
     "use strict";
 
     return Ember.Route.extend({
-        redirect : function () {
-            this.transitionTo("lobbies");
-        }
+
     });
 });

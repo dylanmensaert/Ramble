@@ -1,11 +1,12 @@
-{{#each lobby in controller itemController="lobby"}}
-<p>
-    {{#linkTo "lobby.show" lobby}}
-         {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
-    {{/linkTo}}
-</p>
-{{/each}}
-
+<ul class="nav nav-tabs nav-stacked">
+    {{#each lobby in controller itemController="lobby"}}
+    <li>
+        {{#linkTo "lobby.show" lobby}}
+        {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
+        {{/linkTo}}
+    </li>
+    {{/each}}
+</ul>
 <div>
     {{outlet}}
 </div>

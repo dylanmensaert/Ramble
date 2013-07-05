@@ -1,23 +1,7 @@
 body {
-    text-align: center;
+    margin: 5px;
     font-size: 1em;
     font-family: Verdana, sans-serif;
-}
-
-.contentWrapper {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-
-.header {
-    float: right;
-    margin-right: 30px;
-}
-
-.loading {
-    height: 19px;
-    margin-left: -220px;
 }
 
 .loadingBar {
@@ -25,4 +9,8 @@ body {
     height: 19px;
     margin: 0 auto;
     background: url(../../img/loadingBar.gif) no-repeat;
+}
+
+.initialLoading {
+    text-align: center;
 }

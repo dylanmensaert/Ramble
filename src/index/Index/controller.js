@@ -4,7 +4,7 @@ define([
     "use strict";
 
     return Ember.Controller.extend({
-        documentTitle : "Index",
+        documentTitle : "Home",
         isLeaf : true
     });
 });

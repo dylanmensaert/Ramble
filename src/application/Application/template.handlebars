@@ -1,12 +1,26 @@
-<div class="contentWrapper">
-    <div class="header">
-        <div class="loading">
-            {{#if isLoading}}
-            <div class="loadingBar">
-            </div>
-            {{/if}}
-        </div>
+<div class="navbar">
+    <div class="navbar-inner">
+        {{#linkTo "index" classNames="brand"}}
+        Ramble
+        {{/linkTo}}
+        <ul class="nav">
+            <li>
+                {{#linkTo "lobbies"}}
+                Lobbies
+                {{/linkTo}}
+            </li>
+            <li>
+                {{#linkTo "players"}}
+                Players
+                {{/linkTo}}
+            </li>
+        </ul>
     </div>
-
-    <div class="applicationState">{{outlet}}</div>
 </div>
+
+{{#if isLoading}}
+<div class="loadingBar">
+</div>
+{{/if}}
+
+<div class="applicationState">{{outlet}}</div>

@@ -1,7 +1,9 @@
-{{#each player in controller itemController="player"}}
-<p>
-    {{#linkTo "player" player}}
+<ul class="nav nav-tabs nav-stacked">
+    {{#each player in controller itemController="player"}}
+    <li>
+        {{#linkTo "player.show" player}}
         {{player.name}}
-    {{/linkTo}}
-</p>
-{{/each}}
+        {{/linkTo}}
+    </li>
+    {{/each}}
+</ul>
