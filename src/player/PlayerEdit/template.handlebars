@@ -1,4 +1,9 @@
 <p>
     {{view Ember.TextField valueBinding="controllers.player.name"}}
 </p>
-<button class="btn btn-primary" {{action "saveEdits"}}>Save</button>
+<button class="btn btn-primary" {{action "saveEdits"}}>
+Save
+</button>
+{{#linkTo "player" controllers.player classNames="btn"}}
+    Cancel
+{{/linkTo}}

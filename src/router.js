@@ -23,28 +23,29 @@ define([
             });
 
             App.Router.map(function () {
+                this.resource("lobby",
+                    {
+                        path : "lobby/:lobby_id"
+                    }, function () {
+                        this.route("edit");
+                        this.route("remove");
+                    });
+
                 this.resource("lobbies", function () {
-                    this.resource("lobby",
-                        {
-                            path : ":lobby_id"
-                        }, function () {
-                            this.route("show");
-                            this.route("edit");
-                            this.route("remove");
-                        });
                     this.route("add");
                 });
-                this.resource("players", function () {
-                    this.route("add");
-                });
+
                 this.resource("player",
                     {
                         path : "player/:player_id"
                     }, function () {
-                        this.route("show");
                         this.route("edit");
                         this.route("remove");
                     });
+
+                this.resource("players", function () {
+                    this.route("add");
+                });
             });
         }
     };

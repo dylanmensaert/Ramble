@@ -5,7 +5,7 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return "Show - " + this.get("controllers.player.documentTitle");
+            return this.get("controllers.player.documentTitle");
         }).property("controllers.player.documentTitle"),
         isLeaf : true,
         needs : ["player"]

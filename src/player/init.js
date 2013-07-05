@@ -1,12 +1,12 @@
 define([
     "App", "player/model", "Player/route", "Player/controller", "Player/view",
-    "PlayerShow/route", "PlayerShow/controller", "PlayerShow/view",
+    "PlayerIndex/route", "PlayerIndex/controller", "PlayerIndex/view",
     "PlayerEdit/route", "PlayerEdit/controller", "PlayerEdit/view",
     "PlayerRemove/route", "PlayerRemove/controller", "PlayerRemove/view",
     "Players/route", "Players/controller", "Players/view",
     "PlayersAdd/route", "PlayersAdd/controller", "PlayersAdd/view"
 ], function (App, Player, PlayerRoute, PlayerController, PlayerView,
-             PlayerShowRoute, PlayerShowController, PlayerShowView,
+             PlayerIndexRoute, PlayerIndexController, PlayerIndexView,
              PlayerEditRoute, PlayerEditController, PlayerEditView,
              PlayerRemoveRoute, PlayerRemoveController, PlayerRemoveView,
              PlayersRoute, PlayersController, PlayersView,
@@ -23,9 +23,9 @@ define([
             App.PlayerController = PlayerController;
             App.PlayerView = PlayerView;
 
-            App.PlayerShowRoute = PlayerShowRoute;
-            App.PlayerShowController = PlayerShowController;
-            App.PlayerShowView = PlayerShowView;
+            App.PlayerIndexRoute = PlayerIndexRoute;
+            App.PlayerIndexController = PlayerIndexController;
+            App.PlayerIndexView = PlayerIndexView;
 
             App.PlayerEditRoute = PlayerEditRoute;
             App.PlayerEditController = PlayerEditController;

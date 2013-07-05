@@ -35,7 +35,7 @@
             //Lobby
             lobby : "src/lobby",
             Lobby : "src/lobby/Lobby",
-            LobbyShow : "src/lobby/LobbyShow",
+            LobbyIndex : "src/lobby/LobbyIndex",
             LobbyEdit : "src/lobby/LobbyEdit",
             LobbyRemove : "src/lobby/LobbyRemove",
             Lobbies : "src/lobby/Lobbies",
@@ -44,7 +44,7 @@
             //Player
             player : "src/player",
             Player : "src/player/Player",
-            PlayerShow : "src/player/PlayerShow",
+            PlayerIndex : "src/player/PlayerIndex",
             PlayerEdit : "src/player/PlayerEdit",
             PlayerRemove : "src/player/PlayerRemove",
             Players : "src/player/Players",

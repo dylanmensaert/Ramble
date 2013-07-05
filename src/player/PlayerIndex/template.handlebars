@@ -9,7 +9,7 @@
 <div>
     {{#each lobby in controllers.player.lobbies itemController="lobby"}}
     <p>
-        {{#linkTo "lobby.show" lobby}}
+        {{#linkTo "lobby" lobby}}
             {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
         {{/linkTo}}
     </p>
