@@ -4,6 +4,7 @@ define([
     "use strict";
 
     return Ember.ArrayController.extend({
-
+        documentTitle : "Lobbies",
+        isLeaf : true
     });
 });

@@ -4,6 +4,8 @@ define([
     "use strict";
 
     return Ember.Controller.extend({
+        documentTitle : "Application",
+        isLeaf : false,
         init : function () {
             this._super();
 

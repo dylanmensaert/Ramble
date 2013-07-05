@@ -13,10 +13,10 @@ define([
                 setupController : function (controller, model) {
                     this._super(controller, model);
 
-                    if (this.get("isLeaf")) {
-                        document.title = applicationTitle + this.get("title");
+                    if (controller.get("isLeaf")) {
+                        document.title = applicationTitle + controller.get("documentTitle");
 
-                        GoogleAnalytics.push(["_trackPageview", this.get("title")]);
+                        GoogleAnalytics.push(["_trackPageview", this.get("documentTitle")]);
                     }
                 }
             });
