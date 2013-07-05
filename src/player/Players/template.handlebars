@@ -1,0 +1,7 @@
+{{#each player in controller itemController="player"}}
+<p>
+    {{#linkTo "player" player}}
+        {{player.name}}
+    {{/linkTo}}
+</p>
+{{/each}}

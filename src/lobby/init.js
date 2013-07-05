@@ -1,10 +1,12 @@
 define([
     "App", "lobby/model", "Lobby/route", "Lobby/controller", "Lobby/view",
+    "LobbyShow/route", "LobbyShow/controller", "LobbyShow/view",
     "LobbyEdit/route", "LobbyEdit/controller", "LobbyEdit/view",
     "LobbyRemove/route", "LobbyRemove/controller", "LobbyRemove/view",
     "Lobbies/route", "Lobbies/controller", "Lobbies/view",
     "LobbiesAdd/route", "LobbiesAdd/controller", "LobbiesAdd/view"
 ], function (App, Lobby, LobbyRoute, LobbyController, LobbyView,
+             LobbyShowRoute, LobbyShowController, LobbyShowView,
              LobbyEditRoute, LobbyEditController, LobbyEditView,
              LobbyRemoveRoute, LobbyRemoveController, LobbyRemoveView,
              LobbiesRoute, LobbiesController, LobbiesView,
@@ -20,6 +22,10 @@ define([
             App.LobbyRoute = LobbyRoute;
             App.LobbyController = LobbyController;
             App.LobbyView = LobbyView;
+
+            App.LobbyShowRoute = LobbyShowRoute;
+            App.LobbyShowController = LobbyShowController;
+            App.LobbyShowView = LobbyShowView;
 
             App.LobbyEditRoute = LobbyEditRoute;
             App.LobbyEditController = LobbyEditController;

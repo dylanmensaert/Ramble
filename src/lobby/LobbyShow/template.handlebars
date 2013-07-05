@@ -1,0 +1,13 @@
+<h2>{{controllers.lobby.title}}</h2>
+<h3>({{controllers.lobby.amountOfPlayers}}/{{controllers.lobby.maxPlayers}})</h3>
+<p>{{#linkTo "lobby.edit" controllers.lobby}}Edit{{/linkTo}}</p>
+
+<div>
+    {{#each player in controllers.lobby.players}}
+    <p>
+        {{#linkTo "player.show" player}}
+            {{player.name}}
+        {{/linkTo}}
+    </p>
+    {{/each}}
+</div>

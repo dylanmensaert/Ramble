@@ -1,0 +1,17 @@
+<h2>{{controllers.player.name}}</h2>
+
+<div>
+    {{#each lobby in controllers.player.lobbies itemController="lobby"}}
+    <p>
+        {{#linkTo "lobby" lobby}}
+            {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
+        {{/linkTo}}
+    </p>
+    {{/each}}
+</div>
+
+<p>
+    {{#linkTo "player.edit" controllers.player}}
+        Edit
+    {{/linkTo}}
+</p>

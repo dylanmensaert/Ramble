@@ -1,9 +1,9 @@
-{{#each lobby in controller}}
-<div>
-    {{#linkTo "lobby" lobby}}
-        {{lobby.title}}
+{{#each lobby in controller itemController="lobby"}}
+<p>
+    {{#linkTo "lobby.show" lobby}}
+         {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
     {{/linkTo}}
-</div>
+</p>
 {{/each}}
 
 <div>

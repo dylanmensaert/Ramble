@@ -4,60 +4,69 @@
             "id" : 1,
             "title" : "Game Dylan en Dimitri",
             "password" : "zonneschijn",
-            "maxPlayers" : "13",
-            "player_ids" : [1, 2, 3]
+            "maxPlayers" : "5",
+            "players" : [1, 2, 3]
         },
         {
             "id" : 2,
             "title" : "customgame",
             "password" : "Peter",
-            "maxPlayers" : "13",
-            "player_ids" : [4, 8, 9]
+            "maxPlayers" : "7",
+            "players" : [4, 8, 9, 3]
         },
         {
             "id" : 3,
             "title" : "winners lobby!",
             "password" : "Dolfijn",
-            "maxPlayers" : "13",
-            "player_ids" : [5, 6, 7]
+            "maxPlayers" : "12",
+            "players" : [5, 6, 3]
         }
     ],
     "players" : [
         {
             "id" : 1,
-            "name" : "donut"
+            "name" : "donut",
+            "lobbies" : [1]
         },
         {
             "id" : 2,
-            "name" : "pizaa"
+            "name" : "pizaa",
+            "lobbies" : [1]
         },
         {
             "id" : 3,
-            "name" : "zizima"
+            "name" : "zizima",
+            "lobbies" : [1, 2, 3]
         },
         {
             "id" : 4,
-            "name" : "madeentje"
+            "name" : "madeentje",
+            "lobbies" : [2]
         },
         {
             "id" : 5,
-            "name" : "cryptex"
+            "name" : "cryptex",
+            "lobbies" : [3]
         },
         {
             "id" : 6,
-            "name" : "heca"
+            "name" : "heca",
+            "lobbies" : [3]
         },
         {
             "id" : 7,
-            "name" : "bosbes"
+            "name" : "bosbes",
+            "lobbies" : []
         },
         {
             "id" : 8,
-            "name" : "graaaah"
+            "name" : "graaaah",
+            "lobbies" : [2]
         },
         {
             "id" : 9,
-            "name" : "antiliaan"
+            "name" : "antiliaan",
+            "lobbies" : [2]
         }
     ]
 }

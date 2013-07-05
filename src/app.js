@@ -16,5 +16,7 @@ define([
         adapter : "DS.FixtureAdapter"
     });
 
+    window.App = App;
+
     return App;
 });

@@ -35,10 +35,20 @@
             // Lobby
             lobby : "src/lobby",
             Lobby : "src/lobby/Lobby",
+            LobbyShow : "src/lobby/LobbyShow",
             LobbyEdit : "src/lobby/LobbyEdit",
             LobbyRemove : "src/lobby/LobbyRemove",
             Lobbies : "src/lobby/Lobbies",
             LobbiesAdd : "src/lobby/LobbiesAdd",
+
+            // Player
+            player : "src/player",
+            Player : "src/player/Player",
+            PlayerShow : "src/player/PlayerShow",
+            PlayerEdit : "src/player/PlayerEdit",
+            PlayerRemove : "src/player/PlayerRemove",
+            Players : "src/player/Players",
+            PlayersAdd : "src/player/PlayersAdd",
 
             // Helpers
             SomeHelper : "src/helpers/SomeHelper"
