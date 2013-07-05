@@ -34,12 +34,7 @@
             //TODO: Simplify folder structure so less aliases are needed? Example: lobby/edit/controller
             //Lobby
             lobby : "src/lobby",
-            Lobby : "src/lobby/Lobby",
-            LobbyIndex : "src/lobby/LobbyIndex",
-            LobbyEdit : "src/lobby/LobbyEdit",
-            LobbyRemove : "src/lobby/LobbyRemove",
-            Lobbies : "src/lobby/Lobbies",
-            LobbiesAdd : "src/lobby/LobbiesAdd",
+            lobbies : "src/lobbies",
 
             //Player
             player : "src/player",
