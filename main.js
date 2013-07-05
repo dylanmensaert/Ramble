@@ -3,11 +3,11 @@
 
     require.config({
         paths : {
-            // RequireJS-plugins
+            //RequireJS-plugins
             domReady : "bower_components/requirejs-domready/domReady",
             text : "bower_components/requirejs-text/text",
 
-            // Frameworks
+            //Frameworks
             Ember : "bower_components/ember/ember",
             EmberData : "bower_components/ember-data-shim/ember-data",
             Handlebars : "bower_components/handlebars/handlebars",
@@ -19,20 +19,20 @@
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
-            // App
+            //App
             app : "src",
             App : "src/app",
 
-            // Application
+            //Application
             application : "src/application",
             Application : "src/application/Application",
 
-            // Index
+            //Index
             index : "src/index",
             Index : "src/index/Index",
 
-            // TODO: Simplify folder structure so less aliases are needed? Example: lobby/edit/controller
-            // Lobby
+            //TODO: Simplify folder structure so less aliases are needed? Example: lobby/edit/controller
+            //Lobby
             lobby : "src/lobby",
             Lobby : "src/lobby/Lobby",
             LobbyShow : "src/lobby/LobbyShow",
@@ -41,7 +41,7 @@
             Lobbies : "src/lobby/Lobbies",
             LobbiesAdd : "src/lobby/LobbiesAdd",
 
-            // Player
+            //Player
             player : "src/player",
             Player : "src/player/Player",
             PlayerShow : "src/player/PlayerShow",
@@ -50,7 +50,7 @@
             Players : "src/player/Players",
             PlayersAdd : "src/player/PlayersAdd",
 
-            // Helpers
+            //Helpers
             SomeHelper : "src/helpers/SomeHelper"
         },
         shim : {
@@ -89,9 +89,9 @@
 
     require([
         "app/init", "domReady"
-    ], function (init, domReady) {
+    ], function (App, domReady) {
         domReady(function () {
-            init.initialize();
+            App.initialize();
 
             window.isAppInitialized = true;
         });
