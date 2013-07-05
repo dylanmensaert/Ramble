@@ -3,12 +3,12 @@ define([
     "lobby/main/route", "lobby/main/controller", "lobby/main/view",
     "lobby/index/route", "lobby/index/controller", "lobby/index/view",
     "lobby/edit/route", "lobby/edit/controller", "lobby/edit/view",
-    "lobby/remove/route", "lobby/remove/controller", "lobby/remove/view"
+    "lobby/delete/route", "lobby/delete/controller", "lobby/delete/view"
 ], function (App, Lobby,
              LobbyRoute, LobbyController, LobbyView,
              LobbyIndexRoute, LobbyIndexController, LobbyIndexView,
              LobbyEditRoute, LobbyEditController, LobbyEditView,
-             LobbyRemoveRoute, LobbyRemoveController, LobbyRemoveView) {
+             LobbyDeleteRoute, LobbyDeleteController, LobbyDeleteView) {
     "use strict";
 
     return {
@@ -29,9 +29,9 @@ define([
             App.LobbyEditController = LobbyEditController;
             App.LobbyEditView = LobbyEditView;
 
-            App.LobbyRemoveRoute = LobbyRemoveRoute;
-            App.LobbyRemoveController = LobbyRemoveController;
-            App.LobbyRemoveView = LobbyRemoveView;
+            App.LobbyDeleteRoute = LobbyDeleteRoute;
+            App.LobbyDeleteController = LobbyDeleteController;
+            App.LobbyDeleteView = LobbyDeleteView;
         }
     };
 });

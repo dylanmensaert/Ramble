@@ -28,11 +28,11 @@ define([
                         path : "lobby/:lobby_id"
                     }, function () {
                         this.route("edit");
-                        this.route("remove");
+                        this.route("delete");
                     });
 
                 this.resource("lobbies", function () {
-                    this.route("add");
+                    this.route("create");
                 });
 
                 this.resource("player",
@@ -40,11 +40,11 @@ define([
                         path : "player/:player_id"
                     }, function () {
                         this.route("edit");
-                        this.route("remove");
+                        this.route("delete");
                     });
 
                 this.resource("players", function () {
-                    this.route("add");
+                    this.route("create");
                 });
             });
         }

@@ -7,7 +7,7 @@
             domReady : "bower_components/requirejs-domready/domReady",
             text : "bower_components/requirejs-text/text",
 
-            //Frameworks
+            //frameworks
             Ember : "bower_components/ember/ember",
             EmberData : "bower_components/ember-data-shim/ember-data",
             Handlebars : "bower_components/handlebars/handlebars",
@@ -19,26 +19,26 @@
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
-            //App
+            //app
             app : "src",
             App : "src/app",
 
-            //Application
+            //application
             application : "src/application",
 
-            //Index
+            //index
             index : "src/index",
 
-            //Lobby
+            //lobby
             lobby : "src/lobby",
             lobbies : "src/lobbies",
 
-            //Player
+            //player
             player : "src/player",
             players : "src/players",
 
-            //Helpers
-            SomeHelper : "src/helpers/SomeHelper"
+            //helpers
+            helpers : "src/helpers"
         },
         shim : {
             jQuery : {

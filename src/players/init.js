@@ -1,6 +1,6 @@
 define([
-    "App", "players/main/route", "players/main/controller", "players/main/view", "players/add/route", "players/add/controller", "players/add/view"
-], function (App, PlayersRoute, PlayersController, PlayersView, PlayersAddRoute, PlayersAddController, PlayersAddView) {
+    "App", "players/main/route", "players/main/controller", "players/main/view", "players/create/route", "players/create/controller", "players/create/view"
+], function (App, PlayersRoute, PlayersController, PlayersView, PlayersCreateRoute, PlayersCreateController, PlayersCreateView) {
     "use strict";
 
     return {
@@ -9,9 +9,9 @@ define([
             App.PlayersController = PlayersController;
             App.PlayersView = PlayersView;
 
-            App.PlayersAddRoute = PlayersAddRoute;
-            App.PlayersAddController = PlayersAddController;
-            App.PlayersAddView = PlayersAddView;
+            App.PlayersCreateRoute = PlayersCreateRoute;
+            App.PlayersCreateController = PlayersCreateController;
+            App.PlayersCreateView = PlayersCreateView;
         }
     };
 });

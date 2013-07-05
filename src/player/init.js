@@ -3,12 +3,12 @@ define([
     "player/main/route", "player/main/controller", "player/main/view",
     "player/index/route", "player/index/controller", "player/index/view",
     "player/edit/route", "player/edit/controller", "player/edit/view",
-    "player/remove/route", "player/remove/controller", "player/remove/view"
+    "player/delete/route", "player/delete/controller", "player/delete/view"
 ], function (App, Player,
              PlayerRoute, PlayerController, PlayerView,
              PlayerIndexRoute, PlayerIndexController, PlayerIndexView,
              PlayerEditRoute, PlayerEditController, PlayerEditView,
-             PlayerRemoveRoute, PlayerRemoveController, PlayerRemoveView) {
+             PlayerDeleteRoute, PlayerDeleteController, PlayerDeleteView) {
     "use strict";
 
     return {
@@ -17,6 +17,7 @@ define([
 
             App.Player.FIXTURES = App.data.players;
 
+            //TODO: Simplify class-names from function, to shorten line?
             App.PlayerRoute = PlayerRoute;
             App.PlayerController = PlayerController;
             App.PlayerView = PlayerView;
@@ -29,9 +30,9 @@ define([
             App.PlayerEditController = PlayerEditController;
             App.PlayerEditView = PlayerEditView;
 
-            App.PlayerRemoveRoute = PlayerRemoveRoute;
-            App.PlayerRemoveController = PlayerRemoveController;
-            App.PlayerRemoveView = PlayerRemoveView;
+            App.PlayerDeleteRoute = PlayerDeleteRoute;
+            App.PlayerDeleteController = PlayerDeleteController;
+            App.PlayerDeleteView = PlayerDeleteView;
         }
     };
 });

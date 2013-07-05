@@ -5,7 +5,7 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return "Remove - " + this.get("controllers.lobby.documentTitle");
+            return "Delete - " + this.get("controllers.lobby.documentTitle");
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
         needs : ["lobby"]

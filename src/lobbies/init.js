@@ -1,6 +1,6 @@
 define([
-    "App", "lobbies/main/route", "lobbies/main/controller", "lobbies/main/view", "lobbies/add/route", "lobbies/add/controller", "lobbies/add/view"
-], function (App, LobbiesRoute, LobbiesController, LobbiesView, LobbiesAddRoute, LobbiesAddController, LobbiesAddView) {
+    "App", "lobbies/main/route", "lobbies/main/controller", "lobbies/main/view", "lobbies/create/route", "lobbies/create/controller", "lobbies/create/view"
+], function (App, LobbiesRoute, LobbiesController, LobbiesView, LobbiesCreateRoute, LobbiesCreateController, LobbiesCreateView) {
     "use strict";
 
     return {
@@ -9,9 +9,9 @@ define([
             App.LobbiesController = LobbiesController;
             App.LobbiesView = LobbiesView;
 
-            App.LobbiesAddRoute = LobbiesAddRoute;
-            App.LobbiesAddController = LobbiesAddController;
-            App.LobbiesAddView = LobbiesAddView;
+            App.LobbiesCreateRoute = LobbiesCreateRoute;
+            App.LobbiesCreateController = LobbiesCreateController;
+            App.LobbiesCreateView = LobbiesCreateView;
         }
     };
 });

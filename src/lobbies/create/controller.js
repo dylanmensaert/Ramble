@@ -5,7 +5,7 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.lobbies.documentTitle") + " - Add";
+            return this.get("controllers.lobbies.documentTitle") + " - Create";
         }).property("controllers.lobbies.documentTitle"),
         isLeaf : true,
         needs : ["lobbies"]
