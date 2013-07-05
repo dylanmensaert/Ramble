@@ -11,7 +11,7 @@
                     browser : true,
                     todo : true,
                     maxlen : 200,
-                    predef : ["require", "define", "describe", "it", "runs", "expect", "waitsFor", "module"]
+                    predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
                 },
                 options : {
                     failOnError : false,

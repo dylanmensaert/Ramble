@@ -13,10 +13,11 @@ define([
                 setupController : function (controller, model) {
                     this._super(controller, model);
 
+                    // TODO: Pre-defined Index-Controller of each route does not have an isLeaf-property, and thus doesn't update the document.title!
                     if (controller.get("isLeaf")) {
                         document.title = applicationTitle + controller.get("documentTitle");
 
-                        GoogleAnalytics.push(["_trackPageview", this.get("documentTitle")]);
+                        GoogleAnalytics.push(["_trackPageview", controller.get("documentTitle")]);
                     }
                 }
             });
