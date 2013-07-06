@@ -1,6 +1,6 @@
 define([
     "App",
-    "lobbies/main/route", "lobbies/main/controller", "lobbies/main/view",
+    "lobbies/root/route", "lobbies/root/controller", "lobbies/root/view",
     "lobbies/create/route", "lobbies/create/controller", "lobbies/create/view"
 ], function (App, Route, Controller, View, CreateRoute, CreateController, CreateView) {
     "use strict";

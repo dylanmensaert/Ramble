@@ -1,6 +1,6 @@
 define([
     "App",
-    "index/main/route", "index/main/controller", "index/main/view"
+    "index/root/route", "index/root/controller", "index/root/view"
 ], function (App, Route, Controller, View) {
     "use strict";
 

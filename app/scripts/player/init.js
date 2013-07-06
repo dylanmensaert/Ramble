@@ -1,6 +1,6 @@
 define([
     "App", "player/model",
-    "player/main/route", "player/main/controller", "player/main/view",
+    "player/root/route", "player/root/controller", "player/root/view",
     "player/index/route", "player/index/controller", "player/index/view",
     "player/edit/route", "player/edit/controller", "player/edit/view",
     "player/delete/route", "player/delete/controller", "player/delete/view"

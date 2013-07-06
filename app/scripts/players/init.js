@@ -1,6 +1,6 @@
 define([
     "App",
-    "players/main/route", "players/main/controller", "players/main/view",
+    "players/root/route", "players/root/controller", "players/root/view",
     "players/create/route", "players/create/controller", "players/create/view"
 ], function (App, Route, Controller, View, CreateRoute, CreateController, CreateView) {
     "use strict";

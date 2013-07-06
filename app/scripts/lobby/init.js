@@ -1,6 +1,6 @@
 define([
     "App", "lobby/model",
-    "lobby/main/route", "lobby/main/controller", "lobby/main/view",
+    "lobby/root/route", "lobby/root/controller", "lobby/root/view",
     "lobby/index/route", "lobby/index/controller", "lobby/index/view",
     "lobby/edit/route", "lobby/edit/controller", "lobby/edit/view",
     "lobby/delete/route", "lobby/delete/controller", "lobby/delete/view"
