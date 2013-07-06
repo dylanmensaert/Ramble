@@ -11,42 +11,19 @@
             Ember : "../../bower_components/ember/ember",
             EmberData : "../../bower_components/ember-data-shim/ember-data",
             Handlebars : "../../bower_components/handlebars/handlebars",
-
             jQuery : "../../bower_components/jquery/jquery",
-            jQueryUI : "../../bower_components/jquery-ui/ui/jquery-ui",
-
             Bootstrap : "../../bower_components/components-bootstrap/js/bootstrap",
-
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
-            //root
-            root : ".",
-
             //app
+            root : ".",
             App : "app",
-
-            //data
             data : "../data"
         },
         shim : {
-            jQuery : {
-                exports : "jQuery"
-            },
-            jQueryUI : {
-                deps : [
-                    "jQuery"
-                ],
-                exports : "jQuery"
-            },
-            Bootstrap : {
-                deps : [
-                    "jQuery"
-                ],
-                exports : "jQuery"
-            },
             Ember : {
                 deps : [
-                    "jQuery", "Handlebars", "Bootstrap", "jQueryUI"
+                    "jQuery", "Handlebars", "Bootstrap"
                 ],
                 exports : "Ember"
             },
@@ -55,6 +32,15 @@
                     "Ember"
                 ],
                 exports : "DS"
+            },
+            jQuery : {
+                exports : "jQuery"
+            },
+            Bootstrap : {
+                deps : [
+                    "jQuery"
+                ],
+                exports : "jQuery"
             },
             GoogleAnalytics : {
                 exports : "_gaq"
