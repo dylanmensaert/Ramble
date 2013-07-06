@@ -17,5 +17,10 @@
     "repository" : {
         "type" : "git",
         "url" : "https://github.com/dimitrisuls/js-webapp-boilerplate.git"
+    },
+    "scripts" : {
+        "postinstall" : "bower install",
+        "start": "grunt run",
+        "test" : "grunt"
     }
 }
