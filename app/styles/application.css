@@ -8,7 +8,7 @@ body {
     width: 220px;
     height: 19px;
     margin: 0 auto;
-    background: url(../../img/loadingBar.gif) no-repeat;
+    background: url(../images/loadingBar.gif) no-repeat;
 }
 
 .initialLoading {

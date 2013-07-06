@@ -5,7 +5,7 @@
         grunt.initConfig({
             pkg : grunt.file.readJSON("package.json"),
             jslint : {
-                files : ["*.js", "*.json", "app/**/*.js", "tests/**/*.js"],
+                files : ["*.js", "*.json", "app/**/*.js", "app/**/*.json", "test/**/*.js"],
                 directives : {
                     nomen : true,
                     browser : true,
@@ -22,7 +22,7 @@
                 all : {
                     src : ["app/**/*.css"],
                     options : {
-                        "import" : true,
+                        "import" : false,
                         formatters : [
                             {
                                 id : "text",
@@ -43,8 +43,13 @@
                     ],
                     options : {
                         host : "http://localhost:8002",
-                        specs : "tests/**/*.js",
-                        template : require("grunt-template-jasmine-requirejs")
+                        specs : "test/**/*.js",
+                        template : require("grunt-template-jasmine-requirejs"),
+                        templateOptions : {
+                            requireConfig : {
+                                baseUrl : "app/scripts"
+                            }
+                        }
                     }
                 }
             },
@@ -54,6 +59,9 @@
                 },
                 log : {
                     src : ["log/"]
+                },
+                test : {
+                    src : ["main.js"]
                 }
             },
             copy : {
@@ -67,14 +75,9 @@
                         },
                         {
                             expand : true,
-                            cwd : "img/",
+                            cwd : "app/images/",
                             src : ["**"],
-                            dest : "dist/img/"
-                        },
-                        {
-                            expand : true,
-                            src : ["data.json", "config.json"],
-                            dest : "dist/"
+                            dest : "dist/images/"
                         },
                         //TODO: Provide more robust way to copy images from libraries/CSS
                         {
@@ -88,23 +91,32 @@
                             dest : "dist/"
                         }
                     ]
+                },
+                test : {
+                    files : [
+                        {
+                            expand : true,
+                            cwd : "app/scripts",
+                            src : ["main.js"],
+                            dest : "./"
+                        }
+                    ]
                 }
             },
             requirejs : {
                 all : {
                     options : {
                         name : "main",
-                        mainConfigFile : "main.js",
-                        include : ["bower_components/requirejs/require.js"],
-                        excludeShallow : ["text!data.json", "text!config.json"],
-                        out : "dist/Ramble.min.js"
+                        mainConfigFile : "app/scripts/main.js",
+                        include : ["../../bower_components/requirejs/require.js"],
+                        out : "dist/scripts/Ramble.min.js"
                     }
                 }
             },
             cssmin : {
                 all : {
                     files : {
-                        "dist/Ramble.min.css" : ["main.css"]
+                        "dist/styles/Ramble.min.css" : ["app/styles/main.css"]
                     }
                 }
             },
@@ -133,8 +145,8 @@
         grunt.loadNpmTasks("grunt-contrib-cssmin");
         grunt.loadNpmTasks("grunt-contrib-connect");
 
-        grunt.registerTask("default", ["clean:log", "jslint", "csslint:all", "connect:test", "jasmine:all", "clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
-        grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "jasmine:all"]);
+        grunt.registerTask("default", ["test", "build"]);
+        grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
         grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
         grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
         grunt.registerTask("start", ["connect:start"]);
