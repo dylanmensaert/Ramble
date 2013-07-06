@@ -1,8 +1,8 @@
 @import url("bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css");
 @import url("bower_components/components-bootstrap/css/bootstrap.css");
-@import url("src/application/stylesheet.css");
-@import url("src/index/stylesheet.css");
-@import url("src/lobby/stylesheet.css");
-@import url("src/lobbies/stylesheet.css");
-@import url("src/player/stylesheet.css");
-@import url("src/players/stylesheet.css");
+@import url("app/application/stylesheet.css");
+@import url("app/index/stylesheet.css");
+@import url("app/lobby/stylesheet.css");
+@import url("app/lobbies/stylesheet.css");
+@import url("app/player/stylesheet.css");
+@import url("app/players/stylesheet.css");

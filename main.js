@@ -20,25 +20,25 @@
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
             //app
-            app : "src",
-            App : "src/app",
+            app : "app",
+            App : "app/app",
 
             //application
-            application : "src/application",
+            application : "app/application",
 
             //index
-            index : "src/index",
+            index : "app/index",
 
             //lobby
-            lobby : "src/lobby",
-            lobbies : "src/lobbies",
+            lobby : "app/lobby",
+            lobbies : "app/lobbies",
 
             //player
-            player : "src/player",
-            players : "src/players",
+            player : "app/player",
+            players : "app/players",
 
             //helpers
-            helpers : "src/helpers"
+            helpers : "app/helpers"
         },
         shim : {
             jQuery : {

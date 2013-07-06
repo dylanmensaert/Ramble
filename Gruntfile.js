@@ -5,7 +5,7 @@
         grunt.initConfig({
             pkg : grunt.file.readJSON("package.json"),
             jslint : {
-                files : ["*.js", "*.json", "src/**/*.js", "spec/**/*.js"],
+                files : ["*.js", "*.json", "app/**/*.js", "tests/**/*.js"],
                 directives : {
                     nomen : true,
                     browser : true,
@@ -20,7 +20,7 @@
             },
             csslint : {
                 all : {
-                    src : ["src/**/*.css"],
+                    src : ["app/**/*.css"],
                     options : {
                         "import" : true,
                         formatters : [
@@ -43,7 +43,7 @@
                     ],
                     options : {
                         host : "http://localhost:8002",
-                        specs : "spec/**/*.js",
+                        specs : "tests/**/*.js",
                         template : require("grunt-template-jasmine-requirejs")
                     }
                 }
