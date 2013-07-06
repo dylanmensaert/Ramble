@@ -14,7 +14,6 @@
                     predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
                 },
                 options : {
-                    failOnError : false,
                     log : "log/jslint.log",
                     checkstyle : "log/checkstyle_jslint.xml"
                 }
