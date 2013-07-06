@@ -20,7 +20,7 @@
     },
     "scripts" : {
         "postinstall" : "bower install",
-        "start" : "grunt run",
+        "start" : "grunt start",
         "test" : "grunt"
     }
 }

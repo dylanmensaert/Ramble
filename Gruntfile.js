@@ -49,43 +49,43 @@
                 }
             },
             clean : {
-                build : {
-                    src : ["build/"]
+                dist : {
+                    src : ["dist/"]
                 },
                 log : {
                     src : ["log/"]
                 }
             },
             copy : {
-                build : {
+                dist : {
                     files : [
                         {
                             expand : true,
                             cwd : "scaffold/",
                             src : ["**"],
-                            dest : "build/"
+                            dest : "dist/"
                         },
                         {
                             expand : true,
                             cwd : "img/",
                             src : ["**"],
-                            dest : "build/img/"
+                            dest : "dist/img/"
                         },
                         {
                             expand : true,
                             src : ["data.json", "config.json"],
-                            dest : "build/"
+                            dest : "dist/"
                         },
                         //TODO: Provide more robust way to copy images from libraries/CSS
                         {
                             expand : true,
                             src : ["bower_components/components-bootstrap/img/*"],
-                            dest : "build/"
+                            dest : "dist/"
                         },
                         {
                             expand : true,
                             src : ["bower_components/jquery-ui/themes/ui-lightness/images/*"],
-                            dest : "build/"
+                            dest : "dist/"
                         }
                     ]
                 }
@@ -97,19 +97,19 @@
                         mainConfigFile : "main.js",
                         include : ["bower_components/requirejs/require.js"],
                         excludeShallow : ["text!data.json", "text!config.json"],
-                        out : "build/Ramble.min.js"
+                        out : "dist/Ramble.min.js"
                     }
                 }
             },
             cssmin : {
                 all : {
                     files : {
-                        "build/Ramble.min.css" : ["main.css"]
+                        "dist/Ramble.min.css" : ["main.css"]
                     }
                 }
             },
             connect : {
-                develop : {
+                start : {
                     options : {
                         hostname : "*",
                         port : 8001,
@@ -133,10 +133,10 @@
         grunt.loadNpmTasks("grunt-contrib-cssmin");
         grunt.loadNpmTasks("grunt-contrib-connect");
 
-        grunt.registerTask("default", ["clean:log", "jslint", "csslint:all", "connect:test", "jasmine:all", "clean:build", "copy:build", "requirejs:all", "cssmin:all"]);
+        grunt.registerTask("default", ["clean:log", "jslint", "csslint:all", "connect:test", "jasmine:all", "clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
         grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "jasmine:all"]);
-        grunt.registerTask("build", ["clean:build", "copy:build", "requirejs:all", "cssmin:all"]);
-        grunt.registerTask("cleanup", ["clean:log", "clean:build"]);
-        grunt.registerTask("run", ["connect:develop"]);
+        grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
+        grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
+        grunt.registerTask("start", ["connect:start"]);
     };
 }());
