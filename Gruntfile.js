@@ -99,14 +99,14 @@
                         name : "main",
                         mainConfigFile : "app/scripts/main.js",
                         include : ["../../bower_components/requirejs/require.js"],
-                        out : "dist/scripts/Ramble.min.js"
+                        out : "dist/scripts/main.min.js"
                     }
                 }
             },
             cssmin : {
                 all : {
                     files : {
-                        "dist/styles/Ramble.min.css" : ["app/styles/main.css"]
+                        "dist/styles/main.min.css" : ["app/styles/main.css"]
                     }
                 }
             },

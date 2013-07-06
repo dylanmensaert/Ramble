@@ -19,9 +19,11 @@
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
+            //root
+            root : ".",
+
             //app
             App : "app",
-            app : ".",
 
             //data
             data : "../data"
@@ -61,7 +63,7 @@
     });
 
     require([
-        "app/init", "domReady"
+        "root/init", "domReady"
     ], function (App, domReady) {
         domReady(function () {
             App.initialize();

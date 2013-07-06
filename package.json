@@ -16,7 +16,7 @@
     },
     "repository" : {
         "type" : "git",
-        "url" : "https://github.com/dimitrisuls/js-webapp-boilerplate.git"
+        "url" : "https://github.com/dimitrisuls/Ramble.git"
     },
     "scripts" : {
         "postinstall" : "bower install",
