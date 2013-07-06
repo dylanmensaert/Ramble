@@ -4,11 +4,7 @@ define([
     "lobby/index/route", "lobby/index/controller", "lobby/index/view",
     "lobby/edit/route", "lobby/edit/controller", "lobby/edit/view",
     "lobby/delete/route", "lobby/delete/controller", "lobby/delete/view"
-], function (App, Lobby,
-             LobbyRoute, LobbyController, LobbyView,
-             LobbyIndexRoute, LobbyIndexController, LobbyIndexView,
-             LobbyEditRoute, LobbyEditController, LobbyEditView,
-             LobbyDeleteRoute, LobbyDeleteController, LobbyDeleteView) {
+], function (App, Lobby, Route, Controller, View, IndexRoute, IndexController, IndexView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView) {
     "use strict";
 
     return {
@@ -17,21 +13,21 @@ define([
 
             App.Lobby.FIXTURES = App.data.lobbies;
 
-            App.LobbyRoute = LobbyRoute;
-            App.LobbyController = LobbyController;
-            App.LobbyView = LobbyView;
+            App.LobbyRoute = Route;
+            App.LobbyController = Controller;
+            App.LobbyView = View;
 
-            App.LobbyIndexRoute = LobbyIndexRoute;
-            App.LobbyIndexController = LobbyIndexController;
-            App.LobbyIndexView = LobbyIndexView;
+            App.LobbyIndexRoute = IndexRoute;
+            App.LobbyIndexController = IndexController;
+            App.LobbyIndexView = IndexView;
 
-            App.LobbyEditRoute = LobbyEditRoute;
-            App.LobbyEditController = LobbyEditController;
-            App.LobbyEditView = LobbyEditView;
+            App.LobbyEditRoute = EditRoute;
+            App.LobbyEditController = EditController;
+            App.LobbyEditView = EditView;
 
-            App.LobbyDeleteRoute = LobbyDeleteRoute;
-            App.LobbyDeleteController = LobbyDeleteController;
-            App.LobbyDeleteView = LobbyDeleteView;
+            App.LobbyDeleteRoute = DeleteRoute;
+            App.LobbyDeleteController = DeleteController;
+            App.LobbyDeleteView = DeleteView;
         }
     };
 });

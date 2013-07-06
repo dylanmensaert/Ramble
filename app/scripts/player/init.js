@@ -4,11 +4,7 @@ define([
     "player/index/route", "player/index/controller", "player/index/view",
     "player/edit/route", "player/edit/controller", "player/edit/view",
     "player/delete/route", "player/delete/controller", "player/delete/view"
-], function (App, Player,
-             PlayerRoute, PlayerController, PlayerView,
-             PlayerIndexRoute, PlayerIndexController, PlayerIndexView,
-             PlayerEditRoute, PlayerEditController, PlayerEditView,
-             PlayerDeleteRoute, PlayerDeleteController, PlayerDeleteView) {
+], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView) {
     "use strict";
 
     return {
@@ -18,21 +14,21 @@ define([
             App.Player.FIXTURES = App.data.players;
 
             //TODO: Simplify class-names from function, to shorten line?
-            App.PlayerRoute = PlayerRoute;
-            App.PlayerController = PlayerController;
-            App.PlayerView = PlayerView;
+            App.PlayerRoute = Route;
+            App.PlayerController = Controller;
+            App.PlayerView = View;
 
-            App.PlayerIndexRoute = PlayerIndexRoute;
-            App.PlayerIndexController = PlayerIndexController;
-            App.PlayerIndexView = PlayerIndexView;
+            App.PlayerIndexRoute = IndexRoute;
+            App.PlayerIndexController = IndexController;
+            App.PlayerIndexView = IndexView;
 
-            App.PlayerEditRoute = PlayerEditRoute;
-            App.PlayerEditController = PlayerEditController;
-            App.PlayerEditView = PlayerEditView;
+            App.PlayerEditRoute = EditRoute;
+            App.PlayerEditController = EditController;
+            App.PlayerEditView = EditView;
 
-            App.PlayerDeleteRoute = PlayerDeleteRoute;
-            App.PlayerDeleteController = PlayerDeleteController;
-            App.PlayerDeleteView = PlayerDeleteView;
+            App.PlayerDeleteRoute = DeleteRoute;
+            App.PlayerDeleteController = DeleteController;
+            App.PlayerDeleteView = DeleteView;
         }
     };
 });

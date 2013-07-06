@@ -3,14 +3,14 @@
 </h2>
 <p>
     {{#linkTo "player.edit" controllers.player classNames="btn"}}
-        Edit
+    Edit
     {{/linkTo}}
 </p>
 <div>
     {{#each lobby in controllers.player.lobbies itemController="lobby"}}
     <p>
         {{#linkTo "lobby" lobby}}
-            {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
+        {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
         {{/linkTo}}
     </p>
     {{/each}}

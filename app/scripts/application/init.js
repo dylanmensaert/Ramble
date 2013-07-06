@@ -1,13 +1,14 @@
 define([
-    "App", "application/main/route", "application/main/controller", "application/main/view"
-], function (App, ApplicationRoute, ApplicationController, ApplicationView) {
+    "App",
+    "application/main/route", "application/main/controller", "application/main/view"
+], function (App, Route, Controller, View) {
     "use strict";
 
     return {
         initialize : function () {
-            App.ApplicationRoute = ApplicationRoute;
-            App.ApplicationController = ApplicationController;
-            App.ApplicationView = ApplicationView;
+            App.ApplicationRoute = Route;
+            App.ApplicationController = Controller;
+            App.ApplicationView = View;
         }
     };
 });
