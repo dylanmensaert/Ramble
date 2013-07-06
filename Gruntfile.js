@@ -111,7 +111,7 @@
                 }
             },
             connect : {
-                start : {
+                server : {
                     options : {
                         hostname : "*",
                         port : 8001,
@@ -139,6 +139,6 @@
         grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
         grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
         grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
-        grunt.registerTask("start", ["connect:start"]);
+        grunt.registerTask("server", ["connect:server"]);
     };
 }());
