@@ -5,6 +5,7 @@
             "title" : "Game Dylan en Dimitri",
             "password" : "zonneschijn",
             "maxPlayers" : "5",
+            "owner" : [1],
             "players" : [1, 2, 3]
         },
         {
@@ -12,6 +13,7 @@
             "title" : "customgame",
             "password" : "Peter",
             "maxPlayers" : "7",
+            "owner" : [8],
             "players" : [4, 8, 9, 3]
         },
         {
@@ -19,6 +21,7 @@
             "title" : "winners lobby!",
             "password" : "Dolfijn",
             "maxPlayers" : "12",
+            "owner" : [6],
             "players" : [5, 6, 3]
         }
     ],
@@ -26,47 +29,56 @@
         {
             "id" : 1,
             "name" : "donut",
-            "lobbies" : [1]
+            "ownedLobbies" : [1],
+            "joinedLobbies" : [1]
         },
         {
             "id" : 2,
             "name" : "pizaa",
-            "lobbies" : [1]
+            "ownedLobbies" : [],
+            "joinedLobbies" : [1]
         },
         {
             "id" : 3,
             "name" : "zizima",
-            "lobbies" : [1, 2, 3]
+            "ownedLobbies" : [],
+            "joinedLobbies" : [1, 2, 3]
         },
         {
             "id" : 4,
             "name" : "madeentje",
-            "lobbies" : [2]
+            "ownedLobbies" : [],
+            "joinedLobbies" : [2]
         },
         {
             "id" : 5,
             "name" : "cryptex",
-            "lobbies" : [3]
+            "ownedLobbies" : [],
+            "joinedLobbies" : [3]
         },
         {
             "id" : 6,
             "name" : "heca",
-            "lobbies" : [3]
+            "ownedLobbies" : [3],
+            "joinedLobbies" : [3]
         },
         {
             "id" : 7,
             "name" : "bosbes",
-            "lobbies" : []
+            "ownedLobbies" : [],
+            "joinedLobbies" : []
         },
         {
             "id" : 8,
             "name" : "graaaah",
-            "lobbies" : [2]
+            "ownedLobbies" : [2],
+            "joinedLobbies" : [2]
         },
         {
             "id" : 9,
             "name" : "antiliaan",
-            "lobbies" : [2]
+            "ownedLobbies" : [],
+            "joinedLobbies" : [2]
         }
     ]
 }

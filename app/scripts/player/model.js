@@ -5,6 +5,7 @@ define([
 
     return DS.Model.extend({
         name : DS.attr("string"),
-        lobbies: DS.hasMany("App.Lobby")
+        ownedLobbies : DS.hasMany("App.Lobby"),
+        joinedLobbies: DS.hasMany("App.Lobby")
     });
 });
