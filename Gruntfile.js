@@ -78,18 +78,8 @@
                             cwd : "app/images/",
                             src : ["**"],
                             dest : "dist/images/"
-                        },
-                        //TODO: Provide more robust way to copy images from libraries/CSS
-                        {
-                            expand : true,
-                            src : ["bower_components/components-bootstrap/img/*"],
-                            dest : "dist/"
-                        },
-                        {
-                            expand : true,
-                            src : ["bower_components/jquery-ui/themes/ui-lightness/images/*"],
-                            dest : "dist/"
                         }
+                        //TODO: Fix copying images of Boostrap and jQuery UI for the CSS.
                     ]
                 },
                 test : {
