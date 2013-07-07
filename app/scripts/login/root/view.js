@@ -7,7 +7,7 @@ define([
         defaultTemplate : Ember.Handlebars.compile(template),
         LoginTextField : Ember.TextField.extend({
             insertNewline : function () {
-                this.get("controller.target").send("login");
+                this.get("controller").send("login");
             }
         })
     });

@@ -5,8 +5,8 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("name");
-        }).property("name"),
+            return this.get("username");
+        }).property("username"),
         isLeaf : false
     });
 });

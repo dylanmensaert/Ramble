@@ -11,7 +11,7 @@ define([
         needs : ["players"],
         createPlayer : function () {
             var player = App.Player.createRecord({
-                name : this.get("newName"),
+                username : this.get("newUsername"),
                 password : this.get("newPassword")
             });
 

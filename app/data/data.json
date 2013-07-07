@@ -36,55 +36,64 @@
     "players" : [
         {
             "id" : 1,
-            "name" : "donut",
+            "username" : "donut",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [1],
             "joinedLobbies" : [1]
         },
         {
             "id" : 2,
-            "name" : "pizaa",
+            "username" : "pizaa",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : [1]
         },
         {
             "id" : 3,
-            "name" : "zizima",
+            "username" : "zizima",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : [1, 2, 3]
         },
         {
             "id" : 4,
-            "name" : "madeentje",
+            "username" : "madeentje",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : [2]
         },
         {
             "id" : 5,
-            "name" : "cryptex",
+            "username" : "cryptex",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : [3]
         },
         {
             "id" : 6,
-            "name" : "heca",
+            "username" : "heca",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [3],
             "joinedLobbies" : [3]
         },
         {
             "id" : 7,
-            "name" : "bosbes",
+            "username" : "bosbes",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : []
         },
         {
             "id" : 8,
-            "name" : "graaaah",
+            "username" : "graaaah",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [2, 4],
             "joinedLobbies" : [2, 3, 4]
         },
         {
             "id" : 9,
-            "name" : "antiliaan",
+            "username" : "antiliaan",
+            "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
             "joinedLobbies" : [2]
         }
