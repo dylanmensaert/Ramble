@@ -9,6 +9,6 @@ define([
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
-        contentBinding : "controllers.lobby"
+        modelBinding : "controllers.lobby"
     });
 });

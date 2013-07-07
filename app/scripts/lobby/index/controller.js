@@ -9,12 +9,11 @@ define([
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
-        contentBinding : "controllers.lobby",
-        deletePlayerFromLobby : function (player) {
+        modelBinding : "controllers.lobby",
+        kickPlayerFromLobby : function (player) {
             //TODO: multiple relationship owner + players not working in model
-            this.get("controllers.lobby.players").removeObject(player);
-            this.get("controllers.lobby.players").save();
-            //player.joinedLobbies.removeObject(this.get("controllers.lobby"));
+            this.get("players").removeObject(player);
+            this.get("players").save();
         }
     });
 });

@@ -5,6 +5,8 @@ define([
 
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
-        lobbyItem : lobbyItem
+        lobbyItem : lobbyItem.extend({
+            tagName : "li"
+        })
     });
 });

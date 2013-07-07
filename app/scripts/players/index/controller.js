@@ -9,6 +9,6 @@ define([
         }).property("controllers.players.documentTitle"),
         isLeaf : true,
         needs : ["players"],
-        contentBinding : "controllers.players"
+        modelBinding : "controllers.players"
     });
 });
