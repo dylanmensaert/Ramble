@@ -1,8 +1,8 @@
 <h2>
-    {{controllers.player.name}}
+    {{name}}
 </h2>
 <p>
-    {{#linkTo "player.edit" controllers.player classNames="btn"}}
+    {{#linkTo "player.edit" classNames="btn"}}
     Edit
     {{/linkTo}}
 </p>
@@ -11,7 +11,7 @@
         Owned Lobbies:
     </h3>
     <ul class="nav nav-tabs nav-stacked">
-    {{each controllers.player.ownedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+        {{each ownedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
     </ul>
 </div>
 <div>
@@ -19,6 +19,6 @@
         Joined Lobbies:
     </h3>
     <ul class="nav nav-tabs nav-stacked">
-    {{each controllers.player.joinedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+        {{each joinedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
     </ul>
 </div>

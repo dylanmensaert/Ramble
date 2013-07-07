@@ -13,7 +13,6 @@ define([
 
             App.Player.FIXTURES = App.data.players;
 
-            //TODO: Simplify class-names from function, to shorten line?
             App.PlayerRoute = Route;
             App.PlayerController = Controller;
             App.PlayerView = View;

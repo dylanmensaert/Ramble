@@ -1,17 +1,26 @@
 <div class="form-inline right">
-    {{#unless isValidLogin}}
-    <p class="text-error">Login not successful</p>
-    {{/unless}}
+    <div>
+        <label>name:
+            {{view view.LoginTextField valueBinding="name" placeholder="name"}}
+        </label>
 
-    <label>name:
-    {{view view.LoginTextField valueBinding="name" placeholder="name"}}
-    </label>
+        <label>password:
+            {{view view.LoginTextField type="password" valueBinding="password" placeholder="password"}}
+        </label>
+    </div>
 
-    <label>password:
-    {{view view.LoginTextField type="password" valueBinding="password" placeholder="password"}}
-    </label>
+    <div>
+        <button class="btn  btn-primary"
+        {{action "login"}}>
+        Login
+        </button>
+    </div>
 
-    <button class="btn  btn-primary" {{action "login"}}>
-    Login
-    </button>
+    <div>
+        {{#unless isValidLogin}}
+        <p class="text-error">
+            Login not successful
+        </p>
+        {{/unless}}
+    </div>
 </div>

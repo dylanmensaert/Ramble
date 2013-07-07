@@ -9,6 +9,7 @@ define([
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
+        contentBinding : "controllers.lobby",
         deletePlayerFromLobby : function (player) {
             //TODO: multiple relationship owner + players not working in model
             this.get("controllers.lobby.players").removeObject(player);

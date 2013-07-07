@@ -1,20 +1,24 @@
-<h2>
-    {{controllers.lobby.title}}
-</h2>
-<h3>
-    ({{controllers.lobby.amountOfPlayers}}/{{controllers.lobby.maxPlayers}})
-</h3>
-<p>
-    {{#linkTo "lobby.edit" controllers.lobby classNames="btn"}}
-    Edit
-    {{/linkTo}}
-</p>
+<div>
+    <h2>
+        {{title}}
+    </h2>
+
+    <h3>
+        ({{amountOfPlayers}}/{{maxPlayers}})
+    </h3>
+
+    <p>
+        {{#linkTo "lobby.edit" classNames="btn"}}
+        Edit
+        {{/linkTo}}
+    </p>
+</div>
 <div>
     <h3>
         Owner:
     </h3>
-    {{#linkTo "player" controllers.lobby.owner}}
-    {{controllers.lobby.owner.name}}
+    {{#linkTo "player" owner}}
+    {{owner.name}}
     {{/linkTo}}
 </div>
 <div>
@@ -22,11 +26,13 @@
         Players:
     </h3>
     <ul class="nav nav-tabs nav-stacked">
-        {{#each player in controllers.lobby.players itemController="player"}}
+        {{#each player in players itemController="player"}}
         <li>
             {{#linkTo "player" controller}}
-                {{controller.name}}
-                <button class="delete" {{action "deletePlayerFromLobby" player}}></button>
+            {{name}}
+            <button class="delete"
+            {{action "deletePlayerFromLobby" player}}>
+            </button>
             {{/linkTo}}
         </li>
         {{/each}}

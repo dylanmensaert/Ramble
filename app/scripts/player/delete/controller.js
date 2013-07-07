@@ -8,6 +8,7 @@ define([
             return "Delete - " + this.get("controllers.player.documentTitle");
         }).property("controllers.player.documentTitle"),
         isLeaf : true,
-        needs : ["player"]
+        needs : ["player"],
+        contentBinding : "controllers.player"
     });
 });

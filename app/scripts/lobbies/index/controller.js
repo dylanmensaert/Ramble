@@ -8,6 +8,7 @@ define([
             return this.get("controllers.lobbies.documentTitle");
         }).property("controllers.lobbies.documentTitle"),
         isLeaf : true,
-        needs : ["lobbies"]
+        needs : ["lobbies"],
+        contentBinding : "controllers.lobbies"
     });
 });

@@ -8,6 +8,7 @@ define([
             return "Edit - " + this.get("controllers.lobby.documentTitle");
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
-        needs : ["lobby"]
+        needs : ["lobby"],
+        contentBinding : "controllers.lobby"
     });
 });

@@ -8,6 +8,7 @@ define([
             return this.get("controllers.players.documentTitle");
         }).property("controllers.players.documentTitle"),
         isLeaf : true,
-        needs : ["players"]
+        needs : ["players"],
+        contentBinding : "controllers.players"
     });
 });

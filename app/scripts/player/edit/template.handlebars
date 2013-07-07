@@ -1,12 +1,18 @@
-<p>
-    {{view Ember.TextField valueBinding="controllers.player.name"}}
-</p>
-<p>
-    {{view Ember.TextField type="password" valueBinding="controllers.player.password"}}
-</p>
-<button class="btn btn-primary" {{action "saveEdits"}}>
-Save
-</button>
-{{#linkTo "player" classNames="btn"}}
-Cancel
-{{/linkTo}}
+<div>
+    <p>
+        {{view Ember.TextField valueBinding="name"}}
+    </p>
+
+    <p>
+        {{view Ember.TextField type="password" valueBinding="password"}}
+    </p>
+</div>
+<div>
+    <button class="btn btn-primary"
+    {{action "saveEdits"}}>
+    Save
+    </button>
+    {{#linkTo "player" classNames="btn"}}
+    Cancel
+    {{/linkTo}}
+</div>
