@@ -9,15 +9,15 @@ define([
         }).property("controllers.lobbies.documentTitle"),
         isLeaf : true,
         needs : ["lobbies"],
-        //TODO: Event in route?
         createLobby : function () {
-            var lobby = App.Lobby.createRecord({
+            var model = App.Lobby.createRecord({
                 title : this.get("newTitle"),
                 password : this.get("newPassword"),
                 maxPlayers : this.get("newMaxPlayers")
             });
 
-            lobby.save();
+            model.save();
+
             this.transitionToRoute("lobbies");
         }
     });

@@ -17,6 +17,7 @@
     <h3>
         Owner:
     </h3>
+
     <p>
         {{#linkTo "player" owner}}
         {{owner.name}}
@@ -34,7 +35,8 @@
                 {{view view.playerItem}}
             </td>
             <td>
-                <button class="btn" {{action "kickPlayerFromLobby" controller.model}}>
+                <button class="btn"
+                {{action "kickPlayerFromLobby" this}}>
                 Kick
                 </button>
             </td>
