@@ -10,11 +10,25 @@
     {{/linkTo}}
 </p>
 <div>
-    {{#each player in controllers.lobby.players}}
-    <p>
-        {{#linkTo "player" player}}
-        {{player.name}}
-        {{/linkTo}}
-    </p>
-    {{/each}}
+    <h3>
+        Owner:
+    </h3>
+    {{#linkTo "player" controllers.lobby.owner}}
+    {{controllers.lobby.owner.name}}
+    {{/linkTo}}
+</div>
+<div>
+    <h3>
+        Players:
+    </h3>
+    <ul class="nav nav-tabs nav-stacked">
+        {{#each player in controllers.lobby.players itemController="player"}}
+        <li>
+            {{#linkTo "player" controller}}
+                {{controller.name}}
+                <button class="delete" {{action "deletePlayerFromLobby" player}}></button>
+            {{/linkTo}}
+        </li>
+        {{/each}}
+    </ul>
 </div>

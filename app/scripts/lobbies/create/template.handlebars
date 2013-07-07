@@ -1,0 +1,15 @@
+<p>
+    title: {{view Ember.TextField valueBinding="newTitle"}}
+</p>
+<p>
+    password: {{view Ember.TextField type="password" valueBinding="newPassword"}}
+</p>
+<p>
+    maxPlayers: {{view Ember.TextField valueBinding="newMaxPlayers"}}
+</p>
+<button class="btn btn-primary" {{action "createLobby"}}>
+Save
+</button>
+{{#linkTo "lobbies" classNames="btn"}}
+Cancel
+{{/linkTo}}

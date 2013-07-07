@@ -8,6 +8,12 @@ define([
             return this.get("controllers.lobby.documentTitle");
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
-        needs : ["lobby"]
+        needs : ["lobby"],
+        deletePlayerFromLobby : function (player) {
+            //TODO: multiple relationship owner + players not working in model
+            this.get("controllers.lobby.players").removeObject(player);
+            this.get("controllers.lobby.players").save();
+            //player.joinedLobbies.removeObject(this.get("controllers.lobby"));
+        }
     });
 });

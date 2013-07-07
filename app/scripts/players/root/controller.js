@@ -5,6 +5,6 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : "Players",
-        isLeaf : true
+        isLeaf : false
     });
 });

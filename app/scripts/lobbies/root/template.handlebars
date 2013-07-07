@@ -1,9 +1,1 @@
-<ul class="nav nav-tabs nav-stacked">
-    {{#each lobby in controller itemController="lobby"}}
-    <li>
-        {{#linkTo "lobby" lobby}}
-        {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
-        {{/linkTo}}
-    </li>
-    {{/each}}
-</ul>
+{{outlet}}

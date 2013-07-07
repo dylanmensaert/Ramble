@@ -5,6 +5,6 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : "Lobbies",
-        isLeaf : true
+        isLeaf : false
     });
 });

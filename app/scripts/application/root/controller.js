@@ -6,6 +6,7 @@ define([
     return Ember.Controller.extend({
         documentTitle : "Application",
         isLeaf : false,
+        needs : "login",
         init : function () {
             this._super();
 

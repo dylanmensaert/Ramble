@@ -22,7 +22,15 @@
             "password" : "Dolfijn",
             "maxPlayers" : "12",
             "owner" : [6],
-            "players" : [5, 6, 3]
+            "players" : [5, 6, 3, 8]
+        },
+        {
+            "id" : 4,
+            "title" : "eten",
+            "password" : "open",
+            "maxPlayers" : "7",
+            "owner" : [8],
+            "players" : [8]
         }
     ],
     "players" : [
@@ -71,8 +79,8 @@
         {
             "id" : 8,
             "name" : "graaaah",
-            "ownedLobbies" : [2],
-            "joinedLobbies" : [2]
+            "ownedLobbies" : [2, 4],
+            "joinedLobbies" : [2, 3, 4]
         },
         {
             "id" : 9,

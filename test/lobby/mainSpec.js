@@ -11,7 +11,7 @@ define([
                 }, "App never initialized!", 10000);
 
                 runs(function () {
-                    expect(App.Lobby.FIXTURES.length).toBe(3);
+                    expect(App.Lobby.FIXTURES.length).toBe(4);
                 });
             });
         });

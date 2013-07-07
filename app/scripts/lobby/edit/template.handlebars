@@ -2,11 +2,14 @@
     {{view Ember.TextField valueBinding="controllers.lobby.title"}}
 </p>
 <p>
+    {{view Ember.TextField type="password" valueBinding="controllers.lobby.password"}}
+</p>
+<p>
     {{view Ember.TextField valueBinding="controllers.lobby.maxPlayers"}}
 </p>
 <button class="btn btn-primary" {{action "saveEdits"}}>
 Save
 </button>
-{{#linkTo "lobby" controllers.lobby classNames="btn"}}
+{{#linkTo "lobby" classNames="btn"}}
 Cancel
 {{/linkTo}}

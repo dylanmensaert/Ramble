@@ -1,6 +1,6 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "App"
+], function (Ember, App) {
     "use strict";
 
     return Ember.ArrayController.extend({
@@ -8,6 +8,17 @@ define([
             return this.get("controllers.lobbies.documentTitle") + " - Create";
         }).property("controllers.lobbies.documentTitle"),
         isLeaf : true,
-        needs : ["lobbies"]
+        needs : ["lobbies"],
+        //TODO: Event in route?
+        createLobby : function () {
+            var lobby = App.Lobby.createRecord({
+                title : this.get("newTitle"),
+                password : this.get("newPassword"),
+                maxPlayers : this.get("newMaxPlayers")
+            });
+
+            lobby.save();
+            this.transitionToRoute("lobbies");
+        }
     });
 });

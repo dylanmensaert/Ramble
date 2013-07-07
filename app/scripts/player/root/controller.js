@@ -7,6 +7,6 @@ define([
         documentTitle : Ember.computed(function () {
             return this.get("name");
         }).property("name"),
-        isLeaf : true
+        isLeaf : false
     });
 });

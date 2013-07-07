@@ -1,0 +1,12 @@
+<div>
+    <p>
+        {{#linkTo "lobbies.create" classNames="btn"}}
+        Create
+        {{/linkTo}}
+    </p>
+</div>
+<div>
+    <ul class="nav nav-tabs nav-stacked">
+        {{each controllers.lobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
+    </ul>
+</div>

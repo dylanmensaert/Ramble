@@ -1,9 +1,10 @@
 body {
     margin: 20px;
-    font-size: 1em;
+    font-size: 16px;
     font-family: Verdana, sans-serif;
 }
 
+/*Loading*/
 .loadingBar {
     width: 220px;
     height: 19px;
@@ -13,4 +14,28 @@ body {
 
 .initialLoading {
     text-align: center;
+}
+
+/*Delete*/
+li .delete:after {
+    content: '✖';
+}
+
+li .delete {
+    display:none;
+    background: none;
+    border: 0;
+    float:right;
+
+    font-size: 22px;
+    color: #a88a8a;
+}
+
+li .delete:hover {
+    text-shadow: 0 0 1px #000,
+    0 0 10px rgba(199, 107, 107, 0.8);
+}
+
+li:hover .delete {
+    display:inline-block;
 }

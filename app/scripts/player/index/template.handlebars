@@ -7,11 +7,18 @@
     {{/linkTo}}
 </p>
 <div>
-    {{#each lobby in controllers.player.lobbies itemController="lobby"}}
-    <p>
-        {{#linkTo "lobby" lobby}}
-        {{lobby.title}} ({{lobby.amountOfPlayers}}/{{lobby.maxPlayers}})
-        {{/linkTo}}
-    </p>
-    {{/each}}
+    <h3>
+        Owned Lobbies:
+    </h3>
+    <ul class="nav nav-tabs nav-stacked">
+    {{each controllers.player.ownedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+    </ul>
+</div>
+<div>
+    <h3>
+        Joined Lobbies:
+    </h3>
+    <ul class="nav nav-tabs nav-stacked">
+    {{each controllers.player.joinedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+    </ul>
 </div>

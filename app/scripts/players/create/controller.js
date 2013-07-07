@@ -1,6 +1,6 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "App"
+], function (Ember, App) {
     "use strict";
 
     return Ember.ArrayController.extend({
@@ -8,6 +8,15 @@ define([
             return this.get("controllers.players.documentTitle") + " - Create";
         }).property("controllers.players.documentTitle"),
         isLeaf : true,
-        needs : ["players"]
+        needs : ["players"],
+        createPlayer : function () {
+            var player = App.Player.createRecord({
+                name : this.get("newName"),
+                password : this.get("newPassword")
+            });
+
+            player.save();
+            this.transitionToRoute("players");
+        }
     });
 });
