@@ -13,9 +13,15 @@ define([
                 this.transitionToRoute("index");
             });
 
+            this.deleteRecordCompletely(model);
             model.deleteRecord();
 
             model.get("transaction").commit();
+        },
+        deleteRecordCompletely : function (model) {
+            model.get("joinedLobbies").forEach(function (lobby) {
+                lobby.get("players").removeObject(model);
+            });
         }
     });
 });

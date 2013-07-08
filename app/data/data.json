@@ -6,7 +6,7 @@
             "password" : "zonneschijn",
             "maxPlayers" : "5",
             "owner" : [1],
-            "players" : [1, 2, 3]
+            "players" : [2, 3]
         },
         {
             "id" : 2,
@@ -14,7 +14,7 @@
             "password" : "Peter",
             "maxPlayers" : "7",
             "owner" : [8],
-            "players" : [4, 8, 9, 3]
+            "players" : [4, 9, 3]
         },
         {
             "id" : 3,
@@ -22,7 +22,7 @@
             "password" : "Dolfijn",
             "maxPlayers" : "12",
             "owner" : [6],
-            "players" : [5, 6, 3, 8]
+            "players" : [5, 3, 8]
         },
         {
             "id" : 4,
@@ -30,7 +30,7 @@
             "password" : "open",
             "maxPlayers" : "7",
             "owner" : [8],
-            "players" : [8]
+            "players" : []
         }
     ],
     "players" : [
@@ -39,7 +39,7 @@
             "username" : "donut",
             "email" : "aaaa@gmail.com",
             "ownedLobbies" : [1],
-            "joinedLobbies" : [1]
+            "joinedLobbies" : []
         },
         {
             "id" : 2,
@@ -74,7 +74,7 @@
             "username" : "heca",
             "email" : "aaaa@gmail.com",
             "ownedLobbies" : [3],
-            "joinedLobbies" : [3]
+            "joinedLobbies" : []
         },
         {
             "id" : 7,
@@ -88,7 +88,7 @@
             "username" : "graaaah",
             "email" : "aaaa@gmail.com",
             "ownedLobbies" : [2, 4],
-            "joinedLobbies" : [2, 3, 4]
+            "joinedLobbies" : [3]
         },
         {
             "id" : 9,

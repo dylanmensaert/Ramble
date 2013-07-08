@@ -12,9 +12,15 @@ define([
                 this.transitionToRoute("lobbies");
             });
 
+            this.deleteRecordCompletely(model);
             model.deleteRecord();
 
             model.get("transaction").commit();
+        },
+        deleteRecordCompletely : function (model) {
+            model.get("players").forEach(function (player) {
+                player.get("joinedLobbies").removeObject(model);
+            });
         }
     });
 });
