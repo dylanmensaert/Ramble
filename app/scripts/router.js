@@ -24,6 +24,8 @@ define([
             App.Router.map(function () {
                 this.route("login");
 
+                this.route("signup");
+
                 this.resource("lobbies", function () {
                     this.route("create");
                 });

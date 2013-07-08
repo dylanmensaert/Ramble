@@ -24,19 +24,22 @@
                     Players
                     {{/linkTo}}
                     {{/linkTo}}
-
+                </ul>
+                <form class="navbar-form pull-right">
                     {{#if isLoggedIn}}
                     //Show loggin name
 
                     {{else}}
 
-                    {{#linkTo "login" tagName="li" href=false}}
-                    {{#linkTo "login"}}
-                    Login
+                    {{#linkTo "login" classNames="btn"}}
+                    Log in
                     {{/linkTo}}
+
+                    {{#linkTo "signup" classNames="btn btn-success"}}
+                    Sign up
                     {{/linkTo}}
                     {{/if}}
-                </ul>
+                </form>
             </div>
         </div>
     </div>

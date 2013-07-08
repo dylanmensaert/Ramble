@@ -4,7 +4,7 @@ define([
     "use strict";
 
     return Ember.ObjectController.extend({
-        documentTitle : "Log in",
+        documentTitle : "Sign up",
         isLeaf : true
     });
 });
