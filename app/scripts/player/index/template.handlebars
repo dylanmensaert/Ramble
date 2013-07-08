@@ -1,11 +1,14 @@
 <h2>
     {{username}}
 </h2>
-<p>
+<div>
     {{#linkTo "player.edit" classNames="btn"}}
     Edit
     {{/linkTo}}
-</p>
+    {{#linkTo "player.delete" classNames="btn btn-danger"}}
+    Delete
+    {{/linkTo}}
+</div>
 <div>
     <h3>
         Owned Lobbies:

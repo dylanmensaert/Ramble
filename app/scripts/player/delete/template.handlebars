@@ -1,0 +1,14 @@
+<div>
+    <p>
+        Are you sure you want to delete account "{{username}}"?
+    </p>
+</div>
+<div>
+    <button class="btn btn-danger"
+    {{action "doDelete" this}}>
+    Delete
+    </button>
+    {{#linkTo "player" classNames="btn"}}
+    Cancel
+    {{/linkTo}}
+</div>

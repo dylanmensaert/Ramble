@@ -9,6 +9,15 @@ define([
         }).property("controllers.player.documentTitle"),
         isLeaf : true,
         needs : ["player"],
-        modelBinding : "controllers.player"
+        modelBinding : "controllers.player",
+        doDelete : function (model) {
+            model.deleteRecord();
+
+            model.one("didDelete", this, function () {
+                this.transitionToRoute("index");
+            });
+
+            model.save();
+        }
     });
 });

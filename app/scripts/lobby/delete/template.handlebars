@@ -1,0 +1,14 @@
+<div>
+    <p>
+        Are you sure you want to delete lobby "{{title}}"?
+    </p>
+</div>
+<div>
+    <button class="btn btn-danger"
+    {{action "doDelete" this}}>
+    Delete
+    </button>
+    {{#linkTo "lobby" classNames="btn"}}
+    Cancel
+    {{/linkTo}}
+</div>

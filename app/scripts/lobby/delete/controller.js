@@ -9,6 +9,15 @@ define([
         }).property("controllers.lobby.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
-        modelBinding : "controllers.lobby"
+        modelBinding : "controllers.lobby",
+        doDelete : function (model) {
+            model.deleteRecord();
+
+            model.one("didDelete", this, function () {
+                this.transitionToRoute("lobbies");
+            });
+
+            model.save();
+        }
     });
 });

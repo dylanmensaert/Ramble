@@ -7,11 +7,14 @@
         ({{amountOfPlayers}}/{{maxPlayers}})
     </h3>
 
-    <p>
+    <div>
         {{#linkTo "lobby.edit" classNames="btn"}}
         Edit
         {{/linkTo}}
-    </p>
+        {{#linkTo "lobby.delete" classNames="btn btn-danger"}}
+        Delete
+        {{/linkTo}}
+    </div>
 </div>
 <div>
     <h3>
