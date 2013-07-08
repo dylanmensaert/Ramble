@@ -9,13 +9,15 @@ define([
         }).property("controllers.players.documentTitle"),
         isLeaf : true,
         needs : ["players"],
-        createPlayer : function () {
-            var player = App.Player.createRecord({
-                username : this.get("newUsername"),
-                password : this.get("newPassword")
+        create : function () {
+            var model = App.Player.createRecord({
+                username : this.get("username"),
+                email : this.get("email"),
+                password : this.get("password")
             });
 
-            player.save();
+            model.save();
+
             this.transitionToRoute("players");
         }
     });

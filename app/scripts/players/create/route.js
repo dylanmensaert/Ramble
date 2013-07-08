@@ -5,8 +5,9 @@ define([
 
     return Ember.Route.extend({
         deactivate : function () {
-            this.get("controller").set("newUsername", "");
-            this.get("controller").set("newPassword", "");
+            this.set("controller.username", "");
+            this.set("controller.email", "");
+            this.set("controller.password", "");
         }
     });
 });

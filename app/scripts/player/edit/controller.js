@@ -10,7 +10,7 @@ define([
         isLeaf : true,
         needs : ["player"],
         modelBinding : "controllers.player",
-        saveEdits : function (model) {
+        save : function (model) {
             if (model.get("isDirty")) {
                 model.one("didUpdate", this, function () {
                     this.transitionToRoute("player");

@@ -1,22 +1,16 @@
-<div>
-    <p>
-        title: {{view Ember.TextField valueBinding="title"}}
-    </p>
+<form class="form-horizontal">
 
-    <p>
-        password: {{view Ember.TextField type="password" valueBinding="password"}}
-    </p>
+    {{view view.input}}
 
-    <p>
-        maxPlayers: {{view Ember.TextField valueBinding="maxPlayers"}}
-    </p>
-</div>
-<div>
-    <button class="btn btn-primary"
-    {{action "saveEdits" this}}>
-    Save
-    </button>
-    {{#linkTo "lobby" classNames="btn"}}
-    Cancel
-    {{/linkTo}}
-</div>
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary"
+            {{action "save" this}}>
+            Save
+            </button>
+            {{#linkTo "lobby" classNames="btn"}}
+            Cancel
+            {{/linkTo}}
+        </div>
+    </div>
+</form>

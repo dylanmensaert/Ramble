@@ -9,11 +9,11 @@ define([
         }).property("controllers.lobbies.documentTitle"),
         isLeaf : true,
         needs : ["lobbies"],
-        createLobby : function () {
+        create : function () {
             var model = App.Lobby.createRecord({
-                title : this.get("newTitle"),
-                password : this.get("newPassword"),
-                maxPlayers : this.get("newMaxPlayers")
+                title : this.get("title"),
+                maxPlayers : this.get("maxPlayers"),
+                password : this.get("password")
             });
 
             model.save();
