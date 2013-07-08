@@ -7,7 +7,11 @@ define([
         title : DS.attr("string"),
         password : DS.attr("string"),
         maxPlayers : DS.attr("number"),
-        owner : DS.belongsTo("App.Player"),
-        players : DS.hasMany("App.Player")
+        owner : DS.belongsTo("App.Player", {
+            inverse : "ownedLobbies"
+        }),
+        players : DS.hasMany("App.Player", {
+            inverse : "joinedLobbies"
+        })
     });
 });

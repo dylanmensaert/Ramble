@@ -16,9 +16,11 @@ define([
                 password : this.get("password")
             });
 
-            model.save();
+            model.one("didCreate", this, function () {
+                this.transitionToRoute("lobby", model);
+            });
 
-            this.transitionToRoute("lobbies");
+            model.save();
         }
     });
 });

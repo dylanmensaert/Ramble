@@ -16,9 +16,11 @@ define([
                 password : this.get("password")
             });
 
-            model.save();
+            model.one("didCreate", this, function () {
+                this.transitionToRoute("player", model);
+            });
 
-            this.transitionToRoute("players");
+            model.save();
         }
     });
 });

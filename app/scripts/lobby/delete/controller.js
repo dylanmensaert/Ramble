@@ -11,13 +11,13 @@ define([
         needs : ["lobby"],
         modelBinding : "controllers.lobby",
         doDelete : function (model) {
-            model.deleteRecord();
-
             model.one("didDelete", this, function () {
                 this.transitionToRoute("lobbies");
             });
 
-            model.save();
+            model.deleteRecord();
+
+            model.get("transaction").commit();
         }
     });
 });
