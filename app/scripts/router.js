@@ -22,6 +22,12 @@ define([
             });
 
             App.Router.map(function () {
+                this.route("login");
+
+                this.resource("lobbies", function () {
+                    this.route("create");
+                });
+
                 this.resource("lobby",
                     {
                         path : "lobby/:lobby_id"
@@ -30,7 +36,7 @@ define([
                         this.route("delete");
                     });
 
-                this.resource("lobbies", function () {
+                this.resource("players", function () {
                     this.route("create");
                 });
 
@@ -42,9 +48,6 @@ define([
                         this.route("delete");
                     });
 
-                this.resource("players", function () {
-                    this.route("create");
-                });
             });
         }
     };

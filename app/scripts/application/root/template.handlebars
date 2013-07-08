@@ -1,28 +1,54 @@
-<div class="navbar">
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        {{#linkTo "index" classNames="brand"}}
-        Ramble
-        {{/linkTo}}
-        <ul class="nav">
-            <li>
-                {{#linkTo "lobbies"}}
-                Lobbies
-                {{/linkTo}}
-            </li>
-            <li>
-                {{#linkTo "players"}}
-                Players
-                {{/linkTo}}
-            </li>
-        </ul>
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {{#linkTo "index" classNames="brand"}}
+            Ramble
+            {{/linkTo}}
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
+                    <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
+                    {{#linkTo "lobbies" tagName="li" href=false}}
+                    {{#linkTo "lobbies"}}
+                    Lobbies
+                    {{/linkTo}}
+                    {{/linkTo}}
+
+                    {{#linkTo "players" tagName="li" href=false}}
+                    {{#linkTo "players"}}
+                    Players
+                    {{/linkTo}}
+                    {{/linkTo}}
+
+                    {{#if isLoggedIn}}
+                    //Show loggin name
+
+                    {{else}}
+
+                    {{#linkTo "login" tagName="li" href=false}}
+                    {{#linkTo "login"}}
+                    Login
+                    {{/linkTo}}
+                    {{/linkTo}}
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
-{{#if isLoading}}
-<div class="loadingBar">
-</div>
-{{/if}}
+<div class="container">
+    {{#if isLoading}}
+    <div class="loadingBar">
+    </div>
+    {{/if}}
 
-<div class="applicationState">
-    {{outlet}}
+    <div class="applicationState">
+        {{outlet}}
+    </div>
 </div>
