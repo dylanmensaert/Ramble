@@ -5,11 +5,12 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.lobby.documentTitle");
-        }).property("controllers.lobby.documentTitle"),
+            return this.get("lobbyController.documentTitle");
+        }).property("lobbyController.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
-        modelBinding : "controllers.lobby",
+        lobbyControllerBinding : "controllers.lobby",
+        modelBinding : "lobbyController",
         kickPlayerFromLobby : function (player) {
             //TODO: multiple relationship owner + players not working in model
             this.get("players").removeObject(player);

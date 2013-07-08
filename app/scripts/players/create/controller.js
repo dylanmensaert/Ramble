@@ -5,10 +5,12 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.players.documentTitle") + " - Create";
-        }).property("controllers.players.documentTitle"),
+            return this.get("playersController.documentTitle") + " - Create";
+        }).property("playersController.documentTitle"),
         isLeaf : true,
         needs : ["players"],
+        playersControllerBinding : "controllers.players",
+        modelBinding : "playersController",
         create : function () {
             var model = App.Player.createRecord({
                 username : this.get("username"),

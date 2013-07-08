@@ -5,11 +5,12 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return "Edit - " + this.get("controllers.player.documentTitle");
-        }).property("controllers.player.documentTitle"),
+            return "Edit - " + this.get("playerController.documentTitle");
+        }).property("playerController.documentTitle"),
         isLeaf : true,
         needs : ["player"],
-        modelBinding : "controllers.player",
+        playerControllerBinding : "controllers.player",
+        modelBinding : "playerController",
         save : function (model) {
             if (model.get("isDirty")) {
                 model.one("didUpdate", this, function () {

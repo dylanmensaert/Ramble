@@ -5,10 +5,11 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.players.documentTitle");
-        }).property("controllers.players.documentTitle"),
+            return this.get("playersController.documentTitle");
+        }).property("playersController.documentTitle"),
         isLeaf : true,
         needs : ["players"],
-        modelBinding : "controllers.players"
+        playersControllerBinding : "controllers.players",
+        modelBinding : "playersController"
     });
 });

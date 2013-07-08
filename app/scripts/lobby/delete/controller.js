@@ -5,11 +5,12 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return "Delete - " + this.get("controllers.lobby.documentTitle");
-        }).property("controllers.lobby.documentTitle"),
+            return "Delete - " + this.get("lobbyController.documentTitle");
+        }).property("lobbyController.documentTitle"),
         isLeaf : true,
         needs : ["lobby"],
-        modelBinding : "controllers.lobby",
+        lobbyControllerBinding : "controllers.lobby",
+        modelBinding : "lobbyController",
         doDelete : function (model) {
             model.one("didDelete", this, function () {
                 this.transitionToRoute("lobbies");

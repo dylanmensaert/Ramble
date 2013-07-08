@@ -5,10 +5,11 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.lobbies.documentTitle");
-        }).property("controllers.lobbies.documentTitle"),
+            return this.get("lobbiesController.documentTitle");
+        }).property("lobbiesController.documentTitle"),
         isLeaf : true,
         needs : ["lobbies"],
-        modelBinding : "controllers.lobbies"
+        lobbiesControllerBinding : "controllers.lobbies",
+        modelBinding : "lobbiesController"
     });
 });

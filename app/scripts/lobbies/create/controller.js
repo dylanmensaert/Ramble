@@ -5,10 +5,12 @@ define([
 
     return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.lobbies.documentTitle") + " - Create";
-        }).property("controllers.lobbies.documentTitle"),
+            return this.get("lobbiesController.documentTitle") + " - Create";
+        }).property("lobbiesController.documentTitle"),
         isLeaf : true,
         needs : ["lobbies"],
+        lobbiesControllerBinding : "controllers.lobbies",
+        modelBinding : "lobbiesController",
         create : function () {
             var model = App.Lobby.createRecord({
                 title : this.get("title"),

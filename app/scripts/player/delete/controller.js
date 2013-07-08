@@ -5,19 +5,20 @@ define([
 
     return Ember.ObjectController.extend({
         documentTitle : Ember.computed(function () {
-            return "Delete - " + this.get("controllers.player.documentTitle");
-        }).property("controllers.player.documentTitle"),
+            return "Delete - " + this.get("playerController.documentTitle");
+        }).property("playerController.documentTitle"),
         isLeaf : true,
         needs : ["player"],
-        modelBinding : "controllers.player",
+        playerControllerBinding : "controllers.player",
+        modelBinding : "playerController",
         doDelete : function (model) {
-            model.deleteRecord();
-
             model.one("didDelete", this, function () {
                 this.transitionToRoute("index");
             });
 
-            model.save();
+            model.deleteRecord();
+
+            model.get("transaction").commit();
         }
     });
 });
