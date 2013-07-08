@@ -8,16 +8,18 @@ define([
             return "Delete - " + this._super();
         }).property("controllers.lobby.documentTitle"),
         doDelete : function (model) {
+            model.deleteRecord();
+
             model.one("didDelete", this, function () {
                 this.transitionToRoute("lobbies");
             });
 
-            this.deleteRecordCompletely(model);
-            model.deleteRecord();
+            //TODO: Associated players of this lobby don't get this lobby removed from their joinedLobbies-array.
+            //this.removeLobbyFromItsJoinedPlayers(model);
 
             model.get("transaction").commit();
         },
-        deleteRecordCompletely : function (model) {
+        removeLobbyFromItsJoinedPlayers : function (model) {
             model.get("players").forEach(function (player) {
                 player.get("joinedLobbies").removeObject(model);
             });

@@ -9,16 +9,17 @@ define([
             return "Delete - " + this._super();
         }).property("controllers.player.documentTitle"),
         doDelete : function (model) {
+            model.deleteRecord();
+
             model.one("didDelete", this, function () {
                 this.transitionToRoute("index");
             });
 
-            this.deleteRecordCompletely(model);
-            model.deleteRecord();
+            //this.removePlayerFromItsJoinedLobbies(model);
 
             model.get("transaction").commit();
         },
-        deleteRecordCompletely : function (model) {
+        removePlayerFromItsJoinedLobbies : function (model) {
             model.get("joinedLobbies").forEach(function (lobby) {
                 lobby.get("players").removeObject(model);
             });

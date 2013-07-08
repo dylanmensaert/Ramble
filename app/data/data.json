@@ -6,7 +6,7 @@
             "password" : "zonneschijn",
             "maxPlayers" : "5",
             "owner" : [1],
-            "players" : [2, 3]
+            "players" : [2, 3, 5]
         },
         {
             "id" : 2,
@@ -67,7 +67,7 @@
             "username" : "cryptex",
             "email" : "aaaa@gmail.com",
             "ownedLobbies" : [],
-            "joinedLobbies" : [3]
+            "joinedLobbies" : [3, 1]
         },
         {
             "id" : 6,
