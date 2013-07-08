@@ -1,16 +1,12 @@
 define([
-    "Ember"
-], function (Ember) {
+    "player/helpers/controller", "Ember"
+], function (Controller, Ember) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return "Edit - " + this.get("playerController.documentTitle");
-        }).property("playerController.documentTitle"),
-        isLeaf : true,
-        needs : ["player"],
-        playerControllerBinding : "controllers.player",
-        modelBinding : "playerController",
+            return "Edit - " + this._super();
+        }).property("controllers.player.documentTitle"),
         save : function (model) {
             if (model.get("isDirty")) {
                 model.one("didUpdate", this, function () {

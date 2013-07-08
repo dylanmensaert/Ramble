@@ -1,16 +1,12 @@
 define([
-    "Ember", "App"
-], function (Ember, App) {
+    "lobbies/helpers/controller", "App", "Ember"
+], function (Controller, App, Ember) {
     "use strict";
 
-    return Ember.ArrayController.extend({
+    return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("lobbiesController.documentTitle") + " - Create";
-        }).property("lobbiesController.documentTitle"),
-        isLeaf : true,
-        needs : ["lobbies"],
-        lobbiesControllerBinding : "controllers.lobbies",
-        modelBinding : "lobbiesController",
+            return this._super() + " - Create";
+        }).property("controllers.lobbies.documentTitle"),
         create : function () {
             var model = App.Lobby.createRecord({
                 title : this.get("title"),

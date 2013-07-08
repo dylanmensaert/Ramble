@@ -1,16 +1,13 @@
 define([
-    "Ember"
-], function (Ember) {
+    "player/helpers/controller", "Ember"
+], function (Controller, Ember) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Controller.extend({
+        //TODO: Any way to achieve inheriting the dependent keys of a computed property? See: https://github.com/emberjs/ember.js/issues/2976.
         documentTitle : Ember.computed(function () {
-            return "Delete - " + this.get("playerController.documentTitle");
-        }).property("playerController.documentTitle"),
-        isLeaf : true,
-        needs : ["player"],
-        playerControllerBinding : "controllers.player",
-        modelBinding : "playerController",
+            return "Delete - " + this._super();
+        }).property("controllers.player.documentTitle"),
         doDelete : function (model) {
             model.one("didDelete", this, function () {
                 this.transitionToRoute("index");

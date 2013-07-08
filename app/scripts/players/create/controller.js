@@ -1,16 +1,12 @@
 define([
-    "Ember", "App"
-], function (Ember, App) {
+    "players/helpers/controller", "Ember", "App"
+], function (Controller, Ember, App) {
     "use strict";
 
-    return Ember.ArrayController.extend({
+    return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("playersController.documentTitle") + " - Create";
-        }).property("playersController.documentTitle"),
-        isLeaf : true,
-        needs : ["players"],
-        playersControllerBinding : "controllers.players",
-        modelBinding : "playersController",
+            return this._super() + " - Create";
+        }).property("controllers.players.documentTitle"),
         create : function () {
             var model = App.Player.createRecord({
                 username : this.get("username"),

@@ -1,16 +1,9 @@
 define([
-    "Ember"
-], function (Ember) {
+    "lobby/helpers/controller"
+], function (Controller) {
     "use strict";
 
-    return Ember.ObjectController.extend({
-        documentTitle : Ember.computed(function () {
-            return this.get("lobbyController.documentTitle");
-        }).property("lobbyController.documentTitle"),
-        isLeaf : true,
-        needs : ["lobby"],
-        lobbyControllerBinding : "controllers.lobby",
-        modelBinding : "lobbyController",
+    return Controller.extend({
         kickPlayerFromLobby : function (player) {
             //TODO: multiple relationship owner + players not working in model
             this.get("players").removeObject(player);

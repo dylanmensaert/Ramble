@@ -1,16 +1,12 @@
 define([
-    "Ember"
-], function (Ember) {
+    "lobby/helpers/controller", "Ember"
+], function (Controller, Ember) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return "Edit - " + this.get("lobbyController.documentTitle");
-        }).property("lobbyController.documentTitle"),
-        isLeaf : true,
-        needs : ["lobby"],
-        lobbyControllerBinding : "controllers.lobby",
-        modelBinding : "lobbyController",
+            return "Edit - " + this._super();
+        }).property("controllers.lobby.documentTitle"),
         save : function (model) {
             if (model.get("isDirty")) {
                 model.one("didUpdate", this, function () {

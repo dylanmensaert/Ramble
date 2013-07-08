@@ -1,16 +1,12 @@
 define([
-    "Ember"
-], function (Ember) {
+    "lobby/helpers/controller", "Ember"
+], function (Controller, Ember) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return "Delete - " + this.get("lobbyController.documentTitle");
-        }).property("lobbyController.documentTitle"),
-        isLeaf : true,
-        needs : ["lobby"],
-        lobbyControllerBinding : "controllers.lobby",
-        modelBinding : "lobbyController",
+            return "Delete - " + this._super();
+        }).property("controllers.lobby.documentTitle"),
         doDelete : function (model) {
             model.one("didDelete", this, function () {
                 this.transitionToRoute("lobbies");

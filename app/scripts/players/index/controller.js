@@ -1,15 +1,7 @@
 define([
-    "Ember"
-], function (Ember) {
+    "players/helpers/controller"
+], function (Controller) {
     "use strict";
 
-    return Ember.ArrayController.extend({
-        documentTitle : Ember.computed(function () {
-            return this.get("playersController.documentTitle");
-        }).property("playersController.documentTitle"),
-        isLeaf : true,
-        needs : ["players"],
-        playersControllerBinding : "controllers.players",
-        modelBinding : "playersController"
-    });
+    return Controller;
 });
