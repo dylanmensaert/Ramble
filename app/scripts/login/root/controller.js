@@ -6,7 +6,6 @@ define([
     return Ember.ObjectController.extend({
         documentTitle : "Log in",
         isLeaf : true,
-        text : "Login is not successful",
         isValidLogin : true,
         isLoggedIn : false,
         login : function () {

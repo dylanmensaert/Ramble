@@ -10,6 +10,8 @@
             //frameworks
             Ember : "../../bower_components/ember/ember",
             EmberData : "../../bower_components/ember-data-shim/ember-data",
+            EmberEasyForm : "../../bower_components/ember-builds/easyForm/ember-easyForm-0.3.2",
+            EmberValidations : "../../bower_components/ember-builds/validations/ember-validations-0.2.1",
             Handlebars : "../../bower_components/handlebars/handlebars",
             jQuery : "../../bower_components/jquery/jquery",
             Bootstrap : "../../bower_components/components-bootstrap/js/bootstrap",
@@ -23,7 +25,7 @@
         shim : {
             Ember : {
                 deps : [
-                    "jQuery", "Handlebars", "Bootstrap"
+                    "jQuery", "Handlebars"
                 ],
                 exports : "Ember"
             },
@@ -32,6 +34,18 @@
                     "Ember"
                 ],
                 exports : "DS"
+            },
+            EmberEasyForm : {
+                deps : [
+                    "Ember"
+                ],
+                exports : "Ember"
+            },
+            EmberValidations : {
+                deps : [
+                    "Ember"
+                ],
+                exports : "Ember"
             },
             jQuery : {
                 exports : "jQuery"
