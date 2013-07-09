@@ -12,7 +12,7 @@ define([
             }
         },
         redirect : function () {
-            if (this.controllerFor("application").get("account") != this.modelFor("lobby").get("owner")) {
+            if (this.controllerFor("application").get("account") !== this.modelFor("lobby").get("owner")) {
                 this.transitionTo("login");
             }
         }
