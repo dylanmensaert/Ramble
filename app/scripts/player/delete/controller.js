@@ -8,12 +8,12 @@ define([
         documentTitle : Ember.computed(function () {
             return "Delete - " + this._super();
         }).property("controllers.player.documentTitle"),
-        needs : ["application"],
+        needs : ["login"],
         doDelete : function (model) {
             model.deleteRecord();
 
             model.one("didDelete", this, function () {
-                this.get("controllers.application").send("logout");
+                this.get("controllers.login").send("logout");
                 this.transitionToRoute("index");
             });
 
