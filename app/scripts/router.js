@@ -23,11 +23,12 @@ define([
 
             App.Router.map(function () {
                 this.resource("login", function () {
-
+                    //TODO: Required to satisfy JS-Lint
+                    return undefined;
                 });
 
                 this.resource("signup", function () {
-
+                    return undefined;
                 });
 
                 this.resource("lobbies", function () {
@@ -43,7 +44,7 @@ define([
                     });
 
                 this.resource("players", function () {
-
+                    return undefined;
                 });
 
                 this.resource("player",

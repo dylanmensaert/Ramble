@@ -1,6 +1,6 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "App"
+], function (Ember, App) {
     "use strict";
 
     return Ember.Route.extend({
