@@ -10,6 +10,7 @@ define([
         isLoggedIn : false,
         login : function () {
             //TODO: temporary client-sided test
+            //TODO: before trying to authenticate, check if fields are not empty
             if (this.get("username") === "donut" && this.get("password") === "donut") {
                 this.set("isValidLogin", true);
                 this.set("isLoggedIn", true);

@@ -8,6 +8,9 @@ define([
             return this._super() + " - Create";
         }).property("controllers.lobbies.documentTitle"),
         create : function () {
+            //TODO: CreateRecord in route, then rollback in deactivate
+            //model.validate().then(function () {
+            //    if (model.get("isValid")) {
             var model = App.Lobby.createRecord({
                 title : this.get("title"),
                 maxPlayers : this.get("maxPlayers"),
@@ -19,6 +22,8 @@ define([
             });
 
             model.save();
+            //    }
+            //});
         }
     });
 });
