@@ -10,7 +10,7 @@ define([
         isLoggedIn : false,
         login : function () {
             //TODO: temporary client-sided test
-            if (this.get("username") === "test" && this.get("password") === "test") {
+            if (this.get("username") === "donut" && this.get("password") === "donut") {
                 this.set("isValidLogin", true);
                 this.set("isLoggedIn", true);
 
