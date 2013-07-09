@@ -1,9 +1,10 @@
 define([
-    "Ember", "text!player/helpers/input.handlebars"
-], function (Ember, template) {
+    "Ember", "text!player/helpers/input.handlebars", "application/helpers/output"
+], function (Ember, template, output) {
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : Ember.Handlebars.compile(template)
+        defaultTemplate : Ember.Handlebars.compile(template),
+        output : output
     });
 });

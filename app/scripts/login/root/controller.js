@@ -6,19 +6,20 @@ define([
     return Ember.ObjectController.extend({
         documentTitle : "Log in",
         isLeaf : true,
-        isValidLogin : true,
+        text : "Login is not successful",
+        isValid : true,
         isLoggedIn : false,
         login : function () {
             //TODO: temporary client-sided test
             if (this.get("username") === "donut" && this.get("password") === "donut") {
-                this.set("isValidLogin", true);
+                this.set("isValid", true);
                 this.set("isLoggedIn", true);
 
                 this.set("model", App.Player.find(1));
 
                 this.transitionToRoute("player", this.get("model"));
             } else {
-                this.set("isValidLogin", false);
+                this.set("isValid", false);
             }
         },
         logout : function () {
