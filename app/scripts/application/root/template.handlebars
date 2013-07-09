@@ -10,6 +10,45 @@
             Ramble
             {{/linkTo}}
             <div class="nav-collapse collapse">
+
+                {{#if isLoggedIn}}
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{account.username}}
+                            <b class="caret"></b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                {{#linkTo "player.index" account}}
+                                Profile
+                                {{/linkTo}}
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" {{action "logout"}}>
+                                Log out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                {{else}}
+
+                <form class="navbar-form pull-right">
+                    {{#linkTo "login" classNames="btn"}}
+                    Log in
+                    {{/linkTo}}
+
+                    {{#linkTo "signup" classNames="btn btn-success"}}
+                    Sign up
+                    {{/linkTo}}
+                </form>
+
+                {{/if}}
+
                 <ul class="nav">
                     <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
                     <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
@@ -25,30 +64,6 @@
                     {{/linkTo}}
                     {{/linkTo}}
                 </ul>
-                <form class="navbar-form pull-right">
-                    {{#if isLoggedIn}}
-
-                    {{#linkTo "player.index" account classNames="navbar-link"}}
-                    {{account.username}}
-                    {{/linkTo}}
-
-                    <button class="btn"
-                    {{action "logout"}}>
-                    Log out
-                    </button>
-
-                    {{else}}
-
-                    {{#linkTo "login" classNames="btn"}}
-                    Log in
-                    {{/linkTo}}
-
-                    {{#linkTo "signup" classNames="btn btn-success"}}
-                    Sign up
-                    {{/linkTo}}
-
-                    {{/if}}
-                </form>
             </div>
         </div>
     </div>

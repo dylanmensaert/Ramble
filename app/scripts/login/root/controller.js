@@ -18,7 +18,7 @@ define([
 
                 this.transitionToRoute("player", this.get("model"));
             } else {
-                this.set("isValidLogin", false)
+                this.set("isValidLogin", false);
             }
         },
         logout : function () {
