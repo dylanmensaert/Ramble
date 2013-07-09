@@ -6,6 +6,7 @@ define([
     return Ember.Controller.extend({
         documentTitle : "Application",
         isLeaf : false,
+        needs : ["login"],
         init : function () {
             this._super();
 
@@ -22,6 +23,11 @@ define([
         amountOfLoaders : 0,
         isLoading : Ember.computed(function () {
             return this.get("amountOfLoaders") > 0;
-        }).property("amountOfLoaders")
+        }).property("amountOfLoaders"),
+        isLoggedInBinding : "controllers.login.isLoggedIn",
+        accountBinding : "controllers.login",
+        logout : function () {
+            this.get("controllers.login").send("logout");
+        }
     });
 });
