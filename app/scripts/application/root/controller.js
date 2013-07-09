@@ -25,7 +25,7 @@ define([
             return this.get("amountOfLoaders") > 0;
         }).property("amountOfLoaders"),
         isLoggedInBinding : "controllers.login.isLoggedIn",
-        accountBinding : "controllers.login",
+        accountBinding : "controllers.login.model",
         logout : function () {
             this.get("controllers.login").send("logout");
         }

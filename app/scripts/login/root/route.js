@@ -10,7 +10,7 @@ define([
         },
         redirect : function () {
             if (this.get("controller.isLoggedIn")) {
-                this.transitionTo("player.index", this.get("controller"));
+                this.transitionTo("index");
             }
         }
     });

@@ -10,7 +10,8 @@ define([
             //model.validate().then(function () {
             //    if (model.get("isValid")) {
             model.one("didCreate", this, function () {
-                this.transitionToRoute("player", model);
+                //TODO: this should transition to player profile and automatically log player in
+                this.transitionToRoute("login");
             });
 
             model.save();

@@ -14,7 +14,7 @@
             "password" : "Peter",
             "maxPlayers" : "7",
             "owner" : [8],
-            "players" : [4, 9, 3]
+            "players" : [4, 9, 3, 1]
         },
         {
             "id" : 3,
@@ -22,7 +22,7 @@
             "password" : "Dolfijn",
             "maxPlayers" : "12",
             "owner" : [6],
-            "players" : [5, 3, 8]
+            "players" : [5, 3, 8, 1]
         },
         {
             "id" : 4,
@@ -39,7 +39,7 @@
             "username" : "donut",
             "email" : "aaaa@gmail.com",
             "ownedLobbies" : [1],
-            "joinedLobbies" : []
+            "joinedLobbies" : [2, 3]
         },
         {
             "id" : 2,
