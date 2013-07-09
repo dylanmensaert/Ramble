@@ -1,6 +1,8 @@
 <h2>
     {{username}}
 </h2>
+
+{{#if isOwner}}
 <div>
     {{#linkTo "player.edit" classNames="btn"}}
     Edit
@@ -9,6 +11,8 @@
     Delete
     {{/linkTo}}
 </div>
+{{/if}}
+
 <div>
     <h3>
         Owned Lobbies:

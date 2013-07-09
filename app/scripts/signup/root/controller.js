@@ -7,11 +7,11 @@ define([
         documentTitle : "Sign up",
         isLeaf : true,
         signup : function (model) {
-                model.one("didCreate", this, function () {
-                    this.transitionToRoute("player", model);
-                });
+            model.one("didCreate", this, function () {
+                this.transitionToRoute("player", model);
+            });
 
-                model.save();
+            model.save();
         }
     });
 });
