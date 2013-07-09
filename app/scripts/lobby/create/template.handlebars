@@ -5,10 +5,10 @@
     <div class="control-group">
         <div class="controls">
             <button class="btn btn-primary"
-            {{action "create"}}>
+            {{action "create" this}}>
             Create
             </button>
-            {{#linkTo "lobbies.index" classNames="btn"}}
+            {{#linkTo "lobby.list" classNames="btn"}}
             Cancel
             {{/linkTo}}
         </div>

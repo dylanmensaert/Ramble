@@ -4,9 +4,7 @@ define([
     "use strict";
 
     return Ember.ObjectController.extend({
-        documentTitle : Ember.computed(function () {
-            return this.get("title");
-        }).property("title"),
+        documentTitle : "Lobby",
         isLeaf : false,
         needs : ["application"],
         //TODO: Weird bug when binding account from application or login controller

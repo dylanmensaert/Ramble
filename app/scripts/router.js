@@ -31,16 +31,30 @@ define([
                     return undefined;
                 });
 
-                this.resource("lobbies", function () {
-                    this.route("create");
-                });
-
                 this.resource("lobby",
                     {
-                        path : "lobby/:lobby_id"
+                        path : "lobby"
                     }, function () {
-                        this.route("edit");
-                        this.route("delete");
+                        this.route("index",
+                            {
+                                path : ":lobby_id"
+                            });
+                        this.route("create",
+                            {
+                                path : "create"
+                            });
+                        this.route("edit",
+                            {
+                                path : ":lobby_id/edit"
+                            });
+                        this.route("delete",
+                            {
+                                path : ":lobby_id/delete"
+                            });
+                        this.route("list",
+                            {
+                                path : "list"
+                            });
                     });
 
                 this.resource("players", function () {
@@ -49,10 +63,24 @@ define([
 
                 this.resource("player",
                     {
-                        path : "player/:player_id"
+                        path : "player"
                     }, function () {
-                        this.route("edit");
-                        this.route("delete");
+                        this.route("index",
+                            {
+                                path : ":player_id"
+                            });
+                        this.route("edit",
+                            {
+                                path : ":player_id/edit"
+                            });
+                        this.route("delete",
+                            {
+                                path : ":player_id/delete"
+                            });
+                        this.route("list",
+                            {
+                                path : "list"
+                            });
                     });
 
             });
