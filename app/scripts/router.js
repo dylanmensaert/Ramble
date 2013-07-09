@@ -22,9 +22,13 @@ define([
             });
 
             App.Router.map(function () {
-                this.route("login");
+                this.resource("login", function () {
 
-                this.route("signup");
+                });
+
+                this.resource("signup", function () {
+
+                });
 
                 this.resource("lobbies", function () {
                     this.route("create");
@@ -39,7 +43,7 @@ define([
                     });
 
                 this.resource("players", function () {
-                    this.route("create");
+
                 });
 
                 this.resource("player",

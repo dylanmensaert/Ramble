@@ -1,26 +1,16 @@
 <form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label" for="inputSignupUsername">Username</label>
 
-        <div class="controls">
-            {{view Ember.TextField valueBinding="username" id="inputSignupUsername" placeholder="Username or email"}}
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="inputSignupPassword">Password</label>
-
-        <div class="controls">
-            {{view Ember.TextField type="password" valueBinding="password" id="inputSignupPassword"
-            placeholder="Password"}}
-        </div>
-    </div>
+    {{view view.input}}
 
     <div class="control-group">
         <div class="controls">
             <button class="btn btn-primary"
-            {{action "signup"}}>
+            {{action "signup" this}}>
             Sign up
             </button>
+            {{#linkTo "index" classNames="btn"}}
+            Cancel
+            {{/linkTo}}
         </div>
     </div>
 </form>

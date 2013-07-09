@@ -5,7 +5,7 @@ define([
 
     return Ember.Route.extend({
         deactivate : function () {
-            //TODO: Googlen
+            //TODO: Put create-lobby in separate route? Like player-signup
             this.set("controller.title", "");
             this.set("controller.password", "");
             this.set("controller.maxPlayers", "");
