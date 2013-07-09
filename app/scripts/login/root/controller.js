@@ -7,19 +7,19 @@ define([
         documentTitle : "Log in",
         isLeaf : true,
         text : "Login is not successful",
-        isValid : true,
+        isValidLogin : true,
         isLoggedIn : false,
         login : function () {
             //TODO: temporary client-sided test
             if (this.get("username") === "donut" && this.get("password") === "donut") {
-                this.set("isValid", true);
+                this.set("isValidLogin", true);
                 this.set("isLoggedIn", true);
 
                 this.set("model", App.Player.find(1));
 
                 this.transitionToRoute("player", this.get("model"));
             } else {
-                this.set("isValid", false);
+                this.set("isValidLogin", false);
             }
         },
         logout : function () {

@@ -15,7 +15,15 @@
         </div>
     </div>
 
-{{view view.output}}
+    <div class="control-group">
+        <div class="controls">
+            {{#unless isValidLogin}}
+            <p class="text-error">
+                Is invalid Login
+            </p>
+            {{/unless}}
+        </div>
+    </div>
 
     <div class="control-group">
         <div class="controls">

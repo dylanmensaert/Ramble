@@ -1,6 +1,6 @@
 define([
-    "Ember", "text!login/root/template.handlebars", "application/helpers/output"
-], function (Ember, template, output) {
+    "Ember", "text!login/root/template.handlebars"
+], function (Ember, template) {
     "use strict";
 
     return Ember.View.extend({
@@ -9,7 +9,6 @@ define([
             insertNewline : function () {
                 this.get("controller").send("login");
             }
-        }),
-        output : output
+        })
     });
 });
