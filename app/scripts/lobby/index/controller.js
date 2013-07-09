@@ -7,7 +7,7 @@ define([
         kickPlayerFromLobby : function (player) {
             //TODO: multiple relationship owner + players not working in model
             this.get("players").removeObject(player);
-            this.get("players").save();
+            this.get("transaction").commit();
         }
     });
 });
