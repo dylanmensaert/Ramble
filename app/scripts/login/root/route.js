@@ -5,8 +5,13 @@ define([
 
     return Ember.Route.extend({
         //TODO: temporary client-sided test
-        setupController : function (controller) {
-            controller.set("model", {});
+        model : function () {
+            return {};
+        },
+        redirect : function () {
+            if (this.get("controller.isLoggedIn")) {
+                this.transitionTo("player.index", this.get("controller"));
+            }
         }
     });
 });

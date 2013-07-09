@@ -7,6 +7,7 @@
         ({{players.length}}/{{maxPlayers}})
     </h3>
 
+    {{#if isOwner}}
     <div>
         {{#linkTo "lobby.edit" classNames="btn"}}
         Edit
@@ -15,6 +16,7 @@
         Delete
         {{/linkTo}}
     </div>
+    {{/if}}
 </div>
 <div>
     <h3>
@@ -37,12 +39,16 @@
             <td>
                 {{view view.playerItem}}
             </td>
+
+            {{#if isOwner}}
             <td>
                 <button class="btn"
                 {{action "kickPlayerFromLobby" this}}>
                 Kick
                 </button>
             </td>
+            {{/if}}
+
         </tr>
         {{/each}}
     </table>
