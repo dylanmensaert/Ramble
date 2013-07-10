@@ -26,7 +26,9 @@ define([
                 length : {
                     maximum : 50
                 },
-                confirmation : true
+                confirmation : {
+                    message : "has to match password confirmation"
+                }
             },
             maxPlayers : {
                 presence : true,

@@ -27,6 +27,7 @@ define([
                     return undefined;
                 });
 
+                //TODO: Move to player.create
                 this.resource("signup", function () {
                     return undefined;
                 });
