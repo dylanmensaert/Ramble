@@ -6,7 +6,7 @@ define([
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
         classNames : ["accordion-group"],
-        targetItemId : Ember.computed(function () {
+        hrefItemId : Ember.computed(function () {
             return "#" + this.get("itemId");
         }).property("itemId"),
         itemId : Ember.computed(function () {

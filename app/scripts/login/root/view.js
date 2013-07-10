@@ -5,6 +5,7 @@ define([
 
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
+        //TODO: Sometimes does not work to login when pressing enter-key.
         LoginTextField : Ember.TextField.extend({
             insertNewline : function () {
                 this.get("controller").send("login");

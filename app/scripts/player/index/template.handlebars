@@ -18,7 +18,7 @@
         Owned Lobbies:
     </h3>
     <ul class="nav nav-tabs nav-stacked">
-        {{each ownedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+        {{each ownedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
     </ul>
 </div>
 <div>
@@ -26,6 +26,6 @@
         Joined Lobbies:
     </h3>
     <ul class="nav nav-tabs nav-stacked">
-        {{each joinedLobbies itemViewClass="view.lobbyItem" itemController="lobby"}}
+        {{each joinedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
     </ul>
 </div>
