@@ -14,7 +14,7 @@ define([
                 model.get("transaction").rollback();
             }
         },
-        redirect : function () {
+        afterModel : function () {
             if (this.controllerFor("application").get("isLoggedIn")) {
                 this.transitionTo("index");
             }

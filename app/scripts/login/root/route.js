@@ -8,7 +8,7 @@ define([
         model : function () {
             return {};
         },
-        redirect : function () {
+        afterModel : function () {
             if (this.get("controller.isLoggedIn")) {
                 this.transitionTo("index");
             }

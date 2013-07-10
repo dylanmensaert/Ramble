@@ -11,8 +11,8 @@ define([
                 model.get("transaction").rollback();
             }
         },
-        redirect : function () {
-            if (this.controllerFor("application").get("account") !== this.modelFor("player.edit")) {
+        afterModel : function (model) {
+            if (this.controllerFor("application").get("account") !== model) {
                 this.transitionTo("login");
             }
         }
