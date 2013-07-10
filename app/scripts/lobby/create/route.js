@@ -13,6 +13,11 @@ define([
             if (model.get("isDirty") && !model.get("isSaving")) {
                 model.get("transaction").rollback();
             }
+        },
+        afterModel : function () {
+            if (!this.controllerFor("application").get("isLoggedIn")) {
+                this.transitionTo("login");
+            }
         }
     });
 });
