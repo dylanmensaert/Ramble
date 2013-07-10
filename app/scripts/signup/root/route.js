@@ -4,6 +4,7 @@ define([
     "use strict";
 
     return Ember.Route.extend({
+        //TODO: When the users transitions from lobby.create to this route, an error occurs while typing in the fields
         model : function () {
             return App.Player.createRecord();
         },

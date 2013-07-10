@@ -12,6 +12,7 @@ define([
             //model.validate().then(function () {
             //    if (model.get("isValid")) {
             model.set("owner", this.get("controllers.application.account"));
+
             model.one("didCreate", this, function () {
                 this.transitionToRoute("lobby", model);
             });

@@ -2,12 +2,8 @@ body {
     padding-top: 60px;
 }
 
-/*Loading*/
 .initialLoading {
     text-align: center;
-}
-
-.loadingBar {
     width: 300px;
-    margin: 0 auto;
+    margin: auto;
 }
