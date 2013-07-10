@@ -5,7 +5,8 @@ define([
 
     return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this._super() + this.get("title") + " - Delete";
+            //TODO: Get title from index-controller, for less code-duplication
+            return this._super() + " - " + this.get("title") + " - Delete";
         }).property("title", "controllers.lobby.documentTitle"),
         "delete" : function (model) {
             model.deleteRecord();

@@ -5,7 +5,7 @@ define([
 
     return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this._super() + this.get("title");
+            return this._super() + " - " + this.get("title");
         }).property("title", "controllers.lobby.documentTitle"),
         needs : ["application"],
         //TODO: Change to server side functionality

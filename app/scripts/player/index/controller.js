@@ -5,7 +5,7 @@ define([
 
     return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this._super() + this.get("username");
+            return this._super() + " - " + this.get("username");
         }).property("username", "controllers.player.documentTitle"),
         needs : ["application"],
         isOwnerOfAccount : Ember.computed(function () {

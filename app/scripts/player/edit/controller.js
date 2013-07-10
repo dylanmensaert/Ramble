@@ -5,7 +5,7 @@ define([
 
     return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this._super() + this.get("username") + " - Edit";
+            return this._super() + " - " + this.get("username") + " - Edit";
         }).property("username", "controllers.player.documentTitle"),
         save : function (model) {
             //model.validate().then(function () {

@@ -5,7 +5,7 @@ define([
 
     return Controller.extend({
         documentTitle : Ember.computed(function () {
-            return this._super() + this.get("title") + " - Edit";
+            return this._super() + " - " + this.get("title") + " - Edit";
         }).property("title", "controllers.lobby.documentTitle"),
         save : function (model) {
             //model.validate().then(function () {
