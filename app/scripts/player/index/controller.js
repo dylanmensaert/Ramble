@@ -10,6 +10,7 @@ define([
         needs : ["application"],
         //TODO: change .id to the actual object
         isOwner : Ember.computed(function () {
+            return undefined;
             //TODO: Fix bug, not returning true
             //    return this.get("controllers.application.account") === this.get("model");
         }).property("controllers.application.account", "model")

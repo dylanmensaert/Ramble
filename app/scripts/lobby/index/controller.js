@@ -1,6 +1,6 @@
 define([
-    "lobby/helpers/controller"
-], function (Controller) {
+    "lobby/helpers/controller", "Ember"
+], function (Controller, Ember) {
     "use strict";
 
     return Controller.extend({
