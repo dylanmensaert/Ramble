@@ -9,10 +9,10 @@
 
     {{#if isOwner}}
     <div>
-        {{#linkTo "lobby.edit" classNames="btn"}}
+        {{#linkTo "lobby.edit" this classNames="btn"}}
         Edit
         {{/linkTo}}
-        {{#linkTo "lobby.delete" classNames="btn btn-danger"}}
+        {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
         Delete
         {{/linkTo}}
     </div>
