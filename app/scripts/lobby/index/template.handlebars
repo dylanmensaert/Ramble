@@ -46,30 +46,9 @@
         Players:
     </h3>
 
-    {{#if isOwnerOfLobby}}
-
-    <table class="table table-striped">
-        {{#each players itemController="player"}}
-        <tr>
-            <td>
-                {{view view.playerItemTable}}
-            </td>
-            <td>
-                <button class="btn"
-                {{action "kick" this}}>
-                Kick
-                </button>
-            </td>
-        </tr>
-        {{/each}}
-    </table>
-
-    {{else}}
-
-    <ul class="nav nav-tabs nav-stacked">
-        {{each players itemViewClass="view.playerItem" itemController="player"}}
-    </ul>
-
-    {{/if}}
+    <div class="accordion"
+    {{bindAttr id="view.accordionId"}}>
+    {{each players itemController="player" itemViewClass="view.playerItem"}}
+</div>
 
 </div>

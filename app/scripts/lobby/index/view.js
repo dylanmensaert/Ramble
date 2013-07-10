@@ -6,8 +6,14 @@ define([
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
         playerItem : playerItem.extend({
-            tagName : "li"
+            isOwnerOfLobby : Ember.computed(function () {
+                return this.get("parentView.controller.isOwnerOfLobby");
+            }).property("parentView.controller.isOwnerOfLobby"),
+            itemIdName : "lobby-player-list",
+            accordionId : Ember.computed(function () {
+                return "#" + this.get("parentView.accordionId");
+            }).property("parentView.accordionId")
         }),
-        playerItemTable : playerItem
+        accordionId : "accordion-lobby-player-list"
     });
 });
