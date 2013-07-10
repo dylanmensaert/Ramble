@@ -32,6 +32,10 @@ define([
                 presence : true,
                 length : {
                     maximum : 50
+                },
+                format: {
+                    with: /.+\@.+\..+/,
+                    message: "invalid email"
                 }
             },
             ownedLobbies : {

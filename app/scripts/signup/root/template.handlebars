@@ -1,6 +1,8 @@
-<form class="form-horizontal">
-
-    {{view view.input}}
+{{#formFor model}}
+{{input username placeholder="Username"}}
+{{input email placeholder="Email"}}
+{{input password placeholder="Password"}}
+{{input passwordConfirmation label="Confirm password" placeholder="Confirm password"}}
 
     <div class="control-group">
         <div class="controls">
@@ -13,4 +15,5 @@
             {{/linkTo}}
         </div>
     </div>
-</form>
+
+{{/formFor}}

@@ -1,10 +1,9 @@
 define([
-    "Ember", "text!signup/root/template.handlebars", "player/helpers/input"
-], function (Ember, template, input) {
+    "Ember", "text!signup/root/template.handlebars"
+], function (Ember, template) {
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : Ember.Handlebars.compile(template),
-        input : input
+        defaultTemplate : Ember.Handlebars.compile(template)
     });
 });

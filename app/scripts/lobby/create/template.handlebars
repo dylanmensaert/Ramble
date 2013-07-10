@@ -1,6 +1,8 @@
-<form class="form-horizontal">
+{{#formFor model}}
 
-    {{view view.input}}
+{{input title placeholder="Title"}}
+{{input maxPlayers placeholder="Max players"}}
+{{input password placeholder="Password"}}
 
     <div class="control-group">
         <div class="controls">
@@ -13,4 +15,4 @@
             {{/linkTo}}
         </div>
     </div>
-</form>
+{{/formFor}}
