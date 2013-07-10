@@ -3,13 +3,11 @@ body {
 }
 
 /*Loading*/
-.loadingBar {
-    width: 220px;
-    height: 19px;
-    margin: 0 auto;
-    background: url(../images/loadingBar.gif) no-repeat;
-}
-
 .initialLoading {
     text-align: center;
+}
+
+.loadingBar {
+    width: 300px;
+    margin: 0 auto;
 }
