@@ -14,7 +14,6 @@ define([
 
             model.one("didDelete", this, function () {
                 this.get("controllers.login").send("logout");
-                this.transitionToRoute("index");
             });
 
             //this.removePlayerFromItsJoinedLobbies(model);
