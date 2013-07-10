@@ -5,8 +5,7 @@ define([
     "player/edit/route", "player/edit/controller", "player/edit/view",
     "player/delete/route", "player/delete/controller", "player/delete/view",
     "player/list/route", "player/list/controller", "player/list/view"
-], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, //TODO: Line too long to comply with JSLint
-             EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
+], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
     "use strict";
 
     return {

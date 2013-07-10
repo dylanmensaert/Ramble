@@ -4,7 +4,6 @@ define([
     "use strict";
 
     return Ember.Route.extend({
-        //TODO: temporary client-sided test
         model : function () {
             return {};
         },
