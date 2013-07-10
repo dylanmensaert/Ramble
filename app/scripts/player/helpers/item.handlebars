@@ -1,3 +1,12 @@
-{{#linkTo "player.index" this}}
-{{id}} - {{username}}
-{{/linkTo}}
+<div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" {{bindAttr data-parent="view.accordionId" data-target="view.targetItemId"}}>
+    {{id}} - {{username}}
+    </a>
+</div>
+<div class="accordion-body collapse" {{bindAttr id="view.itemId"}}>
+<div class="accordion-inner">
+    {{#linkTo "player.index" this}}
+    Profile
+    {{/linkTo}}
+</div>
+</div>

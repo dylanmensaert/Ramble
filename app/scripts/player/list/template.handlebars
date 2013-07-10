@@ -1,5 +1,3 @@
-<div>
-    <ul class="nav nav-tabs nav-stacked">
-        {{each itemController="player" itemViewClass="view.playerItem"}}
-    </ul>
+<div class="accordion" {{bindAttr id="view.accordionId"}}>
+    {{each itemController="player" itemViewClass="view.playerItem"}}
 </div>
