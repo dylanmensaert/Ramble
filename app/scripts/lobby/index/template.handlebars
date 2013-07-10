@@ -7,16 +7,26 @@
         ({{players.length}}/{{maxPlayers}})
     </h3>
 
-    {{#if isOwner}}
     <div>
+
+        {{#if isOwnerOfLobby}}
+
         {{#linkTo "lobby.edit" this classNames="btn"}}
         Edit
         {{/linkTo}}
         {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
         Delete
         {{/linkTo}}
+
+        {{else}}
+
+        <button class="btn"
+        {{action "leave"}}>
+        Leave
+        </button>
+
+        {{/if}}
     </div>
-    {{/if}}
 
 </div>
 <div>
@@ -31,35 +41,35 @@
     </p>
 </div>
 
-<div class="pull-right">
-    <button class="btn"
-    {{action "leave"}}>
-    Leave
-    </button>
-</div>
-
 <div>
     <h3>
         Players:
     </h3>
+
+    {{#if isOwnerOfLobby}}
+
     <table class="table table-striped">
         {{#each players itemController="player"}}
         <tr>
             <td>
-                {{view view.playerItem}}
+                {{view view.playerItemTable}}
             </td>
-
-            <!--TODO: get owner out of playerController scope-->
-            {{#if isOwner}}
             <td>
                 <button class="btn"
                 {{action "kick" this}}>
                 Kick
                 </button>
             </td>
-            {{/if}}
-
         </tr>
         {{/each}}
     </table>
+
+    {{else}}
+
+    <ul class="nav nav-tabs nav-stacked">
+        {{each players itemViewClass="view.playerItem" itemController="player"}}
+    </ul>
+
+    {{/if}}
+
 </div>

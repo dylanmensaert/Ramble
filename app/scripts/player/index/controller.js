@@ -9,7 +9,7 @@ define([
         }).property("username", "controllers.player.documentTitle"),
         needs : ["application"],
         //TODO: change .id to the actual object
-        isOwner : Ember.computed(function () {
+        isOwnerOfAccount : Ember.computed(function () {
             return this.get("controllers.application.account") === this.get("model");
         }).property("controllers.application.account", "model")
     });

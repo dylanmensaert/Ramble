@@ -24,7 +24,7 @@ define([
         //isOwner : Ember.computed(function () {
         //    return this.get("account.id") === this.get("owner.id");
         //}).property("account.id", "owner.id"),
-        isOwner : Ember.computed(function () {
+        isOwnerOfLobby : Ember.computed(function () {
             return this.get("controllers.application.account") === this.get("owner");
         }).property("controllers.application.account", "owner")
     });
