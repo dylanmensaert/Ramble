@@ -1,5 +1,5 @@
 define([
-    "Ember", "text!players/index/template.handlebars", "player/helpers/item"
+    "Ember", "text!player/list/template.handlebars", "player/helpers/item"
 ], function (Ember, template, playerItem) {
     "use strict";
 

@@ -3,9 +3,9 @@ define([
 ], function (Ember) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Ember.ArrayController.extend({
         documentTitle : Ember.computed(function () {
-            return this.get("controllers.player.documentTitle");
+            return this.get("controllers.player.documentTitle") + " - List";
         }).property("controllers.player.documentTitle"),
         isLeaf : true,
         needs : ["player"]

@@ -57,10 +57,6 @@ define([
                             });
                     });
 
-                this.resource("players", function () {
-                    return undefined;
-                });
-
                 this.resource("player",
                     {
                         path : "player"
