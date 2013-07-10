@@ -7,7 +7,7 @@ define([
         documentTitle : Ember.computed(function () {
             return this._super() + this.get("title") + " - Delete";
         }).property("title", "controllers.lobby.documentTitle"),
-        doDelete : function (model) {
+        "delete" : function (model) {
             model.deleteRecord();
 
             model.one("didDelete", this, function () {

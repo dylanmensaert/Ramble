@@ -8,6 +8,7 @@
                 files : ["*.js", "*.json", "app/**/*.js", "app/**/*.json", "test/**/*.js"],
                 directives : {
                     nomen : true,
+                    regexp : true,
                     browser : true,
                     todo : true,
                     maxlen : 200,

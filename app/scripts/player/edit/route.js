@@ -5,7 +5,7 @@ define([
 
     return Ember.Route.extend({
         deactivate : function () {
-            var model = this.modelFor("player");
+            var model = this.modelFor("player.edit");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
                 model.get("transaction").rollback();

@@ -33,9 +33,9 @@ define([
                 length : {
                     maximum : 50
                 },
-                format: {
-                    with: /.+\@.+\..+/,
-                    message: "invalid email"
+                format : {
+                    "with" : /.+\@.+\..+/,
+                    message : "invalid email"
                 }
             },
             ownedLobbies : {

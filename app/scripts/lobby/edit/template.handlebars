@@ -4,15 +4,16 @@
 {{input maxPlayers placeholder="Max players"}}
 {{input password placeholder="Password"}}
 
-    <div class="control-group">
-        <div class="controls">
-            <button class="btn btn-primary"
-            {{action "save" this}}>
-            Save
-            </button>
-            {{#linkTo "lobby.index" classNames="btn"}}
-            Cancel
-            {{/linkTo}}
-        </div>
+<div class="control-group">
+    <div class="controls">
+        <button class="btn btn-primary"
+        {{action "save" this}}>
+        Save
+        </button>
+        {{#linkTo "lobby.index" classNames="btn"}}
+        Cancel
+        {{/linkTo}}
     </div>
+</div>
+
 {{/formFor}}

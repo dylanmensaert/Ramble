@@ -9,7 +9,7 @@ define([
             return this._super() + this.get("username") + " - Delete";
         }).property("username", "controllers.player.documentTitle"),
         needs : ["login"],
-        doDelete : function (model) {
+        "delete" : function (model) {
             model.deleteRecord();
 
             model.one("didDelete", this, function () {

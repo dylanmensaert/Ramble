@@ -1,19 +1,20 @@
 {{#formFor model}}
+
 {{input username placeholder="Username"}}
 {{input email placeholder="Email"}}
 {{input password placeholder="Password"}}
 {{input passwordConfirmation label="Confirm password" placeholder="Confirm password"}}
 
-    <div class="control-group">
-        <div class="controls">
-            <button class="btn btn-primary"
-            {{action "signup" this}}>
-            Sign up
-            </button>
-            {{#linkTo "index" classNames="btn"}}
-            Cancel
-            {{/linkTo}}
-        </div>
+<div class="control-group">
+    <div class="controls">
+        <button class="btn btn-primary"
+        {{action "signup" this}}>
+        Sign up
+        </button>
+        {{#linkTo "index" classNames="btn"}}
+        Cancel
+        {{/linkTo}}
     </div>
+</div>
 
 {{/formFor}}
