@@ -17,15 +17,15 @@
     <h3>
         Owned Lobbies:
     </h3>
-    <ul class="nav nav-tabs nav-stacked">
-        {{each ownedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
-    </ul>
+    <div class="accordion" {{bindAttr id="view.accordionOwnedLobbiesId"}}>
+        {{each ownedLobbies itemController="lobbyIndex" itemViewClass="view.ownedLobbyItem"}}
+    </div>
 </div>
 <div>
     <h3>
         Joined Lobbies:
     </h3>
-    <ul class="nav nav-tabs nav-stacked">
-        {{each joinedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
-    </ul>
+    <div class="accordion" {{bindAttr id="view.accordionJoinedLobbiesId"}}>
+        {{each joinedLobbies itemController="lobbyIndex" itemViewClass="view.joinedLobbyItem"}}
+    </div>
 </div>

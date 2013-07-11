@@ -1,3 +1,24 @@
-{{#linkTo "lobby.index" this}}
-{{id}} - {{title}} ({{players.length}}/{{maxPlayers}})
-{{/linkTo}}
+<div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" {{bindAttr data-parent="view.accordionId"
+    href="view.hrefItemId"}}>
+    {{id}} - {{title}} ({{players.length}}/{{maxPlayers}})
+    </a>
+</div>
+
+<div class="accordion-body collapse" {{bindAttr id="view.itemId"}}>
+<div class="accordion-inner">
+    {{#if isPlayerOfLobby}}
+
+    {{#linkTo "lobby.index" this classNames="btn"}}
+    View
+    {{/linkTo}}
+
+    {{else}}
+
+    <button class="btn"
+    {{action "join" this}}>
+    Join
+    </button>
+    {{/if}}
+</div>
+</div>

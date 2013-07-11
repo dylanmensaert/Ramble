@@ -6,9 +6,7 @@ define([
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
         playerItem : playerItem.extend({
-            isOwnerOfLobby : Ember.computed(function () {
-                return this.get("parentView.controller.isOwnerOfLobby");
-            }).property("parentView.controller.isOwnerOfLobby"),
+            isOwnerOfLobbyBinding : "parentView.controller.isOwnerOfLobby",
             itemIdName : "lobby-player-list",
             accordionId : Ember.computed(function () {
                 return "#" + this.get("parentView.accordionId");

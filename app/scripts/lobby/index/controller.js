@@ -10,14 +10,28 @@ define([
         needs : ["application"],
         //TODO: Change to server side functionality
         leave : function () {
+            this.get("model").one("didUpdate", this, function () {
+                this.transitionToRoute("lobby.list");
+            });
+
             this.get("players").removeObject(this.get("controllers.application.account"));
             this.get("transaction").commit();
-
-            this.transitionToRoute("lobby.list");
         },
         kick : function (player) {
             this.get("players").removeObject(player);
             this.get("transaction").commit();
+        },
+        join : function (lobby) {
+            if (this.get("controllers.application.isLoggedIn")) {
+                this.get("model").one("didUpdate", this, function () {
+                    this.transitionToRoute("lobby.index", lobby);
+                });
+
+                lobby.get("players").pushObject(this.get("controllers.application.account"));
+                lobby.get("transaction").commit();
+            } else {
+                this.transitionToRoute("login");
+            }
         },
         //TODO: Weird bug when binding account from application or login controller
         //accountBinding : "controllers.application.account",
@@ -26,6 +40,10 @@ define([
         //}).property("account.id", "owner.id"),
         isOwnerOfLobby : Ember.computed(function () {
             return this.get("controllers.application.account") === this.get("owner");
-        }).property("controllers.application.account", "owner")
+        }).property("controllers.application.account", "owner"),
+        isPlayerOfLobby : Ember.computed(function () {
+            return this.get("isOwnerOfLobby")
+                || this.get("players").contains(this.get("controllers.application.account"));
+        }).property("controllers.application.account", "isOwnerOfLobby", "players")
     });
 });
