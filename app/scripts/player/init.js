@@ -2,10 +2,11 @@ define([
     "App", "player/model",
     "player/root/route", "player/root/controller", "player/root/view",
     "player/index/route", "player/index/controller", "player/index/view",
+    "player/create/route", "player/create/controller", "player/create/view",
     "player/edit/route", "player/edit/controller", "player/edit/view",
     "player/delete/route", "player/delete/controller", "player/delete/view",
     "player/list/route", "player/list/controller", "player/list/view"
-], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
+], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, CreateRoute, CreateController, CreateView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
     "use strict";
 
     return {
@@ -21,6 +22,10 @@ define([
             App.PlayerIndexRoute = IndexRoute;
             App.PlayerIndexController = IndexController;
             App.PlayerIndexView = IndexView;
+
+            App.PlayerCreateRoute = CreateRoute;
+            App.PlayerCreateController = CreateController;
+            App.PlayerCreateView = CreateView;
 
             App.PlayerEditRoute = EditRoute;
             App.PlayerEditController = EditController;

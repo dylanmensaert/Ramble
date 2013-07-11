@@ -22,15 +22,7 @@ define([
             });
 
             App.Router.map(function () {
-                this.resource("login", function () {
-                    //TODO: Required to satisfy JS-Lint
-                    return undefined;
-                });
-
-                //TODO: Move to player.create
-                this.resource("signup", function () {
-                    return undefined;
-                });
+                this.resource("login");
 
                 this.resource("lobby",
                     {
@@ -65,6 +57,10 @@ define([
                         this.route("index",
                             {
                                 path : ":player_id"
+                            });
+                        this.route("create",
+                            {
+                                path : "create"
                             });
                         this.route("edit",
                             {

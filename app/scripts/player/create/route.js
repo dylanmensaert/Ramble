@@ -9,7 +9,7 @@ define([
             return App.Player.createRecord();
         },
         deactivate : function () {
-            var model = this.modelFor("signup");
+            var model = this.modelFor("player.create");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
                 model.get("transaction").rollback();

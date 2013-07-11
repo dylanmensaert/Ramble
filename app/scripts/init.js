@@ -1,8 +1,8 @@
 define([
     "App", "text!data/config.json", "text!data/data.json", "root/router",
-    "application/init", "index/init", "login/init", "signup/init", "lobby/init", "player/init",
+    "application/init", "index/init", "login/init", "lobby/init", "player/init",
     "Ember", "Bootstrap", "EmberEasyForm", "EmberValidations"
-], function (App, config, data, Router, Application, Index, Login, Signup, Lobby, Player, Ember) {
+], function (App, config, data, Router, Application, Index, Login, Lobby, Player, Ember) {
     "use strict";
 
     return {
@@ -15,7 +15,6 @@ define([
             Application.initialize();
             Index.initialize();
             Login.initialize();
-            Signup.initialize();
             Lobby.initialize();
             Player.initialize();
 
