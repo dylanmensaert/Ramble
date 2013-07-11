@@ -20,10 +20,21 @@
 
         {{else}}
 
+        {{#if isJoinedPlayerOfLobby}}
+
         <button class="btn"
         {{action "leave"}}>
         Leave
         </button>
+
+        {{else}}
+
+        <button class="btn"
+        {{action "join"}}>
+        Join
+        </button>
+
+        {{/if}}
 
         {{/if}}
     </div>

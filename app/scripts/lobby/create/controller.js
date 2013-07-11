@@ -8,7 +8,9 @@ define([
             return this._super() + " - Create";
         }).property("controllers.lobby.documentTitle"),
         needs : ["application"],
-        create : function (model) {
+        create : function () {
+            var model = this.get("model");
+
             //model.validate().then(function () {
             //    if (model.get("isValid")) {
             model.set("owner", this.get("controllers.application.account"));

@@ -6,7 +6,9 @@ define([
     return Ember.ObjectController.extend({
         documentTitle : "Sign up",
         isLeaf : true,
-        signup : function (model) {
+        signup : function () {
+            var model = this.get("model");
+
             //model.validate().then(function () {
             //    if (model.get("isValid")) {
             model.one("didCreate", this, function () {
