@@ -17,15 +17,12 @@ define([
                 this.transitionToRoute("lobby.list");
             });
 
-            //TODO: Associated players of this lobby don't get this lobby removed from their joinedLobbies-array.
-            //this.removeLobbyFromItsJoinedPlayers(model);
+            //TODO: Associated members of this lobby don't get this lobby removed from their joinedLobbies-array.
+            //model.get("members").forEach(function (member) {
+            //    member.get("joinedLobbies").removeObject(model);
+            //});
 
             model.get("transaction").commit();
-        },
-        removeLobbyFromItsJoinedPlayers : function (model) {
-            model.get("players").forEach(function (player) {
-                player.get("joinedLobbies").removeObject(model);
-            });
         }
     });
 });

@@ -4,33 +4,33 @@
             "id" : 1,
             "title" : "Game Dylan en Dimitri",
             "password" : "zonneschijn",
-            "maxPlayers" : "5",
+            "maxMembers" : "5",
             "owner" : [1],
-            "players" : [2, 3, 5, 8]
+            "members" : [2, 3, 5, 8]
         },
         {
             "id" : 2,
             "title" : "customgame",
             "password" : "Peter",
-            "maxPlayers" : "7",
+            "maxMembers" : "7",
             "owner" : [8],
-            "players" : [4, 9, 3]
+            "members" : [4, 9, 3]
         },
         {
             "id" : 3,
             "title" : "winners lobby!",
             "password" : "Dolfijn",
-            "maxPlayers" : "12",
+            "maxMembers" : "12",
             "owner" : [6],
-            "players" : [5, 3, 8, 1]
+            "members" : [5, 3, 8, 1]
         },
         {
             "id" : 4,
             "title" : "eten",
             "password" : "open",
-            "maxPlayers" : "7",
+            "maxMembers" : "7",
             "owner" : [8],
-            "players" : []
+            "members" : []
         }
     ],
     "players" : [

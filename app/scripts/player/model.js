@@ -11,7 +11,7 @@ define([
             inverse : "owner"
         }),
         joinedLobbies : DS.hasMany("App.Lobby", {
-            inverse : "players"
+            inverse : "members"
         }),
         //TODO: Update validations
         validations : {

@@ -4,7 +4,7 @@
     </h2>
 
     <h3>
-        ({{players.length}}/{{maxPlayers}})
+        ({{members.length}}/{{maxMembers}})
     </h3>
 
     <div>
@@ -20,7 +20,7 @@
 
         {{else}}
 
-        {{#if isJoinedPlayerOfLobby}}
+        {{#if isMemberOfLobby}}
 
         <button class="btn"
         {{action "leave"}}>
@@ -54,13 +54,13 @@
 
 <div>
     <h3>
-        Players:
+        Members:
     </h3>
 
     {{#if isOwnerOfLobby}}
 
     <table class="table table-striped">
-        {{#each players itemController="player"}}
+        {{#each members itemController="player"}}
         <tr>
             <td>
                 {{view view.playerItemTable}}
@@ -78,7 +78,7 @@
     {{else}}
 
     <ul class="nav nav-tabs nav-stacked">
-    {{each players itemController="player" itemViewClass="view.playerItem"}}
+    {{each members itemController="player" itemViewClass="view.playerItem"}}
     </ul>
 
     {{/if}}

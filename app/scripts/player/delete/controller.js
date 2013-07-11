@@ -18,14 +18,11 @@ define([
                 this.get("controllers.login").send("logout");
             });
 
-            //this.removePlayerFromItsJoinedLobbies(model);
+            //model.get("joinedLobbies").forEach(function (lobby) {
+            //    lobby.get("members").removeObject(model);
+            //});
 
             model.get("transaction").commit();
-        },
-        removePlayerFromItsJoinedLobbies : function (model) {
-            model.get("joinedLobbies").forEach(function (lobby) {
-                lobby.get("players").removeObject(model);
-            });
         }
     });
 });

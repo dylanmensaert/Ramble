@@ -6,11 +6,11 @@ define([
     return DS.Model.extend(Ember.Validations.Mixin, {
         title : DS.attr("string"),
         password : DS.attr("string"),
-        maxPlayers : DS.attr("number"),
+        maxMembers : DS.attr("number"),
         owner : DS.belongsTo("App.Player", {
             inverse : "ownedLobbies"
         }),
-        players : DS.hasMany("App.Player", {
+        members : DS.hasMany("App.Player", {
             inverse : "joinedLobbies"
         }),
         //TODO: Update validations
@@ -30,14 +30,14 @@ define([
                     message : "has to match password confirmation"
                 }
             },
-            maxPlayers : {
+            maxMembers : {
                 presence : true,
                 numericality : true
             },
             owner : {
                 presence : true
             },
-            players : {
+            members : {
 
             }
         }

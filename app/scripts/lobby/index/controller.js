@@ -10,16 +10,20 @@ define([
         needs : ["application"],
         //TODO: Change to server side functionality
         leave : function () {
-            this.get("model").one("didUpdate", this, function () {
+            var model = this.get("model");
+
+            model.one("didUpdate", this, function () {
                 this.transitionToRoute("lobby.list");
             });
 
-            this.get("players").removeObject(this.get("controllers.application.account"));
-            this.get("transaction").commit();
+            model.get("members").removeObject(this.get("controllers.application.account"));
+            model.get("transaction").commit();
         },
-        kick : function (player) {
-            this.get("players").removeObject(player);
-            this.get("transaction").commit();
+        kick : function (member) {
+            var model = this.get("model");
+
+            model.get("members").removeObject(member);
+            model.get("transaction").commit();
         },
         join : function () {
             var model = this.get("model");
@@ -29,7 +33,7 @@ define([
                     this.transitionToRoute("lobby.index", model);
                 });
 
-                model.get("players").pushObject(this.get("controllers.application.account"));
+                model.get("members").pushObject(this.get("controllers.application.account"));
                 model.get("transaction").commit();
             } else {
                 this.transitionToRoute("login");
@@ -43,9 +47,9 @@ define([
         isOwnerOfLobby : Ember.computed(function () {
             return this.get("controllers.application.account") === this.get("owner");
         }).property("controllers.application.account", "owner"),
-        isJoinedPlayerOfLobby : Ember.computed(function () {
+        isMemberOfLobby : Ember.computed(function () {
             return this.get("isOwnerOfLobby")
-                || this.get("players").contains(this.get("controllers.application.account"));
-        }).property("controllers.application.account", "isOwnerOfLobby", "players")
+                || this.get("members").contains(this.get("controllers.application.account"));
+        }).property("controllers.application.account", "isOwnerOfLobby", "members")
     });
 });
