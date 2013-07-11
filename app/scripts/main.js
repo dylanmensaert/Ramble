@@ -14,7 +14,9 @@
             EmberValidations : "../../bower_components/ember-builds/validations/ember-validations-0.2.1",
             Handlebars : "../../bower_components/handlebars/handlebars",
             jQuery : "../../bower_components/jquery/jquery",
+
             Bootstrap : "../../bower_components/components-bootstrap/js/bootstrap",
+
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
             //app
@@ -64,9 +66,9 @@
 
     require([
         "root/init", "domReady"
-    ], function (App, domReady) {
+    ], function (AppInit, domReady) {
         domReady(function () {
-            App.initialize();
+            AppInit.initialize();
 
             window.isAppInitialized = true;
         });
