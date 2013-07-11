@@ -72,12 +72,6 @@
                     files : [
                         {
                             expand : true,
-                            cwd : "scaffold/",
-                            src : ["**"],
-                            dest : "dist/"
-                        },
-                        {
-                            expand : true,
                             cwd : "app/images/",
                             src : ["**"],
                             dest : "dist/images/"
@@ -113,6 +107,23 @@
                     }
                 }
             },
+            replace : {
+                index : {
+                    src : ["app/index.html"],
+                    dest : "dist/",
+                    replacements : [
+                        {
+                            from : ".css",
+                            to : ".min.css"
+                        },
+                        {
+                            from : "data-main=\"scripts/main\" src=\"../bower_components/requirejs/require.js\"",
+                            to : "src=\"scripts/main.min.js\""
+
+                        }
+                    ]
+                }
+            },
             connect : {
                 server : {
                     options : {
@@ -136,11 +147,12 @@
         grunt.loadNpmTasks("grunt-contrib-copy");
         grunt.loadNpmTasks("grunt-contrib-requirejs");
         grunt.loadNpmTasks("grunt-contrib-cssmin");
+        grunt.loadNpmTasks("grunt-text-replace");
         grunt.loadNpmTasks("grunt-contrib-connect");
 
         grunt.registerTask("default", ["test", "build"]);
         grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
-        grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
+        grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all", "replace:index"]);
         grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
         grunt.registerTask("server", ["connect:server"]);
     };

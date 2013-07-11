@@ -4,7 +4,7 @@ body {
 
 .my-initial-loading {
     text-align: center;
-    width: 300px;
+    max-width: 300px;
     margin: auto;
 }
 
