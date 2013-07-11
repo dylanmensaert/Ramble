@@ -1,7 +1,6 @@
 {
     "name" : "Ramble",
     "version" : "0.0.1",
-    "description" : "myDescription",
     "devDependencies" : {
         "grunt" : "~0.4.1",
         "grunt-jslint" : "~0.2.6",

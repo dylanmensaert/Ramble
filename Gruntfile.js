@@ -8,8 +8,6 @@
                 files : ["*.js", "*.json", "app/**/*.js", "app/**/*.json", "test/**/*.js"],
                 directives : {
                     nomen : true,
-                    //TODO: Improve regex for e-mailaddress so this directive can be removed
-                    regexp : true,
                     browser : true,
                     todo : true,
                     //TODO: Shorten maxlen when possible (see player/init and lobby/init)

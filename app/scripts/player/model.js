@@ -36,7 +36,7 @@ define([
                     maximum : 50
                 },
                 format : {
-                    "with" : /.+\@.+\..+/,
+                    "with" : /\S+@\S+\.\S+/,
                     message : "invalid email"
                 }
             },

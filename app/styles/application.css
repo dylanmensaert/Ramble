@@ -8,7 +8,18 @@ body {
     margin: auto;
 }
 
-/*Delete*/
+/*helpers*/
+.my-inline-block {
+    display: inline-block;
+}
+
+/*header*/
+.my-header-right {
+    margin-right: 10px;
+    margin-top: 35px;
+}
+
+/*remove*/
 li .my-remove {
     display: inline-block;
     background: none;
@@ -19,14 +30,4 @@ li .my-remove {
 
 li .my-remove:hover {
     text-shadow: 0 0 1px #000, 0 0 10px rgba(199, 107, 107, 0.8);
-}
-
-/*Headers*/
-.my-header-right {
-    margin-right: 10px;
-    margin-top: 35px;
-}
-
-.my-inline-block {
-    display: inline-block;
 }
