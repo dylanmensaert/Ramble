@@ -6,11 +6,7 @@ define([
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
         playerItem : playerItem.extend({
-            itemIdName : "player-list",
-            accordionId : Ember.computed(function () {
-                return "#" + this.get("parentView.accordionId");
-            }).property("parentView.accordionId")
-        }),
-        accordionId : "accordion-player-list"
+            tagName : "li"
+        })
     });
 });

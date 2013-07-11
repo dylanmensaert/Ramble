@@ -5,7 +5,8 @@
         {{/linkTo}}
     </p>
 </div>
-
-<div class="accordion" {{bindAttr id="view.accordionId"}}>
-{{each itemController="lobbyIndex" itemViewClass="view.lobbyItem"}}
+<div>
+    <ul class="nav nav-tabs nav-stacked">
+        {{each itemController="lobby" itemViewClass="view.lobbyItem"}}
+    </ul>
 </div>

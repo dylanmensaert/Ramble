@@ -1,21 +1,3 @@
-<div class="accordion-heading">
-    <a class="accordion-toggle" data-toggle="collapse" {{bindAttr data-parent="view.accordionId"
-    href="view.hrefItemId"}}>
-    {{id}} - {{username}}
-    </a>
-</div>
-<div class="accordion-body collapse" {{bindAttr id="view.itemId"}}>
-<div class="accordion-inner">
-    {{#linkTo "player.index" this classNames="btn"}}
-    Profile
-    {{/linkTo}}
-
-    {{#if view.isOwnerOfLobby}}
-    <button class="btn"
-    {{action "kick" this}}>
-    Kick
-    </button>
-    {{/if}}
-
-</div>
-</div>
+{{#linkTo "player.index" this}}
+{{id}} - {{username}}
+{{/linkTo}}
