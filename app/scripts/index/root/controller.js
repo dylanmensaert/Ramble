@@ -5,6 +5,8 @@ define([
 
     return Ember.Controller.extend({
         documentTitle : "Home",
-        isLeaf : true
+        isLeaf : true,
+        needs : ["application"],
+        isLoggedInBinding : "controllers.application.isLoggedIn"
     });
 });
