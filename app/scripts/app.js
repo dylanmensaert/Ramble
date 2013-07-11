@@ -6,7 +6,7 @@ define([
     var App = Ember.Application.create({
         LOG_TRANSITIONS : true,
         ready : function () {
-            Ember.$(".initialLoading").remove();
+            Ember.$(".my-initial-loading").remove();
         }
     });
 

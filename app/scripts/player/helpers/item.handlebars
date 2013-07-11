@@ -1,3 +1,13 @@
 {{#linkTo "player.index" this}}
 {{id}} - {{username}}
+
+{{#if view.isOwnerOfLobby}}
+
+<button class="my-remove pull-right"
+{{action "kick" this}}>
+✖
+</button>
+
+{{/if}}
+
 {{/linkTo}}
