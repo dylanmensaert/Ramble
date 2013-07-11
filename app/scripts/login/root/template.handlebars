@@ -3,35 +3,27 @@
         <label class="control-label" for="inputLoginUsername">Username</label>
 
         <div class="controls">
-            {{view view.LoginTextField valueBinding="username" id="inputLoginUsername" placeholder="Username or email"}}
+            {{view Ember.TextField valueBinding="username" id="inputLoginUsername" placeholder="Username"}}
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="inputLoginPassword">Password</label>
 
         <div class="controls">
-            {{view view.LoginTextField type="password" valueBinding="password" id="inputLoginPassword"
+            {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword"
             placeholder="Password"}}
         </div>
     </div>
 
+    {{#unless isValidLogin}}
     <div class="control-group">
         <div class="controls">
-            {{#unless isValidLogin}}
             <p class="text-error">
                 Login not successful
             </p>
-            {{/unless}}
         </div>
     </div>
-
-    <div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-        </div>
-    </div>
+    {{/unless}}
 
     <div class="control-group">
         <div class="controls">
