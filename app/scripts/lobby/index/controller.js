@@ -12,10 +12,6 @@ define([
         leave : function () {
             var model = this.get("model");
 
-            model.one("didUpdate", this, function () {
-                this.transitionToRoute("lobby.list");
-            });
-
             model.get("members").removeObject(this.get("controllers.application.account"));
             model.get("transaction").commit();
         },
@@ -29,10 +25,6 @@ define([
             var model = this.get("model");
 
             if (this.get("controllers.application.isLoggedIn")) {
-                model.one("didUpdate", this, function () {
-                    this.transitionToRoute("lobby.index", model);
-                });
-
                 model.get("members").pushObject(this.get("controllers.application.account"));
                 model.get("transaction").commit();
             } else {
