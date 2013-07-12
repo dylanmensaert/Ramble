@@ -1,13 +1,9 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "player/helpers/controllerMixin"
+], function (Ember, ControllerMixin) {
     "use strict";
 
-    return Ember.ArrayController.extend({
-        documentTitle : Ember.computed(function () {
-            return this.get("controllers.player.documentTitle") + " - List";
-        }).property("controllers.player.documentTitle"),
-        isLeaf : true,
-        needs : ["player"]
+    return Ember.ArrayController.extend(ControllerMixin, {
+        controllerTitle : "List"
     });
 });

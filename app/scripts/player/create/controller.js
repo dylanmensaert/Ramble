@@ -1,12 +1,11 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "player/helpers/controllerMixin"
+], function (Ember, ControllerMixin) {
     "use strict";
 
-    return Ember.ObjectController.extend({
+    return Ember.ObjectController.extend(ControllerMixin, {
         documentTitle : "Sign up",
-        isLeaf : true,
-        signup : function () {
+        create : function () {
             var model = this.get("model");
 
             //model.validate().then(function () {

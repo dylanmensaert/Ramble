@@ -1,12 +1,11 @@
 define([
-    "player/helpers/controller", "Ember"
-], function (Controller, Ember) {
+    "Ember", "player/helpers/controllerMixin"
+], function (Ember, ControllerMixin) {
     "use strict";
 
-    return Controller.extend({
-        documentTitle : Ember.computed(function () {
-            return this._super() + " - " + this.get("username") + " - Edit";
-        }).property("username", "controllers.player.documentTitle"),
+    return Ember.ObjectController.extend(ControllerMixin, {
+        hasObjectModel : true,
+        controllerTitle : "Edit",
         save : function () {
             var model = this.get("model");
 

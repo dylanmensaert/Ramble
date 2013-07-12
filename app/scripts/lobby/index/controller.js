@@ -17,11 +17,12 @@ define([
             model.get("transaction").commit();
         },
         join : function () {
-            var model, account;
+            var model, isLoggedIn, account;
 
             model = this.get("model");
+            isLoggedIn = this.get("controllers.application.isLoggedIn");
 
-            if (this.get("controllers.application.isLoggedIn")) {
+            if (isLoggedIn) {
                 account = this.get("controllers.application.account");
 
                 model.get("members").pushObject(account);

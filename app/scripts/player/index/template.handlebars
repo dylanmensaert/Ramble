@@ -3,6 +3,7 @@
 </h2>
 
 {{#if isOwnerOfAccount}}
+
 <div>
     {{#linkTo "player.edit" this classNames="btn"}}
     Edit
@@ -11,19 +12,21 @@
     Delete
     {{/linkTo}}
 </div>
+
 {{/if}}
 
 <div>
     <h3>
-        Owned Lobbies:
+        Owned Lobbies
     </h3>
     <ul class="nav nav-tabs nav-stacked">
         {{each ownedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
     </ul>
 </div>
+
 <div>
     <h3>
-        Joined Lobbies:
+        Joined Lobbies
     </h3>
     <ul class="nav nav-tabs nav-stacked">
         {{each joinedLobbies itemController="lobby" itemViewClass="view.lobbyItem"}}
