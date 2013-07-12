@@ -22,6 +22,10 @@ define([
         }).property("controllers.lobby.documentTitle", "title", "controllerTitle"),
         isLeaf : true,
         hasObjectModel : false,
-        needs : ["application", "lobby"]
+        needs : ["application", "lobby"],
+        isLoggedIn : false,
+        account : null,
+        isLoggedInBinding : "controllers.application.isLoggedIn",
+        accountBinding : "controllers.application.account"
     });
 });

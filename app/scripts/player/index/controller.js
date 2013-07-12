@@ -6,7 +6,7 @@ define([
     return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
         isOwnerOfAccount : Ember.computed(function () {
-            return this.get("controllers.application.account") === this.get("model");
-        }).property("controllers.application.account", "model")
+            return this.get("account") === this.get("model");
+        }).property("account", "model")
     });
 });

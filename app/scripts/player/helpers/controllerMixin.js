@@ -22,6 +22,10 @@ define([
         }).property("controllers.player.documentTitle", "username", "controllerTitle"),
         isLeaf : true,
         hasObjectModel : false,
-        needs : ["application", "player"]
+        needs : ["application", "player"],
+        isLoggedIn : false,
+        account : null,
+        isLoggedInBinding : "controllers.application.isLoggedIn",
+        accountBinding : "controllers.application.account"
     });
 });

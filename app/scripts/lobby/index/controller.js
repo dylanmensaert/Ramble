@@ -6,7 +6,7 @@ define([
     return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
         leave : function () {
-            var account = this.get("controllers.application.account");
+            var account = this.get("account");
 
             this.send("kick", account);
         },
@@ -20,10 +20,10 @@ define([
             var model, isLoggedIn, account;
 
             model = this.get("model");
-            isLoggedIn = this.get("controllers.application.isLoggedIn");
+            isLoggedIn = this.get("isLoggedIn");
 
             if (isLoggedIn) {
-                account = this.get("controllers.application.account");
+                account = this.get("account");
 
                 model.get("members").pushObject(account);
                 model.get("transaction").commit();
@@ -31,18 +31,12 @@ define([
                 this.transitionToRoute("login");
             }
         },
-        //TODO: Weird bug when binding account from application or login controller
-        //isLoggedInBinding : "controllers.application.isLoggedIn",
-        //accountBinding : "controllers.application.account",
-        //isOwner : Ember.computed(function () {
-        //    return this.get("account.id") === this.get("owner.id");
-        //}).property("account.id", "owner.id"),
         isOwnerOfLobby : Ember.computed(function () {
-            return this.get("controllers.application.account") === this.get("owner");
-        }).property("controllers.application.account", "owner"),
+            return this.get("account") === this.get("owner");
+        }).property("account", "owner"),
         isMemberOfLobby : Ember.computed(function () {
             return this.get("isOwnerOfLobby")
-                || this.get("members").contains(this.get("controllers.application.account"));
-        }).property("isOwnerOfLobby", "members", "controllers.application.account")
+                || this.get("members").contains(this.get("account"));
+        }).property("isOwnerOfLobby", "members", "account")
     });
 });
