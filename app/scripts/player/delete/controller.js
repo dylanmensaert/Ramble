@@ -6,20 +6,20 @@ define([
     return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
         controllerTitle : "Delete",
-        //TODO: use needs application.
-        needs : ["login"],
+        needs : ["application"],
         "delete" : function () {
             var model = this.get("model");
 
-            model.deleteRecord();
-
-            model.one("didDelete", this, function () {
-                this.get("controllers.login").send("logout");
-            });
-
+            //TODO: Leave all of the account's joined lobbies before deleting the account.
             //model.get("joinedLobbies").forEach(function (lobby) {
             //    lobby.get("members").removeObject(model);
             //});
+
+            model.one("didDelete", this, function () {
+                this.get("controllers.application").send("logout");
+            });
+
+            model.deleteRecord();
 
             model.get("transaction").commit();
         }

@@ -9,16 +9,18 @@ define([
         "delete" : function () {
             var model = this.get("model");
 
-            model.deleteRecord();
+            model.one("didUpdate", this, function () {
+                model.one("didDelete", this, function () {
+                    this.transitionToRoute("lobby.list");
+                });
 
-            model.one("didDelete", this, function () {
-                this.transitionToRoute("lobby.list");
+                model.deleteRecord();
+
+                model.get("transaction").commit();
             });
 
             //TODO: Associated members of this lobby don't get this lobby removed from their joinedLobbies-array.
-            //model.get("members").forEach(function (member) {
-            //    member.get("joinedLobbies").removeObject(model);
-            //});
+            model.get("members").clear();
 
             model.get("transaction").commit();
         }

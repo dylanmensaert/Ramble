@@ -8,7 +8,7 @@ define([
         leave : function () {
             var account = this.get("controllers.application.account");
 
-            this.kick(account);
+            this.send("kick", account);
         },
         kick : function (member) {
             var model = this.get("model");

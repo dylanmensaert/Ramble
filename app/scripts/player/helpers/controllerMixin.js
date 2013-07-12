@@ -5,14 +5,17 @@ define([
 
     return Ember.Mixin.create({
         documentTitle : Ember.computed(function () {
-            var documentTitle = this.get("controllers.player.documentTitle");
+            var documentTitle, divider;
+
+            documentTitle = this.get("controllers.player.documentTitle");
+            divider = " - ";
 
             if (this.get("hasObjectModel")) {
-                documentTitle += " - " + this.get("username");
+                documentTitle += divider + this.get("username");
             }
 
             if (this.get("controllerTitle")) {
-                documentTitle += " - " + this.get("controllerTitle");
+                documentTitle += divider + this.get("controllerTitle");
             }
 
             return documentTitle;
