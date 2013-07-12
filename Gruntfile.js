@@ -10,8 +10,6 @@
                     nomen : true,
                     browser : true,
                     todo : true,
-                    //TODO: Shorten maxlen when possible (see player/init and lobby/init)
-                    maxlen : 300,
                     predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
                 },
                 options : {

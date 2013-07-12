@@ -6,7 +6,6 @@ define([
     return Ember.View.extend({
         defaultTemplate : Ember.Handlebars.compile(template),
         playerItem : playerItem.extend({
-            tagName : "li",
             isOwnerOfLobbyBinding : "parentView.controller.isOwnerOfLobby"
         })
     });

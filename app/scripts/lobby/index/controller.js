@@ -8,12 +8,10 @@ define([
             return this._super() + " - " + this.get("title");
         }).property("title", "controllers.lobby.documentTitle"),
         needs : ["application"],
-        //TODO: Change to server side functionality
         leave : function () {
-            var model = this.get("model");
+            var account = this.get("controllers.application.account");
 
-            model.get("members").removeObject(this.get("controllers.application.account"));
-            model.get("transaction").commit();
+            this.kick(account);
         },
         kick : function (member) {
             var model = this.get("model");
@@ -22,16 +20,21 @@ define([
             model.get("transaction").commit();
         },
         join : function () {
-            var model = this.get("model");
+            var model, account;
+
+            model = this.get("model");
 
             if (this.get("controllers.application.isLoggedIn")) {
-                model.get("members").pushObject(this.get("controllers.application.account"));
+                account = this.get("controllers.application.account");
+
+                model.get("members").pushObject(account);
                 model.get("transaction").commit();
             } else {
                 this.transitionToRoute("login");
             }
         },
         //TODO: Weird bug when binding account from application or login controller
+        //isLoggedInBinding : "controllers.application.isLoggedIn",
         //accountBinding : "controllers.application.account",
         //isOwner : Ember.computed(function () {
         //    return this.get("account.id") === this.get("owner.id");
@@ -42,6 +45,6 @@ define([
         isMemberOfLobby : Ember.computed(function () {
             return this.get("isOwnerOfLobby")
                 || this.get("members").contains(this.get("controllers.application.account"));
-        }).property("controllers.application.account", "isOwnerOfLobby", "members")
+        }).property("isOwnerOfLobby", "members", "controllers.application.account")
     });
 });

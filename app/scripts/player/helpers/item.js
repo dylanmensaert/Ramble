@@ -4,6 +4,7 @@ define([
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : Ember.Handlebars.compile(template)
+        defaultTemplate : Ember.Handlebars.compile(template),
+        tagName : "li"
     });
 });

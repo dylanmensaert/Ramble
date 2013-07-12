@@ -8,7 +8,6 @@
     </h3>
 
     <div>
-
         {{#if isOwnerOfLobby}}
 
         {{#linkTo "lobby.edit" this classNames="btn"}}
@@ -38,11 +37,11 @@
 
         {{/if}}
     </div>
-
 </div>
+
 <div>
     <h3>
-        Owner:
+        Owner
     </h3>
 
     <p>
@@ -53,15 +52,21 @@
 </div>
 
 <div>
-    <h3 class="my-inline-block">
-        Members:
-    </h3>
+    <div class="row">
+        <div class="span6">
+            <h3>
+                Members
+            </h3>
+        </div>
 
-    {{#if isOwnerOfLobby}}
-    <h4 class="pull-right my-header-right">
-        Kick
-    </h4>
-    {{/if}}
+        <div class="span6">
+            {{#if isOwnerOfLobby}}
+            <h4 class="pull-right">
+                Kick
+            </h4>
+            {{/if}}
+        </div>
+    </div>
 
     <ul class="nav nav-tabs nav-stacked">
         {{each members itemController="player" itemViewClass="view.playerItem"}}

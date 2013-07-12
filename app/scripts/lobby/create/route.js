@@ -8,7 +8,7 @@ define([
             return App.Lobby.createRecord();
         },
         deactivate : function () {
-            var model = this.modelFor("lobby.create");
+            var model = this.get("controller.model");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
                 model.get("transaction").rollback();
