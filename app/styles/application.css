@@ -9,4 +9,7 @@ body {
     margin: auto;
 }
 
-/*TODO: set kick-button right*/
+.my-header-right {
+    margin-right: 5px;
+    margin-top: 20px;
+}

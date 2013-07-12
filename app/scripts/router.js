@@ -62,7 +62,7 @@ define([
                             });
                         this.route("create",
                             {
-                                path : "signup"
+                                path : "create"
                             });
                         this.route("edit",
                             {
