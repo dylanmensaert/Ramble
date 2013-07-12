@@ -71,8 +71,13 @@
                             cwd : "app/images/",
                             src : ["**"],
                             dest : "dist/images/"
+                        },
+                        {
+                            expand : true,
+                            cwd : "bower_components/components-bootstrap/img/",
+                            src : ["**"],
+                            dest : "dist/images/"
                         }
-                        //TODO: Fix copying images of Boostrap and jQuery UI for the CSS.
                     ]
                 },
                 test : {
@@ -99,7 +104,7 @@
             cssmin : {
                 all : {
                     files : {
-                        "dist/styles/main.min.css" : ["app/styles/main.css"]
+                        "dist/styles/main.min.css" : ["app/styles/main.css", "app/styles/variables.less"]
                     }
                 }
             },
