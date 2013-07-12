@@ -26,9 +26,7 @@ define([
                 length : {
                     maximum : 50
                 },
-                confirmation : {
-                    message : "has to match password confirmation"
-                }
+                confirmation : true
             },
             email : {
                 presence : true,

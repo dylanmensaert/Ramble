@@ -1,13 +1,10 @@
 define([
-    "lobby/helpers/controller", "Ember"
-], function (Controller, Ember) {
+    "Ember", "lobby/helpers/controller"
+], function (Ember, Controller) {
     "use strict";
 
-    return Controller.extend({
-        documentTitle : Ember.computed(function () {
-            return this._super() + " - " + this.get("title");
-        }).property("title", "controllers.lobby.documentTitle"),
-        needs : ["application"],
+    return Ember.ObjectController.extend(Controller, {
+        hasObjectModel : true,
         leave : function () {
             var account = this.get("controllers.application.account");
 

@@ -1,14 +1,9 @@
 define([
-    "Ember"
-], function (Ember) {
+    "Ember", "lobby/helpers/controller"
+], function (Ember, Controller) {
     "use strict";
 
-    //TODO: Should use mixin for controller instead of extend
-    return Ember.ArrayController.extend({
-        documentTitle : Ember.computed(function () {
-            return this.get("controllers.lobby.documentTitle") + " - List";
-        }).property("controllers.lobby.documentTitle"),
-        isLeaf : true,
-        needs : ["lobby"]
+    return Ember.ArrayController.extend(Controller, {
+        controllerTitle : "List"
     });
 });

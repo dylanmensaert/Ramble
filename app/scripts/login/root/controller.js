@@ -11,6 +11,7 @@ define([
         login : function () {
             //TODO: temporary client-sided test
             //TODO: before trying to authenticate, check if fields are not empty
+            //TODO: Weird bug when pressing enter on a text-field, if it is the first page loaded.
             var model;
 
             if (this.get("username") === "donut" && this.get("password") === "donut") {
