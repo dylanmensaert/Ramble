@@ -19,7 +19,7 @@
             },
             csslint : {
                 all : {
-                    src : ["app/**/*.css"],
+                    src : ["app/**/*.css", "!app/styles/override.css"],
                     options : {
                         "import" : false,
                         formatters : [
@@ -104,7 +104,7 @@
             cssmin : {
                 all : {
                     files : {
-                        "dist/styles/main.min.css" : ["app/styles/main.css", "app/styles/variables.less"]
+                        "dist/styles/main.min.css" : ["app/styles/main.css", "app/styles/override.css"]
                     }
                 }
             },
