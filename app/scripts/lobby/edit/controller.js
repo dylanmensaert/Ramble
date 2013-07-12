@@ -1,9 +1,9 @@
 define([
-    "Ember", "lobby/helpers/controller"
-], function (Ember, Controller) {
+    "Ember", "lobby/helpers/controllerMixin"
+], function (Ember, ControllerMixin) {
     "use strict";
 
-    return Ember.ObjectController.extend(Controller, {
+    return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
         controllerTitle : "Edit",
         save : function () {
