@@ -10,11 +10,7 @@ define([
         "delete" : function () {
             var model = this.get("model");
 
-            //TODO: Leave all of the account's joined lobbies before deleting the account.
-            //model.get("joinedLobbies").forEach(function (lobby) {
-            //    lobby.get("members").removeObject(model);
-            //});
-
+            //model.one("didUpdate", this, function () {
             model.one("didDelete", this, function () {
                 this.get("controllers.application").send("logout");
             });
@@ -22,6 +18,13 @@ define([
             model.deleteRecord();
 
             model.get("transaction").commit();
+            //});
+
+            //TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.
+            //model.get("joinedLobbies").clear();
+            //model.get("ownedLobbies").clear();
+
+            //model.get("transaction").commit();
         }
     });
 });
