@@ -6,9 +6,7 @@ define([
     return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
         leave : function () {
-            var account = this.get("account");
-
-            this.send("kick", account);
+            this.send("kick", this.get("account"));
         },
         kick : function (member) {
             var model = this.get("model");
@@ -17,15 +15,10 @@ define([
             model.get("transaction").commit();
         },
         join : function () {
-            var model, isLoggedIn, account;
+            var model = this.get("model");
 
-            model = this.get("model");
-            isLoggedIn = this.get("isLoggedIn");
-
-            if (isLoggedIn) {
-                account = this.get("account");
-
-                model.get("members").pushObject(account);
+            if (this.get("isLoggedIn")) {
+                model.get("members").pushObject(this.get("account"));
                 model.get("transaction").commit();
             } else {
                 this.transitionToRoute("login");
