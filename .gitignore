@@ -1,5 +1,5 @@
-bower_components/
 node_modules/
+app/bower_components/
 .grunt/
 
 .idea/tasks.xml

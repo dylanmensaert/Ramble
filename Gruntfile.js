@@ -6,6 +6,7 @@ module.exports = function (grunt) {
         jslint : {
             //TODO: Split into 2 tasks for both browser-scripts and node-scripts. See: https://npmjs.org/package/grunt-jslint
             files : ["*.js", "*.json", "app/**/*.js", "app/**/*.json", "test/**/*.js"],
+            exclude : ["app/bower_components/**/*.*"],
             directives : {
                 browser : true,
                 node : true,
@@ -20,7 +21,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["app/**/*.css", "!app/styles/override.css"],
+                src : ["app/**/*.css", "!app/bower_components/**/*.*", "!app/styles/override.css"],
                 options : {
                     "import" : false,
                     formatters : [
@@ -75,7 +76,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand : true,
-                        cwd : "bower_components/components-bootstrap/img/",
+                        cwd : "app/bower_components/components-bootstrap/img/",
                         src : ["**"],
                         dest : "dist/images/"
                     }
@@ -97,7 +98,7 @@ module.exports = function (grunt) {
                 options : {
                     name : "main",
                     mainConfigFile : "app/scripts/main.js",
-                    include : ["../../bower_components/requirejs/require.js"],
+                    include : ["../bower_components/requirejs/require.js"],
                     out : "dist/scripts/main.min.js"
                 }
             }
@@ -119,7 +120,7 @@ module.exports = function (grunt) {
                         to : ".min.css"
                     },
                     {
-                        from : "data-main=\"scripts/main\" src=\"../bower_components/requirejs/require.js\"",
+                        from : "data-main=\"scripts/main\" src=\"bower_components/requirejs/require.js\"",
                         to : "src=\"scripts/main.min.js\""
                     }
                 ]
