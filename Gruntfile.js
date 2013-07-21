@@ -4,9 +4,9 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg : grunt.file.readJSON("package.json"),
         jslint : {
-            //TODO: Split into 2 tasks for both browser-scripts and node-scripts. See: https://npmjs.org/package/grunt-jslint
-            files : ["*.js", "*.json", "app/**/*.js", "app/**/*.json", "test/**/*.js"],
-            exclude : ["app/bower_components/**/*.*"],
+            //TODO: Split into 2 tasks for both browser-code and node-code. See: https://npmjs.org/package/grunt-jslint
+            files : ["*.js", "*.json", "public/**/*.js", "public/**/*.json", "test/**/*.js"],
+            exclude : ["public/bower_components/**/*.*"],
             directives : {
                 browser : true,
                 node : true,
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["app/**/*.css", "!app/bower_components/**/*.*", "!app/styles/override.css"],
+                src : ["public/**/*.css", "!public/bower_components/**/*.*", "!public/stylesheets/override.css"],
                 options : {
                     "import" : false,
                     formatters : [
@@ -48,7 +48,7 @@ module.exports = function (grunt) {
                     template : require("grunt-template-jasmine-requirejs"),
                     templateOptions : {
                         requireConfig : {
-                            baseUrl : "app/scripts"
+                            baseUrl : "public/javascripts"
                         }
                     }
                 }
@@ -70,13 +70,13 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "app/images/",
+                        cwd : "public/images/",
                         src : ["**"],
                         dest : "dist/images/"
                     },
                     {
                         expand : true,
-                        cwd : "app/bower_components/components-bootstrap/img/",
+                        cwd : "public/bower_components/components-bootstrap/img/",
                         src : ["**"],
                         dest : "dist/images/"
                     }
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "app/scripts",
+                        cwd : "public/javascripts",
                         src : ["main.js"],
                         dest : "./"
                     }
@@ -97,22 +97,22 @@ module.exports = function (grunt) {
             all : {
                 options : {
                     name : "main",
-                    mainConfigFile : "app/scripts/main.js",
+                    mainConfigFile : "public/javascripts/main.js",
                     include : ["../bower_components/requirejs/require.js"],
-                    out : "dist/scripts/main.min.js"
+                    out : "dist/javascripts/main.min.js"
                 }
             }
         },
         cssmin : {
             all : {
                 files : {
-                    "dist/styles/main.min.css" : ["app/styles/main.css", "app/styles/override.css"]
+                    "dist/stylesheets/main.min.css" : ["public/stylesheets/main.css", "public/stylesheets/override.css"]
                 }
             }
         },
         replace : {
             index : {
-                src : ["app/index.html"],
+                src : ["public/index.html"],
                 dest : "dist/",
                 replacements : [
                     {
@@ -120,20 +120,13 @@ module.exports = function (grunt) {
                         to : ".min.css"
                     },
                     {
-                        from : "data-main=\"scripts/main\" src=\"bower_components/requirejs/require.js\"",
-                        to : "src=\"scripts/main.min.js\""
+                        from : "data-main=\"javascripts/main\" src=\"bower_components/requirejs/require.js\"",
+                        to : "src=\"javascripts/main.min.js\""
                     }
                 ]
             }
         },
         connect : {
-            server : {
-                options : {
-                    hostname : "*",
-                    port : 8001,
-                    keepalive : true
-                }
-            },
             test : {
                 options : {
                     port : 8002
@@ -155,6 +148,6 @@ module.exports = function (grunt) {
     grunt.registerTask("default", ["test", "build"]);
     grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all", "replace:index"]);
+    //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
-    grunt.registerTask("server", ["connect:server"]);
 };
