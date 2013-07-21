@@ -21,8 +21,7 @@
 
             //app
             root : ".",
-            App : "app",
-            data : "../data"
+            App : "app"
         },
         shim : {
             Ember : {

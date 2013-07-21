@@ -1,14 +1,13 @@
 define([
-    "App", "text!data/config.json", "text!data/data.json", "root/router",
+    "App", "text!root/config.json", "root/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
     "Ember", "Bootstrap", "EmberEasyForm", "EmberValidations"
-], function (App, config, data, Router, Application, Index, Login, Lobby, Player, Ember) {
+], function (App, config, Router, Application, Index, Login, Lobby, Player, Ember) {
     "use strict";
 
     return {
         initialize : function () {
             App.config = JSON.parse(config);
-            App.data = JSON.parse(data);
 
             Router.initialize();
 

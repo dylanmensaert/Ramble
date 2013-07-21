@@ -5,8 +5,7 @@ module.exports = function (grunt) {
         pkg : grunt.file.readJSON("package.json"),
         jslint : {
             //TODO: Split into 2 tasks for both browser-code and node-code. See: https://npmjs.org/package/grunt-jslint
-            files : ["*.js", "*.json", "public/**/*.js", "public/**/*.json", "test/**/*.js"],
-            exclude : ["public/bower_components/**/*.*"],
+            files : ["*.js", "*.json", "public/javascripts/**/*.js", "public/javascripts/**/*.json", "test/**/*.js"],
             directives : {
                 browser : true,
                 node : true,
@@ -21,7 +20,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["public/**/*.css", "!public/bower_components/**/*.*", "!public/stylesheets/override.css"],
+                src : ["public/stylesheets/**/*.css", "!public/stylesheets/override.css"],
                 options : {
                     "import" : false,
                     formatters : [

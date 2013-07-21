@@ -13,7 +13,41 @@ define([
         initialize : function () {
             App.Lobby = Lobby;
 
-            App.Lobby.FIXTURES = App.data.lobbies;
+            //TODO: Create API in Express.js
+            App.Lobby.FIXTURES = [
+                {
+                    "id" : 1,
+                    "title" : "Game Dylan en Dimitri",
+                    "password" : "zonneschijn",
+                    "maxMembers" : "5",
+                    "owner" : [1],
+                    "members" : [2, 3, 5, 8]
+                },
+                {
+                    "id" : 2,
+                    "title" : "customgame",
+                    "password" : "Peter",
+                    "maxMembers" : "7",
+                    "owner" : [8],
+                    "members" : [4, 9, 3]
+                },
+                {
+                    "id" : 3,
+                    "title" : "winners lobby!",
+                    "password" : "Dolfijn",
+                    "maxMembers" : "12",
+                    "owner" : [6],
+                    "members" : [5, 3, 8, 1]
+                },
+                {
+                    "id" : 4,
+                    "title" : "eten",
+                    "password" : "open",
+                    "maxMembers" : "7",
+                    "owner" : [8],
+                    "members" : []
+                }
+            ];
 
             App.LobbyRoute = Route;
             App.LobbyController = Controller;

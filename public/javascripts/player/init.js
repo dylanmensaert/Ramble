@@ -13,7 +13,71 @@ define([
         initialize : function () {
             App.Player = Player;
 
-            App.Player.FIXTURES = App.data.players;
+            App.Player.FIXTURES = [
+                {
+                    "id" : 1,
+                    "username" : "donut",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [1],
+                    "joinedLobbies" : [3]
+                },
+                {
+                    "id" : 2,
+                    "username" : "pizaa",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : [1]
+                },
+                {
+                    "id" : 3,
+                    "username" : "zizima",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : [1, 2, 3]
+                },
+                {
+                    "id" : 4,
+                    "username" : "madeentje",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : [2]
+                },
+                {
+                    "id" : 5,
+                    "username" : "cryptex",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : [3, 1]
+                },
+                {
+                    "id" : 6,
+                    "username" : "heca",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [3],
+                    "joinedLobbies" : []
+                },
+                {
+                    "id" : 7,
+                    "username" : "bosbes",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : []
+                },
+                {
+                    "id" : 8,
+                    "username" : "graaaah",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [2, 4],
+                    "joinedLobbies" : [3, 1]
+                },
+                {
+                    "id" : 9,
+                    "username" : "antiliaan",
+                    "email" : "aaaa@gmail.com",
+                    "ownedLobbies" : [],
+                    "joinedLobbies" : [2]
+                }
+            ];
 
             App.PlayerRoute = Route;
             App.PlayerController = Controller;
