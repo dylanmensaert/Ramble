@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         pkg : grunt.file.readJSON("package.json"),
         jslint : {
             //TODO: Split into 2 tasks for both browser-code and node-code. See: https://npmjs.org/package/grunt-jslint
-            files : ["*.js", "*.json", "public/javascripts/**/*.js", "public/javascripts/**/*.json", "test/**/*.js"],
+            files : ["*.js", "*.json", ".bowerrc", "public/javascripts/**/*.js", "public/javascripts/**/*.json", "test/**/*.js"],
             directives : {
                 browser : true,
                 node : true,
@@ -109,22 +109,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        replace : {
-            index : {
-                src : ["public/index.html"],
-                dest : "dist/",
-                replacements : [
-                    {
-                        from : ".css",
-                        to : ".min.css"
-                    },
-                    {
-                        from : "data-main=\"javascripts/main\" src=\"bower_components/requirejs/require.js\"",
-                        to : "src=\"javascripts/main.min.js\""
-                    }
-                ]
-            }
-        },
         connect : {
             test : {
                 options : {
@@ -141,12 +125,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks("grunt-contrib-connect");
 
     grunt.registerTask("default", ["test", "build"]);
     grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all", "replace:index"]);
+    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
 };
