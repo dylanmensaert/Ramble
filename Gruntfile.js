@@ -92,6 +92,25 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        //TODO: Update grunt-ember-templates to latest version, once ember supports the latest version of Handlebars
+        emberTemplates : {
+            all : {
+                options : {
+                    templateName : function (sourceFile) {
+                        var templateName = sourceFile;
+
+                        templateName = templateName.replace("public/javascripts/", "");
+                        templateName = templateName.replace("/template", "");
+                        templateName = templateName.replace("/root", "");
+
+                        return templateName;
+                    }
+                },
+                files : {
+                    "public/templates.js" : "public/javascripts/**/*.handlebars"
+                }
+            }
+        },
         requirejs : {
             all : {
                 options : {
@@ -106,24 +125,6 @@ module.exports = function (grunt) {
             all : {
                 files : {
                     "dist/stylesheets/main.min.css" : ["public/stylesheets/main.css", "public/stylesheets/override.css"]
-                }
-            }
-        },
-        emberTemplates : {
-            compile : {
-                options : {
-                    templateName : function (sourceFile) {
-                        var templateName = sourceFile;
-
-                        templateName = templateName.replace("public/javascripts/", "");
-                        templateName = templateName.replace("/template", "");
-                        templateName = templateName.replace("/root", "");
-
-                        return templateName;
-                    }
-                },
-                files : {
-                    "public/templates.js" : "public/javascripts/**/*.handlebars"
                 }
             }
         },
@@ -148,7 +149,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["test", "build"]);
     grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
+    grunt.registerTask("build", ["clean:dist", "copy:dist", "emberTemplates:all", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
 };

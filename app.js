@@ -10,18 +10,6 @@ routes = require("./routes");
 
 app = express();
 
-app.set("port", process.env.PORT || 3000);
-app.set("views", __dirname + "/views");
-app.set("view engine", "jade");
-app.use(express.logger("dev"));
-app.use(express.compress());
-app.use(express.favicon());
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-
-app.get("/", routes.index);
-
 if (app.get("env") === "production") {
     staticPath = "dist";
 } else if (app.get("env") === "development") {
@@ -29,6 +17,18 @@ if (app.get("env") === "production") {
 
     app.use(express.errorHandler());
 }
+
+app.set("port", process.env.PORT || 3000);
+app.set("views", __dirname + "/views");
+app.set("view engine", "jade");
+app.use(express.logger("dev"));
+app.use(express.compress());
+app.use(express.favicon(path.join(__dirname, staticPath, "/images/favicon.ico")));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+
+app.get("/", routes.index);
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
