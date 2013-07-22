@@ -109,6 +109,24 @@ module.exports = function (grunt) {
                 }
             }
         },
+        emberTemplates : {
+            compile : {
+                options : {
+                    templateName : function (sourceFile) {
+                        var templateName = sourceFile;
+
+                        templateName = templateName.replace("public/javascripts/", "");
+                        templateName = templateName.replace("/template", "");
+                        templateName = templateName.replace("/root", "");
+
+                        return templateName;
+                    }
+                },
+                files : {
+                    "public/templates.js" : "public/javascripts/**/*.handlebars"
+                }
+            }
+        },
         connect : {
             test : {
                 options : {
@@ -125,6 +143,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-ember-templates");
     grunt.loadNpmTasks("grunt-contrib-connect");
 
     grunt.registerTask("default", ["test", "build"]);

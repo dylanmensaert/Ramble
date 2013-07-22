@@ -1,7 +1,7 @@
 define([
     "App", "text!root/config.json", "root/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
-    "Ember", "Bootstrap", "EmberEasyForm", "EmberValidations"
+    "Ember", "templates", "Bootstrap", "EmberEasyForm", "EmberValidations"
 ], function (App, config, Router, Application, Index, Login, Lobby, Player, Ember) {
     "use strict";
 

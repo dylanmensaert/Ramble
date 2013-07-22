@@ -21,7 +21,8 @@
 
             //app
             root : ".",
-            App : "app"
+            App : "app",
+            templates : "../templates"
         },
         shim : {
             Ember : {
@@ -47,6 +48,12 @@
                     "Ember"
                 ],
                 exports : "Ember"
+            },
+            templates : {
+                deps : [
+                    "Ember"
+                ],
+                exports : "Ember.TEMPLATES"
             },
             jQuery : {
                 exports : "jQuery"

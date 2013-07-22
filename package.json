@@ -17,6 +17,7 @@
         "grunt-contrib-copy" : "~0.4.1",
         "grunt-contrib-requirejs" : "~0.4.1",
         "grunt-contrib-cssmin" : "~0.6.1",
+        "grunt-ember-templates" : "0.4.9",
         "grunt-contrib-connect" : "~0.3.0"
     },
     "repository" : {
@@ -25,7 +26,8 @@
     },
     "scripts" : {
         "postinstall" : "bower install",
+        "test" : "grunt",
         "start" : "node app",
-        "test" : "grunt"
+        "production" : "NODE_ENV=production PORT=8001 node app"
     }
 }
