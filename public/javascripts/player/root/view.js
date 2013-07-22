@@ -1,9 +1,9 @@
 define([
-    "Ember", "hbs!player/root/template.handlebars"
+    "Ember", "text!player/root/template.handlebars"
 ], function (Ember, template) {
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : template
+        defaultTemplate : Ember.Handlebars.compile(template)
     });
 });

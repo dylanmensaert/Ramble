@@ -1,10 +1,10 @@
 define([
-    "Ember", "hbs!player/index/template.handlebars", "lobby/helpers/item"
+    "Ember", "text!player/index/template.handlebars", "lobby/helpers/item"
 ], function (Ember, template, lobbyItem) {
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : template,
+        defaultTemplate : Ember.Handlebars.compile(template),
         lobbyItem : lobbyItem
     });
 });
