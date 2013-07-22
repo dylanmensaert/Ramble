@@ -1,10 +1,10 @@
 define([
-    "Ember", "text!lobby/index/template.handlebars", "player/helpers/item"
+    "Ember", "hbs!lobby/index/template.handlebars", "player/helpers/item"
 ], function (Ember, template, playerItem) {
     "use strict";
 
     return Ember.View.extend({
-        defaultTemplate : Ember.Handlebars.compile(template),
+        defaultTemplate : template,
         playerItem : playerItem.extend({
             isOwnerOfLobbyBinding : "parentView.controller.isOwnerOfLobby"
         })

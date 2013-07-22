@@ -1,6 +1,6 @@
 "use strict";
 
-var express, http, socketio, path, app, routes, server, io, staticPath, port;
+var express, http, socketio, path, app, routes, server, io, staticPath;
 
 express = require("express");
 http = require("http");
@@ -13,8 +13,8 @@ app = express();
 app.set("port", process.env.PORT || 3000);
 app.set("views", __dirname + "/views");
 app.set("view engine", "jade");
-app.use(express.favicon());
 app.use(express.logger("dev"));
+app.use(express.favicon());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser("your secret here"));
@@ -28,17 +28,15 @@ io = socketio.listen(server);
 
 if (app.get("env") === "production") {
     staticPath = "dist";
-    port = 8001;
 } else if (app.get("env") === "development") {
     staticPath = "public";
-    port = 3000;
 
     app.use(express.errorHandler());
 }
 
 app.use(express.static(path.join(__dirname, staticPath)));
 
-server.listen(port);
+server.listen(app.get("port"));
 
 io.sockets.on("connection", function (socket) {
     socket.emit("news", { hello : "world" });

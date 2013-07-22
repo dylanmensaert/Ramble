@@ -6,6 +6,7 @@
             //RequireJS-plugins
             domReady : "../bower_components/requirejs-domready/domReady",
             text : "../bower_components/requirejs-text/text",
+            hbs : "../hbs",
 
             //frameworks
             Ember : "../bower_components/ember/ember",

@@ -1,17 +1,17 @@
 !!! 5
 html
     head
-        meta(charset='UTF-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
         title Ramble - loading
 
         if env === "production"
-            link(rel='stylesheet', href='stylesheets/main.min.css')
-            script(async='async', src='javascripts/main.min.js')
+            link(rel="stylesheet", href="stylesheets/main.min.css")
+            script(async="async", src="javascripts/main.min.js")
         else if env === "development"
-            link(rel='stylesheet', href='stylesheets/main.css')
-            script(async='async', data-main='javascripts/main', src='bower_components/requirejs/require.js')
+            link(rel="stylesheet", href="stylesheets/main.css")
+            script(async="async", data-main="javascripts/main", src="bower_components/requirejs/require.js")
 
     body
 
@@ -19,4 +19,4 @@ html
             p Loading...
 
             .progress.progress-striped.active
-                .bar(style='width: 100%;')
+                .bar(style="width: 100%;")
