@@ -4,6 +4,6 @@ define([
     "use strict";
 
     return Ember.View.extend({
-        templateName : "player/create"
+
     });
 });

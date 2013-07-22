@@ -147,9 +147,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-ember-templates");
     grunt.loadNpmTasks("grunt-contrib-connect");
 
-    grunt.registerTask("default", ["test", "build"]);
+    grunt.registerTask("default", ["compile", "test", "build"]);
+    grunt.registerTask("compile", ["emberTemplates:all"]);
     grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "emberTemplates:all", "requirejs:all", "cssmin:all"]);
+    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
 };

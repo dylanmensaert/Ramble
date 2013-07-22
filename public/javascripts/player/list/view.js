@@ -4,7 +4,6 @@ define([
     "use strict";
 
     return Ember.View.extend({
-        templateName : "player/list",
         playerItem : playerItem
     });
 });

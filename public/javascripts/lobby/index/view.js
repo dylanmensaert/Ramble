@@ -4,7 +4,6 @@ define([
     "use strict";
 
     return Ember.View.extend({
-        templateName : "lobby/index",
         playerItem : playerItem.extend({
             isOwnerOfLobbyBinding : "parentView.controller.isOwnerOfLobby"
         })
