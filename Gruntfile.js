@@ -2,7 +2,13 @@
 
 module.exports = function (grunt) {
     //TODO: Reuse path-strings to avoid duplication.
-    //var app, dist, scripts, styles, js, json, log;
+    //var app, dist, javascripts, stylesheets, js, json, log;
+
+    //app = "public/";
+    //dist = "dist/";
+    //javascripts = app + "javascripts/";
+    //stylesheets = app + "stylesheets/";
+    //log = "log/";
 
     grunt.initConfig({
         pkg : grunt.file.readJSON("package.json"),
@@ -17,8 +23,7 @@ module.exports = function (grunt) {
                 predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
             },
             options : {
-                log : "log/jslint.log",
-                checkstyle : "log/checkstyle_jslint.xml"
+                log : "log/jslint.log"
             }
         },
         csslint : {
@@ -30,10 +35,6 @@ module.exports = function (grunt) {
                         {
                             id : "text",
                             dest : "log/csslint.log"
-                        },
-                        {
-                            id : "checkstyle-xml",
-                            dest : "log/checkstyle_csslint.xml"
                         }
                     ]
                 }

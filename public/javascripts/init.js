@@ -3,6 +3,7 @@ define([
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
     "Ember", "templates", "Bootstrap", "EmberEasyForm", "EmberValidations"
 ], function (App, config, Router, Application, Index, Login, Lobby, Player, Ember) {
+    //TODO: Where to put templates-dependency?
     "use strict";
 
     return {
