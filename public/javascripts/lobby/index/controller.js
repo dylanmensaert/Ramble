@@ -28,8 +28,7 @@ define([
             return this.get("account") === this.get("owner");
         }).property("account", "owner"),
         isMemberOfLobby : Ember.computed(function () {
-            return this.get("isOwnerOfLobby")
-                || this.get("members").contains(this.get("account"));
-        }).property("isOwnerOfLobby", "members", "account")
+            return this.get("members").contains(this.get("account"));
+        }).property("members.@each", "account")
     });
 });

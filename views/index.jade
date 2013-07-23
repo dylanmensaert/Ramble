@@ -6,10 +6,10 @@ html
 
         title Ramble - loading
 
-        if env === "production"
+        if environment === "production"
             link(rel="stylesheet", href="stylesheets/main.min.css")
             script(async="async", src="javascripts/main.min.js")
-        else if env === "development"
+        else if environment === "development"
             link(rel="stylesheet", href="stylesheets/main.css")
             script(async="async", data-main="javascripts/main", src="bower_components/requirejs/require.js")
 

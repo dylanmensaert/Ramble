@@ -1,7 +1,7 @@
 {{#linkTo "player.index" this}}
 {{id}} - {{username}}
 
-{{#if view.isOwnerOfLobby}}
+{{#if controller.isOwnerOfLobby}}
 
 <button class="close pull-right"
 {{action "kick" this}}>

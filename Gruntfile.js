@@ -148,7 +148,7 @@ module.exports = function (grunt) {
                 tasks : ["compile"]
             },
             all : {
-                files : ["public/javascripts/**/*.*"],
+                files : ["public/javascripts/**/*.*", "public/stylesheets/**/*.*"],
                 tasks : []
             }
         }

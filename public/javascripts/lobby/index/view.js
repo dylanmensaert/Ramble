@@ -4,8 +4,6 @@ define([
     "use strict";
 
     return Ember.View.extend({
-        playerItem : playerItem.extend({
-            isOwnerOfLobbyBinding : "parentView.controller.isOwnerOfLobby"
-        })
+        playerItem : playerItem
     });
 });
