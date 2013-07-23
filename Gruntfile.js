@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
     //TODO: Reuse path-strings to avoid duplication.
-    var app, dist, scripts, styles, js, json, log;
+    //var app, dist, scripts, styles, js, json, log;
 
     grunt.initConfig({
         pkg : grunt.file.readJSON("package.json"),

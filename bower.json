@@ -10,5 +10,9 @@
         "ember-builds" : "https://github.com/dockyard/ember-builds.git",
         "jquery" : "~2.0.3",
         "components-bootstrap" : "~2.3.2"
+    },
+    "resolutions" : {
+        "jquery" : "~2.0.3",
+        "ember" : "~1.0.0-rc.6"
     }
 }
