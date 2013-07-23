@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = function (grunt) {
+    //TODO: Reuse path-strings to avoid duplication.
+    var app, dist, scripts, styles, js, json, log;
+
     grunt.initConfig({
         pkg : grunt.file.readJSON("package.json"),
         jslint : {
@@ -134,9 +137,23 @@ module.exports = function (grunt) {
                     port : 8002
                 }
             }
+        },
+        watch : {
+            options : {
+                livereload : true
+            },
+            emberTemplates : {
+                files : ["public/javascripts/**/*.handlebars"],
+                tasks : ["compile"]
+            },
+            all : {
+                files : ["public/javascripts/**/*.*"],
+                tasks : []
+            }
         }
     });
 
+    grunt.loadNpmTasks("grunt-ember-templates");
     grunt.loadNpmTasks("grunt-jslint");
     grunt.loadNpmTasks("grunt-contrib-csslint");
     grunt.loadNpmTasks("grunt-contrib-jasmine");
@@ -144,12 +161,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-ember-templates");
     grunt.loadNpmTasks("grunt-contrib-connect");
+    grunt.loadNpmTasks("grunt-contrib-watch");
 
-    grunt.registerTask("default", ["compile", "test", "build"]);
+    grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all"]);
-    grunt.registerTask("test", ["clean:log", "jslint", "csslint:all", "connect:test", "copy:test", "jasmine:all", "clean:test"]);
+    grunt.registerTask("lint", ["clean:log", "jslint", "csslint:all"]);
+    grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
