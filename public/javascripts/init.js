@@ -1,9 +1,9 @@
 define([
     "App", "text!root/config.json", "root/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
-    "Ember", "templates", "Bootstrap", "EmberEasyForm", "EmberValidations"
-], function (App, config, Router, Application, Index, Login, Lobby, Player, Ember) {
-    //TODO: Where to put templates-dependency?
+    "EmberEasyForm", "templates", "Bootstrap"
+], function (App, config, Router, Application, Index, Login, Lobby, Player, EmberEasyForm) {
+    //TODO: Put EmberEasyForm, templates and Bootstrap in seperate GUI-init
     "use strict";
 
     return {
@@ -18,7 +18,7 @@ define([
             Lobby.initialize();
             Player.initialize();
 
-            Ember.EasyForm.Config.registerWrapper("default", {
+            EmberEasyForm.Config.registerWrapper("default", {
                 formClass : "form-horizontal",
                 fieldErrorClass : "error",
                 errorClass : "help-inline",

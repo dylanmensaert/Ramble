@@ -1,11 +1,11 @@
 define([
-    "EmberData", "Ember", "App"
-], function (DS, Ember, App) {
+    "EmberData", "EmberValidations", "App"
+], function (DS, EmberValidations, App) {
     "use strict";
 
     window.App = App;
 
-    return DS.Model.extend(Ember.Validations.Mixin, {
+    return DS.Model.extend(EmberValidations.Mixin, {
         title : DS.attr("string"),
         password : DS.attr("string"),
         maxMembers : DS.attr("number"),

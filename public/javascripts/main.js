@@ -42,13 +42,13 @@
                 deps : [
                     "Ember"
                 ],
-                exports : "Ember"
+                exports : "Ember.EasyForm"
             },
             EmberValidations : {
                 deps : [
                     "Ember"
                 ],
-                exports : "Ember"
+                exports : "Ember.Validations"
             },
             templates : {
                 deps : [

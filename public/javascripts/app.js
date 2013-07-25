@@ -13,7 +13,7 @@ define([
     App.deferReadiness();
 
     App.Store = DS.Store.extend({
-        adapter : DS.FixtureAdapter
+        adapter : DS.FixtureAdapter.create()
     });
 
     return App;
