@@ -2,41 +2,41 @@
 
 module.exports = function (grunt) {
     //TODO: Reuse path-strings to avoid duplication.
-    //var app, dist, javascripts, stylesheets, js, json, log;
+    var config = {
+        app : "public",
+        dist : "dist",
+        test : "test",
+        scripts : "/javascripts",
+        styles : "/stylesheets",
+        images : "/images"
+    };
 
-    //app = "public/";
-    //dist = "dist/";
-    //javascripts = app + "javascripts/";
-    //stylesheets = app + "stylesheets/";
-    //log = "log/";
+    config.appScripts = config.app + config.scripts;
+    config.appStyles = config.app + config.styles;
+    config.appImages = config.app + config.images;
+    config.distScripts = config.dist + config.scripts;
+    config.distStyles = config.dist + config.styles;
+    config.distImages = config.dist + config.images;
 
     grunt.initConfig({
+        yeoman : config,
         pkg : grunt.file.readJSON("package.json"),
         jslint : {
             //TODO: Split into 2 tasks for both browser-code and node-code. See: https://npmjs.org/package/grunt-jslint
-            files : ["*.js", "*.json", ".bowerrc", "public/javascripts/**/*.js", "public/javascripts/**/*.json", "test/**/*.js"],
+            files : ["*.{js,json}", ".bowerrc", "<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.test %>/**/*.js"],
             directives : {
                 browser : true,
                 node : true,
                 todo : true,
                 nomen : true,
                 predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
-            },
-            options : {
-                log : "log/jslint.log"
             }
         },
         csslint : {
             all : {
-                src : ["public/stylesheets/**/*.css", "!public/stylesheets/override.css"],
+                src : ["<%= yeoman.appStyles %>/**/*.css", "!<%= yeoman.appStyles %>/override.css"],
                 options : {
-                    "import" : false,
-                    formatters : [
-                        {
-                            id : "text",
-                            dest : "log/csslint.log"
-                        }
-                    ]
+                    "import" : false
                 }
             }
         },
@@ -47,11 +47,11 @@ module.exports = function (grunt) {
                 ],
                 options : {
                     host : "http://localhost:8002",
-                    specs : "test/**/*.js",
+                    specs : "<%= yeoman.test %>/**/*.js",
                     template : require("grunt-template-jasmine-requirejs"),
                     templateOptions : {
                         requireConfig : {
-                            baseUrl : "public/javascripts"
+                            baseUrl : "<%= yeoman.appScripts %>"
                         }
                     }
                 }
@@ -59,10 +59,7 @@ module.exports = function (grunt) {
         },
         clean : {
             dist : {
-                src : ["dist/"]
-            },
-            log : {
-                src : ["log/"]
+                src : ["<%= yeoman.dist %>"]
             },
             test : {
                 src : ["main.js"]
@@ -73,15 +70,15 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "public/images/",
+                        cwd : "<%= yeoman.appImages %>",
                         src : ["**"],
-                        dest : "dist/images/"
+                        dest : "<%= yeoman.distImages %>"
                     },
                     {
                         expand : true,
                         cwd : "public/bower_components/components-bootstrap/img/",
                         src : ["**"],
-                        dest : "dist/images/"
+                        dest : "<%= yeoman.distImages %>"
                     }
                 ]
             },
@@ -89,7 +86,7 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "public/javascripts",
+                        cwd : "<%= yeoman.appScripts %>",
                         src : ["main.js"],
                         dest : "./"
                     }
@@ -111,7 +108,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files : {
-                    "public/templates.js" : "public/javascripts/**/*.handlebars"
+                    "public/templates.js" : "<%= yeoman.appScripts %>/**/*.handlebars"
                 }
             }
         },
@@ -119,16 +116,16 @@ module.exports = function (grunt) {
             all : {
                 options : {
                     name : "main",
-                    mainConfigFile : "public/javascripts/main.js",
+                    mainConfigFile : "<%= yeoman.appScripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],
-                    out : "dist/javascripts/main.min.js"
+                    out : "<%= yeoman.distScripts %>/main.min.js"
                 }
             }
         },
         cssmin : {
             all : {
                 files : {
-                    "dist/stylesheets/main.min.css" : ["public/stylesheets/main.css", "public/stylesheets/override.css"]
+                    "<%= yeoman.distStyles %>/main.min.css" : ["<%= yeoman.appStyles %>/main.css", "<%= yeoman.appStyles %>/override.css"]
                 }
             }
         },
@@ -144,11 +141,11 @@ module.exports = function (grunt) {
                 livereload : true
             },
             emberTemplates : {
-                files : ["public/javascripts/**/*.handlebars"],
+                files : ["<%= yeoman.distScripts %>/**/*.handlebars"],
                 tasks : ["compile"]
             },
             all : {
-                files : ["public/javascripts/**/*.*", "public/stylesheets/**/*.*"],
+                files : ["<%= yeoman.distScripts %>/**/*.*", "<%= yeoman.appStyles %>/**/*.*"],
                 tasks : []
             }
         }
@@ -167,9 +164,9 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all"]);
-    grunt.registerTask("lint", ["clean:log", "jslint", "csslint:all"]);
+    grunt.registerTask("lint", ["jslint", "csslint:all"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
-    grunt.registerTask("cleanup", ["clean:log", "clean:dist"]);
+    grunt.registerTask("cleanup", ["clean:dist"]);
 };

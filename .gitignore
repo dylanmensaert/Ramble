@@ -7,5 +7,4 @@ public/bower_components/
 .grunt/
 
 dist/
-log/
 public/templates.js

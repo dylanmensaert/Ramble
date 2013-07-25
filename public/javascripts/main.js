@@ -24,6 +24,7 @@
             App : "app",
             templates : "../templates"
         },
+        //TODO: Export all remaining libraries too
         shim : {
             Ember : {
                 deps : [
