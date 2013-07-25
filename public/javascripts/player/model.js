@@ -1,7 +1,9 @@
 define([
-    "EmberData", "Ember"
-], function (DS, Ember) {
+    "EmberData", "Ember", "App"
+], function (DS, Ember, App) {
     "use strict";
+
+    window.App = App;
 
     return DS.Model.extend(Ember.Validations.Mixin, {
         username : DS.attr("string"),
@@ -34,7 +36,7 @@ define([
                     maximum : 50
                 },
                 format : {
-                    "with" : /\S+@\S+\.\S+/
+                    with : /\S+@\S+\.\S+/
                 }
             },
             ownedLobbies : {
