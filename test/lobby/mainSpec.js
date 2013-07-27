@@ -1,3 +1,4 @@
+/* jshint browser: true */
 define([
     "App"
 ], function (App) {

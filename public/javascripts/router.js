@@ -1,3 +1,4 @@
+/* jshint browser: true */
 define([
     "Ember", "App", "GoogleAnalytics"
 ], function (Ember, App, GoogleAnalytics) {

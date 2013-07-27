@@ -1,3 +1,4 @@
+/* jshint maxparams: false */
 define([
     "App", "text!root/config.json", "root/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",

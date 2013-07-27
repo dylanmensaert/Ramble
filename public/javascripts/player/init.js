@@ -1,3 +1,4 @@
+/* jshint maxparams: false, maxstatements: false, maxlen: false */
 define([
     "App", "player/model",
     "player/root/route", "player/root/controller", "player/root/view",

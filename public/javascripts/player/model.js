@@ -1,3 +1,4 @@
+/* jshint browser: true */
 define([
     "EmberData", "EmberValidations", "App"
 ], function (DS, EmberValidations, App) {

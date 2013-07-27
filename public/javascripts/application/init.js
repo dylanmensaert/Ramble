@@ -1,3 +1,4 @@
+/* jshint maxparams: false */
 define([
     "App", "application/root/route", "application/root/controller", "application/root/view"
 ], function (App, Route, Controller, View) {

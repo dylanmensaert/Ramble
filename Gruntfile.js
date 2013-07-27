@@ -1,3 +1,4 @@
+/* jshint node: true, maxstatements: false */
 "use strict";
 
 module.exports = function (grunt) {
@@ -21,15 +22,20 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman : config,
         pkg : grunt.file.readJSON("package.json"),
-        jslint : {
-            //TODO: Split into 2 tasks for both browser-code and node-code. See: https://npmjs.org/package/grunt-jslint
-            files : ["*.{js,json}", ".bowerrc", "<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.test %>/**/*.js"],
-            directives : {
-                browser : true,
-                node : true,
-                todo : true,
-                nomen : true,
-                predef : ["module", "require", "define", "describe", "it", "runs", "expect", "waitsFor"]
+        jshint : {
+            //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
+            options : {
+                jshintrc : ".jshintrc"
+            },
+            client : {
+                files : {
+                    src : ["<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.test %>/**/*.js"]
+                }
+            },
+            server : {
+                files : {
+                    src : ["*.{js,json}", ".jshintrc", ".bowerrc"]
+                }
             }
         },
         csslint : {
@@ -152,7 +158,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-ember-templates");
-    grunt.loadNpmTasks("grunt-jslint");
+    grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-csslint");
     grunt.loadNpmTasks("grunt-contrib-jasmine");
     grunt.loadNpmTasks("grunt-contrib-clean");
@@ -164,7 +170,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all"]);
-    grunt.registerTask("lint", ["jslint", "csslint:all"]);
+    grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!
