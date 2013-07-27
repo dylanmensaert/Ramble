@@ -1,10 +1,7 @@
-/* jshint browser: true */
 define([
-    "EmberData", "EmberValidations", "App"
-], function (DS, EmberValidations, App) {
+    "EmberData", "EmberValidations"
+], function (DS, EmberValidations) {
     "use strict";
-
-    window.App = App;
 
     return DS.Model.extend(EmberValidations.Mixin, {
         title : DS.attr("string"),

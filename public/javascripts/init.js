@@ -1,4 +1,4 @@
-/* jshint maxparams: false */
+/* jshint maxparams: false, maxstatements: false, browser: true */
 define([
     "App", "text!root/config.json", "root/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
@@ -9,6 +9,8 @@ define([
 
     return {
         initialize : function () {
+            window.App = App;
+
             App.config = JSON.parse(config);
 
             Router.initialize();
@@ -31,6 +33,9 @@ define([
             });
 
             App.advanceReadiness();
+
+            //TODO: Is needed to run tests in Phantom.js?
+            window.isAppInitialized = true;
         }
     };
 });

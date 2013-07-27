@@ -1,4 +1,3 @@
-/* jshint browser: true */
 (function () {
     "use strict";
 
@@ -77,9 +76,6 @@
     ], function (AppInit, domReady) {
         domReady(function () {
             AppInit.initialize();
-
-            //TODO: Is needed to run tests in Phantom.js?
-            window.isAppInitialized = true;
         });
     });
 }());
