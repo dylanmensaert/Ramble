@@ -2,11 +2,18 @@
 "use strict";
 
 module.exports = function (grunt) {
+    require("matchdep").filterDev("grunt-*").forEach(function (name) {
+        if (!/template-jasmine-requirejs/.test(name)) {
+            grunt.loadNpmTasks(name);
+        }
+    });
+
     //TODO: Reuse path-strings to avoid duplication.
     var config = {
         app : "public",
         dist : "dist",
         test : "test",
+        routes : "routes",
         scripts : "/javascripts",
         styles : "/stylesheets",
         images : "/images"
@@ -21,7 +28,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman : config,
-        pkg : grunt.file.readJSON("package.json"),
         jshint : {
             //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
             options : {
@@ -34,7 +40,7 @@ module.exports = function (grunt) {
             },
             server : {
                 files : {
-                    src : ["*.{js,json}", ".jshintrc", ".bowerrc"]
+                    src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= yeoman.routes %>/**/*.js"]
                 }
             }
         },
@@ -42,7 +48,7 @@ module.exports = function (grunt) {
             all : {
                 src : ["<%= yeoman.appStyles %>/**/*.css", "!<%= yeoman.appStyles %>/override.css"],
                 options : {
-                    "import" : false
+                    import : false
                 }
             }
         },
@@ -156,17 +162,6 @@ module.exports = function (grunt) {
             }
         }
     });
-
-    grunt.loadNpmTasks("grunt-ember-templates");
-    grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-csslint");
-    grunt.loadNpmTasks("grunt-contrib-jasmine");
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-requirejs");
-    grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-contrib-connect");
-    grunt.loadNpmTasks("grunt-contrib-watch");
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all"]);

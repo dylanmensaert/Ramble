@@ -8,6 +8,7 @@
         "socket.io" : "~0.9.16"
     },
     "devDependencies" : {
+        "matchdep" : "~0.1.2",
         "grunt" : "~0.4.1",
         "grunt-ember-templates" : "0.4.9",
         "grunt-contrib-jshint" : "~0.6.0",
