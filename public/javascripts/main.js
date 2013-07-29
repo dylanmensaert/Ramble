@@ -20,8 +20,7 @@
             GoogleAnalytics : "https://ssl.google-analytics.com/ga",
 
             //app
-            root : ".",
-            App : "app",
+            App : "app/app",
             templates : "../templates"
         },
         //TODO: Export all remaining libraries too
@@ -72,7 +71,7 @@
     });
 
     require([
-        "root/init", "domReady"
+        "app/init", "domReady"
     ], function (AppInit, domReady) {
         domReady(function () {
             AppInit.initialize();

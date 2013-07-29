@@ -1,6 +1,6 @@
 /* jshint maxparams: false, maxstatements: false, browser: true */
 define([
-    "App", "text!root/config.json", "root/router",
+    "App", "text!app/config.json", "app/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
     "EmberEasyForm", "templates", "Bootstrap"
 ], function (App, config, Router, Application, Index, Login, Lobby, Player, EmberEasyForm) {
