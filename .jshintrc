@@ -1,6 +1,13 @@
 {
     "maxerr" : 50,
 
+    "indent" : 4,
+    "maxlen" : 160,
+    "maxstatements" : 10,
+    "maxparams" : 3,
+    "maxdepth" : 3,
+    "maxcomplexity" : 5,
+
     "bitwise" : true,
     "camelcase" : true,
     "curly" : true,
@@ -18,13 +25,6 @@
     "unused" : "strict",
     "strict" : true,
     "trailing" : true,
-
-    "maxlen" : 160,
-    "indent" : 4,
-    "maxstatements" : 10,
-    "maxdepth" : 3,
-    "maxparams" : 3,
-    "maxcomplexity" : 6,
 
     "asi" : false,
     "boss" : false,
