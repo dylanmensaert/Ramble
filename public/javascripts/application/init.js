@@ -1,14 +1,13 @@
-/* jshint maxparams: false */
-define([
-    "App", "application/root/route", "application/root/controller", "application/root/view"
-], function (App, Route, Controller, View) {
+define(function (require) {
     "use strict";
+
+    var App = require("App");
 
     return {
         initialize : function () {
-            App.ApplicationRoute = Route;
-            App.ApplicationController = Controller;
-            App.ApplicationView = View;
+            App.ApplicationRoute = require("application/root/route");
+            App.ApplicationController = require("application/root/controller");
+            App.ApplicationView = require("application/root/view");
         }
     };
 });

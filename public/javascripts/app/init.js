@@ -3,10 +3,8 @@ define(function (require) {
     //TODO: Put EmberEasyForm, templates and Bootstrap in seperate GUI-init
     "use strict";
 
-    var App, EmberEasyForm;
-
-    App = require("App");
-    EmberEasyForm = require("EmberEasyForm");
+    var App = require("App"),
+        EmberEasyForm = require("EmberEasyForm");
 
     require("templates");
     require("Bootstrap");
