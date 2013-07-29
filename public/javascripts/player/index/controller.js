@@ -6,8 +6,8 @@ define(function (require) {
 
     return Ember.ObjectController.extend(ControllerMixin, {
         hasObjectModel : true,
-        isOwnerOfAccount : Ember.computed(function () {
+        isOwnerOfAccount : function () {
             return this.get("account") === this.get("model");
-        }).property("account", "model")
+        }.property("account", "model")
     });
 });

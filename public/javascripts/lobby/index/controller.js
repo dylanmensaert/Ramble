@@ -25,11 +25,11 @@ define(function (require) {
                 this.transitionToRoute("login");
             }
         },
-        isOwnerOfLobby : Ember.computed(function () {
+        isOwnerOfLobby : function () {
             return this.get("account") === this.get("owner");
-        }).property("account", "owner"),
-        isMemberOfLobby : Ember.computed(function () {
+        }.property("account", "owner"),
+        isMemberOfLobby : function () {
             return this.get("members").contains(this.get("account"));
-        }).property("members.@each", "account")
+        }.property("members.@each", "account")
     });
 });
