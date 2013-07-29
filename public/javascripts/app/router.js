@@ -1,4 +1,4 @@
-/* jshint maxparams:4, nomen: false, browser: true */
+/* jshint maxparams: false, nomen: false, browser: true */
 define([
     "Ember", "App", "GoogleAnalytics", "app/config"
 ], function (Ember, App, GoogleAnalytics, config) {

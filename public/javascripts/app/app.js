@@ -12,7 +12,6 @@ define([
 
     App.deferReadiness();
 
-    //TODO: Move all App.xxxProperty to closure (App.create)
     App.Store = DS.Store.extend({
         adapter : DS.FixtureAdapter.create()
     });

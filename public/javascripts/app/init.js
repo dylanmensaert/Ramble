@@ -1,23 +1,27 @@
-/* jshint maxparams: false, browser: true */
-define([
-    "App", "app/router",
-    "application/init", "index/init", "login/init", "lobby/init", "player/init",
-    "EmberEasyForm", "templates", "Bootstrap"
-], function (App, Router, Application, Index, Login, Lobby, Player, EmberEasyForm) {
+/* jshint browser: true */
+define(function (require) {
     //TODO: Put EmberEasyForm, templates and Bootstrap in seperate GUI-init
     "use strict";
+
+    var App, EmberEasyForm;
+
+    App = require("App");
+    EmberEasyForm = require("EmberEasyForm");
+
+    require("templates");
+    require("Bootstrap");
 
     return {
         initialize : function () {
             window.App = App;
 
-            Router.initialize();
+            require("app/router").initialize();
 
-            Application.initialize();
-            Index.initialize();
-            Login.initialize();
-            Lobby.initialize();
-            Player.initialize();
+            require("application/init").initialize();
+            require("index/init").initialize();
+            require("login/init").initialize();
+            require("lobby/init").initialize();
+            require("player/init").initialize();
 
             EmberEasyForm.Config.registerWrapper("default", {
                 formClass : "form-horizontal",

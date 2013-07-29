@@ -3,10 +3,11 @@
 
     require.config({
         paths : {
-            //RequireJS-plugins
+            App : "app/app",
+            templates : "../templates",
+
             domReady : "../bower_components/requirejs-domready/domReady",
 
-            //frameworks
             Ember : "../bower_components/ember/ember",
             EmberData : "../bower_components/ember-data-shim/ember-data",
             EmberEasyForm : "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-0.3.2",
@@ -16,19 +17,20 @@
 
             Bootstrap : "../bower_components/components-bootstrap/js/bootstrap",
 
-            GoogleAnalytics : "https://ssl.google-analytics.com/ga",
-
-            //app
-            App : "app/app",
-            templates : "../templates"
+            GoogleAnalytics : "https://ssl.google-analytics.com/ga"
         },
-        //TODO: Export all remaining libraries too
         shim : {
             Ember : {
                 deps : [
                     "jQuery", "Handlebars"
                 ],
                 exports : "Ember"
+            },
+            templates : {
+                deps : [
+                    "Ember"
+                ],
+                exports : "Ember.TEMPLATES"
             },
             EmberData : {
                 deps : [
@@ -47,12 +49,6 @@
                     "Ember"
                 ],
                 exports : "Ember.Validations"
-            },
-            templates : {
-                deps : [
-                    "Ember"
-                ],
-                exports : "Ember.TEMPLATES"
             },
             jQuery : {
                 exports : "jQuery"
