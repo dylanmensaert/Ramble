@@ -1,18 +1,12 @@
-/* jshint maxparams: false, maxstatements: false, maxlen: false */
-define([
-    "App", "player/model",
-    "player/root/route", "player/root/controller", "player/root/view",
-    "player/index/route", "player/index/controller", "player/index/view",
-    "player/create/route", "player/create/controller", "player/create/view",
-    "player/edit/route", "player/edit/controller", "player/edit/view",
-    "player/delete/route", "player/delete/controller", "player/delete/view",
-    "player/list/route", "player/list/controller", "player/list/view"
-], function (App, Player, Route, Controller, View, IndexRoute, IndexController, IndexView, CreateRoute, CreateController, CreateView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
+/* jshint maxstatements: false */
+define(function (require) {
     "use strict";
+
+    var App = require("App");
 
     return {
         initialize : function () {
-            App.Player = Player;
+            App.Player = require("player/model");
 
             App.Player.FIXTURES = [
                 {
@@ -80,29 +74,29 @@ define([
                 }
             ];
 
-            App.PlayerRoute = Route;
-            App.PlayerController = Controller;
-            App.PlayerView = View;
+            App.PlayerRoute = require("player/root/route");
+            App.PlayerController = require("player/root/controller");
+            App.PlayerView = require("player/root/view");
 
-            App.PlayerIndexRoute = IndexRoute;
-            App.PlayerIndexController = IndexController;
-            App.PlayerIndexView = IndexView;
+            App.PlayerIndexRoute = require("player/index/route");
+            App.PlayerIndexController = require("player/index/controller");
+            App.PlayerIndexView = require("player/index/view");
 
-            App.PlayerCreateRoute = CreateRoute;
-            App.PlayerCreateController = CreateController;
-            App.PlayerCreateView = CreateView;
+            App.PlayerCreateRoute = require("player/create/route");
+            App.PlayerCreateController = require("player/create/controller");
+            App.PlayerCreateView = require("player/create/view");
 
-            App.PlayerEditRoute = EditRoute;
-            App.PlayerEditController = EditController;
-            App.PlayerEditView = EditView;
+            App.PlayerEditRoute = require("player/edit/route");
+            App.PlayerEditController = require("player/edit/controller");
+            App.PlayerEditView = require("player/edit/view");
 
-            App.PlayerDeleteRoute = DeleteRoute;
-            App.PlayerDeleteController = DeleteController;
-            App.PlayerDeleteView = DeleteView;
+            App.PlayerDeleteRoute = require("player/delete/route");
+            App.PlayerDeleteController = require("player/delete/controller");
+            App.PlayerDeleteView = require("player/delete/view");
 
-            App.PlayerListRoute = ListRoute;
-            App.PlayerListController = ListController;
-            App.PlayerListView = ListView;
+            App.PlayerListRoute = require("player/list/route");
+            App.PlayerListController = require("player/list/controller");
+            App.PlayerListView = require("player/list/view");
         }
     };
 });

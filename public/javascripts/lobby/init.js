@@ -1,18 +1,12 @@
-/* jshint maxparams: false, maxstatements: false, maxlen: false */
-define([
-    "App", "lobby/model",
-    "lobby/root/route", "lobby/root/controller", "lobby/root/view",
-    "lobby/index/route", "lobby/index/controller", "lobby/index/view",
-    "lobby/create/route", "lobby/create/controller", "lobby/create/view",
-    "lobby/edit/route", "lobby/edit/controller", "lobby/edit/view",
-    "lobby/delete/route", "lobby/delete/controller", "lobby/delete/view",
-    "lobby/list/route", "lobby/list/controller", "lobby/list/view"
-], function (App, Lobby, Route, Controller, View, IndexRoute, IndexController, IndexView, CreateRoute, CreateController, CreateView, EditRoute, EditController, EditView, DeleteRoute, DeleteController, DeleteView, ListRoute, ListController, ListView) {
+/* jshint maxstatements: false */
+define(function (require) {
     "use strict";
+
+    var App = require("App");
 
     return {
         initialize : function () {
-            App.Lobby = Lobby;
+            App.Lobby = require("lobby/model");
 
             //TODO: Create API in Express.js
             App.Lobby.FIXTURES = [
@@ -50,29 +44,29 @@ define([
                 }
             ];
 
-            App.LobbyRoute = Route;
-            App.LobbyController = Controller;
-            App.LobbyView = View;
+            App.LobbyRoute = require("lobby/root/route");
+            App.LobbyController = require("lobby/root/controller");
+            App.LobbyView = require("lobby/root/view");
 
-            App.LobbyIndexRoute = IndexRoute;
-            App.LobbyIndexController = IndexController;
-            App.LobbyIndexView = IndexView;
+            App.LobbyIndexRoute = require("lobby/index/route");
+            App.LobbyIndexController = require("lobby/index/controller");
+            App.LobbyIndexView = require("lobby/index/view");
 
-            App.LobbyCreateRoute = CreateRoute;
-            App.LobbyCreateController = CreateController;
-            App.LobbyCreateView = CreateView;
+            App.LobbyCreateRoute = require("lobby/create/route");
+            App.LobbyCreateController = require("lobby/create/controller");
+            App.LobbyCreateView = require("lobby/create/view");
 
-            App.LobbyEditRoute = EditRoute;
-            App.LobbyEditController = EditController;
-            App.LobbyEditView = EditView;
+            App.LobbyEditRoute = require("lobby/edit/route");
+            App.LobbyEditController = require("lobby/edit/controller");
+            App.LobbyEditView = require("lobby/edit/view");
 
-            App.LobbyDeleteRoute = DeleteRoute;
-            App.LobbyDeleteController = DeleteController;
-            App.LobbyDeleteView = DeleteView;
+            App.LobbyDeleteRoute = require("lobby/delete/route");
+            App.LobbyDeleteController = require("lobby/delete/controller");
+            App.LobbyDeleteView = require("lobby/delete/view");
 
-            App.LobbyListRoute = ListRoute;
-            App.LobbyListController = ListController;
-            App.LobbyListView = ListView;
+            App.LobbyListRoute = require("lobby/list/route");
+            App.LobbyListController = require("lobby/list/controller");
+            App.LobbyListView = require("lobby/list/view");
         }
     };
 });

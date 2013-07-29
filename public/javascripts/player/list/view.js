@@ -1,7 +1,8 @@
-define([
-    "Ember", "player/helpers/item"
-], function (Ember, playerItem) {
+define(function (require) {
     "use strict";
+
+    var Ember = require("Ember"),
+        playerItem = require("player/helpers/item");
 
     return Ember.View.extend({
         playerItem : playerItem
