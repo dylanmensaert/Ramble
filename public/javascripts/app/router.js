@@ -1,16 +1,14 @@
-/* jshint nomen: false, browser: true */
+/* jshint maxparams:4, nomen: false, browser: true */
 define([
-    "Ember", "App", "GoogleAnalytics"
-], function (Ember, App, GoogleAnalytics) {
+    "Ember", "App", "GoogleAnalytics", "app/config"
+], function (Ember, App, GoogleAnalytics, config) {
     "use strict";
 
     return {
         initialize : function () {
-            var applicationTitle = document.title;
+            var applicationTitle = document.title.replace("loading", "");
 
-            applicationTitle = applicationTitle.replace("loading", "");
-
-            GoogleAnalytics.push(["_setAccount", App.config.googleAnalyticsAccount]);
+            GoogleAnalytics.push(["_setAccount", config.googleAnalyticsAccount]);
 
             Ember.Route.reopen({
                 setupController : function (controller, model) {

@@ -9,6 +9,7 @@ body {
     margin: auto;
 }
 
+/*TODO: Not properly aligned on mobile devices*/
 .my-header-right {
     margin-right: 5px;
     margin-top: 20px;

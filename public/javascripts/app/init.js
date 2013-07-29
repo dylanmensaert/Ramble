@@ -1,17 +1,15 @@
-/* jshint maxparams: false, maxstatements: false, browser: true */
+/* jshint maxparams: false, browser: true */
 define([
-    "App", "text!app/config.json", "app/router",
+    "App", "app/router",
     "application/init", "index/init", "login/init", "lobby/init", "player/init",
     "EmberEasyForm", "templates", "Bootstrap"
-], function (App, config, Router, Application, Index, Login, Lobby, Player, EmberEasyForm) {
+], function (App, Router, Application, Index, Login, Lobby, Player, EmberEasyForm) {
     //TODO: Put EmberEasyForm, templates and Bootstrap in seperate GUI-init
     "use strict";
 
     return {
         initialize : function () {
             window.App = App;
-
-            App.config = JSON.parse(config);
 
             Router.initialize();
 

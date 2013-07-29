@@ -32,7 +32,7 @@ module.exports = function (grunt) {
             //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
             client : {
                 files : {
-                    src : ["<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.appScripts %>/.jshintrc"]
+                    src : ["<%= yeoman.appScripts %>/**/*.js", "<%= yeoman.appScripts %>/.jshintrc"]
                 },
                 options : {
                     jshintrc : "<%= yeoman.appScripts %>/.jshintrc"

@@ -1,6 +1,6 @@
 "use strict";
 
-var express, http, socketio, path, app, routes, server, io, staticPath;
+var express, http, socketio, path, app, staticPath, routes, server, io;
 
 express = require("express");
 http = require("http");
@@ -27,10 +27,9 @@ app.use(express.favicon(path.join(__dirname, staticPath, "/images/favicon.ico"))
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use(express.static(path.join(__dirname, staticPath)));
 
 app.get("/", routes.index);
-
-app.use(express.static(path.join(__dirname, staticPath)));
 
 server = http.createServer(app);
 io = socketio.listen(server);

@@ -1,12 +1,12 @@
 define([
-    "Ember", "EmberData"
-], function (Ember, DS) {
+    "Ember", "EmberData", "jQuery"
+], function (Ember, DS, $) {
     "use strict";
 
     var App = Ember.Application.create({
         LOG_TRANSITIONS : true,
         ready : function () {
-            Ember.$(".my-initial-loading").remove();
+            $(".my-initial-loading").remove();
         }
     });
 
