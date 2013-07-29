@@ -1,12 +1,11 @@
 "use strict";
 
-var express, http, socketio, path, app, staticPath, routes, server, io;
-
-express = require("express");
-http = require("http");
-socketio = require("socket.io");
-path = require("path");
-routes = require("./routes");
+var express = require("express"),
+    http = require("http"),
+    socketio = require("socket.io"),
+    path = require("path"),
+    routes = require("./routes"),
+    app, staticPath, server, io;
 
 app = express();
 
