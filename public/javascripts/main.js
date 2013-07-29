@@ -10,8 +10,8 @@
             //frameworks
             Ember : "../bower_components/ember/ember",
             EmberData : "../bower_components/ember-data-shim/ember-data",
-            EmberEasyForm : "../bower_components/ember-builds/easyForm/ember-easyForm-0.3.2",
-            EmberValidations : "../bower_components/ember-builds/validations/ember-validations-0.2.1",
+            EmberEasyForm : "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-0.3.2",
+            EmberValidations : "../bower_components/ember-dockyard-validations/validations/ember-validations-0.2.1",
             Handlebars : "../bower_components/handlebars/handlebars",
             jQuery : "../bower_components/jquery/jquery",
 

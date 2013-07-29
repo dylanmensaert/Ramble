@@ -7,7 +7,7 @@
         "requirejs-domready" : "~2.0.1",
         "ember" : "~1.0.0-rc.6",
         "ember-data-shim" : "~0.0.13",
-        "ember-builds" : "https://github.com/dockyard/ember-builds.git",
+        "ember-dockyard-validations" : "*",
         "jquery" : "~2.0.3",
         "components-bootstrap" : "~2.3.2"
     },

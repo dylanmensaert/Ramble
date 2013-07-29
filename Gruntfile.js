@@ -141,7 +141,8 @@ module.exports = function (grunt) {
                     name : "main",
                     mainConfigFile : "<%= yeoman.appScripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],
-                    out : "<%= yeoman.distScripts %>/main.min.js"
+                    out : "<%= yeoman.distScripts %>/main.min.js",
+                    stubModules : ["text"]
                 }
             }
         },
