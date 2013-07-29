@@ -1,8 +1,11 @@
-/* jshint maxparams: false, nomen: false, browser: true */
-define([
-    "Ember", "App", "GoogleAnalytics", "app/config"
-], function (Ember, App, GoogleAnalytics, config) {
+/* jshint nomen: false, browser: true */
+define(function (require) {
     "use strict";
+
+    var Ember = require("Ember"),
+        App = require("App"),
+        GoogleAnalytics = require("GoogleAnalytics"),
+        config = require("app/config");
 
     return {
         initialize : function () {

@@ -1,8 +1,8 @@
 /* jshint browser: true */
-define([
-    "App"
-], function (App) {
+define(function (require) {
     "use strict";
+
+    var App = require("App");
 
     describe("Lobby-describe", function () {
         it("Lobby-it", function () {
