@@ -1,5 +1,4 @@
 /* jshint browser: true */
-/* global describe, it, runs, expect, waitsFor */
 define([
     "App"
 ], function (App) {

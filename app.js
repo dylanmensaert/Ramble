@@ -1,4 +1,3 @@
-/* jshint node: true */
 "use strict";
 
 var express, http, socketio, path, app, routes, server, io, staticPath;

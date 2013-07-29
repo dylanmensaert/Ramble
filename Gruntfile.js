@@ -1,4 +1,4 @@
-/* jshint node: true, maxstatements: false */
+/* jshint maxstatements: false */
 "use strict";
 
 module.exports = function (grunt) {
@@ -30,17 +30,28 @@ module.exports = function (grunt) {
         yeoman : config,
         jshint : {
             //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
-            options : {
-                jshintrc : ".jshintrc"
-            },
             client : {
                 files : {
-                    src : ["<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.test %>/**/*.js"]
+                    src : ["<%= yeoman.appScripts %>/**/*.{js,json}", "<%= yeoman.appScripts %>/.jshintrc"]
+                },
+                options : {
+                    jshintrc : "<%= yeoman.appScripts %>/.jshintrc"
+                }
+            },
+            test : {
+                files : {
+                    src : ["<%= yeoman.test %>/**/*.js", "<%= yeoman.test %>/.jshintrc"]
+                },
+                options : {
+                    jshintrc : "<%= yeoman.test %>/.jshintrc"
                 }
             },
             server : {
                 files : {
                     src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= yeoman.routes %>/**/*.js"]
+                },
+                options : {
+                    jshintrc : ".jshintrc"
                 }
             }
         },
@@ -112,7 +123,7 @@ module.exports = function (grunt) {
                     templateName : function (sourceFile) {
                         var templateName = sourceFile;
 
-                        templateName = templateName.replace("public/javascripts/", "");
+                        templateName = templateName.replace(config.appScripts + "/", "");
                         templateName = templateName.replace("/template", "");
                         templateName = templateName.replace("/root", "");
 
