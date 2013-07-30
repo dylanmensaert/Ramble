@@ -7,10 +7,10 @@ define(function (require) {
         App;
 
     App = Ember.Application.create({
-        LOG_TRANSITIONS : true,
         ready : function () {
             $(".my-initial-loading").remove();
-        }
+        },
+        LOG_TRANSITIONS : true
     });
 
     App.deferReadiness();

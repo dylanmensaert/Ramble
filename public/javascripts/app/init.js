@@ -1,22 +1,17 @@
 /* jshint browser: true, maxstatements: false */
 define(function (require) {
-    //TODO: Put EmberEasyForm, templates and Bootstrap in seperate GUI-init
     "use strict";
 
     var App = require("App"),
         Ember = require("Ember"),
-        templates = require("templates"),
-        EmberEasyForm = require("EmberEasyForm");
-
-    require("Bootstrap");
+        templates = require("templates");
 
     return {
         initialize : function () {
-            window.App = App;
-
             Ember.TEMPLATES = templates;
 
             require("app/router").initialize();
+            require("app/presentation").initialize();
 
             require("application/init").initialize();
             require("index/init").initialize();
@@ -126,18 +121,10 @@ define(function (require) {
                 }
             ];
 
-            EmberEasyForm.Config.registerWrapper("default", {
-                formClass : "form-horizontal",
-                fieldErrorClass : "error",
-                errorClass : "help-inline",
-                hintClass : "help-block",
-                labelClass : "control-label",
-                inputClass : "control-group",
-                wrapControls : true,
-                controlsWrapperClass : "controls"
-            });
-
             App.advanceReadiness();
+
+            //TODO: Is needed for Ember-Data relationships?
+            window.App = App;
 
             //TODO: Is needed to run tests in Phantom.js with Jasmine?
             window.isAppInitialized = true;

@@ -63,6 +63,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+        //TODO: Improve integration of unit tests!!
         jasmine : {
             all : {
                 src : [
