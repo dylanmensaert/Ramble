@@ -8,6 +8,7 @@
 
             domReady : "../bower_components/requirejs-domready/domReady",
 
+            //TODO: Update Ember to RC6.1, see: https://github.com/components/ember.
             Ember : "../bower_components/ember/ember",
             EmberData : "../bower_components/ember-data-shim/ember-data",
             EmberEasyForm : "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-0.3.2",

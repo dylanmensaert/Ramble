@@ -4,15 +4,17 @@ define(function (require) {
     "use strict";
 
     var App = require("App"),
-        EmberEasyForm = require("EmberEasyForm"),
-        Ember = require("Ember");
+        Ember = require("Ember"),
+        templates = require("templates"),
+        EmberEasyForm = require("EmberEasyForm");
 
-    Ember.TEMPLATES = require("templates");
     require("Bootstrap");
 
     return {
         initialize : function () {
             window.App = App;
+
+            Ember.TEMPLATES = templates;
 
             require("app/router").initialize();
 
@@ -137,7 +139,7 @@ define(function (require) {
 
             App.advanceReadiness();
 
-            //TODO: Is needed to run tests in Phantom.js?
+            //TODO: Is needed to run tests in Phantom.js with Jasmine?
             window.isAppInitialized = true;
         }
     };

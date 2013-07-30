@@ -3,7 +3,7 @@
 
 module.exports = function (grunt) {
     require("matchdep").filterDev("grunt-*").forEach(function (name) {
-        if (!/template-jasmine-requirejs/.test(name)) {
+        if (!/template-/.test(name)) {
             grunt.loadNpmTasks(name);
         }
     });
@@ -138,6 +138,7 @@ module.exports = function (grunt) {
         requirejs : {
             all : {
                 options : {
+                    //TODO: What is name-property for?
                     name : "main",
                     mainConfigFile : "<%= yeoman.appScripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],

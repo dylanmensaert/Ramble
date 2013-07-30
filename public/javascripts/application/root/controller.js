@@ -4,6 +4,7 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Controller.extend({
+        //TODO: Move document.title to router
         documentTitle : "Application",
         isLeaf : false,
         needs : ["login"],

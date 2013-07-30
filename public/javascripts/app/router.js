@@ -5,12 +5,12 @@ define(function (require) {
     var Ember = require("Ember"),
         App = require("App"),
         GoogleAnalytics = require("GoogleAnalytics"),
-        config = require("app/config");
+        config = require("app/config"),
+    //TODO: Put document.title in config.json? Or better, use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
+        applicationTitle = document.title.replace("loading", "");
 
     return {
         initialize : function () {
-            var applicationTitle = document.title.replace("loading", "");
-
             GoogleAnalytics.push(["_setAccount", config.googleAnalyticsAccount]);
 
             Ember.Route.reopen({
