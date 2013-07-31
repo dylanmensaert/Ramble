@@ -63,7 +63,7 @@ module.exports = function (grunt) {
             production : {
                 options : {
                     specify : ["<%= config.sass %>/main.scss"],
-                    cssPath : "<%= config.distStylesheets %>",
+                    cssDir : "<%= config.distStylesheets %>",
                     environment : "production"
                 }
             }
@@ -96,9 +96,7 @@ module.exports = function (grunt) {
         //TODO: Improve integration of unit tests!!
         jasmine : {
             all : {
-                src : [
-                    "main.js"
-                ],
+                src : ["main.js"],
                 options : {
                     host : "http://localhost:8002",
                     specs : "<%= config.test %>/**/*.js",
@@ -129,7 +127,7 @@ module.exports = function (grunt) {
             }
         },
         copy : {
-            dist : {
+            images : {
                 files : [
                     {
                         expand : true,
@@ -194,6 +192,6 @@ module.exports = function (grunt) {
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
+    grunt.registerTask("build", ["clean:dist", "copy:images", "requirejs:all", "compass:production"]);
     grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };

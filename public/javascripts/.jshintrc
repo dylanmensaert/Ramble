@@ -3,7 +3,7 @@
 
     "indent" : 4,
     "maxlen" : 160,
-    "maxstatements" : 12,
+    "maxstatements" : 10,
     "maxparams" : 3,
     "maxdepth" : 3,
     "maxcomplexity" : 5,
