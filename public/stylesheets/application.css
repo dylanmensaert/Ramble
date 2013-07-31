@@ -2,7 +2,6 @@ body {
     padding-top: 60px;
 }
 
-/*TODO: Use prefix with "my-"?*/
 .my-initial-loading {
     text-align: center;
     max-width: 300px;

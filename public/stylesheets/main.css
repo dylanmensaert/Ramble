@@ -1,4 +1,4 @@
-/*TODO: Use SASS instead of regular CSS*/
-@import url("../bower_components/components-bootstrap/css/bootstrap.css");
+/*TODO: Use LESS instead of regular CSS*/
+@import url("../bower_components/bootstrap/css/bootstrap.css");
 @import url("application.css");
-@import url("../bower_components/components-bootstrap/css/bootstrap-responsive.css");
+@import url("../bower_components/bootstrap/css/bootstrap-responsive.css");

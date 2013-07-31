@@ -100,7 +100,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand : true,
-                        cwd : "public/bower_components/components-bootstrap/img/",
+                        cwd : "public/bower_components/bootstrap/img/",
                         src : ["**"],
                         dest : "<%= yeoman.distImages %>"
                     }
