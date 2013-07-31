@@ -16,7 +16,7 @@
             Handlebars : "../bower_components/handlebars/handlebars",
             jQuery : "../bower_components/jquery/jquery",
 
-            //TODO: Update Sass-Boostrap to 3.0.0.
+            //TODO: Update Sass-Boostrap to 3.0.0, see: https://github.com/jlong/sass-twitter-bootstrap.
             Bootstrap : "../bower_components/sass-bootstrap/docs/assets/js/bootstrap",
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga"

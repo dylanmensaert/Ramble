@@ -1,4 +1,3 @@
-/* jshint maxstatements: false */
 "use strict";
 
 module.exports = function (grunt) {
