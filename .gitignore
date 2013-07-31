@@ -2,9 +2,9 @@
 
 node_modules/
 public/bower_components/
+public/.sass-cache/
 .grunt/
 
 dist/
-public/templates.js
 public/stylesheets/
-public/.sass-cache/
+public/templates.js

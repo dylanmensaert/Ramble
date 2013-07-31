@@ -18,17 +18,24 @@ module.exports = function (grunt) {
         styles : "stylesheets",
         images : "images",
         components : "bower_components",
-        sass : "sass"
-    };
+        templatesjs : "templates.js",
+        sass : "sass",
+        init : function () {
+            this.appScripts = this.app + "/" + this.scripts;
+            this.appStyles = this.app + "/" + this.styles;
+            this.appImages = this.app + "/" + this.images;
+            this.appComponents = this.app + "/" + this.components;
+            this.appSass = this.app + "/" + this.sass;
+            this.appTemplatesjs = this.app + "/" + this.templatesjs;
+            this.distScripts = this.dist + "/" + this.scripts;
+            this.distStyles = this.dist + "/" + this.styles;
+            this.distImages = this.dist + "/" + this.images;
 
-    config.appScripts = config.app + "/" + config.scripts;
-    config.appStyles = config.app + "/" + config.styles;
-    config.appImages = config.app + "/" + config.images;
-    config.appComponents = config.app + "/" + config.components;
-    config.appSass = config.app + "/" + config.sass;
-    config.distScripts = config.dist + "/" + config.scripts;
-    config.distStyles = config.dist + "/" + config.styles;
-    config.distImages = config.dist + "/" + config.images;
+            delete this.init;
+
+            return this;
+        }
+    }.init();
 
     grunt.initConfig({
         yeoman : config,
@@ -48,7 +55,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files : {
-                    "public/templates.js" : "<%= yeoman.appScripts %>/**/*.handlebars"
+                    "<%= yeoman.appTemplatesjs %>" : "<%= yeoman.appScripts %>/**/*.handlebars"
                 }
             }
         },
@@ -77,25 +84,19 @@ module.exports = function (grunt) {
         },
         jshint : {
             client : {
-                files : {
-                    src : ["<%= yeoman.appScripts %>/**/*.js", "<%= yeoman.appScripts %>/.jshintrc"]
-                },
+                src : ["<%= yeoman.appScripts %>/**/*.js", "<%= yeoman.appScripts %>/.jshintrc"],
                 options : {
                     jshintrc : "<%= yeoman.appScripts %>/.jshintrc"
                 }
             },
             test : {
-                files : {
-                    src : ["<%= yeoman.test %>/**/*.js", "<%= yeoman.test %>/.jshintrc"]
-                },
+                src : ["<%= yeoman.test %>/**/*.js", "<%= yeoman.test %>/.jshintrc"],
                 options : {
                     jshintrc : "<%= yeoman.test %>/.jshintrc"
                 }
             },
             server : {
-                files : {
-                    src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= yeoman.routes %>/**/*.js"]
-                },
+                src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= yeoman.routes %>/**/*.js"],
                 options : {
                     jshintrc : ".jshintrc"
                 }
@@ -127,6 +128,15 @@ module.exports = function (grunt) {
         clean : {
             dist : {
                 src : ["<%= yeoman.dist %>"]
+            },
+            cleanup : {
+                src : [
+                    "node_modules",
+                    "<%= yeoman.appComponents %>",
+                    "<%= yeoman.app %>/.sass-cache",
+                    "<%= yeoman.appStyles %>",
+                    "<%= yeoman.appTemplatesjs %>"
+                ]
             },
             test : {
                 src : ["main.js"]
@@ -192,6 +202,5 @@ module.exports = function (grunt) {
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
-    //TODO: Clean bower_components and node_modules too!
-    grunt.registerTask("cleanup", ["clean:dist"]);
+    grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };
