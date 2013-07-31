@@ -1,20 +1,19 @@
 {{#formFor this}}
 
-{{input title placeholder="Title"}}
-{{input maxMembers placeholder="Max members"}}
-{{input password placeholder="Password"}}
-{{input passwordConfirmation label="Password confirmation" placeholder="Password confirmation"}}
+    {{input title placeholder="Title"}}
+    {{input maxMembers placeholder="Max members"}}
+    {{input password placeholder="Password"}}
+    {{input passwordConfirmation label="Password confirmation" placeholder="Password confirmation"}}
 
-<div class="control-group">
-    <div class="controls">
-        <button class="btn btn-primary"
-        {{action "create"}}>
-        Create
-        </button>
-        {{#linkTo "lobby.list" classNames="btn"}}
-        Cancel
-        {{/linkTo}}
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" {{action "create"}}>
+                Create
+            </button>
+            {{#linkTo "lobby.list" classNames="btn"}}
+                Cancel
+            {{/linkTo}}
+        </div>
     </div>
-</div>
 
 {{/formFor}}

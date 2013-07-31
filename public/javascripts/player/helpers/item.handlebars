@@ -1,13 +1,12 @@
 {{#linkTo "player.index" this}}
-{{id}} - {{username}}
+    {{id}} - {{username}}
 
-{{#if controller.isOwnerOfLobby}}
+    {{#if controller.isOwnerOfLobby}}
 
-<button class="close pull-right"
-{{action "kick" this bubbles=false}}>
-&times;
-</button>
+        <button class="close pull-right" {{action "kick" this bubbles=false}}>
+            &times;
+        </button>
 
-{{/if}}
+    {{/if}}
 
 {{/linkTo}}

@@ -1,20 +1,19 @@
 {{#formFor this}}
 
-{{input username placeholder="Username"}}
-{{input email placeholder="Email"}}
-{{input password placeholder="Password"}}
-{{input passwordConfirmation label="Password confirmation" placeholder="Password confirmation"}}
+    {{input username placeholder="Username"}}
+    {{input email placeholder="Email"}}
+    {{input password placeholder="Password"}}
+    {{input passwordConfirmation label="Password confirmation" placeholder="Password confirmation"}}
 
-<div class="control-group">
-    <div class="controls">
-        <button class="btn btn-primary"
-        {{action "create"}}>
-        Sign up
-        </button>
-        {{#linkTo "index" classNames="btn"}}
-        Cancel
-        {{/linkTo}}
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" {{action "create"}}>
+                Sign up
+            </button>
+            {{#linkTo "index" classNames="btn"}}
+                Cancel
+            {{/linkTo}}
+        </div>
     </div>
-</div>
 
 {{/formFor}}

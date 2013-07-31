@@ -10,30 +10,28 @@
     <div>
         {{#if isOwnerOfLobby}}
 
-        {{#linkTo "lobby.edit" this classNames="btn"}}
-        Edit
-        {{/linkTo}}
-        {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
-        Delete
-        {{/linkTo}}
+            {{#linkTo "lobby.edit" this classNames="btn"}}
+                Edit
+            {{/linkTo}}
+            {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
+                Delete
+            {{/linkTo}}
 
         {{else}}
 
-        {{#if isMemberOfLobby}}
+            {{#if isMemberOfLobby}}
 
-        <button class="btn"
-        {{action "leave"}}>
-        Leave
-        </button>
+                <button class="btn" {{action "leave"}}>
+                    Leave
+                </button>
 
-        {{else}}
+            {{else}}
 
-        <button class="btn"
-        {{action "join"}}>
-        Join
-        </button>
+                <button class="btn" {{action "join"}}>
+                    Join
+                </button>
 
-        {{/if}}
+            {{/if}}
 
         {{/if}}
     </div>
@@ -46,7 +44,7 @@
 
     <p>
         {{#linkTo "player" owner}}
-        {{owner.username}}
+            {{owner.username}}
         {{/linkTo}}
     </p>
 </div>
@@ -63,9 +61,9 @@
         <div class="span6">
             {{#if isOwnerOfLobby}}
 
-            <h4 class="pull-right my-header-right">
-                Kick
-            </h4>
+                <h4 class="pull-right my-header-right">
+                    Kick
+                </h4>
 
             {{/if}}
         </div>

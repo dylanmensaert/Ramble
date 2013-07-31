@@ -8,48 +8,48 @@
             </a>
 
             {{#linkTo "index" classNames="brand"}}
-            Ramble
+                Ramble
             {{/linkTo}}
 
             <div class="nav-collapse collapse">
 
                 {{#if isLoggedIn}}
 
-                <ul class="nav pull-right">
-                    <!--TODO: Dropdown does not work on touchbased devices-->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            {{account.username}}
-                            <b class="caret"></b>
-                        </a>
+                    <ul class="nav pull-right">
+                        <!--TODO: Dropdown does not work on touchbased devices-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                {{account.username}}
+                                <b class="caret"></b>
+                            </a>
 
-                        <ul class="dropdown-menu">
-                            <li>
-                                {{#linkTo "player.index" account}}
-                                Profile
-                                {{/linkTo}}
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#" {{action "logout"}}>
-                                Log out
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    {{#linkTo "player.index" account}}
+                                        Profile
+                                    {{/linkTo}}
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#" {{action "logout"}}>
+                                        Log out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                 {{else}}
 
-                <form class="navbar-form pull-right">
-                    {{#linkTo "login" classNames="btn"}}
-                    Log in
-                    {{/linkTo}}
+                    <form class="navbar-form pull-right">
+                        {{#linkTo "login" classNames="btn"}}
+                            Log in
+                        {{/linkTo}}
 
-                    {{#linkTo "player.create" classNames="btn btn-success"}}
-                    Sign up
-                    {{/linkTo}}
-                </form>
+                        {{#linkTo "player.create" classNames="btn btn-success"}}
+                            Sign up
+                        {{/linkTo}}
+                    </form>
 
                 {{/if}}
 
@@ -57,15 +57,15 @@
                     <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
                     <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
                     {{#linkTo "lobby.list" tagName="li" href=false}}
-                    {{#linkTo "lobby.list"}}
-                    Lobby list
-                    {{/linkTo}}
+                        {{#linkTo "lobby.list"}}
+                            Lobby list
+                        {{/linkTo}}
                     {{/linkTo}}
 
                     {{#linkTo "player.list" tagName="li" href=false}}
-                    {{#linkTo "player.list"}}
-                    Player list
-                    {{/linkTo}}
+                        {{#linkTo "player.list"}}
+                            Player list
+                        {{/linkTo}}
                     {{/linkTo}}
                 </ul>
             </div>

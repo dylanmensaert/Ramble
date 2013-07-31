@@ -16,20 +16,19 @@
     </div>
 
     {{#unless isValidLogin}}
-    <div class="control-group">
-        <div class="controls">
-            <p class="text-error">
-                Login not successful
-            </p>
+        <div class="control-group">
+            <div class="controls">
+                <p class="text-error">
+                    Login not successful
+                </p>
+            </div>
         </div>
-    </div>
     {{/unless}}
 
     <div class="control-group">
         <div class="controls">
-            <button class="btn btn-primary"
-            {{action "login"}}>
-            Log in
+            <button class="btn btn-primary" {{action "login"}}>
+                Log in
             </button>
         </div>
     </div>
