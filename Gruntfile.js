@@ -16,18 +16,53 @@ module.exports = function (grunt) {
         routes : "routes",
         scripts : "/javascripts",
         styles : "/stylesheets",
-        images : "/images"
+        images : "/images",
+        sass : "/sass"
     };
 
     config.appScripts = config.app + config.scripts;
     config.appStyles = config.app + config.styles;
     config.appImages = config.app + config.images;
+    config.appSass = config.app + config.sass;
     config.distScripts = config.dist + config.scripts;
     config.distStyles = config.dist + config.styles;
     config.distImages = config.dist + config.images;
 
     grunt.initConfig({
         yeoman : config,
+        //TODO: Update grunt-ember-templates to latest version.
+        //once ember supports the latest version of Handlebars, see: https://github.com/dgeb/grunt-ember-templates/issues/37.
+        emberTemplates : {
+            all : {
+                options : {
+                    templateName : function (sourceFile) {
+                        var templateName = sourceFile;
+
+                        templateName = templateName.replace(config.appScripts + "/", "");
+                        templateName = templateName.replace("/template", "");
+                        templateName = templateName.replace("/root", "");
+
+                        return templateName;
+                    }
+                },
+                files : {
+                    "public/templates.js" : "<%= yeoman.appScripts %>/**/*.handlebars"
+                }
+            }
+        },
+        compass : {
+            all : {
+                options : {
+                    sassDir : "<%= yeoman.appSass %>",
+                    cssDir : "<%= yeoman.appStyles %>",
+                    imagesDir : "<%= yeoman.appImages %>",
+                    javascriptsDir : "<%= yeoman.appScripts %>",
+                    fontsDir : "<%= yeoman.appScripts %>/fonts",
+                    importPath : "<%= yeoman.app %>/bower_components"
+                    //outputStyle : "expanded"
+                }
+            }
+        },
         jshint : {
             //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
             client : {
@@ -100,7 +135,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand : true,
-                        cwd : "public/bower_components/bootstrap/img/",
+                        cwd : "public/bower_components/sass-bootstrap/img/",
                         src : ["**"],
                         dest : "<%= yeoman.distImages %>"
                     }
@@ -115,26 +150,6 @@ module.exports = function (grunt) {
                         dest : "./"
                     }
                 ]
-            }
-        },
-        //TODO: Update grunt-ember-templates to latest version.
-        //once ember supports the latest version of Handlebars, see: https://github.com/dgeb/grunt-ember-templates/issues/37.
-        emberTemplates : {
-            all : {
-                options : {
-                    templateName : function (sourceFile) {
-                        var templateName = sourceFile;
-
-                        templateName = templateName.replace(config.appScripts + "/", "");
-                        templateName = templateName.replace("/template", "");
-                        templateName = templateName.replace("/root", "");
-
-                        return templateName;
-                    }
-                },
-                files : {
-                    "public/templates.js" : "<%= yeoman.appScripts %>/**/*.handlebars"
-                }
             }
         },
         requirejs : {
@@ -177,8 +192,8 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
-    grunt.registerTask("compile", ["emberTemplates:all"]);
-    grunt.registerTask("lint", ["jshint", "csslint:all"]);
+    grunt.registerTask("compile", ["emberTemplates:all", "compass:all"]);
+    grunt.registerTask("lint", ["jshint"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
     //TODO: Clean bower_components and node_modules too!

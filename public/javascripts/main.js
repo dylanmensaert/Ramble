@@ -16,7 +16,8 @@
             Handlebars : "../bower_components/handlebars/handlebars",
             jQuery : "../bower_components/jquery/jquery",
 
-            Bootstrap : "../bower_components/bootstrap/js/",
+            //TODO: Update Sass-Boostrap to 3.0.0.
+            Bootstrap : "../bower_components/sass-bootstrap/js/",
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga"
         },
