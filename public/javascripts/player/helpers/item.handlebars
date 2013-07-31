@@ -2,11 +2,8 @@
     {{id}} - {{username}}
 
     {{#if controller.isOwnerOfLobby}}
-
         <button class="close pull-right" {{action "kick" this bubbles=false}}>
             &times;
         </button>
-
     {{/if}}
-
 {{/linkTo}}

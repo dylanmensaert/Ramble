@@ -1,5 +1,4 @@
 {{#formFor this}}
-
     {{input title placeholder="Title"}}
     {{input maxMembers placeholder="Max members"}}
     {{input password placeholder="Password"}}
@@ -10,10 +9,10 @@
             <button class="btn btn-primary" {{action "save"}}>
                 Save
             </button>
+
             {{#linkTo "lobby.index" this classNames="btn"}}
                 Cancel
             {{/linkTo}}
         </div>
     </div>
-
 {{/formFor}}

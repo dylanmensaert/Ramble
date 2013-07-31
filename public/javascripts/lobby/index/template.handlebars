@@ -9,30 +9,23 @@
 
     <div>
         {{#if isOwnerOfLobby}}
-
             {{#linkTo "lobby.edit" this classNames="btn"}}
                 Edit
             {{/linkTo}}
+
             {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
                 Delete
             {{/linkTo}}
-
         {{else}}
-
             {{#if isMemberOfLobby}}
-
                 <button class="btn" {{action "leave"}}>
                     Leave
                 </button>
-
             {{else}}
-
                 <button class="btn" {{action "join"}}>
                     Join
                 </button>
-
             {{/if}}
-
         {{/if}}
     </div>
 </div>
@@ -60,11 +53,9 @@
 
         <div class="span6">
             {{#if isOwnerOfLobby}}
-
                 <h4 class="pull-right my-header-right">
                     Kick
                 </h4>
-
             {{/if}}
         </div>
     </div>

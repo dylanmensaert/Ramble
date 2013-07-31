@@ -1,17 +1,20 @@
 <form class="form-horizontal">
     <div class="control-group">
-        <label class="control-label" for="inputLoginUsername">Username</label>
+        <label class="control-label" for="inputLoginUsername">
+            Username
+        </label>
 
         <div class="controls">
             {{view Ember.TextField valueBinding="username" id="inputLoginUsername" placeholder="Username"}}
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="inputLoginPassword">Password</label>
+        <label class="control-label" for="inputLoginPassword">
+            Password
+        </label>
 
         <div class="controls">
-            {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword"
-            placeholder="Password"}}
+            {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword" placeholder="Password"}}
         </div>
     </div>
 

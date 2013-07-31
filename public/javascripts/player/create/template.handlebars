@@ -1,5 +1,4 @@
 {{#formFor this}}
-
     {{input username placeholder="Username"}}
     {{input email placeholder="Email"}}
     {{input password placeholder="Password"}}
@@ -10,10 +9,10 @@
             <button class="btn btn-primary" {{action "create"}}>
                 Sign up
             </button>
+
             {{#linkTo "index" classNames="btn"}}
                 Cancel
             {{/linkTo}}
         </div>
     </div>
-
 {{/formFor}}

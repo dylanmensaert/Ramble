@@ -14,7 +14,6 @@
             <div class="nav-collapse collapse">
 
                 {{#if isLoggedIn}}
-
                     <ul class="nav pull-right">
                         <!--TODO: Dropdown does not work on touchbased devices-->
                         <li class="dropdown">
@@ -29,7 +28,9 @@
                                         Profile
                                     {{/linkTo}}
                                 </li>
+
                                 <li class="divider"></li>
+
                                 <li>
                                     <a href="#" {{action "logout"}}>
                                         Log out
@@ -38,9 +39,7 @@
                             </ul>
                         </li>
                     </ul>
-
                 {{else}}
-
                     <form class="navbar-form pull-right">
                         {{#linkTo "login" classNames="btn"}}
                             Log in
@@ -50,7 +49,6 @@
                             Sign up
                         {{/linkTo}}
                     </form>
-
                 {{/if}}
 
                 <ul class="nav">
