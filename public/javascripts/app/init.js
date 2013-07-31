@@ -3,7 +3,8 @@ define(function (require) {
     "use strict";
 
     var App = require("App"),
-        Ember = require("Ember");
+        Ember = require("Ember"),
+        DS = require("EmberData");
 
     return {
         initialize : function () {
@@ -17,6 +18,25 @@ define(function (require) {
             require("login/init").initialize();
             require("lobby/init").initialize();
             require("player/init").initialize();
+
+            //TODO: Where to move this code?
+            App.Lobby.reopen({
+                owner : DS.belongsTo(App.Player, {
+                    inverse : "ownedLobbies"
+                }),
+                members : DS.hasMany(App.Player, {
+                    inverse : "joinedLobbies"
+                })
+            });
+
+            App.Player.reopen({
+                ownedLobbies : DS.hasMany(App.Lobby, {
+                    inverse : "owner"
+                }),
+                joinedLobbies : DS.hasMany(App.Lobby, {
+                    inverse : "members"
+                })
+            });
 
             //TODO: Create API in Express.js
             App.Lobby.FIXTURES = [
@@ -121,9 +141,6 @@ define(function (require) {
             ];
 
             App.advanceReadiness();
-
-            //TODO: Is needed for Ember-Data relationships?
-            window.App = App;
 
             //TODO: Is needed to run tests in Phantom.js with Jasmine?
             window.isAppInitialized = true;

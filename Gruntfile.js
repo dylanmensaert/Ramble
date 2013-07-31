@@ -67,7 +67,7 @@ module.exports = function (grunt) {
                     specify : ["<%= yeoman.appSass %>/**/*.scss"]
                 }
             },
-            dist : {
+            production : {
                 options : {
                     specify : ["<%= yeoman.appSass %>/main.scss"],
                     cssPath : "<%= yeoman.distStyles %>",
