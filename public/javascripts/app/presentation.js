@@ -3,8 +3,8 @@ define(function (require) {
 
     var EmberEasyForm = require("EmberEasyForm");
 
-    //TODO: Require only the needed Bootstrap-libraries.
-    //require("Bootstrap");
+    //TODO: Require only the needed Bootstrap-plugins?
+    require("Bootstrap");
 
     return {
         initialize : function () {

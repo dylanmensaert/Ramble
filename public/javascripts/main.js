@@ -17,7 +17,7 @@
             jQuery : "../bower_components/jquery/jquery",
 
             //TODO: Update Sass-Boostrap to 3.0.0.
-            Bootstrap : "../bower_components/sass-bootstrap/js/",
+            Bootstrap : "../bower_components/sass-bootstrap/docs/assets/js/bootstrap",
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga"
         },

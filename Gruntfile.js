@@ -8,28 +8,29 @@ module.exports = function (grunt) {
         }
     });
 
-    //TODO: Reuse path-strings to avoid duplication.
     var config = {
-        app : "public",
+        public : "public",
         dist : "dist",
         test : "test",
         routes : "routes",
-        scripts : "javascripts",
-        styles : "stylesheets",
+        javascripts : "javascripts",
+        sass : "sass",
+        stylesheets : "stylesheets",
         images : "images",
         components : "bower_components",
         templatesjs : "templates.js",
-        sass : "sass",
         init : function () {
-            this.appScripts = this.app + "/" + this.scripts;
-            this.appStyles = this.app + "/" + this.styles;
-            this.appImages = this.app + "/" + this.images;
-            this.appComponents = this.app + "/" + this.components;
-            this.appSass = this.app + "/" + this.sass;
-            this.appTemplatesjs = this.app + "/" + this.templatesjs;
-            this.distScripts = this.dist + "/" + this.scripts;
-            this.distStyles = this.dist + "/" + this.styles;
+            this.publicJavascripts = this.public + "/" + this.javascripts;
+            this.publicSass = this.public + "/" + this.sass;
+            this.publicStylesheets = this.public + "/" + this.stylesheets;
+            this.publicImages = this.public + "/" + this.images;
+
+            this.distJavascripts = this.dist + "/" + this.javascripts;
+            this.distStylesheets = this.dist + "/" + this.stylesheets;
             this.distImages = this.dist + "/" + this.images;
+
+            this.publicComponents = this.public + "/" + this.components;
+            this.publicTemplatesjs = this.public + "/" + this.templatesjs;
 
             delete this.init;
 
@@ -38,7 +39,7 @@ module.exports = function (grunt) {
     }.init();
 
     grunt.initConfig({
-        yeoman : config,
+        config : config,
         //TODO: Update grunt-ember-templates to latest version.
         //once ember supports the latest version of Handlebars, see: https://github.com/dgeb/grunt-ember-templates/issues/37.
         emberTemplates : {
@@ -47,7 +48,7 @@ module.exports = function (grunt) {
                     templateName : function (sourceFile) {
                         var templateName = sourceFile;
 
-                        templateName = templateName.replace(config.appScripts + "/", "");
+                        templateName = templateName.replace(config.publicJavascripts + "/", "");
                         templateName = templateName.replace("/template", "");
                         templateName = templateName.replace("/root", "");
 
@@ -55,48 +56,47 @@ module.exports = function (grunt) {
                     }
                 },
                 files : {
-                    "<%= yeoman.appTemplatesjs %>" : "<%= yeoman.appScripts %>/**/*.handlebars"
+                    "<%= config.publicTemplatesjs %>" : "<%= config.publicJavascripts %>/**/*.handlebars"
                 }
             }
         },
         compass : {
             options : {
-                importPath : "<%= yeoman.appComponents %>",
-                basePath : "<%= yeoman.app %>",
-                sassDir : "<%= yeoman.sass %>",
-                cssDir : "<%= yeoman.styles %>",
-                imagesDir : "<%= yeoman.images %>",
-                javascriptsDir : "<%= yeoman.scripts %>",
-                fontsDir : "fonts"
+                importPath : "<%= config.publicComponents %>",
+                basePath : "<%= config.public %>",
+                sassDir : "<%= config.sass %>",
+                cssDir : "<%= config.stylesheets %>",
+                imagesDir : "<%= config.images %>",
+                javascriptsDir : "<%= config.javascripts %>"
             },
             development : {
                 options : {
-                    specify : ["<%= yeoman.appSass %>/**/*.scss"]
+                    specify : ["<%= config.publicSass %>/**/*.scss"]
                 }
             },
             production : {
                 options : {
-                    specify : ["<%= yeoman.appSass %>/main.scss"],
-                    cssPath : "<%= yeoman.distStyles %>",
+                    specify : ["<%= config.publicSass %>/main.scss"],
+                    cssPath : "<%= config.distStylesheets %>",
                     environment : "production"
                 }
             }
         },
         jshint : {
             client : {
-                src : ["<%= yeoman.appScripts %>/**/*.js", "<%= yeoman.appScripts %>/.jshintrc"],
+                src : ["<%= config.publicJavascripts %>/**/*.js", "<%= config.publicJavascripts %>/.jshintrc"],
                 options : {
-                    jshintrc : "<%= yeoman.appScripts %>/.jshintrc"
+                    jshintrc : "<%= config.publicJavascripts %>/.jshintrc"
                 }
             },
             test : {
-                src : ["<%= yeoman.test %>/**/*.js", "<%= yeoman.test %>/.jshintrc"],
+                src : ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
                 options : {
-                    jshintrc : "<%= yeoman.test %>/.jshintrc"
+                    jshintrc : "<%= config.test %>/.jshintrc"
                 }
             },
             server : {
-                src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= yeoman.routes %>/**/*.js"],
+                src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
                 options : {
                     jshintrc : ".jshintrc"
                 }
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["<%= yeoman.appStyles %>/**/*.css", "!<%= yeoman.appStyles %>/main.css"]
+                src : ["<%= config.publicStylesheets %>/**/*.css", "!<%= config.publicStylesheets %>/main.css"]
             }
         },
         //TODO: Improve integration of unit tests!!
@@ -115,11 +115,11 @@ module.exports = function (grunt) {
                 ],
                 options : {
                     host : "http://localhost:8002",
-                    specs : "<%= yeoman.test %>/**/*.js",
+                    specs : "<%= config.test %>/**/*.js",
                     template : require("grunt-template-jasmine-requirejs"),
                     templateOptions : {
                         requireConfig : {
-                            baseUrl : "<%= yeoman.appScripts %>"
+                            baseUrl : "<%= config.publicJavascripts %>"
                         }
                     }
                 }
@@ -127,15 +127,15 @@ module.exports = function (grunt) {
         },
         clean : {
             dist : {
-                src : ["<%= yeoman.dist %>"]
+                src : ["<%= config.dist %>"]
             },
             cleanup : {
                 src : [
                     "node_modules",
-                    "<%= yeoman.appComponents %>",
-                    "<%= yeoman.app %>/.sass-cache",
-                    "<%= yeoman.appStyles %>",
-                    "<%= yeoman.appTemplatesjs %>"
+                    "<%= config.publicComponents %>",
+                    "<%= config.public %>/.sass-cache",
+                    "<%= config.publicStylesheets %>",
+                    "<%= config.publicTemplatesjs %>"
                 ]
             },
             test : {
@@ -147,9 +147,9 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "<%= yeoman.appImages %>",
+                        cwd : "<%= config.publicImages %>",
                         src : ["**"],
-                        dest : "<%= yeoman.distImages %>"
+                        dest : "<%= config.distImages %>"
                     }
                 ]
             },
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "<%= yeoman.appScripts %>",
+                        cwd : "<%= config.publicJavascripts %>",
                         src : ["main.js"],
                         dest : "./"
                     }
@@ -168,9 +168,9 @@ module.exports = function (grunt) {
             all : {
                 options : {
                     name : "main",
-                    mainConfigFile : "<%= yeoman.appScripts %>/main.js",
+                    mainConfigFile : "<%= config.publicJavascripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],
-                    out : "<%= yeoman.distScripts %>/main.js"
+                    out : "<%= config.distJavascripts %>/main.js"
                 }
             }
         },
@@ -187,11 +187,11 @@ module.exports = function (grunt) {
                 livereload : true
             },
             emberTemplates : {
-                files : ["<%= yeoman.distScripts %>/**/*.handlebars"],
+                files : ["<%= config.publicJavascripts %>/**/*.handlebars"],
                 tasks : ["compile"]
             },
             all : {
-                files : ["<%= yeoman.distScripts %>/**/*.*", "<%= yeoman.appStyles %>/**/*.*"],
+                files : ["<%= config.publicStylesheets %>/**/*.*"],
                 tasks : []
             }
         }
