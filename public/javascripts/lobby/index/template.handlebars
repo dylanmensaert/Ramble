@@ -18,11 +18,11 @@
             {{/linkTo}}
         {{else}}
             {{#if isMemberOfLobby}}
-                <button class="btn" {{action "leave"}}>
+                <button {{action "leave"}} class="btn">
                     Leave
                 </button>
             {{else}}
-                <button class="btn" {{action "join"}}>
+                <button {{action "join"}} class="btn">
                     Join
                 </button>
             {{/if}}
@@ -36,7 +36,7 @@
     </h3>
 
     <p>
-        {{#linkTo "player" owner}}
+        {{#linkTo "player.index" owner}}
             {{owner.username}}
         {{/linkTo}}
     </p>
