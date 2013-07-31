@@ -8,34 +8,22 @@ module.exports = function (grunt) {
     });
 
     var config = {
-        public : "public",
+        //public-folders
+        javascripts : "public/javascripts",
+        sass : "public/sass",
+        stylesheets : "public/stylesheets",
+        images : "public/images",
+        //dist-folders
         dist : "dist",
+        distJavascripts : "dist/javascripts",
+        distStylesheets : "dist/stylesheets",
+        distImages : "dist/images",
+        //other
         test : "test",
         routes : "routes",
-        javascripts : "javascripts",
-        sass : "sass",
-        stylesheets : "stylesheets",
-        images : "images",
-        components : "bower_components",
-        templatesjs : "templates.js",
-        init : function () {
-            this.publicJavascripts = this.public + "/" + this.javascripts;
-            this.publicSass = this.public + "/" + this.sass;
-            this.publicStylesheets = this.public + "/" + this.stylesheets;
-            this.publicImages = this.public + "/" + this.images;
-
-            this.distJavascripts = this.dist + "/" + this.javascripts;
-            this.distStylesheets = this.dist + "/" + this.stylesheets;
-            this.distImages = this.dist + "/" + this.images;
-
-            this.publicComponents = this.public + "/" + this.components;
-            this.publicTemplatesjs = this.public + "/" + this.templatesjs;
-
-            delete this.init;
-
-            return this;
-        }
-    }.init();
+        components : "public/bower_components",
+        templatesjs : "public/templates.js"
+    };
 
     grunt.initConfig({
         config : config,
@@ -47,7 +35,7 @@ module.exports = function (grunt) {
                     templateName : function (sourceFile) {
                         var templateName = sourceFile;
 
-                        templateName = templateName.replace(config.publicJavascripts + "/", "");
+                        templateName = templateName.replace(config.javascripts + "/", "");
                         templateName = templateName.replace("/template", "");
                         templateName = templateName.replace("/root", "");
 
@@ -55,14 +43,13 @@ module.exports = function (grunt) {
                     }
                 },
                 files : {
-                    "<%= config.publicTemplatesjs %>" : "<%= config.publicJavascripts %>/**/*.handlebars"
+                    "<%= config.templatesjs %>" : "<%= config.javascripts %>/**/*.handlebars"
                 }
             }
         },
         compass : {
             options : {
-                importPath : "<%= config.publicComponents %>",
-                basePath : "<%= config.public %>",
+                importPath : "<%= config.components %>",
                 sassDir : "<%= config.sass %>",
                 cssDir : "<%= config.stylesheets %>",
                 imagesDir : "<%= config.images %>",
@@ -70,12 +57,12 @@ module.exports = function (grunt) {
             },
             development : {
                 options : {
-                    specify : ["<%= config.publicSass %>/**/*.scss"]
+                    specify : ["<%= config.sass %>/**/*.scss"]
                 }
             },
             production : {
                 options : {
-                    specify : ["<%= config.publicSass %>/main.scss"],
+                    specify : ["<%= config.sass %>/main.scss"],
                     cssPath : "<%= config.distStylesheets %>",
                     environment : "production"
                 }
@@ -83,9 +70,9 @@ module.exports = function (grunt) {
         },
         jshint : {
             client : {
-                src : ["<%= config.publicJavascripts %>/**/*.js", "<%= config.publicJavascripts %>/.jshintrc"],
+                src : ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
                 options : {
-                    jshintrc : "<%= config.publicJavascripts %>/.jshintrc"
+                    jshintrc : "<%= config.javascripts %>/.jshintrc"
                 }
             },
             test : {
@@ -103,7 +90,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["<%= config.publicStylesheets %>/**/*.css", "!<%= config.publicStylesheets %>/main.css"]
+                src : ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
             }
         },
         //TODO: Improve integration of unit tests!!
@@ -118,7 +105,7 @@ module.exports = function (grunt) {
                     template : require("grunt-template-jasmine-requirejs"),
                     templateOptions : {
                         requireConfig : {
-                            baseUrl : "<%= config.publicJavascripts %>"
+                            baseUrl : "<%= config.javascripts %>"
                         }
                     }
                 }
@@ -131,10 +118,10 @@ module.exports = function (grunt) {
             cleanup : {
                 src : [
                     "node_modules",
-                    "<%= config.publicComponents %>",
-                    "<%= config.public %>/.sass-cache",
-                    "<%= config.publicStylesheets %>",
-                    "<%= config.publicTemplatesjs %>"
+                    "<%= config.components %>",
+                    "<%= config.templatesjs %>",
+                    "<%= config.stylesheets %>",
+                    ".sass-cache"
                 ]
             },
             test : {
@@ -146,7 +133,7 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "<%= config.publicImages %>",
+                        cwd : "<%= config.images %>",
                         src : ["**"],
                         dest : "<%= config.distImages %>"
                     }
@@ -156,7 +143,7 @@ module.exports = function (grunt) {
                 files : [
                     {
                         expand : true,
-                        cwd : "<%= config.publicJavascripts %>",
+                        cwd : "<%= config.javascripts %>",
                         src : ["main.js"],
                         dest : "./"
                     }
@@ -167,7 +154,7 @@ module.exports = function (grunt) {
             all : {
                 options : {
                     name : "main",
-                    mainConfigFile : "<%= config.publicJavascripts %>/main.js",
+                    mainConfigFile : "<%= config.javascripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],
                     out : "<%= config.distJavascripts %>/main.js"
                 }
@@ -180,18 +167,25 @@ module.exports = function (grunt) {
                 }
             }
         },
-        //TODO: Update watch-task appropriately!
         watch : {
-            options : {
-                livereload : true
-            },
             emberTemplates : {
-                files : ["<%= config.publicJavascripts %>/**/*.handlebars"],
-                tasks : ["compile"]
+                files : ["<%= config.javascripts %>/**/*.handlebars"],
+                tasks : ["emberTemplates:all"]
             },
-            all : {
-                files : ["<%= config.publicStylesheets %>/**/*.*"],
-                tasks : []
+            compass : {
+                files : ["<%= config.sass %>/**/*.scss"],
+                tasks : ["compass:development"]
+            },
+            livereload : {
+                files : [
+                    "<%= config.javascripts %>/**/*.js",
+                    "<%= config.templatesjs %>",
+                    "<%= config.stylesheets %>/main.css",
+                    "<%= config.images %>/**/*.*"
+                ],
+                options : {
+                    livereload : true
+                }
             }
         }
     });

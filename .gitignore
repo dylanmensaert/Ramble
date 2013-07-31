@@ -2,7 +2,7 @@
 
 node_modules/
 public/bower_components/
-public/.sass-cache/
+.sass-cache/
 .grunt/
 
 dist/
