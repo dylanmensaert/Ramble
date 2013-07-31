@@ -12,7 +12,7 @@ define(function (require) {
         login : function () {
             //TODO: temporary client-sided test
             //TODO: before trying to authenticate, check if fields are not empty
-            //TODO: Weird bug when pressing enter on a text-field, if it is the first page loaded.
+            //TODO: Weird bug sometimes when pressing enter on a text-field
             var model;
 
             if (this.get("username") === "donut" && this.get("password") === "donut") {
@@ -23,6 +23,8 @@ define(function (require) {
 
                 this.set("model", model);
 
+                //TODO: Transition to route that the user wanted to access, but had to be authenticated for
+                //See: https://gist.github.com/machty/5647589
                 this.transitionToRoute("player.index", this.get("model"));
             } else {
                 this.set("isValidLogin", false);

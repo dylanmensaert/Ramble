@@ -1,10 +1,9 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        playerItem = require("player/helpers/item");
+    var Ember = require("Ember");
 
     return Ember.View.extend({
-        playerItem : playerItem
+        playerItem : require("player/helpers/item")
     });
 });

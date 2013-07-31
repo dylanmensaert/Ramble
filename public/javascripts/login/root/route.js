@@ -8,6 +8,7 @@ define(function (require) {
             //TODO: Use App.Player.createRecord();?
             return {};
         },
+        //TODO: Is afterModel required? "redirect"-hook suffices?
         afterModel : function () {
             if (this.get("controller.isLoggedIn")) {
                 this.transitionTo("index");

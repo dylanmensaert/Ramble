@@ -3,12 +3,11 @@ define(function (require) {
     "use strict";
 
     var App = require("App"),
-        Ember = require("Ember"),
-        templates = require("templates");
+        Ember = require("Ember");
 
     return {
         initialize : function () {
-            Ember.TEMPLATES = templates;
+            Ember.TEMPLATES = require("templates");
 
             require("app/router").initialize();
             require("app/presentation").initialize();

@@ -12,6 +12,7 @@ define(function (require) {
             }
         },
         afterModel : function (model) {
+            //TODO On every delete/edit: first check if logged in, then check if owner/account.
             if (this.controllerFor("application").get("account") !== model.get("owner")) {
                 this.transitionTo("login");
             }

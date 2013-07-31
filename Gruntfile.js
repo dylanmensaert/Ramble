@@ -117,7 +117,8 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        //TODO: Update grunt-ember-templates to latest version, once ember supports the latest version of Handlebars
+        //TODO: Update grunt-ember-templates to latest version.
+        //once ember supports the latest version of Handlebars, see: https://github.com/dgeb/grunt-ember-templates/issues/37.
         emberTemplates : {
             all : {
                 options : {
@@ -139,7 +140,6 @@ module.exports = function (grunt) {
         requirejs : {
             all : {
                 options : {
-                    //TODO: What is name-property for?
                     name : "main",
                     mainConfigFile : "<%= yeoman.appScripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],

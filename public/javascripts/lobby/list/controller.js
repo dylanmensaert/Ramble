@@ -1,10 +1,9 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        ControllerMixin = require("lobby/helpers/controllerMixin");
+    var Ember = require("Ember");
 
-    return Ember.ArrayController.extend(ControllerMixin, {
+    return Ember.ArrayController.extend(require("lobby/helpers/controllerMixin"), {
         controllerTitle : "List"
     });
 });

@@ -1,10 +1,9 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        ControllerMixin = require("lobby/helpers/controllerMixin");
+    var Ember = require("Ember");
 
-    return Ember.ObjectController.extend(ControllerMixin, {
+    return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
         hasObjectModel : true,
         controllerTitle : "Edit",
         save : function () {

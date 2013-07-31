@@ -1,14 +1,12 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        ControllerMixin = require("player/helpers/controllerMixin");
+    var Ember = require("Ember");
 
-    return Ember.ObjectController.extend(ControllerMixin, {
+    return Ember.ObjectController.extend(require("player/helpers/controllerMixin"), {
         hasObjectModel : true,
         controllerTitle : "Delete",
-        needs : ["application"],
-        "delete" : function () {
+        delete : function () {
             var model = this.get("model");
 
             //model.one("didUpdate", this, function () {
