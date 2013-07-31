@@ -14,19 +14,21 @@ module.exports = function (grunt) {
         dist : "dist",
         test : "test",
         routes : "routes",
-        scripts : "/javascripts",
-        styles : "/stylesheets",
-        images : "/images",
-        sass : "/sass"
+        scripts : "javascripts",
+        styles : "stylesheets",
+        images : "images",
+        components : "bower_components",
+        sass : "sass"
     };
 
-    config.appScripts = config.app + config.scripts;
-    config.appStyles = config.app + config.styles;
-    config.appImages = config.app + config.images;
-    config.appSass = config.app + config.sass;
-    config.distScripts = config.dist + config.scripts;
-    config.distStyles = config.dist + config.styles;
-    config.distImages = config.dist + config.images;
+    config.appScripts = config.app + "/" + config.scripts;
+    config.appStyles = config.app + "/" + config.styles;
+    config.appImages = config.app + "/" + config.images;
+    config.appComponents = config.app + "/" + config.components;
+    config.appSass = config.app + "/" + config.sass;
+    config.distScripts = config.dist + "/" + config.scripts;
+    config.distStyles = config.dist + "/" + config.styles;
+    config.distImages = config.dist + "/" + config.images;
 
     grunt.initConfig({
         yeoman : config,
@@ -51,20 +53,29 @@ module.exports = function (grunt) {
             }
         },
         compass : {
-            all : {
+            options : {
+                importPath : "<%= yeoman.appComponents %>",
+                basePath : "<%= yeoman.app %>",
+                sassDir : "<%= yeoman.sass %>",
+                cssDir : "<%= yeoman.styles %>",
+                imagesDir : "<%= yeoman.images %>",
+                javascriptsDir : "<%= yeoman.scripts %>",
+                fontsDir : "fonts"
+            },
+            development : {
                 options : {
-                    sassDir : "<%= yeoman.appSass %>",
-                    cssDir : "<%= yeoman.appStyles %>",
-                    imagesDir : "<%= yeoman.appImages %>",
-                    javascriptsDir : "<%= yeoman.appScripts %>",
-                    fontsDir : "<%= yeoman.appScripts %>/fonts",
-                    importPath : "<%= yeoman.app %>/bower_components"
-                    //outputStyle : "expanded"
+                    specify : ["<%= yeoman.appSass %>/**/*.scss"]
+                }
+            },
+            dist : {
+                options : {
+                    specify : ["<%= yeoman.appSass %>/main.scss"],
+                    cssPath : "<%= yeoman.distStyles %>",
+                    environment : "production"
                 }
             }
         },
         jshint : {
-            //TODO: Update when possible to merge .jshintrc-files. See: https://github.com/gruntjs/grunt-contrib-jshint/pull/24
             client : {
                 files : {
                     src : ["<%= yeoman.appScripts %>/**/*.js", "<%= yeoman.appScripts %>/.jshintrc"]
@@ -92,10 +103,7 @@ module.exports = function (grunt) {
         },
         csslint : {
             all : {
-                src : ["<%= yeoman.appStyles %>/**/*.css", "!<%= yeoman.appStyles %>/override.css"],
-                options : {
-                    import : false
-                }
+                src : ["<%= yeoman.appStyles %>/**/*.css", "!<%= yeoman.appStyles %>/main.css"]
             }
         },
         //TODO: Improve integration of unit tests!!
@@ -132,12 +140,6 @@ module.exports = function (grunt) {
                         cwd : "<%= yeoman.appImages %>",
                         src : ["**"],
                         dest : "<%= yeoman.distImages %>"
-                    },
-                    {
-                        expand : true,
-                        cwd : "public/bower_components/sass-bootstrap/img/",
-                        src : ["**"],
-                        dest : "<%= yeoman.distImages %>"
                     }
                 ]
             },
@@ -158,14 +160,7 @@ module.exports = function (grunt) {
                     name : "main",
                     mainConfigFile : "<%= yeoman.appScripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],
-                    out : "<%= yeoman.distScripts %>/main.min.js"
-                }
-            }
-        },
-        cssmin : {
-            all : {
-                files : {
-                    "<%= yeoman.distStyles %>/main.min.css" : ["<%= yeoman.appStyles %>/main.css", "<%= yeoman.appStyles %>/override.css"]
+                    out : "<%= yeoman.distScripts %>/main.js"
                 }
             }
         },
@@ -176,6 +171,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+        //TODO: Update watch-task appropriately!
         watch : {
             options : {
                 livereload : true
@@ -192,10 +188,10 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
-    grunt.registerTask("compile", ["emberTemplates:all", "compass:all"]);
-    grunt.registerTask("lint", ["jshint"]);
+    grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
+    grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "cssmin:all"]);
+    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
     //TODO: Clean bower_components and node_modules too!
     grunt.registerTask("cleanup", ["clean:dist"]);
 };

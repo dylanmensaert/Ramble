@@ -1,8 +1,6 @@
-$bootstrapImagesDirectoryPath: "../bower_components/sass-bootstrap/img/" !default;
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
-$iconSpritePath: $bootstrapImagesDirectoryPath + "glyphicons-halflings.png";
-$iconWhiteSpritePath: $bootstrapImagesDirectoryPath + "glyphicons-halflings-white.png";
-
+@import "application";
 @import "sass-bootstrap/lib/bootstrap";
-@import "_application";
 @import "sass-bootstrap/lib/responsive";

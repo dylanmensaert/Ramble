@@ -6,3 +6,5 @@ public/bower_components/
 
 dist/
 public/templates.js
+public/stylesheets/
+public/.sass-cache/
