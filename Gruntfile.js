@@ -1,11 +1,13 @@
 "use strict";
 
 module.exports = function (grunt) {
-    require("matchdep").filterDev("grunt-*").forEach(function (name) {
-        if (!/template-/.test(name)) {
-            grunt.loadNpmTasks(name);
-        }
-    });
+    //require("matchdep").filterDev("grunt-*").forEach(function (name) {
+    //    if (!/template-/.test(name)) {
+    //        grunt.loadNpmTasks(name);
+    //    }
+    //});
+
+    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
     var config = {
         //public-folders
@@ -94,21 +96,21 @@ module.exports = function (grunt) {
             }
         },
         //TODO: Improve integration of unit tests!!
-        jasmine : {
-            all : {
-                src : ["main.js"],
-                options : {
-                    host : "http://localhost:8002",
-                    specs : "<%= config.test %>/**/*.js",
-                    template : require("grunt-template-jasmine-requirejs"),
-                    templateOptions : {
-                        requireConfig : {
-                            baseUrl : "<%= config.javascripts %>"
-                        }
-                    }
-                }
-            }
-        },
+        //jasmine : {
+        //    all : {
+        //        src : ["main.js"],
+        //        options : {
+        //            host : "http://localhost:8002",
+        //            specs : "<%= config.test %>/**/*.js",
+        //            template : require("grunt-template-jasmine-requirejs"),
+        //            templateOptions : {
+        //                requireConfig : {
+        //                    baseUrl : "<%= config.javascripts %>"
+        //                }
+        //            }
+        //        }
+        //    }
+        //},
         clean : {
             dist : {
                 src : ["<%= config.dist %>"]
@@ -121,10 +123,10 @@ module.exports = function (grunt) {
                     "<%= config.stylesheets %>",
                     ".sass-cache"
                 ]
-            },
-            test : {
-                src : ["main.js"]
             }
+            //test : {
+            //    src : ["main.js"]
+            //}
         },
         copy : {
             images : {
@@ -136,17 +138,17 @@ module.exports = function (grunt) {
                         dest : "<%= config.distImages %>"
                     }
                 ]
-            },
-            test : {
-                files : [
-                    {
-                        expand : true,
-                        cwd : "<%= config.javascripts %>",
-                        src : ["main.js"],
-                        dest : "./"
-                    }
-                ]
             }
+            //test : {
+            //    files : [
+            //        {
+            //            expand : true,
+            //            cwd : "<%= config.javascripts %>",
+            //            src : ["main.js"],
+            //            dest : "./"
+            //        }
+            //    ]
+            //}
         },
         requirejs : {
             all : {
@@ -158,13 +160,13 @@ module.exports = function (grunt) {
                 }
             }
         },
-        connect : {
-            test : {
-                options : {
-                    port : 8002
-                }
-            }
-        },
+        //connect : {
+        //    test : {
+        //        options : {
+        //            port : 8002
+        //        }
+        //    }
+        //},
         watch : {
             emberTemplates : {
                 files : ["<%= config.javascripts %>/**/*.handlebars"],
@@ -191,7 +193,7 @@ module.exports = function (grunt) {
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
-    grunt.registerTask("test", ["connect:test", "copy:test", "jasmine:all", "clean:test"]);
+    grunt.registerTask("test", [/*"connect:test", "copy:test", "jasmine:all", "clean:test"*/]);
     grunt.registerTask("build", ["clean:dist", "copy:images", "requirejs:all", "compass:production"]);
     grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };
