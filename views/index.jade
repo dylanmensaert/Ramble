@@ -7,11 +7,11 @@ html
 
         title Ramble - loading
 
+        link(rel="stylesheet", href="stylesheets/main.css")
+
         if environment === "production"
-            link(rel="stylesheet", href="stylesheets/main.css")
             script(async="async", src="javascripts/main.js")
         else if environment === "development"
-            link(rel="stylesheet", href="stylesheets/main.css")
             script(async="async", data-main="javascripts/main", src="bower_components/requirejs/require.js")
 
     body
