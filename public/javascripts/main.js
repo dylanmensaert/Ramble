@@ -1,7 +1,8 @@
-(function () {
+define(function () {
     "use strict";
 
     require.config({
+        enforceDefine : true,
         paths : {
             App : "app/app",
             templates : "../templates",
@@ -23,55 +24,45 @@
         },
         shim : {
             Ember : {
-                deps : [
-                    "jQuery", "Handlebars"
-                ],
+                deps : ["jQuery", "Handlebars"],
                 exports : "Ember"
             },
             templates : {
-                deps : [
-                    "Ember"
-                ],
+                deps : ["Ember"],
                 exports : "Ember.TEMPLATES"
             },
             EmberData : {
-                deps : [
-                    "Ember"
-                ],
+                deps : ["Ember"],
                 exports : "DS"
             },
             EmberEasyForm : {
-                deps : [
-                    "Ember"
-                ],
+                deps : ["Ember"],
                 exports : "Ember.EasyForm"
             },
             EmberValidations : {
-                deps : [
-                    "Ember"
-                ],
+                deps : ["Ember"],
                 exports : "Ember.Validations"
+            },
+            Handlebars : {
+                deps : ["jQuery"],
+                exports : "Handlebars"
             },
             jQuery : {
                 exports : "jQuery"
             },
             Bootstrap : {
-                deps : [
-                    "jQuery"
-                ],
+                deps : ["jQuery"],
                 exports : "jQuery"
             },
             GoogleAnalytics : {
                 exports : "_gaq"
             }
+        },
+        deps : ["app/init", "domReady"],
+        callback : function (AppInit, domReady) {
+            domReady(function () {
+                AppInit.initialize();
+            });
         }
     });
-
-    require([
-        "app/init", "domReady"
-    ], function (AppInit, domReady) {
-        domReady(function () {
-            AppInit.initialize();
-        });
-    });
-}());
+});
