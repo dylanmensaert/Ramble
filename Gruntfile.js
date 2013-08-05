@@ -153,6 +153,7 @@ module.exports = function (grunt) {
         requirejs : {
             all : {
                 options : {
+                    baseUrl : "public/javascripts",
                     name : "main",
                     mainConfigFile : "<%= config.javascripts %>/main.js",
                     include : ["../bower_components/requirejs/require.js"],

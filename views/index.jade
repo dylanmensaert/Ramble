@@ -9,10 +9,10 @@ html
 
         link(rel="stylesheet", href="stylesheets/main.css")
 
-        if environment === "production"
-            script(async="async", src="javascripts/main.js")
-        else if environment === "development"
-            script(async="async", data-main="javascripts/main", src="bower_components/requirejs/require.js")
+        if environment === "development"
+            script(src="bower_components/requirejs/require.js")
+
+        script(async="async", src="javascripts/main.js")
 
     body
 

@@ -1,8 +1,9 @@
-define(function () {
+(function () {
     "use strict";
 
     require.config({
         enforceDefine : true,
+        baseUrl : "javascripts",
         paths : {
             App : "app/app",
             templates : "../templates",
@@ -58,11 +59,11 @@ define(function () {
                 exports : "_gaq"
             }
         },
-        deps : ["app/init", "domReady"],
-        callback : function (AppInit, domReady) {
+        deps : ["domReady", "app/init"],
+        callback : function (domReady, AppInit) {
             domReady(function () {
                 AppInit.initialize();
             });
         }
     });
-});
+}());
