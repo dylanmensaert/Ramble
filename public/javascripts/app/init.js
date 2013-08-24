@@ -8,7 +8,7 @@ define(function (require) {
 
     return {
         initialize : function () {
-            Ember.TEMPLATES = require("templates");
+            require("templates");
 
             require("app/router").initialize();
             require("app/presentation").initialize();

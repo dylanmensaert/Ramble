@@ -29,15 +29,14 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         config : config,
-        //TODO: Update grunt-ember-templates to latest version.
-        //once ember supports the latest version of Handlebars, see: https://github.com/dgeb/grunt-ember-templates/issues/37.
         emberTemplates : {
             all : {
                 options : {
+                    amd : true,
+                    templateBasePath : "<%= config.javascripts %>" + "/",
                     templateName : function (sourceFile) {
                         var templateName = sourceFile;
 
-                        templateName = templateName.replace(config.javascripts + "/", "");
                         templateName = templateName.replace("/template", "");
                         templateName = templateName.replace("/root", "");
 
