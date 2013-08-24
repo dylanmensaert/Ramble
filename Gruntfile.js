@@ -130,18 +130,14 @@ module.exports = function (grunt) {
             //}
         },
         copy : {
-            images : {
+            dist : {
                 files : [
                     {
                         expand : true,
                         cwd : "<%= config.images %>",
                         src : ["**"],
                         dest : "<%= config.distImages %>"
-                    }
-                ]
-            },
-            fonts : {
-                files : [
+                    },
                     {
                         expand : true,
                         cwd : "<%= config.fonts %>",
@@ -206,6 +202,6 @@ module.exports = function (grunt) {
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", [/*"connect:test", "copy:test", "jasmine:all", "clean:test"*/]);
-    grunt.registerTask("build", ["clean:dist", "copy:images", "copy:fonts", "requirejs:all", "compass:production"]);
+    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
     grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };
