@@ -8,7 +8,7 @@
         "ember-data-shim" : "~0.0.13",
         "ember-dockyard-validations" : "*",
         "jquery" : "~2.0.3",
-        "sass-bootstrap" : "~2.3.2"
+        "sass-bootstrap" : "~3.0.0"
     },
     "resolutions" : {
         "jquery" : "~2.0.3",

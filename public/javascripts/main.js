@@ -17,7 +17,7 @@
             Handlebars : "../bower_components/handlebars/handlebars",
             jQuery : "../bower_components/jquery/jquery",
 
-            Bootstrap : "../bower_components/sass-bootstrap/docs/assets/js/bootstrap",
+            Bootstrap : "../bower_components/sass-bootstrap/dist/js/bootstrap",
 
             GoogleAnalytics : "https://ssl.google-analytics.com/ga"
         },

@@ -3,7 +3,6 @@ define(function (require) {
     "use strict";
 
     var App = require("App"),
-        Ember = require("Ember"),
         DS = require("EmberData");
 
     return {

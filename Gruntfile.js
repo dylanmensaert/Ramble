@@ -15,11 +15,13 @@ module.exports = function (grunt) {
         sass : "public/sass",
         stylesheets : "public/stylesheets",
         images : "public/images",
+        fonts : "public/fonts",
         //dist-folders
         dist : "dist",
         distJavascripts : "dist/javascripts",
         distStylesheets : "dist/stylesheets",
         distImages : "dist/images",
+        distFonts : "dist/fonts",
         //other
         test : "test",
         routes : "routes",
@@ -137,6 +139,16 @@ module.exports = function (grunt) {
                         dest : "<%= config.distImages %>"
                     }
                 ]
+            },
+            fonts : {
+                files : [
+                    {
+                        expand : true,
+                        cwd : "<%= config.fonts %>",
+                        src : ["**"],
+                        dest : "<%= config.distFonts %>"
+                    }
+                ]
             }
             //test : {
             //    files : [
@@ -194,6 +206,6 @@ module.exports = function (grunt) {
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
     grunt.registerTask("test", [/*"connect:test", "copy:test", "jasmine:all", "clean:test"*/]);
-    grunt.registerTask("build", ["clean:dist", "copy:images", "requirejs:all", "compass:production"]);
+    grunt.registerTask("build", ["clean:dist", "copy:images", "copy:fonts", "requirejs:all", "compass:production"]);
     grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };
