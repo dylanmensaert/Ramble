@@ -4,7 +4,7 @@
 
 {{#if isOwnerOfAccount}}
     <div>
-        {{#linkTo "player.edit" this classNames="btn"}}
+        {{#linkTo "player.edit" this classNames="btn btn-default"}}
             Edit
         {{/linkTo}}
 
@@ -19,7 +19,7 @@
         Owned Lobbies
     </h3>
 
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-pills nav-stacked">
         {{each ownedLobbies itemViewClass="view.lobbyItem"}}
     </ul>
 </div>
@@ -29,7 +29,7 @@
         Joined Lobbies
     </h3>
 
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-pills nav-stacked">
         {{each joinedLobbies itemViewClass="view.lobbyItem"}}
     </ul>
 </div>

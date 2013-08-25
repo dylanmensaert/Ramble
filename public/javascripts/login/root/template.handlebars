@@ -1,38 +1,31 @@
-<form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label" for="inputLoginUsername">
+<form role="form">
+    <div class="form-group">
+        <label for="inputLoginUsername">
             Username
         </label>
-
-        <div class="controls">
-            {{view Ember.TextField valueBinding="username" id="inputLoginUsername" placeholder="Username"}}
-        </div>
+        {{view Ember.TextField valueBinding="username" id="inputLoginUsername" placeholder="Username" classNames="form-control"}}
     </div>
-    <div class="control-group">
-        <label class="control-label" for="inputLoginPassword">
+
+    <div class="form-group">
+        <label for="inputLoginPassword">
             Password
         </label>
+        {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword" placeholder="Password" classNames="form-control"}}
+    </div>
 
-        <div class="controls">
-            {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword" placeholder="Password"}}
-        </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Remember me
+        </label>
     </div>
 
     {{#unless isValidLogin}}
-        <div class="control-group">
-            <div class="controls">
-                <p class="text-error">
-                    Login not successful
-                </p>
-            </div>
-        </div>
+        <p class="text-error">
+            Login not successful
+        </p>
     {{/unless}}
 
-    <div class="control-group">
-        <div class="controls">
-            <button {{action "login"}} class="btn btn-primary">
-                Log in
-            </button>
-        </div>
-    </div>
+    <button {{action "login"}} class="btn btn-primary">
+        Log in
+    </button>
 </form>

@@ -9,14 +9,14 @@ define(function (require) {
     return {
         initialize : function () {
             EmberEasyForm.Config.registerWrapper("default", {
-                formClass : "form-horizontal",
+                formClass : "",
                 fieldErrorClass : "error",
                 errorClass : "help-inline",
                 hintClass : "help-block",
-                labelClass : "control-label",
-                inputClass : "control-group",
-                wrapControls : true,
-                controlsWrapperClass : "controls"
+                labelClass : "",
+                inputClass : "form-group",
+                wrapControls : false,
+                controlsWrapperClass : ""
             });
         }
     };

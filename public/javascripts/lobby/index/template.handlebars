@@ -9,7 +9,7 @@
 
     <div>
         {{#if isOwnerOfLobby}}
-            {{#linkTo "lobby.edit" this classNames="btn"}}
+            {{#linkTo "lobby.edit" this classNames="btn btn-default"}}
                 Edit
             {{/linkTo}}
 
@@ -18,11 +18,11 @@
             {{/linkTo}}
         {{else}}
             {{#if isMemberOfLobby}}
-                <button {{action "leave"}} class="btn">
+                <button {{action "leave"}} class="btn btn-default">
                     Leave
                 </button>
             {{else}}
-                <button {{action "join"}} class="btn">
+                <button {{action "join"}} class="btn btn-primary">
                     Join
                 </button>
             {{/if}}
@@ -45,13 +45,13 @@
 <div>
     <!--TODO: There must be a better way to do this!-->
     <div class="row">
-        <div class="span6">
+        <div class="col-xs-6">
             <h3>
                 Members
             </h3>
         </div>
 
-        <div class="span6">
+        <div class="col-xs-6">
             {{#if isOwnerOfLobby}}
                 <h4 class="pull-right my-header-right">
                     Kick
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-pills nav-stacked">
         {{each members itemViewClass="view.playerItem"}}
     </ul>
 </div>

@@ -1,72 +1,69 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </a>
+            </button>
 
-            {{#linkTo "index" classNames="brand"}}
+            {{#linkTo "index" classNames="navbar-brand"}}
                 Ramble
             {{/linkTo}}
+        </div>
 
-            <div class="nav-collapse collapse">
-
-                {{#if isLoggedIn}}
-                    <ul class="nav pull-right">
-                        <!--TODO: Dropdown does not work on touchbased devices-->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                {{account.username}}
-                                <b class="caret"></b>
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li>
-                                    {{#linkTo "player.index" account}}
-                                        Profile
-                                    {{/linkTo}}
-                                </li>
-
-                                <li class="divider"></li>
-
-                                <li>
-                                    <a {{action "logout"}} href="#">
-                                        Log out
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                {{else}}
-                    <form class="navbar-form pull-right">
-                        {{#linkTo "login" classNames="btn"}}
-                            Log in
-                        {{/linkTo}}
-
-                        {{#linkTo "player.create" classNames="btn btn-success"}}
-                            Sign up
-                        {{/linkTo}}
-                    </form>
-                {{/if}}
-
-                <ul class="nav">
-                    <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
-                    <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
-                    {{#linkTo "lobby.list" tagName="li" href=false}}
-                        {{#linkTo "lobby.list"}}
-                            Lobby list
-                        {{/linkTo}}
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
+                <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
+                {{#linkTo "lobby.list" tagName="li" href=false}}
+                    {{#linkTo "lobby.list"}}
+                        Lobby List
                     {{/linkTo}}
+                {{/linkTo}}
 
-                    {{#linkTo "player.list" tagName="li" href=false}}
-                        {{#linkTo "player.list"}}
-                            Player list
-                        {{/linkTo}}
+                {{#linkTo "player.list" tagName="li" href=false}}
+                    {{#linkTo "player.list"}}
+                        Player list
                     {{/linkTo}}
+                {{/linkTo}}
+            </ul>
+
+            {{#if isLoggedIn}}
+                <ul class="nav navbar-nav">
+                    <!--TODO: Dropdown does not work on touchbased devices-->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            {{account.username}}
+                            <b class="caret"></b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                {{#linkTo "player.index" account}}
+                                    Profile
+                                {{/linkTo}}
+                            </li>
+
+                            <li>
+                                <a {{action "logout"}} href="#">
+                                    Log out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-            </div>
+            {{else}}
+                <form class="navbar-form navbar-right">
+                    {{#linkTo "login" classNames="btn btn-default"}}
+                        Log in
+                    {{/linkTo}}
+
+                    {{#linkTo "player.create" classNames="btn btn-success"}}
+                        Sign up
+                    {{/linkTo}}
+                </form>
+            {{/if}}
         </div>
     </div>
 </div>

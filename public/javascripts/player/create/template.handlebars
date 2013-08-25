@@ -4,15 +4,11 @@
     {{input password placeholder="Password"}}
     {{input passwordConfirmation label="Password confirmation" placeholder="Password confirmation"}}
 
-    <div class="control-group">
-        <div class="controls">
-            <button {{action "create"}} class="btn btn-primary">
-                Sign up
-            </button>
+    <button {{action "create"}} class="btn btn-primary">
+        Sign up
+    </button>
 
-            {{#linkTo "index" classNames="btn"}}
-                Cancel
-            {{/linkTo}}
-        </div>
-    </div>
+    {{#linkTo "index" classNames="btn btn-default"}}
+        Cancel
+    {{/linkTo}}
 {{/formFor}}
