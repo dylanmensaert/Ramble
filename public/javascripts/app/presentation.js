@@ -10,7 +10,7 @@ define(function (require) {
         initialize : function () {
             EmberEasyForm.Config.registerWrapper("default", {
                 formClass : "",
-                fieldErrorClass : "error",
+                fieldErrorClass : "text-danger",
                 errorClass : "help-inline",
                 hintClass : "help-block",
                 labelClass : "",

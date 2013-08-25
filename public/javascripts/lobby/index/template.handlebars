@@ -46,21 +46,21 @@
     <!--TODO: There must be a better way to do this!-->
     <div class="row">
         <div class="col-xs-6">
-            <h3>
+            <span class="h3">
                 Members
-            </h3>
+            </span>
         </div>
 
         <div class="col-xs-6">
             {{#if isOwnerOfLobby}}
-                <h4 class="pull-right my-header-right">
+                <span class="h4 pull-right">
                     Kick
-                </h4>
+                </span>
             {{/if}}
         </div>
     </div>
 
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="list-group">
         {{each members itemViewClass="view.playerItem"}}
     </ul>
 </div>

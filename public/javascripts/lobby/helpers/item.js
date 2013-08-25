@@ -5,6 +5,7 @@ define(function (require) {
 
     return Ember.View.extend({
         templateName : "lobby/helpers/item",
-        tagName : "li"
+        tagName : "li",
+        classNames : "list-group-item"
     });
 });
