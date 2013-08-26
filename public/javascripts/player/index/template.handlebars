@@ -19,9 +19,11 @@
         Owned Lobbies
     </h3>
 
-    <ul class="list-group">
-        {{each ownedLobbies itemViewClass="view.lobbyItem"}}
-    </ul>
+    <div class="list-group">
+        {{#each ownedLobbies}}
+            {{partial "lobby/helpers/item"}}
+        {{/each}}
+    </div>
 </div>
 
 <div>
@@ -29,7 +31,9 @@
         Joined Lobbies
     </h3>
 
-    <ul class="list-group">
-        {{each joinedLobbies itemViewClass="view.lobbyItem"}}
-    </ul>
+    <div class="list-group">
+        {{#each joinedLobbies}}
+            {{partial "lobby/helpers/item"}}
+        {{/each}}
+    </div>
 </div>

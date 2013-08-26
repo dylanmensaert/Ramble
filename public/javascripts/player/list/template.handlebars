@@ -1,3 +1,5 @@
-<ul class="list-group">
-    {{each itemViewClass="view.playerItem"}}
-</ul>
+<div class="list-group">
+    {{#each}}
+        {{partial "player/helpers/item"}}
+    {{/each}}
+</div>

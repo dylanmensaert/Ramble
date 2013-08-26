@@ -4,6 +4,6 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.View.extend({
-        playerItem : require("player/helpers/item")
+
     });
 });
