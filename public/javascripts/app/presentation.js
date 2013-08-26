@@ -9,7 +9,7 @@ define(function (require) {
 
     return {
         initialize : function () {
-            Ember.TextField.reopen({
+            Ember.TextSupport.reopen({
                 classNames : ["form-control"]
             });
 

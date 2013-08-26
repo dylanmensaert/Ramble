@@ -3,12 +3,11 @@ define(function (require) {
 
     var Ember = require("Ember"),
         DS = require("EmberData"),
-        $ = require("jQuery"),
         App;
 
     App = Ember.Application.create({
         ready : function () {
-            $(".my-initial-loading").remove();
+            Ember.$(".my-initial-loading").remove();
         },
         LOG_TRANSITIONS : true
     });
