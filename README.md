@@ -1,5 +1,4 @@
-Ramble
-======
+# Ramble
 [![Build Status](https://travis-ci.org/dimitrisuls/Ramble.png)](https://travis-ci.org/dimitrisuls/Ramble)
 [![Dependency Status](https://david-dm.org/dimitrisuls/Ramble.png)](https://david-dm.org/dimitrisuls/Ramble#info=dependencies)
 [![devDependency Status](https://david-dm.org/dimitrisuls/Ramble/dev-status.png)](https://david-dm.org/dimitrisuls/Ramble#info=devDependencies)
