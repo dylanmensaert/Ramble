@@ -1,17 +1,6 @@
-<form role="form">
-    <div class="form-group">
-        <label for="inputLoginUsername">
-            Username
-        </label>
-        {{view Ember.TextField valueBinding="username" id="inputLoginUsername" placeholder="Username" classNames="form-control"}}
-    </div>
-
-    <div class="form-group">
-        <label for="inputLoginPassword">
-            Password
-        </label>
-        {{view Ember.TextField type="password" valueBinding="password" id="inputLoginPassword" placeholder="Password" classNames="form-control"}}
-    </div>
+{{#formFor this}}
+    {{input username placeholder="Username"}}
+    {{input password placeholder="Password"}}
 
     {{#unless isValidLogin}}
         <p class="text-danger">
@@ -22,4 +11,4 @@
     <button {{action "login"}} class="btn btn-primary">
         Log in
     </button>
-</form>
+{{/formFor}}
