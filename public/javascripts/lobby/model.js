@@ -24,7 +24,6 @@ define(function (require) {
                 confirmation : true
             },
             maxMembers : {
-                presence : true,
                 numericality : true
             },
             owner : {
