@@ -8,20 +8,27 @@ define(function (require) {
     require("Bootstrap");
 
     return {
-        initialize : function () {
+        initialize: function () {
             Ember.TextSupport.reopen({
-                classNames : ["form-control"]
+                classNames: ["form-control"]
             });
 
+            Ember.FocussedTextField = Ember.TextField.extend({
+                attributeBindings: ["autofocus"],
+                autofocus: "autofocus"
+            });
+
+            Ember.EasyForm.Config.registerInputType("focus_input", Ember.FocussedTextField);
+
             EmberEasyForm.Config.registerWrapper("default", {
-                formClass : "",
-                fieldErrorClass : "has-error",
-                inputClass : "form-group",
-                errorClass : "help-block",
-                hintClass : "help-block",
-                labelClass : "control-label",
-                wrapControls : false,
-                controlsWrapperClass : ""
+                formClass: "",
+                fieldErrorClass: "has-error",
+                inputClass: "form-group",
+                errorClass: "help-block",
+                hintClass: "help-block",
+                labelClass: "control-label",
+                wrapControls: false,
+                controlsWrapperClass: ""
             });
         }
     };
