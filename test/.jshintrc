@@ -22,7 +22,7 @@
     "plusplus" : true,
     "quotmark" : "double",
     "undef" : true,
-    "unused" : "strict",
+    "unused" : true,
     "strict" : true,
     "trailing" : true,
 
