@@ -28,6 +28,7 @@ define(function (require) {
         },
         transitionToLogin: function () {
             this.set("controllers.login.lastTransition", this.get("currentTransition"));
+            this.set("currentTransition", null);
             this.transitionToRoute("login");
         },
         isOwnerOfLobby : function () {

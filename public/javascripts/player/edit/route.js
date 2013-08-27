@@ -12,7 +12,7 @@ define(function (require) {
             }
         },
         afterModel: function (model, transition) {
-            if(!this.controllerFor("application").get("isLoggedIn")) {
+            if (!this.controllerFor("application").get("isLoggedIn")) {
                 this.transitionToLogin(transition);
             } else if (this.controllerFor("application").get("account") !== model) {
                 this.transitionTo("index");
