@@ -4,10 +4,16 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Route.extend({
-        afterModel : function (model) {
-            if (this.controllerFor("application").get("account") !== model) {
-                this.transitionTo("login");
+        afterModel: function (model, transition) {
+            if(!this.controllerFor("application").get("isLoggedIn")) {
+                this.transitionToLogin(transition);
+            } else if (this.controllerFor("application").get("account") !== model) {
+                this.transitionTo("index");
             }
+        },
+        transitionToLogin: function (transition) {
+            this.controllerFor("login").set("lastTransition", transition);
+            this.transitionTo("login");
         }
     });
 });

@@ -4,6 +4,8 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Route.extend({
-
+        afterModel: function (model, transition) {
+            this.controllerFor("lobby.index").set("currentTransition", transition);
+        }
     });
 });

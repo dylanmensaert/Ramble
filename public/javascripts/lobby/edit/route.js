@@ -11,11 +11,16 @@ define(function (require) {
                 model.get("transaction").rollback();
             }
         },
-        afterModel : function (model) {
-            //TODO On every delete/edit: first check if logged in, then check if owner/account.
-            if (this.controllerFor("application").get("account") !== model.get("owner")) {
-                this.transitionTo("login");
+        afterModel: function (model, transition) {
+            if(!this.controllerFor("application").get("isLoggedIn")) {
+                this.transitionToLogin(transition);
+            } else if (this.controllerFor("application").get("account") !== model.get("owner")) {
+                this.transitionTo("index");
             }
+        },
+        transitionToLogin: function (transition) {
+            this.controllerFor("login").set("lastTransition", transition);
+            this.transitionTo("login");
         }
     });
 });
