@@ -4,7 +4,6 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
-        needs : ["login"],
         hasObjectModel : true,
         leave : function () {
             this.send("kick", this.get("account"));
