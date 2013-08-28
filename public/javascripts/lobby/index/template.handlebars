@@ -59,9 +59,13 @@
         </div>
     </div>
 
-    <div class="list-group">
-        {{#each members}}
-            {{partial "player/helpers/item"}}
-        {{/each}}
-    </div>
+    {{#if members.length}}
+        <div class="list-group">
+            {{#each members}}
+                {{partial "player/helpers/item"}}
+            {{/each}}
+        </div>
+    {{else}}
+        none
+    {{/if}}
 </div>

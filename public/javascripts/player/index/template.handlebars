@@ -18,22 +18,28 @@
     <h3>
         Owned Lobbies
     </h3>
-
-    <div class="list-group">
-        {{#each ownedLobbies}}
-            {{partial "lobby/helpers/item"}}
-        {{/each}}
-    </div>
+    {{#if ownedLobbies.length}}
+        <div class="list-group">
+            {{#each ownedLobbies}}
+                {{partial "lobby/helpers/item"}}
+            {{/each}}
+        </div>
+    {{else}}
+        none
+    {{/if}}
 </div>
 
 <div>
     <h3>
         Joined Lobbies
     </h3>
-
-    <div class="list-group">
-        {{#each joinedLobbies}}
-            {{partial "lobby/helpers/item"}}
-        {{/each}}
-    </div>
+    {{#if joinedLobbies.length}}
+        <div class="list-group">
+            {{#each joinedLobbies}}
+                {{partial "lobby/helpers/item"}}
+            {{/each}}
+        </div>
+    {{else}}
+        none
+    {{/if}}
 </div>
