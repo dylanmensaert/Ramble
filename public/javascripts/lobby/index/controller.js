@@ -6,7 +6,6 @@ define(function (require) {
     return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
         needs : ["login"],
         hasObjectModel : true,
-        currentTransition : null,
         leave : function () {
             this.send("kick", this.get("account"));
         },
@@ -23,13 +22,8 @@ define(function (require) {
                 model.get("members").pushObject(this.get("account"));
                 model.get("transaction").commit();
             } else {
-                this.transitionToLogin();
+                this.transitionToRoute("login");
             }
-        },
-        transitionToLogin: function () {
-            this.set("controllers.login.lastTransition", this.get("currentTransition"));
-            this.set("currentTransition", null);
-            this.transitionToRoute("login");
         },
         isOwnerOfLobby : function () {
             return this.get("account") === this.get("owner");
