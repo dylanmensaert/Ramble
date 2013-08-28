@@ -33,7 +33,7 @@ define(function (require) {
                 this.set("lastTransition", null);
                 lastTransition.retry();
             } else {
-                this.transitionToRoute("player.index", this.get("model"));
+                this.transitionToRoute("player", this.get("model"));
             }
         },
         logout: function () {

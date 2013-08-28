@@ -6,7 +6,7 @@ define(function (require) {
     return Ember.Route.extend({
         model : function () {
             //TODO: Use App.Player.createRecord();?
-            return {};
+            return Ember.Object.create({});
         },
         //TODO: Is afterModel required? "redirect"-hook suffices?
         afterModel : function () {
