@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require("Ember"),
         App = require("App");
 
-    return Ember.Route.extend({
+    return Ember.Route.extend(require("login/helpers/transitionToLoginMixin"), {
         model: function () {
             return App.Lobby.createRecord();
         },
@@ -19,10 +19,6 @@ define(function (require) {
             if (!this.controllerFor("application").get("isLoggedIn")) {
                 this.transitionToLogin(transition);
             }
-        },
-        transitionToLogin: function (transition) {
-            this.controllerFor("login").set("lastTransition", transition);
-            this.transitionTo("login");
         }
     });
 });
