@@ -10,8 +10,12 @@ define(function (require) {
         isLoggedIn: false,
         isValidLogin: true,
         lastTransition: null,
-        transition: function () {
+        didLoginSuccessfully: function (player) {
             var lastTransition = this.get("lastTransition");
+
+            this.set("model", player);
+            this.set("isLoggedIn", true);
+            this.set("isValidLogin", true);
 
             if (lastTransition) {
                 this.set("lastTransition", null);
@@ -25,17 +29,19 @@ define(function (require) {
             login: function () {
                 //TODO: temporary client-sided test
                 //TODO: before trying to authenticate, check if fields are not empty
-                //TODO: Weird bug sometimes when pressing enter on a text-field
                 var model;
 
                 if (this.get("username") === "donut" && this.get("password") === "donut") {
                     model = App.Player.find(1);
 
-                    this.set("model", model);
-                    this.set("isLoggedIn", true);
-                    this.set("isValidLogin", true);
-
-                    this.transition();
+                    //TODO: Temporary fix, should be able to just use the "one", but for some reason the didLoad-event doesn't always fire.
+                    if (model.get("isLoaded")) {
+                        this.didLoginSuccessfully(model);
+                    } else {
+                        model.one("didLoad", this, function () {
+                            this.didLoginSuccessfully(model);
+                        });
+                    }
                 } else {
                     this.set("isValidLogin", false);
                 }
