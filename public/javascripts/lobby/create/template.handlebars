@@ -1,3 +1,4 @@
+<!-- TODO: quotes or no quotes for values like "title" and "focussed_textfield"?? -->
 {{#formFor this}}
     {{input title placeholder="Title" as=focussed_textfield}}
     {{input maxMembers placeholder="Max members"}}
@@ -8,7 +9,7 @@
         Create
     </button>
 
-    {{#linkTo "lobby.list" classNames="btn btn-default"}}
+    {{#link-to "lobby.list" classNames="btn btn-default"}}
         Cancel
-    {{/linkTo}}
+    {{/link-to}}
 {{/formFor}}

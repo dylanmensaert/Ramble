@@ -7,10 +7,12 @@ define(function (require) {
         documentTitle: "Application",
         isLeaf: false,
         needs: ["login"],
-        isLoggedInBinding: "controllers.login.isLoggedIn",
-        accountBinding: "controllers.login.model",
-        logout: function () {
-            this.get("controllers.login").send("logout");
+        isLoggedIn: Ember.computed.alias("controllers.login.isLoggedIn"),
+        account: Ember.computed.alias("controllers.login.model"),
+        actions: {
+            logout: function () {
+                this.get("controllers.login").send("logout");
+            }
         }
     });
 });

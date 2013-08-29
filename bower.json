@@ -4,7 +4,7 @@
     "dependencies": {
         "requirejs": "~2.1.8",
         "requirejs-domready": "~2.0.1",
-        "ember": "~1.0.0-rc.7",
+        "ember": "~1.0.0-rc.8",
         "handlebars.js": "~1.0.0",
         "ember-data-shim": "~0.0.13",
         "ember-dockyard-validations": "*",
@@ -12,7 +12,7 @@
         "sass-bootstrap": "~3.0.0"
     },
     "resolutions": {
-        "ember": "~1.0.0-rc.7",
+        "ember": "~1.0.0-rc.8",
         "jquery": "~2.0.3"
     }
 }

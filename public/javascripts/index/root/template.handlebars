@@ -9,13 +9,13 @@
 
     <p>
         {{#if isLoggedIn}}
-            {{#linkTo "lobby.list" classNames="btn btn-primary btn-lg"}}
+            {{#link-to "lobby.list" classNames="btn btn-primary btn-lg"}}
                 Play now! &raquo;
-            {{/linkTo}}
+            {{/link-to}}
         {{else}}
-            {{#linkTo "player.create" classNames="btn btn-primary btn-lg"}}
+            {{#link-to "player.create" classNames="btn btn-primary btn-lg"}}
                 Play now! &raquo;
-            {{/linkTo}}
+            {{/link-to}}
         {{/if}}
     </p>
 </div>

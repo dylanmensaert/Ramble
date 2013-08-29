@@ -7,26 +7,26 @@
                 <span class="icon-bar"></span>
             </button>
 
-            {{#linkTo "index" classNames="navbar-brand"}}
+            {{#link-to "index" classNames="navbar-brand"}}
                 R<span class="glyphicon glyphicon-fire"></span>mble
-            {{/linkTo}}
+            {{/link-to}}
         </div>
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
                 <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
-                {{#linkTo "lobby.list" tagName="li" href=false}}
-                    {{#linkTo "lobby.list"}}
+                {{#link-to "lobby.list" tagName="li" href=false}}
+                    {{#link-to "lobby.list"}}
                         Lobby List
-                    {{/linkTo}}
-                {{/linkTo}}
+                    {{/link-to}}
+                {{/link-to}}
 
-                {{#linkTo "player.list" tagName="li" href=false}}
-                    {{#linkTo "player.list"}}
+                {{#link-to "player.list" tagName="li" href=false}}
+                    {{#link-to "player.list"}}
                         Player list
-                    {{/linkTo}}
-                {{/linkTo}}
+                    {{/link-to}}
+                {{/link-to}}
             </ul>
 
             {{#if isLoggedIn}}
@@ -39,9 +39,9 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                {{#linkTo "player" account}}
+                                {{#link-to "player" account}}
                                     Profile
-                                {{/linkTo}}
+                                {{/link-to}}
                             </li>
 
                             <li>
@@ -54,13 +54,13 @@
                 </ul>
             {{else}}
                 <form class="navbar-form navbar-right">
-                    {{#linkTo "login" classNames="btn btn-default"}}
+                    {{#link-to "login" classNames="btn btn-default"}}
                         Log in
-                    {{/linkTo}}
+                    {{/link-to}}
 
-                    {{#linkTo "player.create" classNames="btn btn-success"}}
+                    {{#link-to "player.create" classNames="btn btn-success"}}
                         Sign up
-                    {{/linkTo}}
+                    {{/link-to}}
                 </form>
             {{/if}}
         </div>

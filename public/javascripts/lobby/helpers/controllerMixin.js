@@ -23,9 +23,7 @@ define(function (require) {
         isLeaf: true,
         hasObjectModel: false,
         needs: ["application", "lobby"],
-        isLoggedIn: false,
-        account: null,
-        isLoggedInBinding: "controllers.application.isLoggedIn",
-        accountBinding: "controllers.application.account"
+        isLoggedIn: Ember.computed.alias("controllers.application.isLoggedIn"),
+        account: Ember.computed.alias("controllers.application.account")
     });
 });

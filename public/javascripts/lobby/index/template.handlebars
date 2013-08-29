@@ -9,13 +9,13 @@
 
     <div>
         {{#if isOwnerOfLobby}}
-            {{#linkTo "lobby.edit" this classNames="btn btn-default"}}
+            {{#link-to "lobby.edit" this classNames="btn btn-default"}}
                 Edit
-            {{/linkTo}}
+            {{/link-to}}
 
-            {{#linkTo "lobby.delete" this classNames="btn btn-danger"}}
+            {{#link-to "lobby.delete" this classNames="btn btn-danger"}}
                 Delete
-            {{/linkTo}}
+            {{/link-to}}
         {{else}}
             {{#if isMemberOfLobby}}
                 <button {{action "leave"}} class="btn btn-default">
@@ -36,9 +36,9 @@
     </h3>
 
     <p>
-        {{#linkTo "player" owner}}
+        {{#link-to "player" owner}}
             {{owner.username}}
-        {{/linkTo}}
+        {{/link-to}}
     </p>
 </div>
 

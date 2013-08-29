@@ -7,6 +7,6 @@ define(function (require) {
         documentTitle: "Home",
         isLeaf: true,
         needs: ["application"],
-        isLoggedInBinding: "controllers.application.isLoggedIn"
+        isLoggedIn: Ember.computed.alias("controllers.application.isLoggedIn")
     });
 });
