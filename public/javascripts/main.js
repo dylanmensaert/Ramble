@@ -15,7 +15,7 @@
             //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.
             EmberEasyForm : "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-0.3.2",
             EmberValidations : "../bower_components/ember-dockyard-validations/validations/ember-validations-0.2.1",
-            Handlebars : "../bower_components/handlebars/handlebars",
+            Handlebars : "../bower_components/handlebars.js/dist/handlebars",
             jQuery : "../bower_components/jquery/jquery",
 
             Bootstrap : "../bower_components/sass-bootstrap/dist/js/bootstrap",
