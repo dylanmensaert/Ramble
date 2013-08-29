@@ -18,7 +18,7 @@ define(function (require) {
                 autofocus: "autofocus"
             });
 
-            Ember.EasyForm.Config.registerInputType("focus_input", Ember.FocussedTextField);
+            EmberEasyForm.Config.registerInputType("focussed_textfield", Ember.FocussedTextField);
 
             EmberEasyForm.Config.registerWrapper("default", {
                 formClass: "",

@@ -15,22 +15,25 @@ define(function (require) {
             //TODO: before trying to authenticate, check if fields are not empty
             //TODO: Weird bug sometimes when pressing enter on a text-field
             var model;
+
             if (this.get("username") === "donut" && this.get("password") === "donut") {
+                model = App.Player.find(1);
+
+                this.set("model", model);
                 this.set("isLoggedIn", true);
                 this.set("isValidLogin", true);
 
-                model = App.Player.find(1);
-                this.set("model", model);
-
-                this.redirect();
+                this.transition();
             } else {
                 this.set("isValidLogin", false);
             }
         },
-        redirect: function () {
+        transition: function () {
             var lastTransition = this.get("lastTransition");
+
             if (lastTransition) {
                 this.set("lastTransition", null);
+
                 lastTransition.retry();
             } else {
                 this.transitionToRoute("player", this.get("model"));
