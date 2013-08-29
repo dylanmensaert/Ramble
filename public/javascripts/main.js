@@ -10,6 +10,7 @@
 
             domReady: "../bower_components/requirejs-domready/domReady",
 
+            //TODO: Use production-version of Ember and Ember-Data in R.js-optimized version!
             Ember: "../bower_components/ember/ember",
             EmberData: "../bower_components/ember-data-shim/ember-data",
             //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.

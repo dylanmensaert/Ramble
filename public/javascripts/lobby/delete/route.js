@@ -3,13 +3,9 @@ define(function (require) {
 
     var Ember = require("Ember");
 
-    return Ember.Route.extend(require("login/helpers/transitionToLoginMixin"), {
+    return Ember.Route.extend(require("login/helpers/checkOwnershipMixin"), {
         afterModel: function (model, transition) {
-            if (!this.controllerFor("application").get("isLoggedIn")) {
-                this.transitionToLogin(transition);
-            } else if (this.controllerFor("application").get("account") !== model.get("owner")) {
-                this.transitionTo("index");
-            }
+            this.checkOwnership(model.get("owner"), transition);
         }
     });
 });

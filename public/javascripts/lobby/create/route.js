@@ -9,6 +9,7 @@ define(function (require) {
             return App.Lobby.createRecord();
         },
         deactivate: function () {
+            //TODO: This piece of code is recurring in a lot of Route's..create a mixin for it.
             var model = this.get("controller.model");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
