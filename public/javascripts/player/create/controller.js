@@ -4,8 +4,8 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("player/helpers/controllerMixin"), {
-        documentTitle : "Sign up",
-        create : function () {
+        documentTitle: "Sign up",
+        create: function () {
             var model = this.get("model");
 
             //TODO: Uncomment validation if it gets fixed by ember-data

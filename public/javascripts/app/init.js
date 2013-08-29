@@ -5,7 +5,7 @@ define(function (require) {
     var App = require("App");
 
     return {
-        initialize : function () {
+        initialize: function () {
             require("templates");
 
             require("app/presentation").initialize();

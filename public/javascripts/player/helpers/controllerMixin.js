@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Mixin.create({
-        documentTitle : function () {
+        documentTitle: function () {
             var documentTitle, divider;
 
             documentTitle = this.get("controllers.player.documentTitle");
@@ -20,12 +20,12 @@ define(function (require) {
 
             return documentTitle;
         }.property("controllers.player.documentTitle", "username", "controllerTitle"),
-        isLeaf : true,
-        hasObjectModel : false,
-        needs : ["application", "player"],
-        isLoggedIn : false,
-        account : null,
-        isLoggedInBinding : "controllers.application.isLoggedIn",
-        accountBinding : "controllers.application.account"
+        isLeaf: true,
+        hasObjectModel: false,
+        needs: ["application", "player"],
+        isLoggedIn: false,
+        account: null,
+        isLoggedInBinding: "controllers.application.isLoggedIn",
+        accountBinding: "controllers.application.account"
     });
 });

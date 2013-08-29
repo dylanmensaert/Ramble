@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend({
-        documentTitle : "Lobby",
-        isLeaf : false
+        documentTitle: "Lobby",
+        isLeaf: false
     });
 });

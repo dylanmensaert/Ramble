@@ -5,7 +5,7 @@ define(function (require) {
     var App = require("App");
 
     return {
-        initialize : function () {
+        initialize: function () {
             App.PlayerRoute = require("player/root/route");
             App.PlayerController = require("player/root/controller");
             App.PlayerView = require("player/root/view");

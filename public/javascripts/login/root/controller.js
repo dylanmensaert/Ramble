@@ -5,12 +5,12 @@ define(function (require) {
         App = require("App");
 
     return Ember.ObjectController.extend({
-        documentTitle : "Log in",
-        isLeaf : true,
-        isLoggedIn : false,
-        isValidLogin : true,
-        lastTransition : null,
-        login : function () {
+        documentTitle: "Log in",
+        isLeaf: true,
+        isLoggedIn: false,
+        isValidLogin: true,
+        lastTransition: null,
+        login: function () {
             //TODO: temporary client-sided test
             //TODO: before trying to authenticate, check if fields are not empty
             //TODO: Weird bug sometimes when pressing enter on a text-field
@@ -27,7 +27,7 @@ define(function (require) {
                 this.set("isValidLogin", false);
             }
         },
-        redirect : function () {
+        redirect: function () {
             var lastTransition = this.get("lastTransition");
             if (lastTransition) {
                 this.set("lastTransition", null);
@@ -36,7 +36,7 @@ define(function (require) {
                 this.transitionToRoute("player", this.get("model"));
             }
         },
-        logout : function () {
+        logout: function () {
             this.set("isLoggedIn", false);
 
             //TODO: Secure to just put model of logged-in user to null?

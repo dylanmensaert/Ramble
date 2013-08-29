@@ -4,9 +4,9 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("player/helpers/controllerMixin"), {
-        hasObjectModel : true,
-        controllerTitle : "Delete",
-        delete : function () {
+        hasObjectModel: true,
+        controllerTitle: "Delete",
+        delete: function () {
             var model = this.get("model");
 
             //model.one("didUpdate", this, function () {

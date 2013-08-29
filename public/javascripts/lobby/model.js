@@ -5,31 +5,31 @@ define(function (require) {
         EmberValidations = require("EmberValidations");
 
     return DS.Model.extend(EmberValidations.Mixin, {
-        title : DS.attr("string"),
-        password : DS.attr("string"),
-        maxMembers : DS.attr("number"),
+        title: DS.attr("string"),
+        password: DS.attr("string"),
+        maxMembers: DS.attr("number"),
         //TODO: Update validations
-        validations : {
-            title : {
-                presence : true,
-                length : {
-                    maximum : 50
+        validations: {
+            title: {
+                presence: true,
+                length: {
+                    maximum: 50
                 }
             },
-            password : {
-                presence : true,
-                length : {
-                    maximum : 50
+            password: {
+                presence: true,
+                length: {
+                    maximum: 50
                 },
-                confirmation : true
+                confirmation: true
             },
-            maxMembers : {
-                numericality : true
+            maxMembers: {
+                numericality: true
             },
-            owner : {
-                presence : true
+            owner: {
+                presence: true
             },
-            members : {
+            members: {
 
             }
         }

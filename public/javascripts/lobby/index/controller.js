@@ -4,17 +4,17 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
-        hasObjectModel : true,
-        leave : function () {
+        hasObjectModel: true,
+        leave: function () {
             this.send("kick", this.get("account"));
         },
-        kick : function (member) {
+        kick: function (member) {
             var model = this.get("model");
 
             model.get("members").removeObject(member);
             model.get("transaction").commit();
         },
-        join : function () {
+        join: function () {
             var model = this.get("model");
 
             if (this.get("isLoggedIn")) {
@@ -24,10 +24,10 @@ define(function (require) {
                 this.transitionToRoute("login");
             }
         },
-        isOwnerOfLobby : function () {
+        isOwnerOfLobby: function () {
             return this.get("account") === this.get("owner");
         }.property("account", "owner"),
-        isMemberOfLobby : function () {
+        isMemberOfLobby: function () {
             return this.get("members").contains(this.get("account"));
         }.property("members.@each", "account")
     });

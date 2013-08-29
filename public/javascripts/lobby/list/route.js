@@ -5,7 +5,7 @@ define(function (require) {
         App = require("App");
 
     return Ember.Route.extend({
-        model : function () {
+        model: function () {
             return App.Lobby.find();
         }
     });

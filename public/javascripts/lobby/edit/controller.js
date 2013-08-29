@@ -4,9 +4,9 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
-        hasObjectModel : true,
-        controllerTitle : "Edit",
-        save : function () {
+        hasObjectModel: true,
+        controllerTitle: "Edit",
+        save: function () {
             var model = this.get("model");
 
             //model.validate().then(function () {

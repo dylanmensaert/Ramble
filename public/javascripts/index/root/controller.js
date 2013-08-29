@@ -4,9 +4,9 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Controller.extend({
-        documentTitle : "Home",
-        isLeaf : true,
-        needs : ["application"],
-        isLoggedInBinding : "controllers.application.isLoggedIn"
+        documentTitle: "Home",
+        isLeaf: true,
+        needs: ["application"],
+        isLoggedInBinding: "controllers.application.isLoggedIn"
     });
 });

@@ -4,21 +4,21 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.Route.extend({
-        deactivate : function () {
+        deactivate: function () {
             var model = this.get("controller.model");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
                 model.get("transaction").rollback();
             }
         },
-        afterModel : function (model, transition) {
+        afterModel: function (model, transition) {
             if (!this.controllerFor("application").get("isLoggedIn")) {
                 this.transitionToLogin(transition);
             } else if (this.controllerFor("application").get("account") !== model) {
                 this.transitionTo("index");
             }
         },
-        transitionToLogin : function (transition) {
+        transitionToLogin: function (transition) {
             this.controllerFor("login").set("lastTransition", transition);
             this.transitionTo("login");
         }

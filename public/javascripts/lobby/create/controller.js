@@ -4,8 +4,8 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend(require("lobby/helpers/controllerMixin"), {
-        controllerTitle : "Create",
-        create : function () {
+        controllerTitle: "Create",
+        create: function () {
             var model = this.get("model");
 
             //model.validate().then(function () {

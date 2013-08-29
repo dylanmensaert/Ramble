@@ -6,16 +6,16 @@ define(function (require) {
         App;
 
     App = Ember.Application.create({
-        ready : function () {
+        ready: function () {
             Ember.$(".my-initial-loading").remove();
         },
-        LOG_TRANSITIONS : true
+        LOG_TRANSITIONS: true
     });
 
     App.deferReadiness();
 
     App.Store = DS.Store.extend({
-        adapter : DS.FixtureAdapter.create()
+        adapter: DS.FixtureAdapter.create()
     });
 
     return App;

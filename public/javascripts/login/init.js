@@ -4,7 +4,7 @@ define(function (require) {
     var App = require("App");
 
     return {
-        initialize : function () {
+        initialize: function () {
             App.LoginRoute = require("login/root/route");
             App.LoginController = require("login/root/controller");
             App.LoginView = require("login/root/view");

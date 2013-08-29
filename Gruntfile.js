@@ -11,32 +11,32 @@ module.exports = function (grunt) {
 
     var config = {
         //public-folders
-        javascripts : "public/javascripts",
-        sass : "public/sass",
-        stylesheets : "public/stylesheets",
-        images : "public/images",
-        fonts : "public/fonts",
+        javascripts: "public/javascripts",
+        sass: "public/sass",
+        stylesheets: "public/stylesheets",
+        images: "public/images",
+        fonts: "public/fonts",
         //dist-folders
-        dist : "dist",
-        distJavascripts : "dist/javascripts",
-        distStylesheets : "dist/stylesheets",
-        distImages : "dist/images",
-        distFonts : "dist/fonts",
+        dist: "dist",
+        distJavascripts: "dist/javascripts",
+        distStylesheets: "dist/stylesheets",
+        distImages: "dist/images",
+        distFonts: "dist/fonts",
         //other
-        test : "test",
-        routes : "routes",
-        components : "public/bower_components",
-        templatesjs : "public/templates.js"
+        test: "test",
+        routes: "routes",
+        components: "public/bower_components",
+        templatesjs: "public/templates.js"
     };
 
     grunt.initConfig({
-        config : config,
-        emberTemplates : {
-            all : {
-                options : {
-                    amd : true,
-                    templateBasePath : "<%= config.javascripts %>" + "/",
-                    templateName : function (sourceFile) {
+        config: config,
+        emberTemplates: {
+            all: {
+                options: {
+                    amd: true,
+                    templateBasePath: "<%= config.javascripts %>" + "/",
+                    templateName: function (sourceFile) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace("/template", "");
@@ -45,55 +45,55 @@ module.exports = function (grunt) {
                         return templateName;
                     }
                 },
-                files : {
-                    "<%= config.templatesjs %>" : "<%= config.javascripts %>/**/*.handlebars"
+                files: {
+                    "<%= config.templatesjs %>": "<%= config.javascripts %>/**/*.handlebars"
                 }
             }
         },
-        compass : {
-            options : {
-                importPath : "<%= config.components %>",
-                sassDir : "<%= config.sass %>",
-                cssDir : "<%= config.stylesheets %>",
-                imagesDir : "<%= config.images %>",
-                javascriptsDir : "<%= config.javascripts %>"
+        compass: {
+            options: {
+                importPath: "<%= config.components %>",
+                sassDir: "<%= config.sass %>",
+                cssDir: "<%= config.stylesheets %>",
+                imagesDir: "<%= config.images %>",
+                javascriptsDir: "<%= config.javascripts %>"
             },
-            development : {
-                options : {
-                    specify : ["<%= config.sass %>/**/*.scss"]
+            development: {
+                options: {
+                    specify: ["<%= config.sass %>/**/*.scss"]
                 }
             },
-            production : {
-                options : {
-                    specify : ["<%= config.sass %>/main.scss"],
-                    cssDir : "<%= config.distStylesheets %>",
-                    environment : "production"
+            production: {
+                options: {
+                    specify: ["<%= config.sass %>/main.scss"],
+                    cssDir: "<%= config.distStylesheets %>",
+                    environment: "production"
                 }
             }
         },
-        jshint : {
-            client : {
-                src : ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
-                options : {
-                    jshintrc : "<%= config.javascripts %>/.jshintrc"
+        jshint: {
+            client: {
+                src: ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
+                options: {
+                    jshintrc: "<%= config.javascripts %>/.jshintrc"
                 }
             },
-            test : {
-                src : ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
-                options : {
-                    jshintrc : "<%= config.test %>/.jshintrc"
+            test: {
+                src: ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
+                options: {
+                    jshintrc: "<%= config.test %>/.jshintrc"
                 }
             },
-            server : {
-                src : ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
-                options : {
-                    jshintrc : ".jshintrc"
+            server: {
+                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
+                options: {
+                    jshintrc: ".jshintrc"
                 }
             }
         },
-        csslint : {
-            all : {
-                src : ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
+        csslint: {
+            all: {
+                src: ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
             }
         },
         //TODO: Improve integration of unit tests!!
@@ -112,12 +112,12 @@ module.exports = function (grunt) {
         //        }
         //    }
         //},
-        clean : {
-            dist : {
-                src : ["<%= config.dist %>"]
+        clean: {
+            dist: {
+                src: ["<%= config.dist %>"]
             },
-            cleanup : {
-                src : [
+            cleanup: {
+                src: [
                     "node_modules",
                     "<%= config.components %>",
                     "<%= config.templatesjs %>",
@@ -129,20 +129,20 @@ module.exports = function (grunt) {
             //    src : ["main.js"]
             //}
         },
-        copy : {
-            dist : {
-                files : [
+        copy: {
+            dist: {
+                files: [
                     {
-                        expand : true,
-                        cwd : "<%= config.images %>",
-                        src : ["**"],
-                        dest : "<%= config.distImages %>"
+                        expand: true,
+                        cwd: "<%= config.images %>",
+                        src: ["**"],
+                        dest: "<%= config.distImages %>"
                     },
                     {
-                        expand : true,
-                        cwd : "<%= config.fonts %>",
-                        src : ["**"],
-                        dest : "<%= config.distFonts %>"
+                        expand: true,
+                        cwd: "<%= config.fonts %>",
+                        src: ["**"],
+                        dest: "<%= config.distFonts %>"
                     }
                 ]
             }
@@ -157,14 +157,14 @@ module.exports = function (grunt) {
             //    ]
             //}
         },
-        requirejs : {
-            all : {
-                options : {
-                    name : "main",
-                    baseUrl : "<%= config.javascripts %>",
-                    include : ["../bower_components/requirejs/require.js"],
-                    mainConfigFile : "<%= config.javascripts %>/main.js",
-                    out : "<%= config.distJavascripts %>/main.js"
+        requirejs: {
+            all: {
+                options: {
+                    name: "main",
+                    baseUrl: "<%= config.javascripts %>",
+                    include: ["../bower_components/requirejs/require.js"],
+                    mainConfigFile: "<%= config.javascripts %>/main.js",
+                    out: "<%= config.distJavascripts %>/main.js"
                 }
             }
         },
@@ -175,24 +175,24 @@ module.exports = function (grunt) {
         //        }
         //    }
         //},
-        watch : {
-            emberTemplates : {
-                files : ["<%= config.javascripts %>/**/*.handlebars"],
-                tasks : ["emberTemplates:all"]
+        watch: {
+            emberTemplates: {
+                files: ["<%= config.javascripts %>/**/*.handlebars"],
+                tasks: ["emberTemplates:all"]
             },
-            compass : {
-                files : ["<%= config.sass %>/**/*.scss"],
-                tasks : ["compass:development"]
+            compass: {
+                files: ["<%= config.sass %>/**/*.scss"],
+                tasks: ["compass:development"]
             },
-            livereload : {
-                files : [
+            livereload: {
+                files: [
                     "<%= config.javascripts %>/**/*.js",
                     "<%= config.templatesjs %>",
                     "<%= config.stylesheets %>/main.css",
                     "<%= config.images %>/**/*.*"
                 ],
-                options : {
-                    livereload : true
+                options: {
+                    livereload: true
                 }
             }
         }

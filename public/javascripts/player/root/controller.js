@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require("Ember");
 
     return Ember.ObjectController.extend({
-        documentTitle : "Player",
-        isLeaf : false
+        documentTitle: "Player",
+        isLeaf: false
     });
 });
