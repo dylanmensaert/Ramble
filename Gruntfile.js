@@ -163,9 +163,13 @@ module.exports = function (grunt) {
                     baseUrl: "<%= config.javascripts %>",
                     name: "../bower_components/almond/almond",
                     include: ["main"],
-                    insertRequire: ["main"],
                     mainConfigFile: "<%= config.javascripts %>/main.js",
-                    out: "<%= config.distJavascripts %>/main.js"
+                    out: "<%= config.distJavascripts %>/main.js",
+                    paths: {
+                        Ember: "../bower_components/ember/ember.prod",
+                        EmberData: "../bower_components/ember-data-shim/ember-data.prod"
+                        //TODO: Use prod-version of ember-validations and ember-easyForm too!
+                    }
                 }
             }
         },
