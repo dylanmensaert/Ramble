@@ -4,14 +4,14 @@ define(function (require) {
 
     var Ember = require("Ember"),
         App = require("App"),
-        GoogleAnalytics = require("GoogleAnalytics"),
+        googleAnalytics = require("GoogleAnalytics"),
         config = require("app/config"),
     //TODO: Put document.title in config.json? Or better, use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
         applicationTitle = document.title.replace("loading", "");
 
     return {
         initialize: function () {
-            GoogleAnalytics.push(["_setAccount", config.googleAnalyticsAccount]);
+            googleAnalytics("create", config.googleAnalyticsAccount);
 
             Ember.Route.reopen({
                 setupController: function (controller, model) {
@@ -20,7 +20,9 @@ define(function (require) {
                     if (controller.get("isLeaf")) {
                         document.title = applicationTitle + controller.get("documentTitle");
 
-                        GoogleAnalytics.push(["_trackPageview", controller.get("documentTitle")]);
+                        googleAnalytics("send", "pageview", {
+                            title: controller.get("documentTitle")
+                        });
                     }
                 }
             });

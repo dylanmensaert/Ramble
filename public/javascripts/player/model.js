@@ -1,10 +1,10 @@
 define(function (require) {
     "use strict";
 
-    var DS = require("EmberData"),
-        EmberValidations = require("EmberValidations");
+    var DS = require("EmberData")/*,
+     EmberValidations = require("EmberValidations")*/;
 
-    return DS.Model.extend(EmberValidations.Mixin, {
+    return DS.Model.extend(/*EmberValidations.Mixin, */{
         username: DS.attr("string"),
         password: DS.attr("string"),
         email: DS.attr("string"),

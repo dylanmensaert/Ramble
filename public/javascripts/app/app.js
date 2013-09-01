@@ -15,7 +15,9 @@ define(function (require) {
     App.deferReadiness();
 
     App.Store = DS.Store.extend({
-        adapter: DS.FixtureAdapter.create()
+        adapter: DS.FixtureAdapter.create({
+            latency: 250
+        })
     });
 
     return App;

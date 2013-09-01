@@ -14,14 +14,14 @@
             Ember: "../bower_components/ember/ember",
             EmberData: "../bower_components/ember-data-shim/ember-data",
             //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.
-            EmberEasyForm: "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-0.3.2",
-            EmberValidations: "../bower_components/ember-dockyard-validations/validations/ember-validations-0.2.1",
-            Handlebars: "../bower_components/handlebars.js/dist/handlebars",
+            EmberEasyForm: "../bower_components/ember-dockyard-validations/ember-easyForm",
+            EmberValidations: "../bower_components/ember-dockyard-validations/ember-validations",
+            Handlebars: "../bower_components/handlebars.js/dist/handlebars.runtime",
             jQuery: "../bower_components/jquery/jquery",
 
             Bootstrap: "../bower_components/sass-bootstrap/dist/js/bootstrap",
 
-            GoogleAnalytics: "https://ssl.google-analytics.com/ga"
+            GoogleAnalytics: "../bower_components/google-analytics/index"
         },
         shim: {
             Ember: {
@@ -52,7 +52,7 @@
                 exports: "jQuery"
             },
             GoogleAnalytics: {
-                exports: "_gaq"
+                exports: "ga"
             }
         },
         deps: ["domReady", "app/init"],
