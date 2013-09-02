@@ -7,7 +7,6 @@ define(function (require) {
         initialize: function () {
             App.IndexRoute = require("index/root/route");
             App.IndexController = require("index/root/controller");
-            App.IndexView = require("index/root/view");
         }
     };
 });

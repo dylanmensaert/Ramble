@@ -7,7 +7,6 @@ define(function (require) {
         initialize: function () {
             App.LoginRoute = require("login/root/route");
             App.LoginController = require("login/root/controller");
-            App.LoginView = require("login/root/view");
         }
     };
 });
