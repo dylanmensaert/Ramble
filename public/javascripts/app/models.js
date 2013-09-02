@@ -11,18 +11,22 @@ define(function (require) {
 
             App.Lobby.reopen({
                 owner: DS.belongsTo(App.Player, {
+                    async: true,
                     inverse: "ownedLobbies"
                 }),
                 members: DS.hasMany(App.Player, {
+                    async: true,
                     inverse: "joinedLobbies"
                 })
             });
 
             App.Player.reopen({
                 ownedLobbies: DS.hasMany(App.Lobby, {
+                    async: true,
                     inverse: "owner"
                 }),
                 joinedLobbies: DS.hasMany(App.Lobby, {
+                    async: true,
                     inverse: "members"
                 })
             });

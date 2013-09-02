@@ -1,8 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        App = require("App");
+    var Ember = require("Ember");
 
     return Ember.ObjectController.extend({
         documentTitle: "Log in",
@@ -27,21 +26,14 @@ define(function (require) {
         },
         actions: {
             login: function () {
+                var self = this;
+
                 //TODO: temporary client-sided test
                 //TODO: before trying to authenticate, check if fields are not empty
-                var model;
-
                 if (this.get("username") === "donut" && this.get("password") === "donut") {
-                    model = App.Player.find(1);
-
-                    //TODO: Temporary fix, should be able to just use the "one", but for some reason the didLoad-event doesn't always fire.
-                    if (model.get("isLoaded")) {
-                        this.didLoginSuccessfully(model);
-                    } else {
-                        model.one("didLoad", this, function () {
-                            this.didLoginSuccessfully(model);
-                        });
-                    }
+                    this.store.find("player", 1).then(function (model) {
+                        self.didLoginSuccessfully(model);
+                    });
                 } else {
                     this.set("isValidLogin", false);
                 }

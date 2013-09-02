@@ -1,12 +1,11 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        App = require("App");
+    var Ember = require("Ember");
 
     return Ember.Route.extend(require("login/helpers/transitionToLoginMixin"), {
         model: function () {
-            return App.Lobby.createRecord();
+            return this.store.createRecord("lobby");
         },
         deactivate: function () {
             //TODO: This piece of code is recurring in a lot of Route's..create a mixin for it.
