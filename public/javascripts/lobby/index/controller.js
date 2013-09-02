@@ -8,9 +8,11 @@ define(function (require) {
         isOwnerOfLobby: function () {
             return this.get("account") === this.get("owner");
         }.property("account", "owner"),
+        filteredOwner: Ember.computed.filter("members", function (player) {
+            return this.get("account") === player;
+        }),
         isMemberOfLobby: function () {
-            //TODO: Use the new "Array Computed Properties" provided in RC8 to improve performance!
-            return this.get("members").contains(this.get("account"));
+            return this.get("filteredOwner.length") > 0;
         }.property("members.@each", "account"),
         actions: {
             leave: function () {
