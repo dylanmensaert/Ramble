@@ -13,7 +13,8 @@ define(function (require) {
                 self = this;
                 model = this.get("model");
 
-                model.deleteRecord().then(function () {
+                model.deleteRecord();
+                model.save().then(function () {
                     self.transitionToRoute("lobby.list");
                 });
 

@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Route.extend(require("login/helpers/transition-to-login-mixin"), {
         model: function () {
-            return this.store.createRecord("lobby");
+            return this.get("store").createRecord("lobby");
         },
         deactivate: function () {
             //TODO: This piece of code is recurring in a lot of Route's..create a mixin for it.

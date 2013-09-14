@@ -31,7 +31,7 @@ define(function (require) {
                 //TODO: temporary client-sided test
                 //TODO: before trying to authenticate, check if fields are not empty
                 if (this.get("username") === "donut" && this.get("password") === "donut") {
-                    this.store.find("player", 1).then(function (model) {
+                    this.get("store").find("player", 1).then(function (model) {
                         self.didLoginSuccessfully(model);
                     });
                 } else {

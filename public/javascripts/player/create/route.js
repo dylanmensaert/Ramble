@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Route.extend({
         model: function () {
-            return this.store.createRecord("player");
+            return this.get("store").createRecord("player");
         },
         deactivate: function () {
             var model = this.get("controller.model");

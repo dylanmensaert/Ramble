@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Route.extend({
         model: function () {
-            return this.store.find("lobby");
+            return this.get("store").findAll("lobby");
         }
     });
 });
