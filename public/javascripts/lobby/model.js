@@ -8,6 +8,14 @@ define(function (require) {
         title: DS.attr("string"),
         password: DS.attr("string"),
         maxMembers: DS.attr("number"),
+        owner: DS.belongsTo("player", {
+            inverse: "ownedLobbies",
+            async: true
+        }),
+        members: DS.hasMany("player", {
+            inverse: "joinedLobbies",
+            async: true
+        }),
         //TODO: Update validations
         validations: {
             title: {

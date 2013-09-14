@@ -11,7 +11,7 @@ define(function (require) {
             var model = this.get("controller.model");
 
             if (model.get("isDirty") && !model.get("isSaving")) {
-                model.get("transaction").rollback();
+                model.rollback();
             }
         },
         afterModel: function () {

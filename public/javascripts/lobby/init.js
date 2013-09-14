@@ -6,6 +6,8 @@ define(function (require) {
 
     return {
         initialize: function () {
+            App.Lobby = require("lobby/model");
+
             App.LobbyRoute = require("lobby/root/route");
             App.LobbyController = require("lobby/root/controller");
 

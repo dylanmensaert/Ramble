@@ -22,14 +22,14 @@ define(function (require) {
                 var model = this.get("model");
 
                 model.get("members").removeObject(member);
-                model.get("transaction").commit();
+                model.save();
             },
             join: function () {
                 var model = this.get("model");
 
                 if (this.get("isLoggedIn")) {
                     model.get("members").pushObject(this.get("account"));
-                    model.get("transaction").commit();
+                    model.save();
                 } else {
                     this.transitionToRoute("login");
                 }
