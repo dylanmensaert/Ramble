@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.Route.extend(require("login/helpers/checkOwnershipMixin"), {
+    return Ember.Route.extend(require("login/helpers/check-ownership-mixin"), {
         afterModel: function (model, transition) {
             this.checkOwnership(model.get("owner"), transition);
         }

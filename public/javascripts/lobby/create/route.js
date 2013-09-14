@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.Route.extend(require("login/helpers/transitionToLoginMixin"), {
+    return Ember.Route.extend(require("login/helpers/transition-to-login-mixin"), {
         model: function () {
             return this.store.createRecord("lobby");
         },

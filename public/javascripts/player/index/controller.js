@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.ObjectController.extend(require("player/helpers/controllerMixin"), {
+    return Ember.ObjectController.extend(require("player/helpers/controller-mixin"), {
         hasObjectModel: true,
         isOwnerOfAccount: function () {
             return this.get("account") === this.get("model");

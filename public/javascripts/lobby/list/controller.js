@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.ArrayController.extend(require("lobby/helpers/controllerMixin"), {
+    return Ember.ArrayController.extend(require("lobby/helpers/controller-mixin"), {
         controllerTitle: "List"
     });
 });
