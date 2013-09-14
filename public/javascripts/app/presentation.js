@@ -1,11 +1,11 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        EmberEasyForm = require("EmberEasyForm");
+    var Ember = require("ember"),
+        EmberEasyForm = require("ember-easyform");
 
     //TODO: Require only the needed Bootstrap-plugins?
-    require("Bootstrap");
+    require("bootstrap");
 
     return {
         initialize: function () {

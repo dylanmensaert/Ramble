@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember");
+    var Ember = require("ember");
 
     return Ember.Mixin.create({
         documentTitle: function () {

@@ -166,8 +166,8 @@ module.exports = function (grunt) {
                     mainConfigFile: "<%= config.javascripts %>/main.js",
                     out: "<%= config.distJavascripts %>/main.js",
                     paths: {
-                        Ember: "../bower_components/ember/ember.prod"
-                        //EmberData: "../bower_components/ember-data-shim/ember-data.prod"
+                        ember: "../bower_components/ember/ember.prod",
+                        "ember-data": "../bower_components/ember-data-shim/ember-data.prod"
                         //TODO: Use prod-version of ember-validations and ember-easyForm too!
                     }
                 }

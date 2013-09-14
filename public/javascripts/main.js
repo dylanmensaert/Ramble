@@ -8,53 +8,53 @@
             App: "app/app",
             templates: "../templates",
 
-            domReady: "../bower_components/requirejs-domready/domReady",
+            domready: "../bower_components/requirejs-domready/domReady",
 
-            Ember: "../bower_components/ember/ember",
-            EmberData: "../bower_components/ember-data-shim/ember-data",
+            ember: "../bower_components/ember/ember",
+            "ember-data": "../bower_components/ember-data-shim/ember-data",
             //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.
-            EmberEasyForm: "../vendor/ember-easyForm",
-            EmberValidations: "../vendor/ember-validations",
-            Handlebars: "../bower_components/handlebars.js/dist/handlebars.runtime",
-            jQuery: "../bower_components/jquery/jquery",
+            "ember-easyform": "../vendor/ember-easyForm",
+            "ember-validations": "../vendor/ember-validations",
+            handlebars: "../bower_components/handlebars.js/dist/handlebars.runtime",
+            jquery: "../bower_components/jquery/jquery",
 
-            Bootstrap: "../bower_components/sass-bootstrap/dist/js/bootstrap",
+            bootstrap: "../bower_components/sass-bootstrap/dist/js/bootstrap",
 
-            GoogleAnalytics: "../bower_components/google-analytics/index"
+            "google-analytics": "../bower_components/google-analytics/index"
         },
         shim: {
-            Ember: {
-                deps: ["jQuery", "Handlebars"],
+            ember: {
+                deps: ["jquery", "handlebars"],
                 exports: "Ember"
             },
-            EmberData: {
-                deps: ["Ember"],
+            "ember-data": {
+                deps: ["ember"],
                 exports: "DS"
             },
-            EmberEasyForm: {
-                deps: ["Ember"],
+            "ember-easyform": {
+                deps: ["ember"],
                 exports: "Ember.EasyForm"
             },
-            EmberValidations: {
-                deps: ["Ember"],
+            "ember-validations": {
+                deps: ["ember"],
                 exports: "Ember.Validations"
             },
-            Handlebars: {
-                deps: ["jQuery"],
+            handlebars: {
+                deps: ["jquery"],
                 exports: "Handlebars"
             },
-            jQuery: {
+            jquery: {
                 exports: "jQuery"
             },
-            Bootstrap: {
-                deps: ["jQuery"],
+            bootstrap: {
+                deps: ["jquery"],
                 exports: "jQuery"
             },
-            GoogleAnalytics: {
+            "google-analytics": {
                 exports: "ga"
             }
         },
-        deps: ["domReady", "app/init"],
+        deps: ["domready", "app/init"],
         callback: function (domReady, AppInit) {
             domReady(function () {
                 AppInit.initialize();

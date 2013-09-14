@@ -1,8 +1,8 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("Ember"),
-        DS = require("EmberData"),
+    var Ember = require("ember"),
+        DS = require("ember-data"),
         App;
 
     App = Ember.Application.create({
