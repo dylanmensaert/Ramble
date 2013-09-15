@@ -2,7 +2,7 @@
     {{input username placeholder="Username" as="focussed_textfield"}}
     {{input password placeholder="Password"}}
 
-    {{#unless isValidLogin}}
+    {{#unless session.hasValidCredentials}}
         <p class="text-danger">
             Login not successful
         </p>

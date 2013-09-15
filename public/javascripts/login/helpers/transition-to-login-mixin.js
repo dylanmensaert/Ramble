@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Mixin.create({
         transitionToLogin: function (transition) {
-            this.controllerFor("login").set("lastTransition", transition);
+            this.set("session.attemptedTransition", transition);
             this.transitionTo("login");
         }
     });

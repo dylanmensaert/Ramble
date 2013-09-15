@@ -5,9 +5,9 @@ define(function (require) {
 
     return Ember.Mixin.create(require("login/helpers/transition-to-login-mixin"), {
         checkOwnership: function (owner, transition) {
-            if (!this.controllerFor("application").get("isLoggedIn")) {
+            if (!this.get("session.isLoggedIn")) {
                 this.transitionToLogin(transition);
-            } else if (this.controllerFor("application").get("account") !== owner) {
+            } else if (this.get("session.account") !== owner) {
                 this.transitionTo("index");
             }
         }

@@ -16,7 +16,7 @@ define(function (require) {
             }
         },
         afterModel: function (model, transition) {
-            if (!this.controllerFor("application").get("isLoggedIn")) {
+            if (!this.get("session.isLoggedIn")) {
                 this.transitionToLogin(transition);
             }
         }

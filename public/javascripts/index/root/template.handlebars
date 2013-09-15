@@ -8,7 +8,7 @@
     </p>
 
     <p>
-        {{#if isLoggedIn}}
+        {{#if session.isLoggedIn}}
             {{#link-to "lobby.list" classNames="btn btn-primary btn-lg"}}
                 Play now! &raquo;
             {{/link-to}}

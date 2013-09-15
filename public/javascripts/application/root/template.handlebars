@@ -29,17 +29,17 @@
                 {{/link-to}}
             </ul>
 
-            {{#if isLoggedIn}}
+            {{#if session.isLoggedIn}}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            {{account.username}}
+                            {{session.account.username}}
                             <b class="caret"></b>
                         </a>
 
                         <ul class="dropdown-menu">
                             <li>
-                                {{#link-to "player" account}}
+                                {{#link-to "player" session.account}}
                                     Profile
                                 {{/link-to}}
                             </li>

@@ -9,6 +9,7 @@ define(function (require) {
             require("templates");
 
             require("app/presentation").initialize();
+            require("app/session").initialize();
             require("app/router").initialize();
 
             require("application/init").initialize();
@@ -20,102 +21,102 @@ define(function (require) {
             //TODO: Create API in Express.js
             App.Lobby.FIXTURES = [
                 {
-                    "id": 1,
+                    "id": "l1",
                     "title": "Game Dylan en Dimitri",
                     "password": "zonneschijn",
                     "maxMembers": "5",
-                    "owner": [1],
-                    "members": [2, 3, 5, 8]
+                    "owner": ["p1"],
+                    "members": ["p2", "p3", "p5", "p8"]
                 },
                 {
-                    "id": 2,
+                    "id": "l2",
                     "title": "customgame",
                     "password": "Peter",
                     "maxMembers": "7",
-                    "owner": [8],
-                    "members": [4, 9, 3]
+                    "owner": ["p8"],
+                    "members": ["p4", "p9", "p3"]
                 },
                 {
-                    "id": 3,
+                    "id": "l3",
                     "title": "winners lobby!",
                     "password": "Dolfijn",
                     "maxMembers": "12",
-                    "owner": [6],
-                    "members": [5, 3, 8, 1]
+                    "owner": ["p6"],
+                    "members": ["p5", "p3", "p8", "p1"]
                 },
                 {
-                    "id": 4,
+                    "id": "l4",
                     "title": "eten",
                     "password": "open",
                     "maxMembers": "7",
-                    "owner": [8],
+                    "owner": ["p8"],
                     "members": []
                 }
             ];
 
             App.Player.FIXTURES = [
                 {
-                    "id": 1,
+                    "id": "p1",
                     "username": "donut",
                     "email": "aaaa@gmail.com",
-                    "ownedLobbies": [1],
-                    "joinedLobbies": [3]
+                    "ownedLobbies": ["l1"],
+                    "joinedLobbies": ["l3"]
                 },
                 {
-                    "id": 2,
+                    "id": "p2",
                     "username": "pizaa",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
-                    "joinedLobbies": [1]
+                    "joinedLobbies": ["l1"]
                 },
                 {
-                    "id": 3,
+                    "id": "p3",
                     "username": "zizima",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
-                    "joinedLobbies": [1, 2, 3]
+                    "joinedLobbies": ["l1", "l2", "l3"]
                 },
                 {
-                    "id": 4,
+                    "id": "p4",
                     "username": "madeentje",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
-                    "joinedLobbies": [2]
+                    "joinedLobbies": ["l2"]
                 },
                 {
-                    "id": 5,
+                    "id": "p5",
                     "username": "cryptex",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
-                    "joinedLobbies": [3, 1]
+                    "joinedLobbies": ["l3", "l1"]
                 },
                 {
-                    "id": 6,
+                    "id": "p6",
                     "username": "heca",
                     "email": "aaaa@gmail.com",
-                    "ownedLobbies": [3],
+                    "ownedLobbies": ["l3"],
                     "joinedLobbies": []
                 },
                 {
-                    "id": 7,
+                    "id": "p7",
                     "username": "bosbes",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
                     "joinedLobbies": []
                 },
                 {
-                    "id": 8,
+                    "id": "p8",
                     "username": "graaaah",
                     "email": "aaaa@gmail.com",
-                    "ownedLobbies": [2, 4],
-                    "joinedLobbies": [3, 1]
+                    "ownedLobbies": ["l2", "l4"],
+                    "joinedLobbies": ["l3", "l1"]
                 },
                 {
-                    "id": 9,
+                    "id": "p9",
                     "username": "antiliaan",
                     "email": "aaaa@gmail.com",
                     "ownedLobbies": [],
-                    "joinedLobbies": [2]
+                    "joinedLobbies": ["l2"]
                 }
             ];
 

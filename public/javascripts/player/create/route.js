@@ -15,7 +15,7 @@ define(function (require) {
             }
         },
         afterModel: function () {
-            if (this.controllerFor("application").get("isLoggedIn")) {
+            if (this.get("session.isLoggedIn")) {
                 this.transitionTo("index");
             }
         }

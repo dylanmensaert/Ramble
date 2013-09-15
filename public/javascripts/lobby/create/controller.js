@@ -14,7 +14,7 @@ define(function (require) {
 
                 //model.validate().then(function () {
                 //    if (model.get("isValid")) {
-                model.set("owner", this.get("account"));
+                model.set("owner", this.get("session.account"));
 
                 model.save().then(function (model) {
                     self.transitionToRoute("lobby", model);

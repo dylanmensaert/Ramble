@@ -10,7 +10,7 @@ define(function (require) {
         },
         //TODO: Is afterModel required? "redirect"-hook suffices?
         afterModel: function () {
-            if (this.get("controller.isLoggedIn")) {
+            if (this.get("session.isLoggedIn")) {
                 this.transitionTo("index");
             }
         }

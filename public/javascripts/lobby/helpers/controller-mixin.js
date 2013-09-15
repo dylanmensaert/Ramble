@@ -22,8 +22,6 @@ define(function (require) {
         }.property("controllers.lobby.documentTitle", "title", "controllerTitle"),
         isLeaf: true,
         hasObjectModel: false,
-        needs: ["application", "lobby"],
-        isLoggedIn: Ember.computed.alias("controllers.application.isLoggedIn"),
-        account: Ember.computed.alias("controllers.application.account")
+        needs: ["lobby"]
     });
 });

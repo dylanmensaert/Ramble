@@ -6,22 +6,19 @@ define(function (require) {
     return Ember.ObjectController.extend({
         documentTitle: "Log in",
         isLeaf: true,
-        isLoggedIn: false,
-        isValidLogin: true,
-        lastTransition: null,
         didLoginSuccessfully: function (player) {
-            var lastTransition = this.get("lastTransition");
+            var attemptedTransition = this.get("session.attemptedTransition");
 
-            this.set("model", player);
-            this.set("isLoggedIn", true);
-            this.set("isValidLogin", true);
+            this.set("session.account", player);
+            this.set("session.isLoggedIn", true);
+            this.set("session.hasValidCredentials", true);
 
-            if (lastTransition) {
-                this.set("lastTransition", null);
+            if (attemptedTransition) {
+                this.set("session.attemptedTransition", null);
 
-                lastTransition.retry();
+                attemptedTransition.retry();
             } else {
-                this.transitionToRoute("player", this.get("model"));
+                this.transitionToRoute("player", this.get("session.account"));
             }
         },
         actions: {
@@ -31,18 +28,18 @@ define(function (require) {
                 //TODO: temporary client-sided test
                 //TODO: before trying to authenticate, check if fields are not empty
                 if (this.get("username") === "donut" && this.get("password") === "donut") {
-                    this.get("store").find("player", 1).then(function (model) {
+                    this.get("store").find("player", "p1").then(function (model) {
                         self.didLoginSuccessfully(model);
                     });
                 } else {
-                    this.set("isValidLogin", false);
+                    this.set("session.hasValidCredentials", false);
                 }
             },
             logout: function () {
-                this.set("isLoggedIn", false);
+                this.set("session.isLoggedIn", false);
 
-                //TODO: Secure to just put model of logged-in user to null?
-                this.set("model", null);
+                //TODO: Secure to just put account of logged-in user to null?
+                this.set("session.account", null);
 
                 this.transitionToRoute("index");
             }

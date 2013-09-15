@@ -7,8 +7,6 @@ define(function (require) {
         documentTitle: "Application",
         isLeaf: false,
         needs: ["login"],
-        isLoggedIn: Ember.computed.alias("controllers.login.isLoggedIn"),
-        account: Ember.computed.alias("controllers.login.model"),
         actions: {
             logout: function () {
                 this.get("controllers.login").send("logout");

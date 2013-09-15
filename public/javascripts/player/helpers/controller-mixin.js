@@ -22,8 +22,6 @@ define(function (require) {
         }.property("controllers.player.documentTitle", "username", "controllerTitle"),
         isLeaf: true,
         hasObjectModel: false,
-        needs: ["application", "player"],
-        isLoggedIn: Ember.computed.alias("controllers.application.isLoggedIn"),
-        account: Ember.computed.alias("controllers.application.account")
+        needs: ["player"]
     });
 });
