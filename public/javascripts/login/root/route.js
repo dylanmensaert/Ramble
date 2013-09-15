@@ -8,8 +8,7 @@ define(function (require) {
             //TODO: Use App.Player.createRecord();?
             return Ember.Object.create({});
         },
-        //TODO: Is afterModel required? "redirect"-hook suffices?
-        afterModel: function () {
+        beforeModel: function () {
             if (this.get("session.isLoggedIn")) {
                 this.transitionTo("index");
             }

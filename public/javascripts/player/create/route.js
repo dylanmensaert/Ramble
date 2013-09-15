@@ -14,7 +14,7 @@ define(function (require) {
                 model.rollback();
             }
         },
-        afterModel: function () {
+        beforeModel: function () {
             if (this.get("session.isLoggedIn")) {
                 this.transitionTo("index");
             }

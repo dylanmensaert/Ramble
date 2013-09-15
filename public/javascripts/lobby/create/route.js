@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.Route.extend(require("login/helpers/transition-to-login-mixin"), {
+    return Ember.Route.extend(require("login/helpers/login-redirect-mixin"), {
         model: function () {
             return this.get("store").createRecord("lobby");
         },
@@ -15,9 +15,9 @@ define(function (require) {
                 model.rollback();
             }
         },
-        afterModel: function (model, transition) {
+        beforeModel: function (transition) {
             if (!this.get("session.isLoggedIn")) {
-                this.transitionToLogin(transition);
+                this.redirectToLogin(transition);
             }
         }
     });

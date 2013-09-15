@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Route.extend({
         hasSavedTransition: false,
-        afterModel: function (model, transition) {
+        beforeModel: function (transition) {
             if (!this.get("session.isLoggedIn")) {
                 this.set("session.attemptedTransition", transition);
             }
