@@ -10,9 +10,9 @@
 
             ember: "../bower_components/ember/ember",
             "ember-data": "../bower_components/ember-data-shim/ember-data",
-            //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.
-            "ember-easyform": "../vendor/ember-easyForm",
-            "ember-validations": "../vendor/ember-validations",
+            //TODO: Use Dockyards' easyform/validations via their bower-registry.
+            "ember-easyform": "../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-1.0.0.beta.1",
+            "ember-validations": "../bower_components/ember-dockyard-validations/validations/ember-validations-1.0.0.beta.1",
             handlebars: "../bower_components/handlebars.js/dist/handlebars.runtime",
             jquery: "../bower_components/jquery/jquery",
 

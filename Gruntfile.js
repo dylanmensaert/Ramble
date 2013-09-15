@@ -162,7 +162,6 @@ module.exports = function (grunt) {
                     paths: {
                         ember: "../bower_components/ember/ember.prod",
                         "ember-data": "../bower_components/ember-data-shim/ember-data.prod"
-                        //TODO: Use prod-version of ember-validations and ember-easyForm too!
                     }
                 }
             }
