@@ -8,8 +8,6 @@
             App: "app/app",
             templates: "../templates",
 
-            domready: "../bower_components/requirejs-domready/domReady",
-
             ember: "../bower_components/ember/ember",
             "ember-data": "../bower_components/ember-data-shim/ember-data",
             //TODO: Build version from Dockyards' EasyForm and Validations is outdated and bugged.
