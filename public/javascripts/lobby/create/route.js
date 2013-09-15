@@ -8,6 +8,7 @@ define(function (require) {
             return this.get("store").createRecord("lobby");
         },
         deactivate: function () {
+            //TODO: Is rollback needed after creating a record?
             this.checkToRollbackModel();
         },
         beforeModel: function (transition) {
