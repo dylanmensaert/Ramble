@@ -54,11 +54,6 @@
                 exports: "ga"
             }
         },
-        deps: ["domready", "app/init"],
-        callback: function (domReady, AppInit) {
-            domReady(function () {
-                AppInit.initialize();
-            });
-        }
+        deps: ["app/init"]
     });
 }());

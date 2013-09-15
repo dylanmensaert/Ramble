@@ -3,10 +3,6 @@ define(function (require) {
 
     var App = require("App");
 
-    return {
-        initialize: function () {
-            App.IndexRoute = require("index/root/route");
-            App.IndexController = require("index/root/controller");
-        }
-    };
+    App.IndexRoute = require("index/root/route");
+    App.IndexController = require("index/root/controller");
 });
