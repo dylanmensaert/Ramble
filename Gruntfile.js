@@ -1,13 +1,7 @@
 "use strict";
 
 module.exports = function (grunt) {
-    //require("matchdep").filterDev("grunt-*").forEach(function (name) {
-    //    if (!/template-/.test(name)) {
-    //        grunt.loadNpmTasks(name);
-    //    }
-    //});
-
-    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+    require("load-grunt-tasks")(grunt);
 
     var config = {
         //public-folders
