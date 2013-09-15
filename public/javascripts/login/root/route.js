@@ -5,7 +5,6 @@ define(function (require) {
 
     return Ember.Route.extend({
         model: function () {
-            //TODO: Use App.Player.createRecord();?
             return Ember.Object.create({});
         },
         beforeModel: function () {

@@ -3,16 +3,12 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.Route.extend({
+    return Ember.Route.extend(require("helpers/model-rollback-mixin"), {
         model: function () {
             return this.get("store").createRecord("player");
         },
         deactivate: function () {
-            var model = this.get("controller.model");
-
-            if (model.get("isDirty") && !model.get("isSaving")) {
-                model.rollback();
-            }
+            this.checkToRollbackModel();
         },
         beforeModel: function () {
             if (this.get("session.isLoggedIn")) {

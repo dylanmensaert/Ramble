@@ -3,16 +3,12 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.Route.extend(require("login/helpers/check-ownership-mixin"), {
+    return Ember.Route.extend(require("login/helpers/check-ownership-mixin"), require("helpers/model-rollback-mixin"), {
         deactivate: function () {
-            var model = this.get("controller.model");
-
-            if (model.get("isDirty") && !model.get("isSaving")) {
-                model.rollback();
-            }
+            this.checkToRollbackModel();
         },
         afterModel: function (model, transition) {
-            this.checkOwnership(model.get("owner"), transition);
+            this.checkOwnershipAndRedirect(model.get("owner"), transition);
         }
     });
 });
