@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Ember = require("ember"),
-        App = require("App");
+        App = require("init/app");
 
     Ember.onLoad("Ember.Application", function (Application) {
         Application.initializer({

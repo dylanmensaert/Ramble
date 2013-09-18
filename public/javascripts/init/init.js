@@ -2,13 +2,13 @@
 define(function (require) {
     "use strict";
 
-    var App = require("App");
+    var App = require("init/app");
 
     require("templates");
 
-    require("app/presentation");
-    require("app/session");
-    require("app/router");
+    require("init/presentation");
+    require("init/session");
+    require("init/router");
 
     require("application/init");
     require("index/init");

@@ -2,7 +2,7 @@
 define(function (require) {
     "use strict";
 
-    var App = require("App");
+    var App = require("init/app");
 
     App.Player = require("player/model");
 

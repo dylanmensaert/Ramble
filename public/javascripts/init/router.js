@@ -3,9 +3,9 @@ define(function (require) {
     "use strict";
 
     var Ember = require("ember"),
-        App = require("App"),
+        App = require("init/app"),
         googleAnalytics = require("google-analytics"),
-        config = require("app/config"),
+        config = require("init/config"),
     //TODO: Put document.title in config.json? Or better, use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
         applicationTitle = document.title.replace("loading", "");
 
