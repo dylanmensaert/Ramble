@@ -23,13 +23,11 @@ define(function (require) {
         },
         actions: {
             login: function () {
-                var self = this;
-
                 //TODO: before trying to authenticate, check if fields are not empty
                 if (this.get("username") === "donut" && this.get("password") === "donut") {
                     this.get("store").find("player", "p1").then(function (model) {
-                        self.didLoginSuccessfully(model);
-                    });
+                        this.didLoginSuccessfully(model);
+                    }.bind(this));
                 } else {
                     this.set("session.hasValidCredentials", false);
                 }

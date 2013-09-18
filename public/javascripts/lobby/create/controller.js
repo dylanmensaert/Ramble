@@ -7,18 +7,15 @@ define(function (require) {
         controllerTitle: "Create",
         actions: {
             create: function () {
-                var self, model;
-
-                self = this;
-                model = this.get("model");
+                var model = this.get("model");
 
                 //model.validate().then(function () {
                 //    if (model.get("isValid")) {
                 model.set("owner", this.get("session.account"));
 
                 model.save().then(function (model) {
-                    self.transitionToRoute("lobby", model);
-                });
+                    this.transitionToRoute("lobby", model);
+                }.bind(this));
                 //    }
                 //});
             }

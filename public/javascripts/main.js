@@ -52,6 +52,6 @@
                 exports: "ga"
             }
         },
-        deps: ["app/init"]
+        deps: ["init"]
     });
 }());

@@ -8,15 +8,12 @@ define(function (require) {
         controllerTitle: "Delete",
         actions: {
             delete: function () {
-                var self, model;
-
-                self = this;
-                model = this.get("model");
+                var model = this.get("model");
 
                 model.deleteRecord();
                 model.save().then(function () {
-                    self.get("controllers.application").send("logout");
-                });
+                    this.get("controllers.application").send("logout");
+                }.bind(this));
 
                 //TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.
                 //model.get("joinedLobbies").clear();
