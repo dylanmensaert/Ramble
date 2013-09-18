@@ -9,6 +9,7 @@ define(function (require) {
         controllerTitle: "Edit",
         actions: {
             save: function () {
+                //TODO: Code is very similar to player/edit. Remove duplication?
                 var model = this.get("model");
 
                 //model.validate().then(function () {
