@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         test: "test",
         routes: "routes",
         components: "public/bower_components",
-        templatesjs: "public/templates.js"
+        templatesjs: "public/javascripts/init/templates.js"
     };
 
     grunt.initConfig({

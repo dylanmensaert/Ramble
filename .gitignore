@@ -7,4 +7,4 @@ public/bower_components/
 
 dist/
 public/stylesheets/
-public/templates.js
+public/javascripts/init/templates.js

@@ -3,4 +3,4 @@ public/bower_components/**
 .grunt/**
 
 dist/**
-public/templates.js
+public/javascripts/init/templates.js

@@ -5,8 +5,6 @@
         enforceDefine: true,
         baseUrl: "javascripts",
         paths: {
-            templates: "../templates",
-
             ember: "../bower_components/ember/ember",
             "ember-data": "../bower_components/ember-data-shim/ember-data",
             //TODO: Use Dockyards' easyform/validations via their bower-registry.

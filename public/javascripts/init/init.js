@@ -4,8 +4,7 @@ define(function (require) {
 
     var App = require("init/app");
 
-    require("templates");
-
+    require("init/templates");
     require("init/presentation");
     require("init/session");
     require("init/router");
