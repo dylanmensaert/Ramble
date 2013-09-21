@@ -1,4 +1,4 @@
-/* jshint browser: true, maxstatements: false */
+/* jshint maxstatements: false, browser: true */
 define(function (require) {
     "use strict";
 

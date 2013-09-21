@@ -7,13 +7,13 @@ define(function (require) {
         model: function () {
             return this.get("store").createRecord("player");
         },
-        deactivate: function () {
-            this.checkToRollbackModel();
-        },
         beforeModel: function () {
             if (this.get("session.isLoggedIn")) {
                 this.transitionTo("index");
             }
+        },
+        deactivate: function () {
+            this.checkToRollbackModel();
         }
     });
 });

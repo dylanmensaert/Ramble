@@ -7,14 +7,14 @@ define(function (require) {
         model: function () {
             return this.get("store").createRecord("lobby");
         },
-        deactivate: function () {
-            //TODO: Is rollback needed after creating a record?
-            this.checkToRollbackModel();
-        },
         beforeModel: function (transition) {
             if (!this.get("session.isLoggedIn")) {
                 this.redirectToLogin(transition);
             }
+        },
+        deactivate: function () {
+            //TODO: Is rollback needed after creating a record?
+            this.checkToRollbackModel();
         }
     });
 });

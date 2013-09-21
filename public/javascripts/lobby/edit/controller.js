@@ -3,7 +3,6 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    //TODO: Class is very similar to player.edit controller.. Abstract duplication?
     return Ember.ObjectController.extend(require("lobby/helpers/controller-mixin"), {
         hasObjectModel: true,
         controllerTitle: "Edit",
