@@ -4,6 +4,7 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.Route.extend({
+        title: "Log in",
         model: function () {
             return Ember.Object.create({});
         },

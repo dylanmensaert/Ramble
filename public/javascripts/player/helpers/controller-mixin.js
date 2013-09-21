@@ -20,7 +20,6 @@ define(function (require) {
 
             return documentTitle;
         }.property("controllers.player.documentTitle", "username", "controllerTitle"),
-        isLeaf: true,
         hasObjectModel: false,
         needs: ["player"]
     });

@@ -4,8 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.ObjectController.extend({
-        documentTitle: "Log in",
-        isLeaf: true,
         didLoginSuccessfully: function (player) {
             var attemptedTransition = this.get("session.attemptedTransition");
 

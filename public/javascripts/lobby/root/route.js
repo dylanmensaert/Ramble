@@ -4,6 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.Route.extend({
-
+        title: "Lobby"
     });
 });

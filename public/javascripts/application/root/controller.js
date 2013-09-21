@@ -4,8 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.Controller.extend({
-        documentTitle: "Application",
-        isLeaf: false,
         needs: ["login"],
         actions: {
             logout: function () {

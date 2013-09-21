@@ -2,26 +2,33 @@
 define(function (require) {
     "use strict";
 
-    var Ember = require("ember"),
-        App = require("init/app"),
+    var App = require("init/app"),
         googleAnalytics = require("google-analytics"),
-        config = require("init/config"),
-    //TODO: Put document.title in config.json? Or better, use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
-        applicationTitle = document.title.replace("loading", "");
+        config = require("init/config");
 
     googleAnalytics("create", config.googleAnalyticsAccount);
 
-    Ember.Route.reopen({
-        setupController: function (controller, model) {
-            this._super(controller, model);
+    //TODO: use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
+    App.Router.reopen({
+        didTransition: function (infos) {
+            this._super(infos);
 
-            if (controller.get("isLeaf")) {
-                document.title = applicationTitle + controller.get("documentTitle");
+            var title = "",
+                index;
 
-                googleAnalytics("send", "pageview", {
-                    title: controller.get("documentTitle")
-                });
+            for (index = 0; index < infos.length; index += 1) {
+                if (index !== 0) {
+                    title += " - ";
+                }
+
+                title += infos[index].handler.get("title");
             }
+
+            document.title = title;
+
+            googleAnalytics("send", "pageview", {
+                title: title
+            });
         }
     });
 

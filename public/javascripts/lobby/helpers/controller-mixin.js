@@ -20,7 +20,6 @@ define(function (require) {
 
             return documentTitle;
         }.property("controllers.lobby.documentTitle", "title", "controllerTitle"),
-        isLeaf: true,
         hasObjectModel: false,
         needs: ["lobby"]
     });

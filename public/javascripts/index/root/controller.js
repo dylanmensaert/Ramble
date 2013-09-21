@@ -4,7 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.Controller.extend({
-        documentTitle: "Home",
-        isLeaf: true
+
     });
 });
