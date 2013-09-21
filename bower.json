@@ -3,7 +3,6 @@
     "version": "0.0.1",
     "dependencies": {
         "requirejs": "~2.1.8",
-        "almond": "~0.2.6",
         "ember": "~1.0.0",
         "ember-data-shim": "~1.0.0-beta.2",
         "ember-dockyard-validations": "*",
@@ -11,5 +10,8 @@
         "jquery": "~2.0.3",
         "sass-bootstrap": "~3.0.0",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
+    },
+    "devDependencies": {
+        "almond": "~0.2.6"
     }
 }

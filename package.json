@@ -2,6 +2,10 @@
     "name": "Ramble",
     "version": "0.0.1",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dimitrisuls/Ramble.git"
+    },
     "dependencies": {
         "express": "~3.4.0",
         "jade": "~0.35.0",
@@ -19,10 +23,6 @@
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-requirejs": "~0.4.1",
         "grunt-contrib-watch": "~0.5.3"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dimitrisuls/Ramble.git"
     },
     "scripts": {
         "postinstall": "bower install",
