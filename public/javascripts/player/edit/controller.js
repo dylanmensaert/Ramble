@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require("ember");
 
-    return Ember.ObjectController.extend(require("player/helpers/controller-mixin"), {
+    return Ember.ObjectController.extend({
         actions: {
             save: function () {
                 var model = this.get("model");
