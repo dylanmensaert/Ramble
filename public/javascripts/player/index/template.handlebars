@@ -22,7 +22,7 @@
     {{#if ownedLobbies.length}}
         <div class="list-group">
             {{#each ownedLobbies}}
-                {{partial "helpers/item-lobby"}}
+                {{partial "helpers/lobby-item"}}
             {{/each}}
         </div>
     {{else}}
@@ -38,7 +38,7 @@
     {{#if joinedLobbies.length}}
         <div class="list-group">
             {{#each joinedLobbies}}
-                {{partial "helpers/item-lobby"}}
+                {{partial "helpers/lobby-item"}}
             {{/each}}
         </div>
     {{else}}
