@@ -4,6 +4,7 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.Route.extend({
+        title: "List",
         model: function () {
             return this.get("store").findAll("lobby");
         }

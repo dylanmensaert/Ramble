@@ -4,8 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.ObjectController.extend(require("player/helpers/controller-mixin"), {
-        hasObjectModel: true,
-        controllerTitle: "Delete",
         needs: ["login"],
         actions: {
             delete: function () {

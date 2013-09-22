@@ -4,6 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.ArrayController.extend(require("player/helpers/controller-mixin"), {
-        controllerTitle: "List"
+
     });
 });

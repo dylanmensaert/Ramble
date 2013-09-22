@@ -4,7 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.ObjectController.extend(require("lobby/helpers/controller-mixin"), {
-        hasObjectModel: true,
         isOwnerOfLobby: function () {
             return this.get("session.account") === this.get("owner");
         }.property("session.account", "owner"),

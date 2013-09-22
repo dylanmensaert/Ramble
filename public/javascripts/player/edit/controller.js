@@ -4,8 +4,6 @@ define(function (require) {
     var Ember = require("ember");
 
     return Ember.ObjectController.extend(require("player/helpers/controller-mixin"), {
-        hasObjectModel: true,
-        controllerTitle: "Edit",
         actions: {
             save: function () {
                 var model = this.get("model");
