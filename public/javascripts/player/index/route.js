@@ -5,7 +5,7 @@ define(function (require) {
 
     return Ember.Route.extend({
         title: function () {
-            return this.get("controller.model.username");
-        }.property("controller.model.username")
+            return this.get("controller.username");
+        }.property("controller.username")
     });
 });
