@@ -22,7 +22,6 @@ define(function (require) {
             "title": "Game Dylan en Dimitri",
             "password": "zonneschijn",
             "maxMembers": "5",
-            "owner": ["p1"],
             "members": ["p2", "p3", "p5", "p8"]
         },
         {
@@ -30,7 +29,6 @@ define(function (require) {
             "title": "customgame",
             "password": "Peter",
             "maxMembers": "7",
-            "owner": ["p8"],
             "members": ["p4", "p9", "p3"]
         },
         {
@@ -38,7 +36,6 @@ define(function (require) {
             "title": "winners lobby!",
             "password": "Dolfijn",
             "maxMembers": "12",
-            "owner": ["p6"],
             "members": ["p5", "p3", "p8", "p1"]
         },
         {
@@ -46,7 +43,6 @@ define(function (require) {
             "title": "eten",
             "password": "open",
             "maxMembers": "7",
-            "owner": ["p8"],
             "members": []
         }
     ];
