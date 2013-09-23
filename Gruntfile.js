@@ -4,6 +4,9 @@ module.exports = function (grunt) {
     require("load-grunt-tasks")(grunt);
 
     var config = {
+        //server
+        app: "app.js",
+        server: "server",
         //public-folders
         javascripts: "public/javascripts",
         sass: "public/sass",
@@ -90,22 +93,6 @@ module.exports = function (grunt) {
                 src: ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
             }
         },
-        //TODO: Improve integration of unit tests!!
-        //jasmine : {
-        //    all : {
-        //        src : ["main.js"],
-        //        options : {
-        //            host : "http://localhost:8002",
-        //            specs : "<%= config.test %>/**/*.js",
-        //            template : require("grunt-template-jasmine-requirejs"),
-        //            templateOptions : {
-        //                requireConfig : {
-        //                    baseUrl : "<%= config.javascripts %>"
-        //                }
-        //            }
-        //        }
-        //    }
-        //},
         clean: {
             dist: {
                 src: ["<%= config.dist %>"]
@@ -119,9 +106,6 @@ module.exports = function (grunt) {
                     ".sass-cache"
                 ]
             }
-            //test : {
-            //    src : ["main.js"]
-            //}
         },
         copy: {
             dist: {
@@ -140,16 +124,6 @@ module.exports = function (grunt) {
                     }
                 ]
             }
-            //test : {
-            //    files : [
-            //        {
-            //            expand : true,
-            //            cwd : "<%= config.javascripts %>",
-            //            src : ["main.js"],
-            //            dest : "./"
-            //        }
-            //    ]
-            //}
         },
         requirejs: {
             all: {
@@ -169,8 +143,7 @@ module.exports = function (grunt) {
         nodemon: {
             server: {
                 options: {
-                    file: "app.js",
-                    watchedFolders: ["app.js", "server"],
+                    watchedFolders: ["<%= config.app %>", "<%= config.server %>"],
                     delayTime: 0.1
                 }
             }
@@ -186,8 +159,8 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    "app.js",
-                    "server/**/*.js",
+                    "<%= config.app %>",
+                    "<%= config.server %>/**/*.js",
                     "<%= config.javascripts %>/**/*.js",
                     "<%= config.templatesjs %>",
                     "<%= config.stylesheets %>/main.css",
@@ -199,7 +172,7 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
-            server: {
+            development: {
                 tasks: ["nodemon:server", "watch"],
                 options: {
                     logConcurrentOutput: true
@@ -208,12 +181,14 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("develop", ["concurrent:server"]);
-
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
+    //TODO: Improve integration of unit tests!!
     grunt.registerTask("test", [/*"connect:test", "copy:test", "jasmine:all", "clean:test"*/]);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
+
+    grunt.registerTask("develop", ["concurrent:development"]);
+
     grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
 };
