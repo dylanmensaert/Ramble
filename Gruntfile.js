@@ -185,7 +185,7 @@ module.exports = function (grunt) {
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
     grunt.registerTask("lint", ["jshint", "csslint:all"]);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask("test", [/*"connect:test", "copy:test", "jasmine:all", "clean:test"*/]);
+    grunt.registerTask("test", []);
     grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
 
     grunt.registerTask("develop", ["concurrent:development"]);

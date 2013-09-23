@@ -1,4 +1,4 @@
-/* jshint maxstatements: false, browser: true */
+/* jshint maxstatements: false */
 define(function (require) {
     "use strict";
 
@@ -118,7 +118,4 @@ define(function (require) {
     ];
 
     App.advanceReadiness();
-
-    //TODO: Is needed to run tests in Phantom.js with Jasmine?
-    window.isAppInitialized = true;
 });
