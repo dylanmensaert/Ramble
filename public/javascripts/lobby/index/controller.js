@@ -8,11 +8,9 @@ define(function (require) {
             return this.get("session.account") === this.get("owner");
         }.property("session.account", "owner"),
         //TODO: Check if this computed property actually works?
-        filteredOwner: Ember.computed.filter("members", function (player) {
-            return this.get("session.account") === player;
-        }),
         isMemberOfLobby: function () {
-            return this.get("filteredOwner.length") > 0;
+            //TODO: Use the new "Array Computed Properties" provided in RC8 to improve performance!
+            return this.get("members").contains(this.get("session.account"));
         }.property("members.@each", "session.account"),
         actions: {
             leave: function () {

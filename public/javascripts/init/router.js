@@ -8,29 +8,33 @@ define(function (require) {
 
     googleAnalytics("create", config.googleAnalyticsAccount);
 
-    //TODO: use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
-    App.Router.reopen({
-        didTransition: function (infos) {
-            this._super(infos);
+    /*
+     //TODO: use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
+     App.Router.reopen({
+     didTransition: function (infos) {
+     this._super(infos);
 
-            var title = "",
-                index;
+     var titleList = [],
+     title,
+     documentTitle,
+     index;
 
-            for (index = 0; index < infos.length; index += 1) {
-                if (index !== 0) {
-                    title += " - ";
-                }
+     for (index = 0; index < infos.length; index += 1) {
+     title = infos[index].handler.get("title");
 
-                title += infos[index].handler.get("title");
-            }
+     titleList.push(title);
+     }
 
-            document.title = title;
+     documentTitle = titleList.join(" - ");
 
-            googleAnalytics("send", "pageview", {
-                title: title
-            });
-        }
-    });
+     document.title = documentTitle;
+
+     googleAnalytics("send", "pageview", {
+     title: documentTitle
+     });
+     }
+     });
+     */
 
     App.Router.map(function () {
         this.resource("login");
