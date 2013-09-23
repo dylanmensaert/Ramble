@@ -166,13 +166,15 @@ module.exports = function (grunt) {
                 }
             }
         },
-        //connect : {
-        //    test : {
-        //        options : {
-        //            port : 8002
-        //        }
-        //    }
-        //},
+        nodemon: {
+            server: {
+                options: {
+                    file: "app.js",
+                    watchedFolders: ["app.js", "server"],
+                    delayTime: 0.1
+                }
+            }
+        },
         watch: {
             emberTemplates: {
                 files: ["<%= config.javascripts %>/**/*.handlebars"],
@@ -184,6 +186,8 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
+                    "app.js",
+                    "server/**/*.js",
                     "<%= config.javascripts %>/**/*.js",
                     "<%= config.templatesjs %>",
                     "<%= config.stylesheets %>/main.css",
@@ -193,8 +197,18 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             }
+        },
+        concurrent: {
+            server: {
+                tasks: ["nodemon:server", "watch"],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
         }
     });
+
+    grunt.registerTask("develop", ["concurrent:server"]);
 
     grunt.registerTask("default", ["compile", "lint", "test", "build"]);
     grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
