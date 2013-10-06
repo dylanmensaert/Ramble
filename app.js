@@ -12,7 +12,7 @@ app = express();
 if (app.get("env") === "production") {
     staticPath = "dist";
 } else if (app.get("env") === "development") {
-    staticPath = "public";
+    staticPath = "assets";
 
     app.use(express.errorHandler());
 }

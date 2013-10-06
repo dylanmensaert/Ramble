@@ -7,12 +7,12 @@ module.exports = function (grunt) {
         //server
         app: "app.js",
         server: "server",
-        //public-folders
-        javascripts: "public/javascripts",
-        sass: "public/sass",
-        stylesheets: "public/stylesheets",
-        images: "public/images",
-        fonts: "public/fonts",
+        //assets-folders
+        javascripts: "assets/javascripts",
+        sass: "assets/sass",
+        stylesheets: "assets/stylesheets",
+        images: "assets/images",
+        fonts: "assets/fonts",
         //dist-folders
         dist: "dist",
         distJavascripts: "dist/javascripts",
@@ -22,8 +22,8 @@ module.exports = function (grunt) {
         //other
         test: "test",
         routes: "routes",
-        components: "public/bower_components",
-        templatesjs: "public/javascripts/init/templates.js"
+        components: "assets/bower_components",
+        templatesjs: "assets/javascripts/init/templates.js"
     };
 
     grunt.initConfig({

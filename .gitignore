@@ -1,10 +1,10 @@
 node_modules/
-public/bower_components/
+assets/bower_components/
 .sass-cache/
 .grunt/
 
 dist/
-public/stylesheets/
-public/javascripts/init/templates.js
+assets/stylesheets/
+assets/javascripts/init/templates.js
 
 .idea/

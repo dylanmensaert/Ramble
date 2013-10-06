@@ -1,6 +1,6 @@
 node_modules/**
-public/bower_components/**
+assets/bower_components/**
 .grunt/**
 
 dist/**
-public/javascripts/init/templates.js
+assets/javascripts/init/templates.js
