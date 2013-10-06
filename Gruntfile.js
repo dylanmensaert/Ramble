@@ -6,23 +6,24 @@ module.exports = function (grunt) {
     var config = {
         //server
         app: "app.js",
-        server: "server",
+        api: "api",
+        config: "config",
+        views: "views",
         tmpPublic: ".tmp/public",
-        //assets-folders
+        //assets
         assets: "assets",
         javascripts: "assets/javascripts",
         sass: "assets/sass",
         stylesheets: "assets/stylesheets",
         images: "assets/images",
         fonts: "assets/fonts",
-        //prod-folders
+        //prod
         prodJavascripts: ".tmp/public/javascripts",
         prodStylesheets: ".tmp/public/stylesheets",
         prodImages: ".tmp/public/images",
         prodFonts: ".tmp/public/fonts",
         //other
         test: "test",
-        routes: "routes",
         components: "assets/bower_components",
         templatesjs: "assets/javascripts/init/templates.js"
     };
@@ -142,7 +143,7 @@ module.exports = function (grunt) {
                 }
             },
             server: {
-                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
+                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.app %>", "<%= config.api %>/**/*.js", "<%= config.config %>/**/*.js"],
                 options: {
                     jshintrc: ".jshintrc"
                 }
@@ -156,7 +157,7 @@ module.exports = function (grunt) {
         nodemon: {
             server: {
                 options: {
-                    watchedFolders: ["<%= config.app %>", "<%= config.server %>"],
+                    watchedFolders: ["<%= config.app %>", "<%= config.api %>", "<%= config.config %>"],
                     delayTime: 0.1
                 }
             }
@@ -173,7 +174,9 @@ module.exports = function (grunt) {
             livereload: {
                 files: [
                     "<%= config.app %>",
-                    "<%= config.server %>/**/*.js",
+                    "<%= config.api %>/**/*.js",
+                    "<%= config.config %>/**/*.js",
+                    "<%= config.views %>/**/*",
                     "<%= config.javascripts %>/**/*.js",
                     "<%= config.templatesjs %>",
                     "<%= config.stylesheets %>/main.css",
@@ -197,10 +200,10 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["clean:tmpPublic", "copy:development", "emberTemplates:all", "compass:development"]);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask("test", ["jshint", "csslint:all", "emberTemplates:all"]);
-    grunt.registerTask("prod", ["clean:tmpPublic", "copy:production", "emberTemplates:all", "requirejs:all", "compass:production"]);
+    grunt.registerTask("test", ["jshint", "compass:development", "csslint:all", "emberTemplates:all", "requirejs:all"]);
+    grunt.registerTask("production", ["clean:tmpPublic", "copy:production", "emberTemplates:all", "requirejs:all", "compass:production"]);
 
-    grunt.registerTask("develop", ["default", "concurrent:development"]);
+    grunt.registerTask("develop", ["concurrent:development"]);
 
     grunt.registerTask("cleanup", ["clean:tmpPublic", "clean:cleanup"]);
 };

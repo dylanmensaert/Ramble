@@ -9,7 +9,7 @@
     "main": "app",
     "scripts": {
         "postinstall": "bower install",
-        "test": "grunt",
+        "test": "grunt test",
         "start": "node app.js",
         "debug": "node debug app.js",
         "production": "NODE_ENV=production PORT=8001 node app.js"
