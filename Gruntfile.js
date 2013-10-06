@@ -7,18 +7,19 @@ module.exports = function (grunt) {
         //server
         app: "app.js",
         server: "server",
+        tmpPublic: ".tmp/public",
         //assets-folders
+        assets: "assets",
         javascripts: "assets/javascripts",
         sass: "assets/sass",
         stylesheets: "assets/stylesheets",
         images: "assets/images",
         fonts: "assets/fonts",
-        //dist-folders
-        dist: "dist",
-        distJavascripts: "dist/javascripts",
-        distStylesheets: "dist/stylesheets",
-        distImages: "dist/images",
-        distFonts: "dist/fonts",
+        //prod-folders
+        prodJavascripts: ".tmp/public/javascripts",
+        prodStylesheets: ".tmp/public/stylesheets",
+        prodImages: ".tmp/public/images",
+        prodFonts: ".tmp/public/fonts",
         //other
         test: "test",
         routes: "routes",
@@ -63,7 +64,7 @@ module.exports = function (grunt) {
             production: {
                 options: {
                     specify: ["<%= config.sass %>/main.scss"],
-                    cssDir: "<%= config.distStylesheets %>",
+                    cssDir: "<%= config.prodStylesheets %>",
                     environment: "production"
                 }
             }
@@ -94,8 +95,8 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-            dist: {
-                src: ["<%= config.dist %>"]
+            tmpPublic: {
+                src: ["<%= config.tmpPublic %>"]
             },
             cleanup: {
                 src: [
@@ -108,19 +109,29 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            dist: {
+            development: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: "<%= config.assets %>",
+                        src: ["**"],
+                        dest: "<%= config.tmpPublic %>"
+                    }
+                ]
+            },
+            production: {
                 files: [
                     {
                         expand: true,
                         cwd: "<%= config.images %>",
                         src: ["**"],
-                        dest: "<%= config.distImages %>"
+                        dest: "<%= config.prodImages %>"
                     },
                     {
                         expand: true,
                         cwd: "<%= config.fonts %>",
                         src: ["**"],
-                        dest: "<%= config.distFonts %>"
+                        dest: "<%= config.prodFonts %>"
                     }
                 ]
             }
@@ -132,7 +143,7 @@ module.exports = function (grunt) {
                     name: "../bower_components/almond/almond",
                     include: ["main"],
                     mainConfigFile: "<%= config.javascripts %>/main.js",
-                    out: "<%= config.distJavascripts %>/main.js",
+                    out: "<%= config.prodJavascripts %>/main.js",
                     paths: {
                         ember: "../bower_components/ember/ember.prod",
                         "ember-data": "../bower_components/ember-data-shim/ember-data.prod"
@@ -166,6 +177,7 @@ module.exports = function (grunt) {
                     "<%= config.stylesheets %>/main.css",
                     "<%= config.images %>/**/*.*"
                 ],
+                tasks: ["copy:development"],
                 options: {
                     livereload: true
                 }
@@ -181,14 +193,12 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("default", ["compile", "lint", "test", "build"]);
-    grunt.registerTask("compile", ["emberTemplates:all", "compass:development"]);
-    grunt.registerTask("lint", ["jshint", "csslint:all"]);
+    grunt.registerTask("default", ["clean:tmpPublic", "copy:development", "emberTemplates:all", "compass:development"]);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask("test", []);
-    grunt.registerTask("build", ["clean:dist", "copy:dist", "requirejs:all", "compass:production"]);
+    grunt.registerTask("test", ["jshint", "csslint:all", ""]);
+    grunt.registerTask("prod", ["clean:tmpPublic", "copy:production", "emberTemplates:all", "requirejs:all", "compass:production"]);
 
-    grunt.registerTask("develop", ["concurrent:development"]);
+    grunt.registerTask("develop", ["default", "concurrent:development"]);
 
-    grunt.registerTask("cleanup", ["clean:dist", "clean:cleanup"]);
+    grunt.registerTask("cleanup", ["clean:tmpPublic", "clean:cleanup"]);
 };
