@@ -27,73 +27,9 @@ module.exports = function (grunt) {
         templatesjs: "assets/javascripts/init/templates.js"
     };
 
+    //TODO: Need to take care of favicon too!
     grunt.initConfig({
         config: config,
-        emberTemplates: {
-            all: {
-                options: {
-                    amd: true,
-                    templateBasePath: "<%= config.javascripts %>" + "/",
-                    templateName: function (sourceFile) {
-                        var templateName = sourceFile;
-
-                        templateName = templateName.replace("/template", "");
-                        templateName = templateName.replace("/root", "");
-
-                        return templateName;
-                    }
-                },
-                files: {
-                    "<%= config.templatesjs %>": "<%= config.javascripts %>/**/*.handlebars"
-                }
-            }
-        },
-        compass: {
-            options: {
-                importPath: "<%= config.components %>",
-                sassDir: "<%= config.sass %>",
-                cssDir: "<%= config.stylesheets %>",
-                imagesDir: "<%= config.images %>",
-                javascriptsDir: "<%= config.javascripts %>"
-            },
-            development: {
-                options: {
-                    specify: ["<%= config.sass %>/**/*.scss"]
-                }
-            },
-            production: {
-                options: {
-                    specify: ["<%= config.sass %>/main.scss"],
-                    cssDir: "<%= config.prodStylesheets %>",
-                    environment: "production"
-                }
-            }
-        },
-        jshint: {
-            client: {
-                src: ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
-                options: {
-                    jshintrc: "<%= config.javascripts %>/.jshintrc"
-                }
-            },
-            test: {
-                src: ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
-                options: {
-                    jshintrc: "<%= config.test %>/.jshintrc"
-                }
-            },
-            server: {
-                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
-                options: {
-                    jshintrc: ".jshintrc"
-                }
-            }
-        },
-        csslint: {
-            all: {
-                src: ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
-            }
-        },
         clean: {
             tmpPublic: {
                 src: ["<%= config.tmpPublic %>"]
@@ -136,6 +72,46 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        emberTemplates: {
+            all: {
+                options: {
+                    amd: true,
+                    templateBasePath: "<%= config.javascripts %>" + "/",
+                    templateName: function (sourceFile) {
+                        var templateName = sourceFile;
+
+                        templateName = templateName.replace("/template", "");
+                        templateName = templateName.replace("/root", "");
+
+                        return templateName;
+                    }
+                },
+                files: {
+                    "<%= config.templatesjs %>": "<%= config.javascripts %>/**/*.handlebars"
+                }
+            }
+        },
+        compass: {
+            options: {
+                importPath: "<%= config.components %>",
+                sassDir: "<%= config.sass %>",
+                cssDir: "<%= config.stylesheets %>",
+                imagesDir: "<%= config.images %>",
+                javascriptsDir: "<%= config.javascripts %>"
+            },
+            development: {
+                options: {
+                    specify: ["<%= config.sass %>/**/*.scss"]
+                }
+            },
+            production: {
+                options: {
+                    specify: ["<%= config.sass %>/main.scss"],
+                    cssDir: "<%= config.prodStylesheets %>",
+                    environment: "production"
+                }
+            }
+        },
         requirejs: {
             all: {
                 options: {
@@ -149,6 +125,31 @@ module.exports = function (grunt) {
                         "ember-data": "../bower_components/ember-data-shim/ember-data.prod"
                     }
                 }
+            }
+        },
+        jshint: {
+            client: {
+                src: ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
+                options: {
+                    jshintrc: "<%= config.javascripts %>/.jshintrc"
+                }
+            },
+            test: {
+                src: ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
+                options: {
+                    jshintrc: "<%= config.test %>/.jshintrc"
+                }
+            },
+            server: {
+                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.routes %>/**/*.js"],
+                options: {
+                    jshintrc: ".jshintrc"
+                }
+            }
+        },
+        csslint: {
+            all: {
+                src: ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
             }
         },
         nodemon: {
