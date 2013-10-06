@@ -10,29 +10,29 @@
     "scripts": {
         "postinstall": "bower install",
         "test": "grunt",
-        "start": "node app",
-        "production": "NODE_ENV=production PORT=8001 npm start"
+        "start": "node app.js",
+        "debug": "node debug app.js",
+        "production": "NODE_ENV=production PORT=8001 node app.js"
     },
     "dependencies": {
-        "express": "~3.4.0",
-        "socket.io": "~0.9.16",
-        "sails": "~0.9.4",
-        "sails-disk": "~0.9.1",
-        "jade": "~0.35.0"
+        "sails": "0.9.4",
+        "sails-disk": "0.9.1",
+        "jade": "0.35.0",
+        "optimist": "0.3.4"
     },
     "devDependencies": {
-        "load-grunt-tasks": "~0.1.0",
-        "grunt": "~0.4.1",
-        "grunt-ember-templates": "~0.4.15",
-        "grunt-contrib-compass": "~0.6.0",
-        "grunt-contrib-jshint": "~0.6.4",
-        "grunt-contrib-csslint": "~0.1.2",
-        "grunt-mocha": "~0.4.1",
-        "grunt-contrib-clean": "~0.5.0",
-        "grunt-contrib-copy": "~0.4.1",
-        "grunt-contrib-requirejs": "~0.4.1",
-        "grunt-nodemon": "~0.1.1",
-        "grunt-contrib-watch": "~0.5.3",
-        "grunt-concurrent": "~0.4.0"
+        "load-grunt-tasks": "0.1.0",
+        "grunt": "0.4.1",
+        "grunt-ember-templates": "0.4.15",
+        "grunt-contrib-compass": "0.6.0",
+        "grunt-contrib-jshint": "0.6.4",
+        "grunt-contrib-csslint": "0.1.2",
+        "grunt-mocha": "0.4.1",
+        "grunt-contrib-clean": "0.5.0",
+        "grunt-contrib-copy": "0.4.1",
+        "grunt-contrib-requirejs": "0.4.1",
+        "grunt-nodemon": "0.1.1",
+        "grunt-contrib-watch": "0.5.3",
+        "grunt-concurrent": "0.4.0"
     }
 }

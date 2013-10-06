@@ -27,7 +27,8 @@ module.exports = function (grunt) {
         templatesjs: "assets/javascripts/init/templates.js"
     };
 
-    //TODO: Need to take care of favicon too!
+    //TODO: Need to take care of favicon.ico and robots.txt too!
+    //TODO: Sails showing errors related to Grunt in terminal on start-up?
     grunt.initConfig({
         config: config,
         clean: {
@@ -196,7 +197,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ["clean:tmpPublic", "copy:development", "emberTemplates:all", "compass:development"]);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask("test", ["jshint", "csslint:all", ""]);
+    grunt.registerTask("test", ["jshint", "csslint:all", "emberTemplates:all"]);
     grunt.registerTask("prod", ["clean:tmpPublic", "copy:production", "emberTemplates:all", "requirejs:all", "compass:production"]);
 
     grunt.registerTask("develop", ["default", "concurrent:development"]);

@@ -9,7 +9,7 @@ html
 
         link(rel="stylesheet", href="stylesheets/main.css")
 
-        if environment === "development"
+        if sails.config.environment === "development"
             script(src="bower_components/requirejs/require.js")
 
         script(async="async", src="javascripts/main.js")
