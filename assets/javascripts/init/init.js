@@ -15,6 +15,8 @@ define(function (require) {
     require("lobby/init");
     require("player/init");
 
+    require("io").connect();
+
     //TODO: Create API in Express.js
     App.Lobby.FIXTURES = [
         {

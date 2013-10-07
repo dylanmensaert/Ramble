@@ -5,6 +5,8 @@
         enforceDefine: true,
         baseUrl: "javascripts",
         paths: {
+            io: "../vendor/socket.io/socket.io",
+            "sails-io": "../vendor/socket.io/sails.io",
             ember: "../bower_components/ember/ember",
             "ember-data": "../bower_components/ember-data-shim/ember-data",
             //TODO: Use Dockyards' easyform/validations via their bower-registry.
@@ -16,6 +18,13 @@
             "google-analytics": "../bower_components/google-analytics/index"
         },
         shim: {
+            io: {
+                exports: "io"
+            },
+            "sails-io": {
+                deps: ["io"],
+                exports: "io"
+            },
             ember: {
                 deps: ["jquery", "handlebars"],
                 exports: "Ember"
