@@ -1,12 +1,12 @@
 /* jshint nomen: false, browser: true */
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var App = require("init/app"),
-        googleAnalytics = require("google-analytics"),
-        config = require("init/config");
+    var App = require('init/app'),
+        googleAnalytics = require('google-analytics'),
+        config = require('init/config');
 
-    googleAnalytics("create", config.googleAnalyticsAccount);
+    googleAnalytics('create', config.googleAnalyticsAccount);
 
     /*
      //TODO: use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
@@ -20,16 +20,16 @@ define(function (require) {
      index;
 
      for (index = 0; index < infos.length; index += 1) {
-     title = infos[index].handler.get("title");
+     title = infos[index].handler.get('title');
 
      titleList.push(title);
      }
 
-     documentTitle = titleList.join(" - ");
+     documentTitle = titleList.join(' - ');
 
      document.title = documentTitle;
 
-     googleAnalytics("send", "pageview", {
+     googleAnalytics('send', 'pageview', {
      title: documentTitle
      });
      }
@@ -37,40 +37,40 @@ define(function (require) {
      */
 
     App.Router.map(function () {
-        this.resource("login");
+        this.resource('login');
 
-        this.resource("lobby", function () {
-            this.route("index",
+        this.resource('lobby', function () {
+            this.route('index',
                 {
-                    path: ":lobby_id"
+                    path: ':lobby_id'
                 });
-            this.route("edit",
+            this.route('edit',
                 {
-                    path: ":lobby_id/edit"
+                    path: ':lobby_id/edit'
                 });
-            this.route("delete",
+            this.route('delete',
                 {
-                    path: ":lobby_id/delete"
+                    path: ':lobby_id/delete'
                 });
-            this.route("list");
-            this.route("create");
+            this.route('list');
+            this.route('create');
         });
 
-        this.resource("player", function () {
-            this.route("index",
+        this.resource('player', function () {
+            this.route('index',
                 {
-                    path: ":player_id"
+                    path: ':player_id'
                 });
-            this.route("edit",
+            this.route('edit',
                 {
-                    path: ":player_id/edit"
+                    path: ':player_id/edit'
                 });
-            this.route("delete",
+            this.route('delete',
                 {
-                    path: ":player_id/delete"
+                    path: ':player_id/delete'
                 });
-            this.route("list");
-            this.route("create");
+            this.route('list');
+            this.route('create');
         });
     });
 });

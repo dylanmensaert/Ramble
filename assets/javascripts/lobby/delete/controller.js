@@ -1,20 +1,20 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.ObjectController.extend({
         actions: {
             delete: function () {
-                var model = this.get("model");
+                var model = this.get('model');
 
                 model.deleteRecord();
                 model.save().then(function () {
-                    this.transitionToRoute("lobby.list");
+                    this.transitionToRoute('lobby.list');
                 }.bind(this));
 
                 //TODO: Associated members of this lobby don't get this lobby removed from their joinedLobbies-array.
-                //model.get("members").clear();
+                //model.get('members').clear();
             }
         }
     });

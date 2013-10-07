@@ -1,19 +1,19 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var DS = require("ember-data")/*,
-     EmberValidations = require("ember-validations")*/;
+    var DS = require('ember-data')/*,
+     EmberValidations = require('ember-validations')*/;
 
     return DS.Model.extend(/*EmberValidations.Mixin, */{
-        title: DS.attr("string"),
-        password: DS.attr("string"),
-        maxMembers: DS.attr("number"),
-        owner: DS.belongsTo("player", {
-            inverse: "ownedLobbies",
+        title: DS.attr('string'),
+        password: DS.attr('string'),
+        maxMembers: DS.attr('number'),
+        owner: DS.belongsTo('player', {
+            inverse: 'ownedLobbies',
             async: true
         }),
-        members: DS.hasMany("player", {
-            inverse: "joinedLobbies",
+        members: DS.hasMany('player', {
+            inverse: 'joinedLobbies',
             async: true
         }),
         //TODO: Update validations

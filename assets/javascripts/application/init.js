@@ -1,8 +1,8 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var App = require("init/app");
+    var App = require('init/app');
 
-    App.ApplicationRoute = require("application/root/route");
-    App.ApplicationController = require("application/root/controller");
+    App.ApplicationRoute = require('application/root/route');
+    App.ApplicationController = require('application/root/controller');
 });

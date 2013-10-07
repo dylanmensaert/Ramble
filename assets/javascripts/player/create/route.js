@@ -1,16 +1,16 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
-    return Ember.Route.extend(require("helpers/model-rollback-mixin"), {
-        title: "Sign up",
+    return Ember.Route.extend(require('helpers/model-rollback-mixin'), {
+        title: 'Sign up',
         model: function () {
-            return this.get("store").createRecord("player");
+            return this.get('store').createRecord('player');
         },
         beforeModel: function () {
-            if (this.get("session.isLoggedIn")) {
-                this.transitionTo("index");
+            if (this.get('session.isLoggedIn')) {
+                this.transitionTo('index');
             }
         },
         deactivate: function () {

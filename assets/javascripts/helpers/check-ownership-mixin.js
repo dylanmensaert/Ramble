@@ -1,14 +1,14 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
-    return Ember.Mixin.create(require("helpers/login-redirect-mixin"), {
+    return Ember.Mixin.create(require('helpers/login-redirect-mixin'), {
         checkOwnershipAndRedirect: function (owner, transition) {
-            if (!this.get("session.isLoggedIn")) {
+            if (!this.get('session.isLoggedIn')) {
                 this.redirectToLogin(transition);
-            } else if (this.get("session.account") !== owner) {
-                this.transitionTo("index");
+            } else if (this.get('session.account') !== owner) {
+                this.transitionTo('index');
             }
         }
     });

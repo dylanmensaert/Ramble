@@ -9,11 +9,11 @@
 
     <p>
         {{#if session.isLoggedIn}}
-            {{#link-to "lobby.list" classNames="btn btn-primary btn-lg"}}
+            {{#link-to 'lobby.list' classNames='btn btn-primary btn-lg'}}
                 Play now! &raquo;
             {{/link-to}}
         {{else}}
-            {{#link-to "player.create" classNames="btn btn-primary btn-lg"}}
+            {{#link-to 'player.create' classNames='btn btn-primary btn-lg'}}
                 Play now! &raquo;
             {{/link-to}}
         {{/if}}

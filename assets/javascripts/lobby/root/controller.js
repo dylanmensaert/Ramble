@@ -1,7 +1,7 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.ObjectController.extend({
 

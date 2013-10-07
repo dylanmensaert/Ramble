@@ -4,11 +4,11 @@
 
 {{#if isOwnerOfAccount}}
     <div>
-        {{#link-to "player.edit" this classNames="btn btn-default"}}
+        {{#link-to 'player.edit' this classNames='btn btn-default'}}
             Edit
         {{/link-to}}
 
-        {{#link-to "player.delete" this classNames="btn btn-danger"}}
+        {{#link-to 'player.delete' this classNames='btn btn-danger'}}
             Delete
         {{/link-to}}
     </div>
@@ -22,7 +22,7 @@
     {{#if ownedLobbies.length}}
         <div class="list-group">
             {{#each ownedLobbies}}
-                {{partial "helpers/lobby-item"}}
+                {{partial 'helpers/lobby-item'}}
             {{/each}}
         </div>
     {{else}}
@@ -38,7 +38,7 @@
     {{#if joinedLobbies.length}}
         <div class="list-group">
             {{#each joinedLobbies}}
-                {{partial "helpers/lobby-item"}}
+                {{partial 'helpers/lobby-item'}}
             {{/each}}
         </div>
     {{else}}

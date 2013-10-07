@@ -9,20 +9,20 @@
 
     <div>
         {{#if isOwnerOfLobby}}
-            {{#link-to "lobby.edit" this classNames="btn btn-default"}}
+            {{#link-to 'lobby.edit' this classNames='btn btn-default'}}
                 Edit
             {{/link-to}}
 
-            {{#link-to "lobby.delete" this classNames="btn btn-danger"}}
+            {{#link-to 'lobby.delete' this classNames='btn btn-danger'}}
                 Delete
             {{/link-to}}
         {{else}}
             {{#if isMemberOfLobby}}
-                <button {{action "leave"}} class="btn btn-danger">
+                <button {{action 'leave'}} class="btn btn-danger">
                     Leave
                 </button>
             {{else}}
-                <button {{action "join"}} class="btn btn-primary">
+                <button {{action 'join'}} class="btn btn-primary">
                     Join
                 </button>
             {{/if}}
@@ -36,7 +36,7 @@
     </h3>
 
     <p>
-        {{#link-to "player" owner}}
+        {{#link-to 'player' owner}}
             {{owner.username}}
         {{/link-to}}
     </p>
@@ -62,7 +62,7 @@
     {{#if members.length}}
         <div class="list-group">
             {{#each members}}
-                {{partial "helpers/player-item"}}
+                {{partial 'helpers/player-item'}}
             {{/each}}
         </div>
     {{else}}

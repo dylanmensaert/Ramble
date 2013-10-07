@@ -1,6 +1,6 @@
 {{#form-for this}}
-    {{input username placeholder="Username" as="focussed_textfield"}}
-    {{input password placeholder="Password"}}
+    {{input username placeholder='Username' as='focussed_textfield'}}
+    {{input password placeholder='Password'}}
 
     {{#unless session.hasValidCredentials}}
         <p class="text-danger">
@@ -8,7 +8,7 @@
         </p>
     {{/unless}}
 
-    <button {{action "login"}} class="btn btn-primary">
+    <button {{action 'login'}} class="btn btn-primary">
         Log in
     </button>
 {{/form-for}}

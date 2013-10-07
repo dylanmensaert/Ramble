@@ -1,12 +1,12 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.Route.extend({
-        title: "List",
+        title: 'List',
         model: function () {
-            return this.get("store").findAll("player");
+            return this.get('store').findAll('player');
         }
     });
 });

@@ -1,14 +1,14 @@
 {{#form-for this}}
-    {{input title placeholder="Title" as="focussed_textfield"}}
-    {{input maxMembers placeholder="Max members"}}
-    {{input password placeholder="Password"}}
-    {{input passwordConfirmation placeholder="Password confirmation"}}
+    {{input title placeholder='Title' as='focussed_textfield'}}
+    {{input maxMembers placeholder='Max members'}}
+    {{input password placeholder='Password'}}
+    {{input passwordConfirmation placeholder='Password confirmation'}}
 
-    <button {{action "save"}} class="btn btn-primary">
+    <button {{action 'save'}} class="btn btn-primary">
         Save
     </button>
 
-    {{#link-to "lobby" this classNames="btn btn-default"}}
+    {{#link-to 'lobby' this classNames='btn btn-default'}}
         Cancel
     {{/link-to}}
 {{/form-for}}

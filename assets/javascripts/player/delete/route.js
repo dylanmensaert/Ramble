@@ -1,12 +1,12 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
-    return Ember.Route.extend(require("helpers/check-ownership-mixin"), {
+    return Ember.Route.extend(require('helpers/check-ownership-mixin'), {
         title: function () {
-            return this.get("controller.username") + " - Delete";
-        }.property("controller.username"),
+            return this.get('controller.username') + ' - Delete';
+        }.property('controller.username'),
         afterModel: function (model, transition) {
             this.checkOwnershipAndRedirect(model, transition);
         }

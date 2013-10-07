@@ -1,22 +1,22 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.ObjectController.extend({
-        needs: ["login"],
+        needs: ['login'],
         actions: {
             delete: function () {
-                var model = this.get("model");
+                var model = this.get('model');
 
                 model.deleteRecord();
                 model.save().then(function () {
-                    this.get("controllers.login").send("logout");
+                    this.get('controllers.login').send('logout');
                 }.bind(this));
 
                 //TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.
-                //model.get("joinedLobbies").clear();
-                //model.get("ownedLobbies").clear();
+                //model.get('joinedLobbies').clear();
+                //model.get('ownedLobbies').clear();
             }
         }
     });

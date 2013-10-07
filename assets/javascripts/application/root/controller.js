@@ -1,13 +1,13 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.Controller.extend({
-        needs: ["login"],
+        needs: ['login'],
         actions: {
             logout: function () {
-                this.get("controllers.login").send("logout");
+                this.get('controllers.login').send('logout');
             }
         }
     });

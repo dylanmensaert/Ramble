@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            {{#link-to "index" classNames="navbar-brand"}}
+            {{#link-to 'index' classNames='navbar-brand'}}
                 R<span class="glyphicon glyphicon-fire"></span>mble
             {{/link-to}}
         </div>
@@ -16,14 +16,14 @@
             <ul class="nav navbar-nav">
                 <!-- TODO: Hackish solution to active-CSS class for Bootstrap, check for better solution! -->
                 <!-- TODO: http://stackoverflow.com/questions/14412073/assigning-active-class-to-selected-list-item-in-emberjs -->
-                {{#link-to "lobby.list" tagName="li" href=false}}
-                    {{#link-to "lobby.list"}}
+                {{#link-to 'lobby.list' tagName='li' href=false}}
+                    {{#link-to 'lobby.list'}}
                         Lobby List
                     {{/link-to}}
                 {{/link-to}}
 
-                {{#link-to "player.list" tagName="li" href=false}}
-                    {{#link-to "player.list"}}
+                {{#link-to 'player.list' tagName='li' href=false}}
+                    {{#link-to 'player.list'}}
                         Player list
                     {{/link-to}}
                 {{/link-to}}
@@ -39,13 +39,13 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                {{#link-to "player" session.account}}
+                                {{#link-to 'player' session.account}}
                                     Profile
                                 {{/link-to}}
                             </li>
 
                             <li>
-                                <a {{action "logout"}} href="#">
+                                <a {{action 'logout'}} href="#">
                                     Log out
                                 </a>
                             </li>
@@ -54,11 +54,11 @@
                 </ul>
             {{else}}
                 <form class="navbar-form navbar-right">
-                    {{#link-to "login" classNames="btn btn-default"}}
+                    {{#link-to 'login' classNames='btn btn-default'}}
                         Log in
                     {{/link-to}}
 
-                    {{#link-to "player.create" classNames="btn btn-success"}}
+                    {{#link-to 'player.create' classNames='btn btn-success'}}
                         Sign up
                     {{/link-to}}
                 </form>

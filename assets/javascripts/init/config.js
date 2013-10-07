@@ -1,7 +1,7 @@
 define(function () {
-    "use strict";
+    'use strict';
 
     return {
-        "googleAnalyticsAccount": "UA-XXXXXX-X"
+        'googleAnalyticsAccount': 'UA-XXXXXX-X'
     };
 });

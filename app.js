@@ -1,3 +1,3 @@
-"use strict";
+'use strict';
 
-require("sails").lift(require("optimist").argv);
+require('sails').lift(require('optimist').argv);

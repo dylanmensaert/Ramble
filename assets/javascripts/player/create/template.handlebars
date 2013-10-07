@@ -1,14 +1,14 @@
 {{#form-for this}}
-    {{input username placeholder="Username" as="focussed_textfield"}}
-    {{input email placeholder="Email"}}
-    {{input password placeholder="Password"}}
-    {{input passwordConfirmation placeholder="Password confirmation"}}
+    {{input username placeholder='Username' as='focussed_textfield'}}
+    {{input email placeholder='Email'}}
+    {{input password placeholder='Password'}}
+    {{input passwordConfirmation placeholder='Password confirmation'}}
 
-    <button {{action "create"}} class="btn btn-primary">
+    <button {{action 'create'}} class="btn btn-primary">
         Sign up
     </button>
 
-    {{#link-to "index" classNames="btn btn-default"}}
+    {{#link-to 'index' classNames='btn btn-default'}}
         Cancel
     {{/link-to}}
 {{/form-for}}

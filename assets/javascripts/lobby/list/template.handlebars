@@ -1,6 +1,6 @@
 <div>
     <p>
-        {{#link-to "lobby.create" classNames="btn btn-primary"}}
+        {{#link-to 'lobby.create' classNames='btn btn-primary'}}
             Create
         {{/link-to}}
     </p>
@@ -9,7 +9,7 @@
 <div>
     <div class="list-group">
         {{#each}}
-            {{partial "helpers/lobby-item"}}
+            {{partial 'helpers/lobby-item'}}
         {{/each}}
     </div>
 </div>

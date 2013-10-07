@@ -1,11 +1,11 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.Route.extend({
         title: function () {
-            return this.get("controller.username");
-        }.property("controller.username")
+            return this.get('controller.username');
+        }.property('controller.username')
     });
 });

@@ -1,8 +1,8 @@
-{{#link-to "player" this classNames="list-group-item"}}
+{{#link-to 'player' this classNames='list-group-item'}}
     {{id}} - {{username}}
 
     {{#if controller.isOwnerOfLobby}}
-        <button {{action "kick" this bubbles=false}} class="close pull-right">
+        <button {{action 'kick' this bubbles=false}} class="close pull-right">
             &times;
         </button>
     {{/if}}

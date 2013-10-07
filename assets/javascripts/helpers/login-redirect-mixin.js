@@ -1,12 +1,12 @@
 define(function (require) {
-    "use strict";
+    'use strict';
 
-    var Ember = require("ember");
+    var Ember = require('ember');
 
     return Ember.Mixin.create({
         redirectToLogin: function (transition) {
-            this.set("session.attemptedTransition", transition);
-            this.transitionTo("login");
+            this.set('session.attemptedTransition', transition);
+            this.transitionTo('login');
         }
     });
 });

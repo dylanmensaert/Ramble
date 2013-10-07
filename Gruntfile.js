@@ -1,31 +1,31 @@
-"use strict";
+'use strict';
 
 module.exports = function (grunt) {
-    require("load-grunt-tasks")(grunt);
+    require('load-grunt-tasks')(grunt);
 
     var config = {
         //server
-        app: "app.js",
-        api: "api",
-        config: "config",
-        views: "views",
-        tmpPublic: ".tmp/public",
+        app: 'app.js',
+        api: 'api',
+        config: 'config',
+        views: 'views',
+        tmpPublic: '.tmp/public',
         //assets
-        assets: "assets",
-        javascripts: "assets/javascripts",
-        sass: "assets/sass",
-        stylesheets: "assets/stylesheets",
-        images: "assets/images",
-        fonts: "assets/fonts",
+        assets: 'assets',
+        javascripts: 'assets/javascripts',
+        sass: 'assets/sass',
+        stylesheets: 'assets/stylesheets',
+        images: 'assets/images',
+        fonts: 'assets/fonts',
         //prod
-        prodJavascripts: ".tmp/public/javascripts",
-        prodStylesheets: ".tmp/public/stylesheets",
-        prodImages: ".tmp/public/images",
-        prodFonts: ".tmp/public/fonts",
+        prodJavascripts: '.tmp/public/javascripts',
+        prodStylesheets: '.tmp/public/stylesheets',
+        prodImages: '.tmp/public/images',
+        prodFonts: '.tmp/public/fonts',
         //other
-        test: "test",
-        components: "assets/bower_components",
-        templatesjs: "assets/javascripts/init/templates.js"
+        test: 'test',
+        components: 'assets/bower_components',
+        templatesjs: 'assets/javascripts/init/templates.js'
     };
 
     //TODO: Need to take care of favicon.ico and robots.txt too!
@@ -34,15 +34,15 @@ module.exports = function (grunt) {
         config: config,
         clean: {
             tmpPublic: {
-                src: ["<%= config.tmpPublic %>"]
+                src: ['<%= config.tmpPublic %>']
             },
             cleanup: {
                 src: [
-                    "node_modules",
-                    "<%= config.components %>",
-                    "<%= config.templatesjs %>",
-                    "<%= config.stylesheets %>",
-                    ".sass-cache"
+                    'node_modules',
+                    '<%= config.components %>',
+                    '<%= config.templatesjs %>',
+                    '<%= config.stylesheets %>',
+                    '.sass-cache'
                 ]
             }
         },
@@ -51,9 +51,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: "<%= config.assets %>",
-                        src: ["**"],
-                        dest: "<%= config.tmpPublic %>"
+                        cwd: '<%= config.assets %>',
+                        src: ['**'],
+                        dest: '<%= config.tmpPublic %>'
                     }
                 ]
             },
@@ -61,15 +61,15 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: "<%= config.images %>",
-                        src: ["**"],
-                        dest: "<%= config.prodImages %>"
+                        cwd: '<%= config.images %>',
+                        src: ['**'],
+                        dest: '<%= config.prodImages %>'
                     },
                     {
                         expand: true,
-                        cwd: "<%= config.fonts %>",
-                        src: ["**"],
-                        dest: "<%= config.prodFonts %>"
+                        cwd: '<%= config.fonts %>',
+                        src: ['**'],
+                        dest: '<%= config.prodFonts %>'
                     }
                 ]
             }
@@ -78,111 +78,111 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     amd: true,
-                    templateBasePath: "<%= config.javascripts %>" + "/",
+                    templateBasePath: '<%= config.javascripts %>' + '/',
                     templateName: function (sourceFile) {
                         var templateName = sourceFile;
 
-                        templateName = templateName.replace("/template", "");
-                        templateName = templateName.replace("/root", "");
+                        templateName = templateName.replace('/template', '');
+                        templateName = templateName.replace('/root', '');
 
                         return templateName;
                     }
                 },
                 files: {
-                    "<%= config.templatesjs %>": "<%= config.javascripts %>/**/*.handlebars"
+                    '<%= config.templatesjs %>': '<%= config.javascripts %>/**/*.handlebars'
                 }
             }
         },
         compass: {
             options: {
-                importPath: "<%= config.components %>",
-                sassDir: "<%= config.sass %>",
-                cssDir: "<%= config.stylesheets %>",
-                imagesDir: "<%= config.images %>",
-                javascriptsDir: "<%= config.javascripts %>"
+                importPath: '<%= config.components %>',
+                sassDir: '<%= config.sass %>',
+                cssDir: '<%= config.stylesheets %>',
+                imagesDir: '<%= config.images %>',
+                javascriptsDir: '<%= config.javascripts %>'
             },
             development: {
                 options: {
-                    specify: ["<%= config.sass %>/**/*.scss"]
+                    specify: ['<%= config.sass %>/**/*.scss']
                 }
             },
             production: {
                 options: {
-                    specify: ["<%= config.sass %>/main.scss"],
-                    cssDir: "<%= config.prodStylesheets %>",
-                    environment: "production"
+                    specify: ['<%= config.sass %>/main.scss'],
+                    cssDir: '<%= config.prodStylesheets %>',
+                    environment: 'production'
                 }
             }
         },
         requirejs: {
             all: {
                 options: {
-                    baseUrl: "<%= config.javascripts %>",
-                    name: "../bower_components/almond/almond",
-                    include: ["main"],
-                    mainConfigFile: "<%= config.javascripts %>/main.js",
-                    out: "<%= config.prodJavascripts %>/main.js",
+                    baseUrl: '<%= config.javascripts %>',
+                    name: '../bower_components/almond/almond',
+                    include: ['main'],
+                    mainConfigFile: '<%= config.javascripts %>/main.js',
+                    out: '<%= config.prodJavascripts %>/main.js',
                     paths: {
-                        ember: "../bower_components/ember/ember.prod",
-                        "ember-data": "../bower_components/ember-data-shim/ember-data.prod"
+                        ember: '../bower_components/ember/ember.prod',
+                        'ember-data': '../bower_components/ember-data-shim/ember-data.prod'
                     }
                 }
             }
         },
         jshint: {
             client: {
-                src: ["<%= config.javascripts %>/**/*.js", "<%= config.javascripts %>/.jshintrc"],
+                src: ['<%= config.javascripts %>/**/*.js', '<%= config.javascripts %>/.jshintrc'],
                 options: {
-                    jshintrc: "<%= config.javascripts %>/.jshintrc"
+                    jshintrc: '<%= config.javascripts %>/.jshintrc'
                 }
             },
             test: {
-                src: ["<%= config.test %>/**/*.js", "<%= config.test %>/.jshintrc"],
+                src: ['<%= config.test %>/**/*.js', '<%= config.test %>/.jshintrc'],
                 options: {
-                    jshintrc: "<%= config.test %>/.jshintrc"
+                    jshintrc: '<%= config.test %>/.jshintrc'
                 }
             },
             server: {
-                src: ["*.{js,json}", ".jshintrc", ".bowerrc", "<%= config.app %>", "<%= config.api %>/**/*.js", "<%= config.config %>/**/*.js"],
+                src: ['*.{js,json}', '.jshintrc', '.bowerrc', '<%= config.app %>', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
                 options: {
-                    jshintrc: ".jshintrc"
+                    jshintrc: '.jshintrc'
                 }
             }
         },
         csslint: {
             all: {
-                src: ["<%= config.stylesheets %>/**/*.css", "!<%= config.stylesheets %>/main.css"]
+                src: ['<%= config.stylesheets %>/**/*.css', '!<%= config.stylesheets %>/main.css']
             }
         },
         nodemon: {
             server: {
                 options: {
-                    watchedFolders: ["<%= config.app %>", "<%= config.api %>", "<%= config.config %>"],
+                    watchedFolders: ['<%= config.app %>', '<%= config.api %>', '<%= config.config %>'],
                     delayTime: 0.1
                 }
             }
         },
         watch: {
             emberTemplates: {
-                files: ["<%= config.javascripts %>/**/*.handlebars"],
-                tasks: ["emberTemplates:all"]
+                files: ['<%= config.javascripts %>/**/*.handlebars'],
+                tasks: ['emberTemplates:all']
             },
             compass: {
-                files: ["<%= config.sass %>/**/*.scss"],
-                tasks: ["compass:development"]
+                files: ['<%= config.sass %>/**/*.scss'],
+                tasks: ['compass:development']
             },
             livereload: {
                 files: [
-                    "<%= config.app %>",
-                    "<%= config.api %>/**/*.js",
-                    "<%= config.config %>/**/*.js",
-                    "<%= config.views %>/**/*",
-                    "<%= config.javascripts %>/**/*.js",
-                    "<%= config.templatesjs %>",
-                    "<%= config.stylesheets %>/main.css",
-                    "<%= config.images %>/**/*.*"
+                    '<%= config.app %>',
+                    '<%= config.api %>/**/*.js',
+                    '<%= config.config %>/**/*.js',
+                    '<%= config.views %>/**/*',
+                    '<%= config.javascripts %>/**/*.js',
+                    '<%= config.templatesjs %>',
+                    '<%= config.stylesheets %>/main.css',
+                    '<%= config.images %>/**/*.*'
                 ],
-                tasks: ["copy:development"],
+                tasks: ['copy:development'],
                 options: {
                     livereload: true
                 }
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
         },
         concurrent: {
             development: {
-                tasks: ["nodemon:server", "watch"],
+                tasks: ['nodemon:server', 'watch'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -198,12 +198,12 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("default", ["clean:tmpPublic", "copy:development", "emberTemplates:all", "compass:development"]);
+    grunt.registerTask('default', ['clean:tmpPublic', 'copy:development', 'emberTemplates:all', 'compass:development']);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask("test", ["jshint", "compass:development", "csslint:all", "emberTemplates:all", "requirejs:all"]);
-    grunt.registerTask("production", ["clean:tmpPublic", "copy:production", "emberTemplates:all", "requirejs:all", "compass:production"]);
+    grunt.registerTask('test', ['jshint', 'compass:development', 'csslint:all', 'emberTemplates:all', 'requirejs:all']);
+    grunt.registerTask('production', ['clean:tmpPublic', 'copy:production', 'emberTemplates:all', 'requirejs:all', 'compass:production']);
 
-    grunt.registerTask("develop", ["concurrent:development"]);
+    grunt.registerTask('develop', ['concurrent:development']);
 
-    grunt.registerTask("cleanup", ["clean:tmpPublic", "clean:cleanup"]);
+    grunt.registerTask('cleanup', ['clean:tmpPublic', 'clean:cleanup']);
 };
