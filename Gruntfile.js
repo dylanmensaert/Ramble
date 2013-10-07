@@ -29,6 +29,7 @@ module.exports = function (grunt) {
     };
 
     //TODO: Need to take care of favicon.ico and robots.txt too!
+    //TODO: Create views for 404, 500, ..
     //TODO: Sails showing errors related to Grunt in terminal on start-up?
     grunt.initConfig({
         config: config,
@@ -131,22 +132,29 @@ module.exports = function (grunt) {
         },
         jshint: {
             client: {
-                src: ['<%= config.javascripts %>/**/*.js', '<%= config.javascripts %>/.jshintrc'],
+                src: ['<%= config.javascripts %>/**/*.js'],
                 options: {
                     jshintrc: '<%= config.javascripts %>/.jshintrc'
                 }
             },
             test: {
-                src: ['<%= config.test %>/**/*.js', '<%= config.test %>/.jshintrc'],
+                src: ['<%= config.test %>/**/*.js'],
                 options: {
                     jshintrc: '<%= config.test %>/.jshintrc'
                 }
             },
             server: {
-                src: ['*.{js,json}', '.jshintrc', '.bowerrc', '<%= config.app %>', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
+                src: ['*.js', '<%= config.app %>', '<%= config.api %>/**/*.js'/*, '<%= config.config %>'*/],
                 options: {
                     jshintrc: '.jshintrc'
                 }
+            },
+            json: {
+                //TODO: Fix JSHint errors inside config!
+                src: ['*.json', '.bowerrc', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'],
+                options: grunt.util._.merge(grunt.file.readJSON('.jshintrc'), {
+                    quotmark: 'double'
+                })
             }
         },
         csslint: {
