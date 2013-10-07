@@ -4,4 +4,5 @@ assets/bower_components/**
 .grunt/**
 
 .tmp/**
+assets/vendor/**
 assets/javascripts/init/templates.js
