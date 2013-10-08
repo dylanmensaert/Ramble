@@ -98,7 +98,8 @@ module.exports = function (grunt) {
                 sassDir: '<%= config.sass %>',
                 cssDir: '<%= config.stylesheets %>',
                 imagesDir: '<%= config.images %>',
-                javascriptsDir: '<%= config.javascripts %>'
+                javascriptsDir: '<%= config.javascripts %>',
+                boring: true
             },
             development: {
             },
@@ -138,13 +139,13 @@ module.exports = function (grunt) {
                 }
             },
             server: {
+                //TODO: Fix JSHint errors inside config!
                 src: ['*.js', '<%= config.app %>', '<%= config.api %>/**/*.js'/*, '<%= config.config %>'*/],
                 options: {
                     jshintrc: '.jshintrc'
                 }
             },
             json: {
-                //TODO: Fix JSHint errors inside config!
                 src: ['*.json', '.bowerrc', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'],
                 options: grunt.util._.merge(grunt.file.readJSON('.jshintrc'), {
                     quotmark: 'double'
@@ -180,7 +181,6 @@ module.exports = function (grunt) {
                     '<%= config.config %>/**/*.js',
                     '<%= config.views %>/**/*',
                     '<%= config.javascripts %>/**/*.js',
-                    '<%= config.templatesjs %>',
                     '<%= config.stylesheets %>/main.css',
                     '<%= config.images %>/**/*.*'
                 ],
