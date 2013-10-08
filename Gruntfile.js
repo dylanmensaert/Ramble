@@ -14,12 +14,11 @@ module.exports = function (grunt) {
         assets: 'assets',
         javascripts: 'assets/javascripts',
         sass: 'assets/sass',
-        stylesheets: 'assets/stylesheets',
+        stylesheets: '.tmp/public/stylesheets',
         images: 'assets/images',
         fonts: 'assets/fonts',
         //prod
         prodJavascripts: '.tmp/public/javascripts',
-        prodStylesheets: '.tmp/public/stylesheets',
         prodImages: '.tmp/public/images',
         prodFonts: '.tmp/public/fonts',
         //other
@@ -42,7 +41,6 @@ module.exports = function (grunt) {
                     'node_modules',
                     '<%= config.components %>',
                     '<%= config.templatesjs %>',
-                    '<%= config.stylesheets %>',
                     '.sass-cache'
                 ]
             }
@@ -103,14 +101,10 @@ module.exports = function (grunt) {
                 javascriptsDir: '<%= config.javascripts %>'
             },
             development: {
-                options: {
-                    specify: ['<%= config.sass %>/**/*.scss']
-                }
             },
             production: {
                 options: {
                     specify: ['<%= config.sass %>/main.scss'],
-                    cssDir: '<%= config.prodStylesheets %>',
                     environment: 'production'
                 }
             }
