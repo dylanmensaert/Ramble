@@ -5,7 +5,6 @@ module.exports = function (grunt) {
 
     var config = {
         //server
-        app: 'app.js',
         api: 'api',
         config: 'config',
         views: 'views',
@@ -27,8 +26,7 @@ module.exports = function (grunt) {
         templatesjs: 'assets/javascripts/init/templates.js'
     };
 
-    //TODO: Need to take care of favicon.ico and robots.txt too!
-    //TODO: Create views for 404, 500, ..
+    //TODO: Create views for 404, 500, .. (use layout?)
     grunt.initConfig({
         config: config,
         clean: {
@@ -37,10 +35,10 @@ module.exports = function (grunt) {
             },
             cleanup: {
                 src: [
-                    'node_modules',
-                    '<%= config.components %>',
                     '<%= config.templatesjs %>',
-                    '.sass-cache'
+                    '.sass-cache',
+                    'node_modules',
+                    '<%= config.components %>'
                 ]
             }
         },
@@ -98,15 +96,14 @@ module.exports = function (grunt) {
                 cssDir: '<%= config.stylesheets %>',
                 imagesDir: '<%= config.images %>',
                 javascriptsDir: '<%= config.javascripts %>',
-                //TODO: With red colored text, Sails thinks errors are happening from Grunt/Compass
                 boring: true
             },
             development: {
             },
             production: {
                 options: {
-                    specify: ['<%= config.sass %>/main.scss'],
-                    environment: 'production'
+                    environment: 'production',
+                    specify: ['<%= config.sass %>/main.scss']
                 }
             }
         },
@@ -140,7 +137,7 @@ module.exports = function (grunt) {
             },
             server: {
                 //TODO: Fix JSHint errors inside config!
-                src: ['*.js', '<%= config.app %>', '<%= config.api %>/**/*.js'/*, '<%= config.config %>'*/],
+                src: ['*.js', '<%= config.api %>/**/*.js'/*, '<%= config.config %>'*/],
                 options: {
                     jshintrc: '.jshintrc'
                 }
@@ -160,7 +157,7 @@ module.exports = function (grunt) {
         nodemon: {
             server: {
                 options: {
-                    watchedFolders: ['<%= config.app %>', '<%= config.api %>', '<%= config.config %>'],
+                    watchedFolders: ['<%= config.api %>', '<%= config.config %>'],
                     delayTime: 0.1
                 }
             }
@@ -176,13 +173,14 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    '<%= config.app %>',
+                    '<%= config.assets %>/*.*',
                     '<%= config.api %>/**/*.js',
                     '<%= config.config %>/**/*.js',
                     '<%= config.views %>/**/*',
                     '<%= config.javascripts %>/**/*.js',
                     '<%= config.stylesheets %>/main.css',
-                    '<%= config.images %>/**/*.*'
+                    '<%= config.images %>/**/*.*',
+                    '<%= config.fonts %>/**/*.*'
                 ],
                 tasks: ['copy:development'],
                 options: {
