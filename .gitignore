@@ -1,16 +1,10 @@
-# TODO: Sort gitignore.
+config/local.js
+assets/javascripts/init/templates.js
+
+.tmp/
+.sass-cache/
+
 node_modules/
 assets/bower_components/
-.sass-cache/
-.grunt/
-
-.sails
-.waterline
-.rigging
-.tmp
-
-config/local.js
-
-assets/javascripts/init/templates.js
 
 .idea/

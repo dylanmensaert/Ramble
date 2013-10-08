@@ -31,10 +31,8 @@ define(function (require) {
                 }
             },
             logout: function () {
-                this.set('session.isLoggedIn', false);
-
-                //TODO: Secure to just put account of logged-in user to null?
                 this.set('session.account', null);
+                this.set('session.isLoggedIn', false);
 
                 this.transitionToRoute('index');
             }

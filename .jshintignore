@@ -1,8 +1,7 @@
-# TODO: Sort jshintignore.
-node_modules/**
-assets/bower_components/**
-.grunt/**
+assets/javascripts/init/templates.js
+assets/vendor/**
 
 .tmp/**
-assets/vendor/**
-assets/javascripts/init/templates.js
+
+node_modules/**
+assets/bower_components/**

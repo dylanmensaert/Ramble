@@ -7,7 +7,6 @@ define(function (require) {
         isOwnerOfLobby: function () {
             return this.get('session.account') === this.get('owner');
         }.property('session.account', 'owner'),
-        //TODO: Check if this computed property actually works?
         isMemberOfLobby: function () {
             //TODO: Use the new 'Array Computed Properties' provided in RC8 to improve performance!
             return this.get('members').contains(this.get('session.account'));

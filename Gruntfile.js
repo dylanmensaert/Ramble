@@ -29,7 +29,6 @@ module.exports = function (grunt) {
 
     //TODO: Need to take care of favicon.ico and robots.txt too!
     //TODO: Create views for 404, 500, ..
-    //TODO: Sails showing errors related to Grunt in terminal on start-up?
     grunt.initConfig({
         config: config,
         clean: {
@@ -99,6 +98,7 @@ module.exports = function (grunt) {
                 cssDir: '<%= config.stylesheets %>',
                 imagesDir: '<%= config.images %>',
                 javascriptsDir: '<%= config.javascripts %>',
+                //TODO: With red colored text, Sails thinks errors are happening from Grunt/Compass
                 boring: true
             },
             development: {
