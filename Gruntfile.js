@@ -26,7 +26,6 @@ module.exports = function (grunt) {
         templatesjs: 'assets/javascripts/init/templates.js'
     };
 
-    //TODO: Create views for 404, 500, .. (use layout?)
     grunt.initConfig({
         config: config,
         clean: {
@@ -136,8 +135,7 @@ module.exports = function (grunt) {
                 }
             },
             server: {
-                //TODO: Fix JSHint errors inside config!
-                src: ['*.js', '<%= config.api %>/**/*.js'/*, '<%= config.config %>'*/],
+                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
                 options: {
                     jshintrc: '.jshintrc'
                 }

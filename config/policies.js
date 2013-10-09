@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Policy mappings (ACL)
  *
@@ -13,11 +15,9 @@
 
 
 module.exports.policies = {
-
     // Default policy for all controllers and actions
     // (`true` allows public access)
     '*': true
-
     /*
      // Here's an example of adding some policies to a controller
      RabbitController: {

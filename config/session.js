@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Session
  *
@@ -11,12 +13,10 @@
  */
 
 module.exports.session = {
-
     // Session secret is automatically generated when your new app is created
     // Replace at your own risk in production-- you will invalidate the cookies of your users,
     // forcing them to log in again.
     secret: '8e82dab9cc273261e31d3e102c84534d'
-
 
     // In production, uncomment the following lines to set up a shared redis session store
     // that can be shared across multiple Sails.js servers
@@ -51,5 +51,4 @@ module.exports.session = {
     // auto_reconnect: false,
     // ssl: false,
     // stringify: true
-
 };

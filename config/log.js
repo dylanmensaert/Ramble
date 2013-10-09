@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Logger configuration
  *
@@ -10,7 +12,6 @@
  */
 
 module.exports = {
-
     // Valid `level` configs:
     // i.e. the minimum log level to capture with sails.log.*()
     //
@@ -23,5 +24,4 @@ module.exports = {
     log: {
         level: 'info'
     }
-
 };

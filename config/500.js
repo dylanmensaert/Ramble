@@ -1,3 +1,7 @@
+/* jshint maxstatements: false, maxparams: false, maxcomplexity: false */
+'use strict';
+
+//TODO: Simplify this code!
 /**
  * Default error handler
  *
@@ -7,38 +11,44 @@
  * http://expressjs.com/guide.html#error-handling
  */
 
-module.exports[500] = function serverErrorOccurred (errors, req, res, expressErrorHandler) {
+module.exports[500] = function (errors, req, res, expressErrorHandler) {
+    var statusCode,
+        displayedErrors,
+        response,
+        inspect,
+        errorIndex,
+        view;
 
-    var statusCode = 500;
+    statusCode = 500;
 
     // Ensure that `errors` is a list
-    var displayedErrors = (typeof errors !== 'object' || !errors.length) ? [errors] : errors;
+    displayedErrors = (typeof errors !== 'object' || !errors.length) ? [errors] : errors;
 
     // Build data for response
-    var response = {
+    response = {
         status: statusCode
     };
 
     // Ensure that each error is formatted correctly
-    var inspect = require('util').inspect;
-    for (var i in displayedErrors) {
+    inspect = require('util').inspect;
+    for (errorIndex = 0; errorIndex < displayedErrors.length; errorIndex += 1) {
 
         // Make error easier to read, and normalize its type
-        if (!(displayedErrors[i] instanceof Error)) {
-            displayedErrors[i] = new Error(inspect(displayedErrors[i]));
+        if (!(displayedErrors[errorIndex] instanceof Error)) {
+            displayedErrors[errorIndex] = new Error(inspect(displayedErrors[errorIndex]));
         }
 
-        displayedErrors[i] = {
-            message: displayedErrors[i].message,
-            stack: displayedErrors[i].stack
+        displayedErrors[errorIndex] = {
+            message: displayedErrors[errorIndex].message,
+            stack: displayedErrors[errorIndex].stack
         };
 
         // Log error to log adapter
-        sails.log.error(displayedErrors[i].stack);
+        global.sails.log.error(displayedErrors[errorIndex].stack);
     }
 
     // In production, don't display any identifying information about the error(s)
-    if (sails.config.environment === 'development') {
+    if (global.sails.config.environment === 'development') {
         response.errors = displayedErrors;
     }
 
@@ -51,12 +61,13 @@ module.exports[500] = function serverErrorOccurred (errors, req, res, expressErr
     // Otherwise, if it can be rendered, the `views/500.*` page is rendered
     // If an error occurs rendering the 500 view ITSELF,
     // use the built-in Express error handler to render the errors
-    var view = '500';
+    view = '500';
+
     res.render(view, response, function (err) {
         if (err) {
             return expressErrorHandler(errors);
         }
+
         res.render(view, response);
     });
-
 };

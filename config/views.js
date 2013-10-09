@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Views
  *
@@ -10,7 +12,6 @@
  */
 
 module.exports.views = {
-
     // View engine (aka template language)
     // to use for your app's *server-side* views
     //
@@ -21,9 +22,7 @@ module.exports.views = {
     // underscore, hogan, haml, haml-coffee, dust
     // atpl, eco, ect, jazz, jqtpl, JUST, liquor, QEJS,
     // swig, templayed, toffee, walrus, & whiskers
-
     engine: 'jade',
-
     // Layouts are simply top-level HTML templates you can use as wrappers
     // for your server-side views.  If you're using ejs or jade, you can take advantage of
     // Sails' built-in `layout` support.
@@ -45,11 +44,7 @@ module.exports.views = {
     // to your layout from `views/` folder.
     // (the file extension, e.g. ".ejs", should be omitted)
     //
-
-    layout: 'layout'
-
-
-
+    layout: false
     // Using Multiple Layouts with EJS
     //
     // If you're using the default engine, `ejs`, Sails supports the use of multiple
@@ -62,5 +57,4 @@ module.exports.views = {
     //
     // But you might override that in some of your controllers with:
     // layout: 'layouts/internal'
-
 };

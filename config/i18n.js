@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Internationalization / Localization Settings
  *
@@ -10,8 +12,6 @@
  */
 
 module.exports.i18n = {
-
     // Which locales are supported?
-    locales: ['en', 'es']
-
+    locales: ['en']
 };

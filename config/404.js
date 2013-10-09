@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Default 404 (not found) handler
  *
@@ -7,10 +9,13 @@
  * http://expressjs.com/faq.html#404-handling
  */
 
-module.exports[404] = function pageNotFound (req, res, express404Handler) {
+module.exports[404] = function (req, res, express404Handler) {
+    var statusCode,
+        result,
+        view;
 
-    var statusCode = 404;
-    var result = {
+    statusCode = 404;
+    result = {
         status: statusCode
     };
 
@@ -20,12 +25,13 @@ module.exports[404] = function pageNotFound (req, res, express404Handler) {
     }
 
     // Otherwise, serve the `views/404.*` page
-    var view = '404';
+    view = '404';
+
     res.render(view, result, function (err) {
         if (err) {
             return express404Handler();
         }
+
         res.render(view);
     });
-
 };
