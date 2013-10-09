@@ -15,6 +15,7 @@ define(function (require) {
     require('lobby/init');
     require('player/init');
 
+    require('sails-io');
     require('io').connect();
 
     //TODO: Create API in Express.js
