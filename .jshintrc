@@ -73,10 +73,5 @@
     "nomen": true,
     "onevar": true,
     "passfail": false,
-    "white": true,
-
-    "globals": {
-        "require": false,
-        "define": false
-    }
+    "white": true
 }

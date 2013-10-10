@@ -196,10 +196,10 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['clean:tmpPublic', 'copy:development', 'emberTemplates:all', 'compass:development']);
+    grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'compass:development', 'copy:development']);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'compass:development', 'csslint:all', 'emberTemplates:all', 'requirejs:all']);
-    grunt.registerTask('production', ['clean:tmpPublic', 'copy:production', 'emberTemplates:all', 'requirejs:all', 'compass:production']);
+    grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'compass:development', 'csslint:all']);
+    grunt.registerTask('production', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production']);
 
     grunt.registerTask('develop', ['concurrent:development']);
 
