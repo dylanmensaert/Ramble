@@ -73,5 +73,11 @@
     "nomen": true,
     "onevar": true,
     "passfail": false,
-    "white": true
+    "white": true,
+
+    "globals": {
+        "sails": false,
+        "Lobby": false,
+        "Player": false
+    }
 }

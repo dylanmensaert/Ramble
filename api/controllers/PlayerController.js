@@ -8,9 +8,11 @@
  */
 
 module.exports = {
-    /* e.g.
-     sayHello: function (req, res) {
-     res.send('hello world!');
-     }
-     */
+    create: function (req, res) {
+        Player.create(req.param('player')).done(function (err, player) {
+            res.json({
+                player: player
+            });
+        });
+    }
 };

@@ -15,7 +15,9 @@ define(function (require) {
     App.deferReadiness();
 
     App.Store = DS.Store.extend({
-        adapter: DS.FixtureAdapter
+        adapter: DS.RESTAdapter.extend({
+            namespace: 'api'
+        })
     });
 
     return App;

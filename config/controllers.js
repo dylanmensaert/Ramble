@@ -20,7 +20,7 @@ module.exports.controllers = {
         // Optional mount path prefix for blueprints
         // (the automatically bound routes in your controllers)
         // e.g. '/api/v2'
-        prefix: '',
+        prefix: '/api',
         // Whether routes are automatically generated for every action in your controllers
         // (also maps `index` to /:controller)
         // '/:controller', '/:controller/index', and '/:controller/:action'

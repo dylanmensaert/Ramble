@@ -44,11 +44,11 @@ module.exports[500] = function (errors, req, res, expressErrorHandler) {
         };
 
         // Log error to log adapter
-        global.sails.log.error(displayedErrors[errorIndex].stack);
+        sails.log.error(displayedErrors[errorIndex].stack);
     }
 
     // In production, don't display any identifying information about the error(s)
-    if (global.sails.config.environment === 'development') {
+    if (sails.config.environment === 'development') {
         response.errors = displayedErrors;
     }
 

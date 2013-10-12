@@ -28,6 +28,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         config: config,
+        //TODO: Warning: Unable to delete ".tmp/public" file (ENOTEMPTY, directory not empty '.tmp/public'). Use --force to continue.
         clean: {
             tmpPublic: {
                 src: ['<%= config.tmpPublic %>']
@@ -199,7 +200,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'compass:development', 'copy:development']);
     //TODO: Improve integration of unit tests!!
     grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'compass:development', 'csslint:all']);
-    grunt.registerTask('production', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production']);
+    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production']);
 
     grunt.registerTask('develop', ['concurrent:development']);
 

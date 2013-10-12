@@ -10,8 +10,27 @@
 
 module.exports = {
     attributes: {
-        /* e.g.
-         nickname: 'string'
-         */
+        title: {
+            type: 'STRING',
+            required: true,
+            maxLength: 50
+        },
+        password: {
+            type: 'STRING',
+            required: true
+        },
+        maxMembers: {
+            type: 'INTEGER',
+            required: true,
+            numeric: true
+        },
+        owner: {
+            //TODO: Should type be integer (ID) or string?
+            type: 'INTEGER',
+            required: true
+        },
+        members: {
+            type: 'ARRAY'
+        }
     }
 };

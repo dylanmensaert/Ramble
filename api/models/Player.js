@@ -10,8 +10,27 @@
 
 module.exports = {
     attributes: {
-        /* e.g.
-         nickname: 'string'
-         */
+        username: {
+            type: 'STRING',
+            required: true,
+            maxLength: 50
+        },
+        password: {
+            type: 'STRING',
+            required: true,
+            maxLength: 50
+        },
+        email: {
+            type: 'EMAIL',
+            required: true,
+            maxLength: 50
+        },
+        //TODO: Should these be defined? Are based off Lobby.owner and Lobby.members
+        ownedLobbies: {
+            type: 'ARRAY'
+        },
+        joinedLobbies: {
+            type: 'ARRAY'
+        }
     }
 };
