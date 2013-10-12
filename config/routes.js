@@ -28,6 +28,7 @@
  */
 
 module.exports.routes = {
+
     // By default, your root route (aka home page) points to a view
     // located at `views/home/index.ejs`
     //
@@ -35,6 +36,7 @@ module.exports.routes = {
     '/': {
         view: 'home/index'
     }
+
     /*
      // But what if you want your home page to display
      // a signup form located at `views/user/signup.ejs`?
@@ -80,13 +82,14 @@ module.exports.routes = {
 
 
      // What about the ever-popular "vanity URLs" aka URL slugs?
-     // (you remember doing this with `mod_rewrite` in PHP)
+     // (you might remember doing this with `mod_rewrite` in Apache)
      //
      // This is where you want to set up root-relative dynamic routes like:
-     // http://yourwebsite.com/twinkletoezz993
+     // http://yourwebsite.com/twinkletoez
      //
-     // You still want to allow requests through to the static assets,
-     // So we need to set up this route to allow URLs through that have a trailing ".":
+     // NOTE:
+     // You'll still want to allow requests through to the static assets,
+     // so we need to set up this route to ignore URLs that have a trailing ".":
      // (e.g. your javascript, CSS, and image files)
      'get /*(^.*)': 'UserController.profile'
 
@@ -159,3 +162,4 @@ module.exports.routes = {
  * Finally, if nothing else matched, the default 404 handler is triggered.
  * See `config/404.js` to adjust your app's 404 logic.
  */
+

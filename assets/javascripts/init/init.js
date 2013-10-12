@@ -15,10 +15,6 @@ define(function (require) {
     require('lobby/init');
     require('player/init');
 
-    //TODO: Find better way to not pluralize words!
-    require('ember').Inflector.inflector.uncountable('lobby');
-    require('ember').Inflector.inflector.uncountable('player');
-
     require('sails-io');
     require('io').connect();
 
