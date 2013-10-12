@@ -1,3 +1,4 @@
+/* jshint maxparams: false */
 'use strict';
 
 /**
@@ -22,7 +23,7 @@
  *      since if this was triggered from an AJAX or socket request, JSON should be sent instead.
  */
 
-module.exports[400] = function badRequest (validationErrors, redirectTo, req, res) {
+module.exports[400] = function (validationErrors, redirectTo, req, res) {
 
     /*
      * NOTE: This function is Sails middleware-- that means that not only do `req` and `res`
@@ -30,11 +31,10 @@ module.exports[400] = function badRequest (validationErrors, redirectTo, req, re
      * the same interface for receiving socket messages.
      */
 
-    var statusCode = 400;
-
-    var result = {
-        status: statusCode
-    };
+    var statusCode = 400,
+        result = {
+            status: statusCode
+        };
 
     // Optional validationErrors object
     if (validationErrors) {

@@ -1,4 +1,3 @@
-/* global Lobby: true */
 'use strict';
 
 /**

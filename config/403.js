@@ -12,7 +12,7 @@
  *
  */
 
-module.exports[403] = function badRequest (message, req, res) {
+module.exports[403] = function (message, req, res) {
 
     /*
      * NOTE: This function is Sails middleware-- that means that not only do `req` and `res`
@@ -20,12 +20,12 @@ module.exports[403] = function badRequest (message, req, res) {
      * the same interface for receiving socket messages.
      */
 
-    var viewFilePath = '403';
-    var statusCode = 403;
-
-    var result = {
-        status: statusCode
-    };
+    var viewFilePath = '403',
+        statusCode = 403,
+        result = {
+            status: statusCode
+        },
+        index;
 
     // Optional message
     if (message) {
@@ -39,8 +39,8 @@ module.exports[403] = function badRequest (message, req, res) {
 
     // Set status code and view locals
     res.status(result.status);
-    for (var key in result) {
-        res.locals[key] = result[key];
+    for (index = 0; index < result.length; index += 1) {
+        res.locals[index] = result[index];
     }
     // And render view
     res.render(viewFilePath, result, function (err) {
