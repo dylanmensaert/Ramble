@@ -6,6 +6,7 @@ define(function (require) {
     require('init/templates');
     require('init/presentation');
     require('init/session');
+    require('init/socket');
     require('init/router');
 
     require('application/init');

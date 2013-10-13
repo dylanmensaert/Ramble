@@ -4,7 +4,6 @@ define(function (require) {
     var Ember = require('ember'),
         DS = require('ember-data'),
         io = require('io'),
-        socket,
         App;
 
     App = Ember.Application.create({
@@ -16,15 +15,13 @@ define(function (require) {
 
     App.deferReadiness();
 
-    socket = io.connect();
-
-    DS.SailsRESTAdapter = require('init/adapter').extend({
-        namespace: 'api',
-        socket: socket
-    });
+    App.socket = io.connect();
 
     App.Store = DS.Store.extend({
-        adapter: 'DS/sailsREST'
+        adapter: require('init/adapter').extend({
+            namespace: 'api',
+            socket: App.socket
+        })
     });
 
     return App;
