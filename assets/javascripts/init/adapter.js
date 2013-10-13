@@ -9,12 +9,11 @@ define(function (require) {
         find: function (store, type, id) {
             var url = this.buildURL(type.typeKey, 'find', id);
 
-            return this.request(url);
+            return this.request(url, type.typeKey);
         },
         findAll: function (store, type, sinceToken) {
             var query,
-                url,
-                hash;
+                url;
 
             if (sinceToken) {
                 query = {
@@ -23,52 +22,34 @@ define(function (require) {
             }
 
             url = this.buildURL(type.typeKey, 'find');
-            hash = {
-                data: query
-            };
 
-            return this.request(url, hash);
+            return this.request(url, this.pluralForType(type.typeKey), query);
         },
         findQuery: function (store, type, query) {
-            var url,
-                hash;
+            var url = this.buildURL(type.typeKey, 'find');
 
-            url = this.buildURL(type.typeKey, 'find');
-            hash = {
-                data: query
-            };
-
-            return this.request(url, hash);
+            return this.request(url, this.pluralForType(type.typeKey), query);
         },
         createRecord: function (store, type, record) {
             var data,
-                url,
-                hash;
+                url;
 
             data = store.serializerFor(type.typeKey).serialize(record, { includeId: true });
             url = this.buildURL(type.typeKey, 'create');
 
-            hash = {
-                data: data
-            };
-
-            return this.request(url, hash);
+            return this.request(url, type.typeKey, data);
         },
         updateRecord: function (store, type, record) {
             var data,
                 id,
-                url,
-                hash;
+                url;
 
             data = store.serializerFor(type.typeKey).serialize(record);
             id = record.get('id');
 
             url = this.buildURL(type.typeKey, 'update', id);
-            hash = {
-                data: data
-            };
 
-            return this.request(url, hash);
+            return this.request(url, type.typeKey, data);
         },
         deleteRecord: function (store, type, record) {
             var id,
@@ -77,7 +58,10 @@ define(function (require) {
             id = record.get('id');
             url = this.buildURL(type.typeKey, 'destroy', id);
 
-            return this.request(url);
+            return this.request(url, type.typeKey);
+        },
+        pluralForType: function (type) {
+            return Ember.String.pluralize(type);
         },
         buildURL: function (type, action, id) {
             var host = this.get('host'),
@@ -93,7 +77,7 @@ define(function (require) {
                 urlParts.push(namespace);
             }
 
-            urlParts.push(this.rootForType(type));
+            urlParts.push(this.pluralForType(type));
             urlParts.push(action);
 
             if (id) {
@@ -108,32 +92,31 @@ define(function (require) {
 
             return url;
         },
-        rootForType: function (type) {
-            return Ember.String.pluralize(type);
-        },
-        request: function (url, hash) {
+        request: function (url, root, data) {
             var socket,
                 json;
 
             socket = this.get('socket');
             json = {
-                url: url
+                url: url,
+                data: data
             };
 
-            if (hash) {
-                json.data = hash.data;
-            }
-
             return new Ember.RSVP.Promise(function (resolve, reject) {
-                socket.emit('get', json, function (result) {
-                    if (typeof result === 'string') {
-                        result = JSON.parse(result);
+                socket.emit('get', json, function (data) {
+                    var result;
+
+                    data = JSON.parse(data);
+
+                    if (data.status) {
+                        Ember.run(null, reject, data);
+
+                        throw new Error(JSON.stringify(data));
+                    } else {
+                        result = {};
+                        result[root] = data;
 
                         Ember.run(null, resolve, result);
-                    } else {
-                        Ember.run(null, reject, result);
-
-                        throw new Error(result);
                     }
                 });
             });

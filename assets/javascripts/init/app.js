@@ -18,9 +18,7 @@ define(function (require) {
 
     socket = io.connect();
 
-    DS.SailsRESTSerializer = require('init/serializer');
     DS.SailsRESTAdapter = require('init/adapter').extend({
-        defaultSerializer: 'DS/sailsREST',
         namespace: 'api',
         socket: socket
     });
