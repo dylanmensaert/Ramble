@@ -14,9 +14,12 @@ define(function (require) {
 
     App.deferReadiness();
 
+    DS.SailsRESTSerializer = require('init/serializer');
+
     App.Store = DS.Store.extend({
         adapter: DS.RESTAdapter.extend({
-            namespace: 'api'
+            namespace: 'api',
+            defaultSerializer: 'DS/sailsREST'
         })
     });
 

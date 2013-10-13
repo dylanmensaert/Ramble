@@ -15,8 +15,7 @@ define(function (require) {
     require('lobby/init');
     require('player/init');
 
-    require('sails-io');
-    require('io').connect();
+    require('init/socket');
 
     App.advanceReadiness();
 });
