@@ -1,4 +1,3 @@
-/* jshint maxstatements: false */
 define(function (require) {
     'use strict';
 
@@ -14,8 +13,6 @@ define(function (require) {
     require('login/init');
     require('lobby/init');
     require('player/init');
-
-    require('init/socket');
 
     App.advanceReadiness();
 });

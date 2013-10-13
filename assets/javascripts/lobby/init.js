@@ -1,4 +1,3 @@
-/* jshint maxstatements: false */
 define(function (require) {
     'use strict';
 

@@ -3,6 +3,8 @@ define(function (require) {
 
     var Ember = require('ember'),
         DS = require('ember-data'),
+        io = require('io'),
+        socket,
         App;
 
     App = Ember.Application.create({
@@ -14,13 +16,17 @@ define(function (require) {
 
     App.deferReadiness();
 
+    socket = io.connect();
+
     DS.SailsRESTSerializer = require('init/serializer');
+    DS.SailsRESTAdapter = require('init/adapter').extend({
+        defaultSerializer: 'DS/sailsREST',
+        namespace: 'api',
+        socket: socket
+    });
 
     App.Store = DS.Store.extend({
-        adapter: DS.RESTAdapter.extend({
-            namespace: 'api',
-            defaultSerializer: 'DS/sailsREST'
-        })
+        adapter: 'DS/sailsREST'
     });
 
     return App;
