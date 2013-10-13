@@ -6,7 +6,6 @@
         baseUrl: 'javascripts',
         paths: {
             io: '../bower_components/socket.io-client/dist/socket.io',
-            'sails-io': '../vendor/sails.io',
             ember: '../bower_components/ember/ember',
             'ember-data': '../bower_components/ember-data-shim/ember-data',
             //TODO: Use Dockyards' easyform/validations via their bower-registry.
@@ -19,10 +18,6 @@
         },
         shim: {
             io: {
-                exports: 'io'
-            },
-            'sails-io': {
-                deps: ['io'],
                 exports: 'io'
             },
             ember: {
