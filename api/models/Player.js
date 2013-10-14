@@ -1,7 +1,5 @@
 'use strict';
 
-//TODO: Has to change to original bcrypt instead of -nodejs version
-var bcrypt = require('bcrypt-nodejs');
 /**
  * Player
  *
@@ -10,10 +8,11 @@ var bcrypt = require('bcrypt-nodejs');
  *
  */
 
+//TODO: Has to change to original bcrypt instead of -nodejs version
+var bcrypt = require('bcrypt-nodejs');
+
 module.exports = {
-
     schema: true,
-
     attributes: {
         username: {
             type: 'STRING',
@@ -38,18 +37,22 @@ module.exports = {
             type: 'ARRAY'
         },
         toJSON: function () {
-            var obj = this.toObject();
-            delete obj.password;
-            return obj;
+            var object = this.toObject();
+
+            delete object.password;
+
+            return object;
         }
     },
-    beforeCreate: function (values, next) {
-        bcrypt.hash(values.password, 10, function (err, hash) {
-            if (err) {
-                return next(err);
+    beforeCreate: function (values, cb) {
+        bcrypt.hash(values.password, 10, function (error, hashedPassword) {
+            if (error) {
+                cb(error);
+            } else {
+                values.password = hashedPassword;
+
+                cb();
             }
-            values.password = hash;
-            next();
         });
     }
 };

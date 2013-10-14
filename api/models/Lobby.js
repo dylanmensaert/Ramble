@@ -9,9 +9,7 @@
  */
 
 module.exports = {
-
     schema: true,
-
     attributes: {
         title: {
             type: 'STRING',
