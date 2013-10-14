@@ -3,6 +3,6 @@ define(function (require) {
 
     var App = require('init/app');
 
-    App.ApplicationRoute = require('application/root/route');
-    App.ApplicationController = require('application/root/controller');
+    App.ApplicationRoute = require('application/route');
+    App.ApplicationController = require('application/controller');
 });

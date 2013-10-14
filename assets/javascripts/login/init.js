@@ -3,6 +3,6 @@ define(function (require) {
 
     var App = require('init/app');
 
-    App.LoginRoute = require('login/root/route');
-    App.LoginController = require('login/root/controller');
+    App.LoginRoute = require('login/route');
+    App.LoginController = require('login/controller');
 });

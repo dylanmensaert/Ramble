@@ -5,8 +5,8 @@ define(function (require) {
 
     App.Lobby = require('lobby/model');
 
-    App.LobbyRoute = require('lobby/root/route');
-    App.LobbyController = require('lobby/root/controller');
+    App.LobbyRoute = require('lobby/route');
+    App.LobbyController = require('lobby/controller');
 
     App.LobbyIndexRoute = require('lobby/index/route');
     App.LobbyIndexController = require('lobby/index/controller');

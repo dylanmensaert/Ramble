@@ -79,7 +79,6 @@ module.exports = function (grunt) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace('/template', '');
-                        templateName = templateName.replace('/root', '');
 
                         return templateName;
                     }

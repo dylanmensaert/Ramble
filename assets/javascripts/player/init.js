@@ -5,8 +5,8 @@ define(function (require) {
 
     App.Player = require('player/model');
 
-    App.PlayerRoute = require('player/root/route');
-    App.PlayerController = require('player/root/controller');
+    App.PlayerRoute = require('player/route');
+    App.PlayerController = require('player/controller');
 
     App.PlayerIndexRoute = require('player/index/route');
     App.PlayerIndexController = require('player/index/controller');
