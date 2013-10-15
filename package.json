@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "sails": "0.9.7",
-        "sails-mysql": "0.9.2",
+        "sails-mysql": "0.9.3",
         "jade": "0.35.0",
         "optimist": "0.6.0",
         "bcrypt-nodejs": "0.0.3"
@@ -34,6 +34,6 @@
         "grunt-contrib-requirejs": "0.4.1",
         "grunt-nodemon": "0.1.1",
         "grunt-contrib-watch": "0.5.3",
-        "grunt-concurrent": "0.4.0"
+        "grunt-concurrent": "0.4.1"
     }
 }

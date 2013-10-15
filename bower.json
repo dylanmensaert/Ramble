@@ -2,9 +2,9 @@
     "name": "Ramble",
     "version": "0.0.1",
     "dependencies": {
-        "requirejs": "2.1.8",
+        "requirejs": "2.1.9",
         "socket.io-client": "0.9.16",
-        "ember": "1.1.0-beta.2",
+        "ember": "1.1.0-beta.4",
         "ember-data-shim": "1.0.0-beta.3",
         "ember-dockyard-validations": "*",
         "handlebars.js": "1.0.0",
@@ -16,6 +16,6 @@
         "almond": "0.2.6"
     },
     "resolutions": {
-        "ember": "1.1.0-beta.2"
+        "ember": "1.1.0-beta.4"
     }
 }
