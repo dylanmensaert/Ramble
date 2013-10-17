@@ -17,9 +17,6 @@
             'google-analytics': '../bower_components/google-analytics/index'
         },
         shim: {
-            io: {
-                exports: 'io'
-            },
             ember: {
                 deps: ['jquery', 'handlebars'],
                 exports: 'Ember'
@@ -37,11 +34,7 @@
                 exports: 'Ember.Validations'
             },
             handlebars: {
-                deps: ['jquery'],
                 exports: 'Handlebars'
-            },
-            jquery: {
-                exports: 'jQuery'
             },
             bootstrap: {
                 deps: ['jquery'],

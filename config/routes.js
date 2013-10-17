@@ -71,11 +71,11 @@ module.exports.routes = {
      // For example, if you have a `UserController` with a `signup` action,
      // and somewhere else, you're serving a signup form looks like:
      //
-     //		<form action="/signup">
-     //			<input name="username" type="text"/>
-     //			<input name="password" type="password"/>
-     //			<input type="submit"/>
-     //		</form>
+     //        <form action="/signup">
+     //            <input name="username" type="text"/>
+     //            <input name="password" type="password"/>
+     //            <input type="submit"/>
+     //        </form>
 
      // You would want to define the following route to handle your form:
      'post /signup': 'UserController.signup'
