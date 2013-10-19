@@ -9,7 +9,18 @@
  */
 
 //TODO: Has to change to original bcrypt instead of -nodejs version
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt-nodejs'),
+    hashPassword = function (values, next) {
+        bcrypt.hash(values.password, 10, function (error, hashedPassword) {
+            if (error) {
+                next(error);
+            } else {
+                values.password = hashedPassword;
+
+                next();
+            }
+        });
+    };
 
 module.exports = {
     schema: true,
@@ -17,6 +28,7 @@ module.exports = {
         username: {
             type: 'STRING',
             required: true,
+            unique: true,
             maxLength: 50
         },
         password: {
@@ -27,6 +39,7 @@ module.exports = {
         email: {
             type: 'EMAIL',
             required: true,
+            unique: true,
             maxLength: 50
         },
         //TODO: Should these be defined? Are based off Lobby.owner and Lobby.members
@@ -36,23 +49,36 @@ module.exports = {
         joinedLobbies: {
             type: 'ARRAY'
         },
+        verifyPassword: function (password, done) {
+            var player = this.toObject();
+
+            bcrypt.compare(password, player.password, done);
+        },
         toJSON: function () {
-            var object = this.toObject();
+            var player = this.toObject();
 
-            delete object.password;
+            delete player.password;
 
-            return object;
+            return player;
         }
     },
-    beforeCreate: function (values, cb) {
-        bcrypt.hash(values.password, 10, function (error, hashedPassword) {
-            if (error) {
-                cb(error);
-            } else {
-                values.password = hashedPassword;
+    beforeCreate: function (values, next) {
+        hashPassword(values, next);
+    },
+    beforeUpdate: function (values, next) {
+        if (values.password) {
+            hashPassword(values, next);
+        } else {
+            Player.findOne(values.id).done(function (error, player) {
+                if (error) {
+                    next(error);
+                } else {
+                    //TODO: Is needed to fill password again?
+                    values.password = player.password;
 
-                cb();
-            }
-        });
+                    next();
+                }
+            });
+        }
     }
 };
