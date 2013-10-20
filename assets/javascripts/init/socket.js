@@ -12,6 +12,7 @@ define(function (require) {
                 });
 
                 application.inject('route', 'socket', 'socket:main');
+                application.inject('controller', 'socket', 'socket:main');
             }
         });
     });

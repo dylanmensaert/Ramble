@@ -19,7 +19,13 @@ module.exports.policies = {
     // Default policy for all controllers and actions
     // (`true` allows public access)
     //TODO: Set policies correctly per controller/action
-    '*': 'authenticated'
+    '*': 'authenticated',
+    auth: {
+        login: true
+    },
+    PlayerController: {
+        create: true
+    }
 
     /*
      // Here's an example of adding some policies to a controller
