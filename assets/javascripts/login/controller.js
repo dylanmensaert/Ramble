@@ -33,19 +33,16 @@ define(function (require) {
                     }
                 };
 
-                socket.emit('get', json, function (data) {
-                    //TODO: Finish code!
-                    return data;
-                    /*if (data === 'success') {
-                     this.get('store').find('player', 'p1').then(function (model) {
-                            this.didLoginSuccessfully(model);
-                        }.bind(this));
-                    } else {
-                        this.set('session.hasValidCredentials', false);
-                     }*/
-                }.bind(this));
-
                 //TODO: before trying to authenticate, check if fields are not empty
+                socket.emit('get', json, function (data) {
+                    if (data.status !== 200) {
+                        this.set('session.hasValidCredentials', false);
+                    } else {
+                        this.get('store').find('player', data.player.id).then(function (player) {
+                            this.didLoginSuccessfully(player);
+                        }.bind(this));
+                    }
+                }.bind(this));
             },
             logout: function () {
                 this.set('session.account', null);

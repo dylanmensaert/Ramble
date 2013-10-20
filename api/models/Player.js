@@ -8,7 +8,6 @@
  *
  */
 
-//TODO: Has to change to original bcrypt instead of -nodejs version
 var bcrypt = require('bcrypt'),
     hashPassword = function (values, next) {
         bcrypt.hash(values.password, 10, function (error, hashedPassword) {
