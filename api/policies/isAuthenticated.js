@@ -12,6 +12,9 @@ module.exports = function (request, response, ok) {
 
     // User is not allowed
     else {
-        return response.send('You are not permitted to perform this action.', 403);
+        return response.send({
+            status: 403,
+            message: 'You are not permitted to perform this action.'
+        });
     }
 };
