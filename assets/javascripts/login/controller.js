@@ -43,7 +43,7 @@ define(function (require) {
                     } else {
                         this.set('session.hasValidCredentials', false);
                     }
-                });
+                }.bind(this));
 
                 //TODO: before trying to authenticate, check if fields are not empty
             },

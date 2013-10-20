@@ -23,8 +23,8 @@ module.exports.policies = {
     auth: {
         login: true
     },
-    PlayerController: {
-        create: true
+    player: {
+        '*': true
     }
 
     /*
