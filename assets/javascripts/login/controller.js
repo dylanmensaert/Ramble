@@ -35,20 +35,32 @@ define(function (require) {
 
                 //TODO: before trying to authenticate, check if fields are not empty
                 socket.emit('get', json, function (data) {
-                    if (data.status !== 200) {
-                        this.set('session.hasValidCredentials', false);
-                    } else {
+                    if (data.status === 200) {
                         this.get('store').find('player', data.player.id).then(function (player) {
                             this.didLoginSuccessfully(player);
                         }.bind(this));
+                    } else {
+                        this.set('session.hasValidCredentials', false);
                     }
                 }.bind(this));
             },
             logout: function () {
-                this.set('session.account', null);
-                this.set('session.isLoggedIn', false);
+                var socket,
+                    json;
 
-                this.transitionToRoute('index');
+                socket = this.get('socket');
+                json = {
+                    url: '/api/auth/logout'
+                };
+
+                socket.emit('get', json, function (data) {
+                    if (data.status === 200) {
+                        this.set('session.account', null);
+                        this.set('session.isLoggedIn', false);
+
+                        this.transitionToRoute('index');
+                    }
+                }.bind(this));
             }
         }
     });

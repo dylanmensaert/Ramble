@@ -1,5 +1,5 @@
-'use strict';
 /* jshint nomen: false */
+'use strict';
 
 /**
  * AuthController
@@ -51,5 +51,13 @@ module.exports = {
                 });
             }
         })(request, response);
+    },
+    logout: function (request, response) {
+        request.logout();
+
+        response.send({
+            status: 200,
+            message: 'logout successful'
+        });
     }
 };
