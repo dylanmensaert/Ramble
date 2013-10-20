@@ -4,12 +4,12 @@ define(function (require) {
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
+        errorMessage: '',
         didLoginSuccessfully: function (player) {
             var attemptedTransition = this.get('session.attemptedTransition');
 
             this.set('session.account', player);
-            this.set('session.isLoggedIn', true);
-            this.set('session.hasValidCredentials', true);
+            this.set('errorMessage', '');
 
             if (attemptedTransition) {
                 this.set('session.attemptedTransition', null);
@@ -33,16 +33,19 @@ define(function (require) {
                     }
                 };
 
-                //TODO: before trying to authenticate, check if fields are not empty
-                socket.emit('get', json, function (data) {
-                    if (data.status === 200) {
-                        this.get('store').find('player', data.player.id).then(function (player) {
-                            this.didLoginSuccessfully(player);
-                        }.bind(this));
-                    } else {
-                        this.set('session.hasValidCredentials', false);
-                    }
-                }.bind(this));
+                if (!Ember.isNone(this.get('username')) && !Ember.isNone(this.get('password'))) {
+                    socket.emit('get', json, function (data) {
+                        if (data.status === 200) {
+                            this.get('store').find('player', data.player.id).then(function (player) {
+                                this.didLoginSuccessfully(player);
+                            }.bind(this));
+                        } else {
+                            this.set('errorMessage', data.message);
+                        }
+                    }.bind(this));
+                } else {
+                    this.set('errorMessage', 'To log in, please fill your username and password.');
+                }
             },
             logout: function () {
                 var socket,
@@ -56,7 +59,6 @@ define(function (require) {
                 socket.emit('get', json, function (data) {
                     if (data.status === 200) {
                         this.set('session.account', null);
-                        this.set('session.isLoggedIn', false);
 
                         this.transitionToRoute('index');
                     }

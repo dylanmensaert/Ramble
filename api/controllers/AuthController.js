@@ -33,7 +33,7 @@ module.exports = {
             } else if (!player) {
                 response.send({
                     status: 403,
-                    message: 'login failed'
+                    message: 'Login unsuccessful.'
                 });
             } else {
                 request.logIn(player, function (error) {
@@ -42,7 +42,7 @@ module.exports = {
                     } else {
                         return response.send({
                             status: 200,
-                            message: 'login successful',
+                            message: 'Login successful.',
                             player: {
                                 id: player.id
                             }
@@ -57,7 +57,7 @@ module.exports = {
 
         response.send({
             status: 200,
-            message: 'logout successful'
+            message: 'Logout successful.'
         });
     }
 };

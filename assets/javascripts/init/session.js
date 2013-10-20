@@ -19,9 +19,10 @@ define(function (require) {
     });
 
     App.Session = Ember.Object.extend({
-        hasValidCredentials: true,
-        isLoggedIn: false,
         account: null,
+        isLoggedIn: function () {
+            return this.get('account') !== null;
+        }.property('account'),
         attemptedTransition: null
     });
 });
