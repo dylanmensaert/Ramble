@@ -34,15 +34,15 @@ define(function (require) {
                 };
 
                 socket.emit('get', json, function (data) {
-                    console.log(data);
-
-                    if (data === 'success') {
-                        this.get('store').find('player', 'p1').then(function (model) {
+                    //TODO: Finish code!
+                    return data;
+                    /*if (data === 'success') {
+                     this.get('store').find('player', 'p1').then(function (model) {
                             this.didLoginSuccessfully(model);
                         }.bind(this));
                     } else {
                         this.set('session.hasValidCredentials', false);
-                    }
+                     }*/
                 }.bind(this));
 
                 //TODO: before trying to authenticate, check if fields are not empty
