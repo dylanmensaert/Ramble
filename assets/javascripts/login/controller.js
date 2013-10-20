@@ -22,7 +22,8 @@ define(function (require) {
         actions: {
             login: function () {
                 var socket,
-                    json;
+                    json,
+                    player;
 
                 socket = this.get('socket');
                 json = {
@@ -33,7 +34,9 @@ define(function (require) {
                     }
                 };
 
-                if (!Ember.isNone(this.get('username')) && !Ember.isNone(this.get('password'))) {
+                player = this.get('model');
+
+                player.validate().then(function () {
                     socket.emit('get', json, function (data) {
                         if (data.status === 200) {
                             this.get('store').find('player', data.player.id).then(function (player) {
@@ -43,9 +46,7 @@ define(function (require) {
                             this.set('errorMessage', data.message);
                         }
                     }.bind(this));
-                } else {
-                    this.set('errorMessage', 'To log in, please fill your username and password.');
-                }
+                }.bind(this));
             },
             logout: function () {
                 var socket,
