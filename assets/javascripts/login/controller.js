@@ -4,6 +4,8 @@ define(function (require) {
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
+        //TODO: reset errorMessage on beforeModel/setupController
+        //TODO: Check if session on server is still active on page-load
         errorMessage: '',
         didLoginSuccessfully: function (player) {
             var attemptedTransition = this.get('session.attemptedTransition');
