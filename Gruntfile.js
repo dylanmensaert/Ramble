@@ -156,8 +156,13 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     watchedFolders: ['<%= config.api %>', '<%= config.config %>'],
+                    nodeArgs: ['--debug'],
                     delayTime: 0.1
                 }
+            }
+        },
+        'node-inspector': {
+            development: {
             }
         },
         watch: {
@@ -188,7 +193,7 @@ module.exports = function (grunt) {
         },
         concurrent: {
             development: {
-                tasks: ['nodemon:server', 'watch'],
+                tasks: ['nodemon:server', 'node-inspector:development', 'watch'],
                 options: {
                     logConcurrentOutput: true
                 }
