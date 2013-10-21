@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function (request, response, ok) {
-    if (request.isAuthenticated()) {
+    var requestedPlayerId = parseInt(request.params.id, 10);
+
+    if (request.isAuthenticated() && request.user.id === requestedPlayerId) {
         ok();
     } else {
         response.send({

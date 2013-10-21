@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * Lobby
- *
- * @module      :: Model
- * @description :: A short summary of how this model works and what it represents.
- *
- */
-
 module.exports = {
     schema: true,
     attributes: {
@@ -27,8 +19,9 @@ module.exports = {
         },
         owner: {
             //TODO: Should type be integer (ID) or string?
-            type: 'INTEGER',
-            required: true
+            type: 'INTEGER'
+            //TODO: Temp fix for creating lobbies, because ID isn't set client-side anymore
+            //required: true
         },
         members: {
             type: 'ARRAY'

@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * Player
- *
- * @module      :: Model
- * @description :: A short summary of how this model works and what it represents.
- *
- */
-
 var bcrypt = require('bcrypt'),
     hashPassword = function (values, next) {
         bcrypt.hash(values.password, 10, function (error, hashedPassword) {
@@ -65,6 +57,8 @@ module.exports = {
         hashPassword(values, next);
     },
     beforeUpdate: function (values, next) {
+        //TODO: Check if password is empty string.
+
         if (values.password) {
             hashPassword(values, next);
         } else {
