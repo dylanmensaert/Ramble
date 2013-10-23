@@ -1,18 +1,11 @@
 'use strict';
 
-/**
- * LobbyController
- *
- * @module        :: Controller
- * @description    :: Contains logic for handling requests.
- */
-
 module.exports = {
     find: function (request, response) {
         var id,
             where,
             options,
-            modelValues;
+            lobbyValues;
 
         id = request.param('id');
 
@@ -42,7 +35,7 @@ module.exports = {
                 where: where
             };
 
-            Lobby.find(options).done(function afterFound(error, lobbies) {
+            Lobby.find(options).done(function (error, lobbies) {
                 if (error) {
                     response.send(error);
                 } else if (!lobbies) {
@@ -54,22 +47,23 @@ module.exports = {
                         Lobby.subscribe(request.socket, lobbies);
                     }
 
-                    modelValues = [];
+                    lobbyValues = [];
 
                     lobbies.forEach(function (lobby) {
-                        modelValues.push(lobby.toJSON());
+                        lobbyValues.push(lobby.toJSON());
                     });
+
                     response.send({
-                        lobbies: modelValues
+                        lobbies: lobbyValues
                     });
                 }
             });
         }
     },
     create: function (request, response) {
-        var params = request.params.all();
+        var allParams = request.params.all();
 
-        Lobby.create(params, function (error, lobby) {
+        Lobby.create(allParams, function (error, lobby) {
             if (error) {
                 response.send(error);
             } else {
@@ -82,16 +76,16 @@ module.exports = {
         });
     },
     update: function (request, response) {
-        var params,
+        var allParams,
             id;
 
-        params = request.params.all();
-        id = params.id;
+        allParams = request.params.all();
+        id = allParams.id;
 
         if (!id) {
             response.send({
-                status: 404,
-                message: 'Invalid lobby Id.'
+                status: 403,
+                message: 'No id provided.'
             });
         } else {
             Lobby.findOne(id).done(function (error, lobby) {
@@ -100,7 +94,7 @@ module.exports = {
                 } else if (!lobby) {
                     response.notFound();
                 } else {
-                    Lobby.update(id, params, function (error, lobby) {
+                    Lobby.update(id, allParams, function (error, lobby) {
                         if (error) {
                             response.send(error);
                         } else {
@@ -118,10 +112,11 @@ module.exports = {
     destroy: function (request, response) {
         var id = request.param('id');
 
+        //TODO: Should we really check if ID exists?
         if (!id) {
             response.send({
-                status: 404,
-                message: 'Invalid lobby Id.'
+                status: 403,
+                message: 'No id provided.'
             });
         } else {
             Lobby.findOne(id).done(function (error, lobby) {

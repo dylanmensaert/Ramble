@@ -1,17 +1,11 @@
 'use strict';
 
-/**
- * PlayerController
- *
- * @module        :: Controller
- * @description    :: Contains logic for handling requests.
- */
 module.exports = {
     find: function (request, response) {
         var id,
             where,
             options,
-            modelValues;
+            playerValues;
 
         id = request.param('id');
 
@@ -53,22 +47,23 @@ module.exports = {
                         Player.subscribe(request.socket, players);
                     }
 
-                    modelValues = [];
+                    playerValues = [];
 
                     players.forEach(function (player) {
-                        modelValues.push(player.toJSON());
+                        playerValues.push(player.toJSON());
                     });
+
                     response.send({
-                        players: modelValues
+                        players: playerValues
                     });
                 }
             });
         }
     },
     create: function (request, response) {
-        var params = request.params.all();
+        var allParams = request.params.all();
 
-        Player.create(params, function (error, player) {
+        Player.create(allParams, function (error, player) {
             if (error) {
                 response.send(error);
             } else {
@@ -81,16 +76,16 @@ module.exports = {
         });
     },
     update: function (request, response) {
-        var params,
+        var allParams,
             id;
 
-        params = request.params.all();
-        id = params.id;
+        allParams = request.params.all();
+        id = allParams.id;
 
         if (!id) {
             response.send({
-                status: 404,
-                message: 'Invalid player Id.'
+                status: 403,
+                message: 'No id provided.'
             });
         } else {
             Player.findOne(id).done(function (error, player) {
@@ -99,7 +94,7 @@ module.exports = {
                 } else if (!player) {
                     response.notFound();
                 } else {
-                    Player.update(id, params, function (error, player) {
+                    Player.update(id, allParams, function (error, player) {
                         if (error) {
                             response.send(error);
                         } else {
@@ -119,8 +114,8 @@ module.exports = {
 
         if (!id) {
             response.send({
-                status: 404,
-                message: 'Invalid player Id.'
+                status: 403,
+                message: 'No id provided.'
             });
         } else {
             Player.findOne(id).done(function (error, player) {

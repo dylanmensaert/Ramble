@@ -7,6 +7,7 @@ define(function (require) {
     return Ember.Route.extend({
         title: 'Ramble',
         activate: function () {
+            //TODO: Move code in separate method?
             var socket,
                 store;
 
