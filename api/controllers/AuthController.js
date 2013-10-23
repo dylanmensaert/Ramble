@@ -23,7 +23,7 @@ module.exports = {
                     if (error) {
                         response.send(error);
                     } else {
-                        return response.send({
+                        response.send({
                             status: 200,
                             message: 'Login successful.',
                             player: player
