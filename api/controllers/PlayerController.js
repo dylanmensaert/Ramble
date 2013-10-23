@@ -35,7 +35,7 @@ module.exports = {
                 where: where
             };
 
-            Player.find(options).done(function afterFound(error, players) {
+            Player.find(options).done(function (error, players) {
                 if (error) {
                     response.send(error);
                 } else if (!players) {
