@@ -14,8 +14,8 @@ module.exports = {
     },
     find: function (options) {
         var where,
-            queryOptions,
-            modelValues;
+            query,
+            modelsResult;
 
         where = options.values;
 
@@ -23,26 +23,27 @@ module.exports = {
         delete where.skip;
         delete where.sort;
 
-        queryOptions = {
+        query = {
             limit: options.values.limit,
             skip: options.values.skip,
             sort: options.values.sort,
             where: where
         };
 
-        options.modelType.find(queryOptions).done(function (error, models) {
+        options.modelType.find(query).done(function (error, models) {
                 if (error) {
                     options.error(error);
                 } else if (!models) {
                     options.notFound();
                 } else {
-                    modelValues = [];
+                    modelsResult = [];
 
+                    //TODO: use callback to filter all models in array?
                     models.forEach(function (model) {
-                        modelValues.push(model.toJSON());
+                        modelsResult.push(model.toJSON());
                     });
 
-                    options.success(models);
+                    options.success(modelsResult);
                 }
 
             }
@@ -54,8 +55,6 @@ module.exports = {
                 options.error(error);
             } else {
                 options.success(model);
-
-                options.modelType.publishCreate(model.toJSON());
             }
         });
     },
@@ -73,8 +72,6 @@ module.exports = {
                         options.error(error);
                     } else {
                         options.success(model);
-
-                        options.modelType.publishUpdate(model.id, model.toJSON());
                     }
                 });
             }
@@ -89,17 +86,15 @@ module.exports = {
             } else if (!model) {
                 options.notFound();
             } else {
+                //TODO: Duplicate update/destroy compared to find!
                 options.modelType.destroy(id, function (error) {
                     if (error) {
                         options.error(error);
                     } else {
                         options.success(model);
-
-                        options.modelType.publishDestroy(model.id);
                     }
                 });
             }
         });
     }
-
 };
