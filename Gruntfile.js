@@ -148,6 +148,9 @@ module.exports = function (grunt) {
             }
         },
         csslint: {
+            options: {
+                csslintrc: '.csslintrc'
+            },
             all: {
                 src: ['<%= config.stylesheets %>/**/*.css', '!<%= config.stylesheets %>/main.css']
             }
