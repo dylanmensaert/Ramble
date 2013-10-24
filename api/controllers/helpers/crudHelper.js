@@ -40,12 +40,11 @@ module.exports = {
 
                     //TODO: use callback to filter all models in array?
                     models.forEach(function (model) {
-                        modelsResult.push(model.toJSON());
+                        modelsResult.push(model);
                     });
 
                     options.success(modelsResult);
                 }
-
             }
         );
     },

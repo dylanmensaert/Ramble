@@ -114,6 +114,7 @@ define(function (require) {
 
                         throw new Error(JSON.stringify(data));
                     } else {
+                        //TODO: No model was found for 'ValidationError'
                         Ember.run(null, resolve, data);
                     }
                 });

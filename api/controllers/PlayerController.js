@@ -1,18 +1,7 @@
 'use strict';
 
 var crudHelper = require('./helpers/crudHelper'),
-    createOptions = function (request, response) {
-        return {
-            modelType: Player,
-            values: request.params.all(),
-            error: function (error) {
-                response.send(error);
-            },
-            notFound: function () {
-                response.notFound();
-            }
-        };
-    };
+    createOptions = require('./helpers/crudOptionsCreater');
 
 module.exports = {
     find: function (request, response) {
@@ -49,7 +38,7 @@ module.exports = {
                 player: player
             });
 
-            Player.publishCreate(player.toJSON());
+            Player.publishCreate(player);
         };
 
         crudHelper.create(options);
@@ -62,7 +51,7 @@ module.exports = {
                 player: player
             });
 
-            Player.publishUpdate(player.id, player.toJSON());
+            Player.publishUpdate(player.id, player);
         };
 
         crudHelper.update(options);

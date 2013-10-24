@@ -1,18 +1,7 @@
 'use strict';
 
 var crudHelper = require('./helpers/crudHelper'),
-    createOptions = function (request, response) {
-        return {
-            modelType: Lobby,
-            values: request.params.all(),
-            error: function (error) {
-                response.send(error);
-            },
-            notFound: function () {
-                response.notFound();
-            }
-        };
-    };
+    createOptions = require('./helpers/crudOptionsCreater');
 
 module.exports = {
     find: function (request, response) {
@@ -49,7 +38,7 @@ module.exports = {
                 lobby: lobby
             });
 
-            Lobby.publishCreate(lobby.toJSON());
+            Lobby.publishCreate(lobby);
         };
 
         crudHelper.create(options);
@@ -62,7 +51,7 @@ module.exports = {
                 lobby: lobby
             });
 
-            Lobby.publishUpdate(lobby.id, lobby.toJSON());
+            Lobby.publishUpdate(lobby.id, lobby);
         };
 
         crudHelper.update(options);
