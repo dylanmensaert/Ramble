@@ -4,29 +4,24 @@ var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater');
 
 var addLobbiesTo = function (player, sendModel) {
-    Lobby.find().done(function (error, lobbies) {
-            player.allLobbies = lobbies;
-        }
-    );
-
-    Lobby.findAll({
+    Lobby.find({
         owner: player.id
     }).done(function (error, lobbies) {
             player.ownedLobbies = lobbies;
+
+            Lobby.find({
+                members: {
+                    contains: player.id
+                }
+            }).done(function (error, lobbies) {
+                    player.joinedLobbies = lobbies;
+
+                    sendModel(player);
+                }
+            );
         }
     );
-
-    Lobby.findAll({
-        members: {
-            contains: player.id
-        }
-    }).done(function (error, lobbies) {
-            player.joinedLobbies = lobbies;
-        }
-    );
-
-    sendModel(player);
-}
+};
 
 module.exports = {
     find: function (request, response) {
@@ -56,7 +51,7 @@ module.exports = {
                     addLobbiesTo(player, function (playerWithLobbies) {
                         playersResult.push(playerWithLobbies);
 
-                        --counter;
+                        counter -= 1;
 
                         if (counter === 0) {
                             response.send({
