@@ -57,21 +57,17 @@ module.exports = {
         hashPassword(values, next);
     },
     beforeUpdate: function (values, next) {
-        //TODO: Check if password is empty string.
+        Player.findOne(values.id).done(function (error, player) {
+            if (error) {
+                next(error);
+            } else if (values.password) {
+                hashPassword(values, next);
+            } else {
+                values.password = player.password;
 
-        if (values.password) {
-            hashPassword(values, next);
-        } else {
-            Player.findOne(values.id).done(function (error, player) {
-                if (error) {
-                    next(error);
-                } else {
-                    //TODO: Is needed to fill password again?
-                    values.password = player.password;
-
-                    next();
-                }
-            });
-        }
+                next();
+            }
+        });
     }
+
 };
