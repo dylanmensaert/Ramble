@@ -64,6 +64,7 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
+                    //TODO: Is needed to fill password again?
                     values.password = player.password;
 
                     next();

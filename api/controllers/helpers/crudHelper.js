@@ -1,8 +1,20 @@
 'use strict';
 
+var findOneHelper = function (options, success) {
+    options.modelType.findOne(options.values.id).done(function (error, model) {
+        if (error) {
+            options.error(error);
+        } else if (!model) {
+            options.notFound();
+        } else {
+            success(model);
+        }
+    });
+};
+
 module.exports = {
     findOne: function (options) {
-        this.checkIfOneExists(options, function (model) {
+        findOneHelper(options, function (model) {
             options.success(model);
         });
     },
@@ -44,7 +56,7 @@ module.exports = {
         });
     },
     update: function (options) {
-        this.checkIfOneExists(options, function () {
+        findOneHelper(options, function () {
             options.modelType.update(options.values.id, options.values, function (error, model) {
                 if (error) {
                     options.error(error);
@@ -55,7 +67,7 @@ module.exports = {
         });
     },
     destroy: function (options) {
-        this.checkIfOneExists(options, function (model) {
+        findOneHelper(options, function (model) {
             options.modelType.destroy(options.values.id, function (error) {
                 if (error) {
                     options.error(error);
@@ -63,17 +75,6 @@ module.exports = {
                     options.success(model);
                 }
             });
-        });
-    },
-    checkIfOneExists: function (options, success) {
-        options.modelType.findOne(options.values.id).done(function (error, model) {
-            if (error) {
-                options.error(error);
-            } else if (!model) {
-                options.notFound();
-            } else {
-                success(model);
-            }
         });
     }
 };
