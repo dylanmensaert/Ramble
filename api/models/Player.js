@@ -57,17 +57,18 @@ module.exports = {
         hashPassword(values, next);
     },
     beforeUpdate: function (values, next) {
-        Player.findOne(values.id).done(function (error, player) {
-            if (error) {
-                next(error);
-            } else if (values.password) {
-                hashPassword(values, next);
-            } else {
-                values.password = player.password;
+        if (values.password) {
+            hashPassword(values, next);
+        } else {
+            Player.findOne(values.id).done(function (error, player) {
+                if (error) {
+                    next(error);
+                } else {
+                    values.password = player.password;
 
-                next();
-            }
-        });
+                    next();
+                }
+            });
+        }
     }
-
 };
