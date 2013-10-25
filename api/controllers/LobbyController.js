@@ -47,7 +47,8 @@ module.exports = {
                 lobby: lobby
             });
 
-            Lobby.publishCreate(lobby);
+            //TODO: check crash at publishCreat/Update/..
+            //Lobby.publishCreate(lobby);
         };
 
         crudHelper.create(options);

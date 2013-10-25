@@ -33,13 +33,6 @@ module.exports = {
             unique: true,
             maxLength: 50
         },
-        //TODO: Should these be defined? Are based off Lobby.owner and Lobby.members
-        ownedLobbies: {
-            type: 'ARRAY'
-        },
-        joinedLobbies: {
-            type: 'ARRAY'
-        },
         verifyPassword: function (password, done) {
             var player = this.toObject();
 

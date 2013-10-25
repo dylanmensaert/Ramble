@@ -3,6 +3,31 @@
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater');
 
+var addLobbiesTo = function (player, sendModel) {
+    Lobby.find().done(function (error, lobbies) {
+            player.allLobbies = lobbies;
+        }
+    );
+
+    Lobby.findAll({
+        owner: player.id
+    }).done(function (error, lobbies) {
+            player.ownedLobbies = lobbies;
+        }
+    );
+
+    Lobby.findAll({
+        members: {
+            contains: player.id
+        }
+    }).done(function (error, lobbies) {
+            player.joinedLobbies = lobbies;
+        }
+    );
+
+    sendModel(player);
+}
+
 module.exports = {
     find: function (request, response) {
         var options,
@@ -12,11 +37,13 @@ module.exports = {
 
         if (request.param('id')) {
             options.success = function (player) {
-                response.send({
-                    player: player
-                });
+                addLobbiesTo(player, function (playerWithLobbies) {
+                    response.send({
+                        player: playerWithLobbies
+                    });
 
-                Player.subscribe(request.socket, player);
+                    Player.subscribe(request.socket, playerWithLobbies);
+                });
             };
 
             crudHelper.findOne(options);
@@ -24,12 +51,19 @@ module.exports = {
             options.success = function (players) {
                 playersResult = [];
 
+                var counter = players.length;
                 players.forEach(function (player) {
-                    playersResult.push(player);
-                });
+                    addLobbiesTo(player, function (playerWithLobbies) {
+                        playersResult.push(playerWithLobbies);
 
-                response.send({
-                    players: playersResult
+                        --counter;
+
+                        if (counter === 0) {
+                            response.send({
+                                players: playersResult
+                            });
+                        }
+                    });
                 });
 
                 Player.subscribe(request.socket);
@@ -60,8 +94,8 @@ module.exports = {
                 player: player
             });
 
-            //TODO: Fix bug that crashes server whenever publishing update/destroy/create
-            Player.publishUpdate(player.id, player);
+            //TODO: Fix bug that crashes server whenever publishing update
+            //Player.publishUpdate(player.id, player);
         };
 
         crudHelper.update(options);
