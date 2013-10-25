@@ -19,6 +19,7 @@ module.exports = {
             numeric: true
         },
         owner: {
+            //TODO: Should type be integer (ID) or string?
             type: 'INTEGER'
             //TODO: Temp fix for creating lobbies, because ID isn't set client-side anymore
             //required: true

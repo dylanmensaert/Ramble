@@ -90,7 +90,7 @@ module.exports = {
             });
 
             //TODO: Fix bug that crashes server whenever publishing update
-            //Player.publishUpdate(player.id, player);
+            Player.publishUpdate(player.id, player);
         };
 
         crudHelper.update(options);
