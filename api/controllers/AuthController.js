@@ -42,7 +42,7 @@ module.exports = {
         });
     },
     checkSession: function (request, response) {
-        if (request.user !== undefined) {
+        if (request.user) {
             response.send({
                 status: 200,
                 message: 'Session active.',
