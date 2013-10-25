@@ -5,7 +5,10 @@ var crudHelper = require('./helpers/crudHelper'),
 
 module.exports = {
     find: function (request, response) {
-        var options = createOptions(request, response);
+        var options,
+            lobbiesResult;
+
+        options = createOptions(request, response);
 
         if (request.param('id')) {
             options.success = function (lobby) {
@@ -19,8 +22,14 @@ module.exports = {
             crudHelper.findOne(options);
         } else {
             options.success = function (lobbies) {
+                lobbiesResult = [];
+
+                lobbies.forEach(function (lobby) {
+                    lobbiesResult.push(lobby);
+                });
+
                 response.send({
-                    lobbies: lobbies
+                    lobbies: lobbiesResult
                 });
 
                 Lobby.subscribe(request.socket);

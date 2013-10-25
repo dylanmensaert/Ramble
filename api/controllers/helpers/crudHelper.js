@@ -14,8 +14,7 @@ module.exports = {
     },
     find: function (options) {
         var where,
-            query,
-            modelsResult;
+            query;
 
         where = options.values;
 
@@ -36,14 +35,7 @@ module.exports = {
                 } else if (!models) {
                     options.notFound();
                 } else {
-                    modelsResult = [];
-
-                    //TODO: use callback to filter all models in array?
-                    models.forEach(function (model) {
-                        modelsResult.push(model);
-                    });
-
-                    options.success(modelsResult);
+                    options.success(models);
                 }
             }
         );

@@ -5,7 +5,10 @@ var crudHelper = require('./helpers/crudHelper'),
 
 module.exports = {
     find: function (request, response) {
-        var options = createOptions(request, response);
+        var options,
+            playersResult;
+
+        options = createOptions(request, response);
 
         if (request.param('id')) {
             options.success = function (player) {
@@ -19,8 +22,14 @@ module.exports = {
             crudHelper.findOne(options);
         } else {
             options.success = function (players) {
+                playersResult = [];
+
+                players.forEach(function (player) {
+                    playersResult.push(player);
+                });
+
                 response.send({
-                    players: players
+                    players: playersResult
                 });
 
                 Player.subscribe(request.socket);
