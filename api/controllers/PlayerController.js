@@ -60,6 +60,7 @@ module.exports = {
                 player: player
             });
 
+            //TODO: Fix bug that crashes server whenever publishing update/destroy/create
             Player.publishUpdate(player.id, player);
         };
 

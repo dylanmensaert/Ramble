@@ -2,14 +2,8 @@
 
 module.exports = {
     findOne: function (options) {
-        options.modelType.findOne(options.values.id).done(function (error, model) {
-            if (error) {
-                options.error(error);
-            } else if (!model) {
-                options.notFound();
-            } else {
-                options.success(model);
-            }
+        this.checkIfOneExists(options, function (model) {
+            options.success(model);
         });
     },
     find: function (options) {
@@ -50,41 +44,35 @@ module.exports = {
         });
     },
     update: function (options) {
-        var id = options.values.id;
-
-        options.modelType.findOne(id).done(function (error, model) {
-            if (error) {
-                options.error(error);
-            } else if (!model) {
-                options.notFound();
-            } else {
-                options.modelType.update(id, options.values, function (error, model) {
-                    if (error) {
-                        options.error(error);
-                    } else {
-                        options.success(model);
-                    }
-                });
-            }
+        this.checkIfOneExists(options, function () {
+            options.modelType.update(options.values.id, options.values, function (error, model) {
+                if (error) {
+                    options.error(error);
+                } else {
+                    options.success(model);
+                }
+            });
         });
     },
     destroy: function (options) {
-        var id = options.values.id;
-
-        options.modelType.findOne(id).done(function (error, model) {
+        this.checkIfOneExists(options, function (model) {
+            options.modelType.destroy(options.values.id, function (error) {
+                if (error) {
+                    options.error(error);
+                } else {
+                    options.success(model);
+                }
+            });
+        });
+    },
+    checkIfOneExists: function (options, success) {
+        options.modelType.findOne(options.values.id).done(function (error, model) {
             if (error) {
                 options.error(error);
             } else if (!model) {
                 options.notFound();
             } else {
-                //TODO: Duplicate update/destroy compared to find!
-                options.modelType.destroy(id, function (error) {
-                    if (error) {
-                        options.error(error);
-                    } else {
-                        options.success(model);
-                    }
-                });
+                success(model);
             }
         });
     }
