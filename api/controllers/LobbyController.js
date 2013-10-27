@@ -32,6 +32,7 @@ module.exports = {
                     lobbies: lobbiesResult
                 });
 
+                //TODO: Check in sails-code what subscribe/publish exactly do!
                 Lobby.subscribe(request.socket);
                 Lobby.subscribe(request.socket, lobbies);
             };

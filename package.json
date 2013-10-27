@@ -15,10 +15,10 @@
     },
     "dependencies": {
         "sails": "0.9.7",
-        "sails-mysql": "0.9.3",
-        "sails-mongo": "0.9.5",
+        "sails-disk": "0.9.1",
         "jade": "0.35.0",
         "optimist": "0.6.0",
+        "mongoose": "3.6.20",
         "passport": "0.1.17",
         "passport-local": "0.1.6",
         "bcrypt": "0.7.7"
