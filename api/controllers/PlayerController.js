@@ -44,9 +44,10 @@ module.exports = {
             crudHelper.findOne(options);
         } else {
             options.success = function (players) {
+                var counter = players.length;
+
                 playersResult = [];
 
-                var counter = players.length;
                 players.forEach(function (player) {
                     addLobbiesTo(player, function (playerWithLobbies) {
                         playersResult.push(playerWithLobbies);

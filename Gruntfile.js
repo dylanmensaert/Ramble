@@ -1,8 +1,6 @@
 'use strict';
 
 module.exports = function (grunt) {
-    require('load-grunt-tasks')(grunt);
-
     var config = {
         //server
         api: 'api',
@@ -25,6 +23,8 @@ module.exports = function (grunt) {
         templatesjs: 'assets/javascripts/init/templates.js',
         bootstrapFonts: 'assets/bower_components/sass-bootstrap/fonts'
     };
+
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         config: config,
