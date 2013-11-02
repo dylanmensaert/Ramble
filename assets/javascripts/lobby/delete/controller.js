@@ -5,7 +5,6 @@ define(function (require) {
 
     return Ember.ObjectController.extend({
         actions: {
-            //TODO: JavaScript keywords should be in quotes!
             delete: function () {
                 var model = this.get('model');
 
