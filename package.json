@@ -18,7 +18,7 @@
         "sails-disk": "0.9.1",
         "jade": "0.35.0",
         "optimist": "0.6.0",
-        "mongoose": "3.6.20",
+        "mongoose": "3.8.0",
         "passport": "0.1.17",
         "passport-local": "0.1.6",
         "bcrypt": "0.7.7"
@@ -28,7 +28,7 @@
         "grunt": "0.4.1",
         "grunt-ember-templates": "0.4.15",
         "grunt-contrib-compass": "0.6.0",
-        "grunt-contrib-jshint": "0.7.0",
+        "grunt-contrib-jshint": "0.7.1",
         "grunt-contrib-csslint": "0.1.2",
         "grunt-mocha": "0.4.1",
         "grunt-contrib-clean": "0.5.0",

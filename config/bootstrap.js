@@ -50,21 +50,22 @@ module.exports.bootstrap = function (cb) {
     db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function () {
-        var kittySchema,
-            Kitten,
-            silence;
+        //TODO: Remove this code
+        /*var kittySchema,
+         Kitten,
+         silence;
 
-        kittySchema = mongoose.Schema({
-            name: String
-        });
+         kittySchema = mongoose.Schema({
+         name: String
+         });
 
-        Kitten = mongoose.model('Kitten', kittySchema);
+         Kitten = mongoose.model('Kitten', kittySchema);
 
-        silence = new Kitten({ name: 'Silence' });
+         silence = new Kitten({ name: 'Silence' });
 
-        silence.save(function (err, fluffy) {
+         silence.save(function (err, fluffy) {
 
-        });
+         });*/
     });
 
     setupPassportForSocketIO();

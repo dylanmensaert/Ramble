@@ -122,29 +122,17 @@ module.exports = function (grunt) {
             }
         },
         jshint: {
+            options: {
+                jshintrc: true
+            },
             client: {
-                src: ['<%= config.javascripts %>/**/*.js'],
-                options: {
-                    jshintrc: '<%= config.javascripts %>/.jshintrc'
-                }
+                src: ['<%= config.javascripts %>/**/*.js']
             },
             test: {
-                src: ['<%= config.test %>/**/*.js'],
-                options: {
-                    jshintrc: '<%= config.test %>/.jshintrc'
-                }
+                src: ['<%= config.test %>/**/*.js']
             },
             server: {
-                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
-                options: {
-                    jshintrc: '.jshintrc'
-                }
-            },
-            json: {
-                src: ['*.json', '.bowerrc', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'],
-                options: grunt.util._.merge(grunt.file.readJSON('.jshintrc'), {
-                    quotmark: 'double'
-                })
+                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
             }
         },
         csslint: {

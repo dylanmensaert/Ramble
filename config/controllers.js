@@ -31,7 +31,7 @@ module.exports.controllers = {
      * a model exists with the same name as the controller, Sails will respond with built-in CRUD
      * logic in the form of a JSON API, including support for sort, pagination, and filtering.
      */
-        //TODO: Disable blueprints during production!
+    //TODO: Disable blueprints during production!
     blueprints: {
 
         /**
