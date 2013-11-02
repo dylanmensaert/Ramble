@@ -104,11 +104,6 @@ define(function (require) {
 
             return new Ember.RSVP.Promise(function (resolve, reject) {
                 socket.emit('get', json, function (data) {
-                    //TODO: Let server always return JSON so we don't have to parse it anymore. (override default CRUD operations)
-                    if (typeof data === 'string') {
-                        data = JSON.parse(data);
-                    }
-
                     if (data.status) {
                         Ember.run(null, reject, data);
 

@@ -8,7 +8,7 @@ module.exports = {
             required: true,
             maxLength: 50
         },
-        //TODO: modify password
+        //TODO: modify password like Player-model
         password: {
             type: 'STRING',
             required: true
@@ -18,9 +18,9 @@ module.exports = {
             required: true,
             numeric: true
         },
+        //TODO: Use association.. (Mongoose)
         owner: {
-            //TODO: Should type be integer (ID) or string?
-            type: 'INTEGER'
+            type: 'STRING'
             //TODO: Temp fix for creating lobbies, because ID isn't set client-side anymore
             //required: true
         },

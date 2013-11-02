@@ -1,6 +1,6 @@
 assets/javascripts/init/templates.js
 
-.tmp/**
-
 node_modules/**
 assets/bower_components/**
+
+.tmp/**

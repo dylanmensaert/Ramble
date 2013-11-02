@@ -34,7 +34,7 @@ module.exports[403] = function (message, req, res) {
 
     // If the user-agent wants a JSON response, send json
     if (req.wantsJSON) {
-        return res.json(result, result.status);
+        return res.send(result, result.status);
     }
 
     // Set status code and view locals
@@ -46,7 +46,7 @@ module.exports[403] = function (message, req, res) {
     res.render(viewFilePath, result, function (err) {
         // If the view doesn't exist, or an error occured, send json
         if (err) {
-            return res.json(result, result.status);
+            return res.send(result, result.status);
         }
 
         // Otherwise, serve the `views/403.*` page

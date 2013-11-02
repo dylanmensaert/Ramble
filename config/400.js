@@ -44,7 +44,7 @@ module.exports[400] = function (validationErrors, redirectTo, req, res) {
     // For requesters expecting JSON, everything works like you would expect-- a simple JSON response
     // indicating the 400: Bad Request status with relevant information will be returned.
     if (req.wantsJSON) {
-        return res.json(result, result.status);
+        return res.send(result, result.status);
     }
 
     // For traditional (not-AJAX) web forms, this middleware follows best-practices
@@ -69,6 +69,6 @@ module.exports[400] = function (validationErrors, redirectTo, req, res) {
     // It's safest to provide a 'redirectTo' URL and redirect there directly.
 
     // If `redirectTo` was not specified, just respond w/ JSON
-    return res.json(result, result.status);
+    return res.send(result, result.status);
 
 };

@@ -62,7 +62,7 @@ module.exports[500] = function (errors, req, res) {
 
     // If the user-agent wants JSON, respond with JSON
     if (req.wantsJSON) {
-        return res.json(result, result.status);
+        return res.send(result, result.status);
     }
 
     // Set status code and view locals
@@ -74,7 +74,7 @@ module.exports[500] = function (errors, req, res) {
     res.render(viewFilePath, result, function (err) {
         // If the view doesn't exist, or an error occured, just send JSON
         if (err) {
-            return res.json(result, result.status);
+            return res.send(result, result.status);
         }
 
         // Otherwise, if it can be rendered, the `views/500.*` page is rendered

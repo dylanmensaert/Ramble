@@ -22,6 +22,7 @@ define(function (require) {
 
             this._super();
         },
+        //TODO: This method belongs in login-controller?
         checkSession: function () {
             var socket,
                 store,

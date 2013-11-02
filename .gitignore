@@ -1,10 +1,10 @@
 config/local.js
 assets/javascripts/init/templates.js
 
-.tmp/
-.sass-cache/
-
 node_modules/
 assets/bower_components/
+
+.tmp/
+.sass-cache/
 
 .idea/
