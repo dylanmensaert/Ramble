@@ -73,7 +73,7 @@
     "wsh": false,
     "yui": false,
 
-    "nomen": true,
+    "nomen": false,
     "onevar": true,
     "passfail": false,
     "white": true,

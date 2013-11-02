@@ -6,7 +6,7 @@ module.exports = function (request, response) {
         modelType: sails.models[request.target.controller],
         values: request.params.all(),
         error: function (error) {
-            response.send(error);
+            response.error(error);
         },
         notFound: function () {
             response.notFound();

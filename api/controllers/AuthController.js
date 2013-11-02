@@ -1,4 +1,3 @@
-/* jshint nomen: false */
 'use strict';
 
 var passport = require('passport');
@@ -12,16 +11,13 @@ module.exports = {
     login: function (request, response) {
         passport.authenticate('local', function (error, player) {
             if (error) {
-                response.send(error);
+                response.error(error);
             } else if (!player) {
-                response.send({
-                    status: 403,
-                    message: 'Login unsuccessful.'
-                });
+                response.forbidden('Login unsuccessful.');
             } else {
                 request.logIn(player, function (error) {
                     if (error) {
-                        response.send(error);
+                        response.error(error);
                     } else {
                         response.send({
                             status: 200,
@@ -49,10 +45,7 @@ module.exports = {
                 player: request.user
             });
         } else {
-            response.send({
-                status: 403,
-                message: 'Session inactive.'
-            });
+            response.forbidden('Session inactive.');
         }
     }
 };

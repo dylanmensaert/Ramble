@@ -1,4 +1,4 @@
-/* jshint nomen: false, browser: true */
+/* jshint browser: true */
 define(function (require) {
     'use strict';
 

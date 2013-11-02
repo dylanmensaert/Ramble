@@ -7,10 +7,7 @@ module.exports = function (request, response, ok) {
             ok();
         } else {
             //TODO: Check if error and send it as response (ex: if lobby not found)
-            response.send({
-                status: 403,
-                message: 'You are not permitted to perform this action.'
-            });
+            response.forbidden('You are not permitted to perform this action.');
         }
     });
 };

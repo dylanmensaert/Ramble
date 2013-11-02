@@ -13,6 +13,7 @@
             //TODO: Build version from Dockyards validations
             'ember-validations': '../bower_components/ember-dockyard-validations/validations/ember-validations-1.0.0.beta.1',
             handlebars: '../bower_components/handlebars.js/dist/handlebars.runtime',
+            //TODO: Add true jQuery to bower.json
             jquery: '../bower_components/jquery/jquery',
             bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
             'google-analytics': '../bower_components/google-analytics/index'
