@@ -24,5 +24,12 @@ define(function (require) {
         })
     });
 
+    //TODO: Hack to fix this issue: https://github.com/dockyard/ember-validations/issues/26
+    DS.Model.reopen({
+        isValid: function (key) {
+            return Ember.get(Ember.get(this, 'currentState'), key);
+        }.property('currentState')
+    });
+
     return App;
 });

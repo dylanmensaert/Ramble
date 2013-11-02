@@ -9,17 +9,17 @@ define(function (require) {
                 //TODO: Code is very similar to player/edit. Remove duplication?
                 var model = this.get('model');
 
-                //model.validate().then(function () {
-                //    if (model.get('isValid')) {
-                if (model.get('isDirty')) {
-                    model.save().then(function () {
-                        this.transitionToRoute('lobby');
-                    }.bind(this));
-                } else {
-                    this.transitionToRoute('lobby');
-                }
-                //    }
-                //});
+                model.validate().then(function () {
+                    if (model.get('isValid')) {
+                        if (model.get('isDirty')) {
+                            model.save().then(function () {
+                                this.transitionToRoute('lobby');
+                            }.bind(this));
+                        } else {
+                            this.transitionToRoute('lobby');
+                        }
+                    }
+                });
             }
         }
     });

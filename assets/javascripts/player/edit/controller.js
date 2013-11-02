@@ -8,17 +8,17 @@ define(function (require) {
             save: function () {
                 var model = this.get('model');
 
-                //model.validate().then(function () {
-                //    if (model.get('isValid')) {
-                if (model.get('isDirty')) {
-                    model.save().then(function () {
-                        this.transitionToRoute('player');
-                    }.bind(this));
-                } else {
-                    this.transitionToRoute('player');
-                }
-                //    }
-                //});
+                model.validate().then(function () {
+                    if (model.get('isValid')) {
+                        if (model.get('isDirty')) {
+                            model.save().then(function () {
+                                this.transitionToRoute('player');
+                            }.bind(this));
+                        } else {
+                            this.transitionToRoute('player');
+                        }
+                    }
+                });
             }
         }
     });
