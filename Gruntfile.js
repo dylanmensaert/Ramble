@@ -15,7 +15,6 @@ module.exports = function (grunt) {
         sass: 'assets/sass',
         stylesheets: '.tmp/public/stylesheets',
         images: 'assets/images',
-        fonts: 'assets/fonts',
         //prod
         prodJavascripts: '.tmp/public/javascripts',
         prodImages: '.tmp/public/images',
@@ -23,12 +22,12 @@ module.exports = function (grunt) {
         //other
         test: 'test',
         components: 'assets/bower_components',
-        templatesjs: 'assets/javascripts/init/templates.js'
+        templatesjs: 'assets/javascripts/init/templates.js',
+        bootstrapFonts: 'assets/bower_components/sass-bootstrap/fonts'
     };
 
     grunt.initConfig({
         config: config,
-        //TODO: Warning: Unable to delete ".tmp/public" file (ENOTEMPTY, directory not empty '.tmp/public'). Use --force to continue.
         clean: {
             tmpPublic: {
                 src: ['<%= config.tmpPublic %>']
@@ -43,6 +42,16 @@ module.exports = function (grunt) {
             }
         },
         copy: {
+            bootstrapFonts: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.bootstrapFonts %>',
+                        src: ['**'],
+                        dest: '<%= config.prodFonts %>'
+                    }
+                ]
+            },
             development: {
                 files: [
                     {
@@ -60,12 +69,6 @@ module.exports = function (grunt) {
                         cwd: '<%= config.images %>',
                         src: ['**'],
                         dest: '<%= config.prodImages %>'
-                    },
-                    {
-                        expand: true,
-                        cwd: '<%= config.fonts %>',
-                        src: ['**'],
-                        dest: '<%= config.prodFonts %>'
                     }
                 ]
             }
@@ -173,8 +176,7 @@ module.exports = function (grunt) {
                     '<%= config.views %>/**/*',
                     '<%= config.javascripts %>/**/*.js',
                     '<%= config.stylesheets %>/main.css',
-                    '<%= config.images %>/**/*.*',
-                    '<%= config.fonts %>/**/*.*'
+                    '<%= config.images %>/**/*.*'
                 ],
                 tasks: ['copy:development'],
                 options: {
@@ -192,10 +194,10 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'compass:development', 'copy:development']);
+    grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'compass:development', 'copy:development', 'copy:bootstrapFonts']);
     //TODO: Improve integration of unit tests!!
     grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'compass:development', 'csslint:all']);
-    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production']);
+    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production', 'copy:bootstrapFonts']);
 
     grunt.registerTask('develop', ['concurrent:development']);
 
