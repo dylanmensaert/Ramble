@@ -65,6 +65,27 @@ define(function (require) {
                         this.transitionToRoute('index');
                     }
                 }.bind(this));
+            },
+            checkSession: function () {
+                var socket,
+                    store,
+                    session,
+                    json;
+
+                socket = this.get('socket');
+                store = this.get('store');
+                session = this.get('session');
+                json = {
+                    url: '/api/auth/checkSession'
+                };
+
+                socket.emit('get', json, function (data) {
+                    if (data.status === 200) {
+                        store.find('player', data.player.id).then(function (player) {
+                            session.set('account', player);
+                        });
+                    }
+                });
             }
         }
     });

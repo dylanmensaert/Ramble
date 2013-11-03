@@ -6,7 +6,12 @@ define(function (require) {
     return Ember.Route.extend({
         title: 'Ramble',
         activate: function () {
-            //TODO: Move code in separate method?
+            this.registerSocketMessages();
+            this.controllerFor('login').send('checkSession');
+
+            this._super();
+        },
+        registerSocketMessages: function () {
             var socket,
                 store;
 
@@ -17,32 +22,6 @@ define(function (require) {
                 //TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
                 store.push(message.model, message.data);
             });
-
-            this.checkSession();
-
-            this._super();
-        },
-        //TODO: This method belongs in login-controller?
-        checkSession: function () {
-            var socket,
-                store,
-                session,
-                json;
-
-            socket = this.get('socket');
-            store = this.get('store');
-            session = this.get('session');
-            json = {
-                url: '/api/auth/checkSession'
-            };
-
-            socket.emit('get', json, function (data) {
-                if (data.status === 200) {
-                    this.get('store').find('player', data.player.id).then(function (player) {
-                        session.set('account', player);
-                    }.bind(this));
-                }
-            }.bind(this));
         }
     });
 });
