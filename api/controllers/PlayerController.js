@@ -7,14 +7,15 @@ var addLobbiesTo = function (player, sendModel) {
     Lobby.find({
         owner: player.id
     }).done(function (error, lobbies) {
-            player.ownedLobbies = lobbies;
+            //TODO: objects not correctly embedded for ember-data!
+            //player.ownedLobbies = lobbies;
 
             Lobby.find({
                 members: {
                     contains: player.id
                 }
             }).done(function (error, lobbies) {
-                    player.joinedLobbies = lobbies;
+                    //player.joinedLobbies = lobbies;
 
                     sendModel(player);
                 }

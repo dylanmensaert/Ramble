@@ -22,6 +22,11 @@ define(function (require) {
                 //TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
                 store.push(message.model, message.data);
             });
+        },
+        actions: {
+            logout: function () {
+                this.controllerFor('login').send('logout');
+            }
         }
     });
 });
