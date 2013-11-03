@@ -19,7 +19,7 @@ define(function (require) {
                             this.transitionToRoute('lobby');
                         }
                     }
-                });
+                }.bind(this));
             }
         }
     });

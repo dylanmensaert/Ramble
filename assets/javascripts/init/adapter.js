@@ -107,7 +107,7 @@ define(function (require) {
                     if (data.status) {
                         Ember.run(null, reject, data);
                     } else {
-                        //TODO: No model was found for 'ValidationError'
+                        //TODO: handle server-side validation? should probably just check if username, email etc. is unique. other validations are shared between client/server
                         Ember.run(null, resolve, data);
                     }
                 });

@@ -43,12 +43,14 @@ module.exports = {
     create: function (request, response) {
         var options = createOptions(request, response);
 
+        options.values.owner = request.user.id;
+
         options.success = function (lobby) {
             response.send({
                 lobby: lobby
             });
 
-            Lobby.publishCreate(lobby);
+            Lobby.publishCreate(lobby.toJSON());
         };
 
         crudHelper.create(options);
@@ -61,7 +63,7 @@ module.exports = {
                 lobby: lobby
             });
 
-            Lobby.publishUpdate(lobby.id, lobby);
+            Lobby.publishUpdate(lobby.id, lobby.toJSON());
         };
 
         crudHelper.update(options);

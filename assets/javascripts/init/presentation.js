@@ -4,7 +4,6 @@ define(function (require) {
     var Ember = require('ember'),
         EmberEasyForm = require('ember-easyform');
 
-    //TODO: Require only the needed Bootstrap-plugins?
     require('bootstrap');
 
     Ember.TextSupport.reopen({

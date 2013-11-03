@@ -29,9 +29,8 @@ define(function (require) {
             });
         },
         actions: {
-            error: function (error) {
+            error: function () {
                 //TODO: Make error-handling more robust?
-                console.log(error);
                 this.transitionTo('index');
             },
             logout: function () {

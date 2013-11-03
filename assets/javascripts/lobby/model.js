@@ -16,7 +16,6 @@ define(function (require) {
             inverse: 'joinedLobbies',
             async: true
         }),
-        //TODO: Update validations
         validations: {
             title: {
                 presence: true,
@@ -26,17 +25,15 @@ define(function (require) {
             },
             password: {
                 presence: true,
-                length: {
-                    maximum: 50
-                },
                 confirmation: true
             },
             maxMembers: {
-                numericality: true
+                numericality: {
+                    onlyInteger: true
+                }
             },
             owner: {
-                //TODO: Can't have presence since not filled during creation on client?
-                //presence: true
+
             },
             members: {
 

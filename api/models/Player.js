@@ -18,19 +18,18 @@ module.exports = {
     attributes: {
         username: {
             type: 'STRING',
-            required: true,
             unique: true,
+            required: true,
             maxLength: 50
         },
         password: {
             type: 'STRING',
-            required: true,
-            maxLength: 50
+            required: true
         },
         email: {
             type: 'EMAIL',
-            required: true,
             unique: true,
+            required: true,
             maxLength: 50
         },
         //TODO: Should these be defined? Are based off Lobby.owner and Lobby.members

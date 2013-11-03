@@ -14,7 +14,7 @@ define(function (require) {
                             this.transitionToRoute('login');
                         }.bind(this));
                     }
-                });
+                }.bind(this));
             }
         }
     });

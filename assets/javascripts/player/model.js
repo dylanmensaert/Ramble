@@ -16,7 +16,6 @@ define(function (require) {
             inverse: 'members',
             async: true
         }),
-        //TODO: Update validations
         validations: {
             username: {
                 presence: true,
@@ -26,9 +25,6 @@ define(function (require) {
             },
             password: {
                 presence: true,
-                length: {
-                    maximum: 50
-                },
                 confirmation: true
             },
             email: {

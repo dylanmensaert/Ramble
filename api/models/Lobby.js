@@ -20,9 +20,8 @@ module.exports = {
         },
         //TODO: Use association.. (Mongoose)
         owner: {
-            type: 'STRING'
-            //TODO: Temp fix for creating lobbies, because ID isn't set client-side anymore
-            //required: true
+            type: 'STRING',
+            required: true
         },
         members: {
             type: 'ARRAY'

@@ -4,17 +4,17 @@ var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater');
 
 var addLobbiesTo = function (player, sendModel) {
-    Lobby.find({
-        owner: player.id
-    }).done(function (/*error, lobbies*/) {
+    Lobby.find(/*{
+         owner: player.id
+         }*/).done(function (/*error, lobbies*/) {
             //TODO: objects not correctly embedded for ember-data!
             //player.ownedLobbies = lobbies;
 
-            Lobby.find({
-                members: {
-                    contains: player.id
-                }
-            }).done(function (/*error, lobbies*/) {
+            Lobby.find(/*{
+                 members: {
+                 contains: player.id
+                 }
+                 }*/).done(function (/*error, lobbies*/) {
                     //player.joinedLobbies = lobbies;
 
                     sendModel(player);
@@ -78,7 +78,7 @@ module.exports = {
                 player: player
             });
 
-            Player.publishCreate(player);
+            Player.publishCreate(player.toJSON());
         };
 
         crudHelper.create(options);
@@ -91,7 +91,7 @@ module.exports = {
                 player: player
             });
 
-            Player.publishUpdate(player.id, player);
+            Player.publishUpdate(player.id, player.toJSON());
         };
 
         crudHelper.update(options);
