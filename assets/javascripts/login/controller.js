@@ -84,6 +84,8 @@ define(function (require) {
                         store.find('player', data.player.id).then(function (player) {
                             session.set('account', player);
                         });
+                    } else {
+                        session.set('account', null);
                     }
                 });
             }

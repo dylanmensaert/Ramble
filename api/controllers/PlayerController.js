@@ -100,6 +100,8 @@ module.exports = {
         var options = createOptions(request, response);
 
         options.success = function (player) {
+            request.logOut();
+
             response.send({
                 player: player
             });

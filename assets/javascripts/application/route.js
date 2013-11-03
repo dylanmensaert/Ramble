@@ -7,7 +7,7 @@ define(function (require) {
         title: 'Ramble',
         activate: function () {
             this.registerSocketMessages();
-            this.controllerFor('login').send('checkSession');
+            this.send('checkSession');
 
             this._super();
         },
@@ -19,13 +19,22 @@ define(function (require) {
             store = this.get('store');
 
             socket.on('message', function (message) {
-                //TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
-                store.push(message.model, message.data);
+                if (message.verb !== 'destroy') {
+                    //TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
+                    store.push(message.model, message.data);
+                }
             });
         },
         actions: {
+            error: function () {
+                //TODO: Make error-handling more robust?
+                this.transitionTo('index');
+            },
             logout: function () {
                 this.controllerFor('login').send('logout');
+            },
+            checkSession: function () {
+                this.controllerFor('login').send('checkSession');
             }
         }
     });
