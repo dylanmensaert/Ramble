@@ -14,7 +14,6 @@ define(function (require) {
             }
         },
         deactivate: function () {
-            //TODO: Is rollback needed after creating a record?
             this.checkToRollbackModel();
         }
     });

@@ -4,8 +4,7 @@ define(function (require) {
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
-        //TODO: reset errorMessage on beforeModel/setupController
-        errorMessage: '',
+        errorMessage: null,
         retryTransition: function () {
             var attemptedTransition = this.get('session.attemptedTransition');
 
@@ -64,7 +63,6 @@ define(function (require) {
                         if (data.status === 200) {
                             this.get('store').find('player', data.player.id).then(function (player) {
                                 this.set('session.account', player);
-                                this.set('errorMessage', '');
 
                                 this.retryTransition();
                             }.bind(this));

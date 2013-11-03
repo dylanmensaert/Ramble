@@ -13,6 +13,11 @@ define(function (require) {
             if (this.get('session.isLoggedIn')) {
                 this.transitionTo('index');
             }
+        },
+        setupController: function (controller, model) {
+            this._super(controller, model);
+
+            controller.set('errorMessage', null);
         }
     });
 });

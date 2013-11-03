@@ -2,11 +2,9 @@
     {{input username placeholder='Username' as='focussed_textfield'}}
     {{input password placeholder='Password'}}
 
-    {{#if errorMessage}}
-        <p class="text-danger">
-            {{errorMessage}}
-        </p>
-    {{/if}}
+    <p class="text-danger">
+        {{errorMessage}}
+    </p>
 
     <button {{action 'login'}} class="btn btn-primary">
         Log in
