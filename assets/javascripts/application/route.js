@@ -9,10 +9,7 @@ define(function (require) {
             this._super();
 
             this.registerSocketMessages();
-            //TODO: can't send event from ApplicationRoute's activate?
-            //see: https://github.com/emberjs/ember.js/issues/3685
-            //this.send('checkSession');
-            this.controllerFor('login').send('checkSession');
+            this.controllerFor('login').checkSession();
         },
         registerSocketMessages: function () {
             var socket,
@@ -35,9 +32,6 @@ define(function (require) {
             },
             logout: function () {
                 this.controllerFor('login').send('logout');
-            },
-            checkSession: function () {
-                this.controllerFor('login').send('checkSession');
             }
         }
     });

@@ -17,6 +17,31 @@ define(function (require) {
                 this.transitionToRoute('player', this.get('session.account'));
             }
         },
+        checkSession: function () {
+            var socket,
+                store,
+                session,
+                json;
+
+            socket = this.get('socket');
+            store = this.get('store');
+            session = this.get('session');
+            json = {
+                url: '/api/auth/checkSession'
+            };
+
+            socket.emit('get', json, function (data) {
+                if (data.status === 200) {
+                    store.find('player', data.player.id).then(function (player) {
+                        session.set('account', player);
+
+                        this.retryTransition();
+                    }.bind(this));
+                } else {
+                    session.set('account', null);
+                }
+            }.bind(this));
+        },
         actions: {
             login: function () {
                 var socket,
@@ -63,31 +88,6 @@ define(function (require) {
                         this.set('session.account', null);
 
                         this.transitionToRoute('index');
-                    }
-                }.bind(this));
-            },
-            checkSession: function () {
-                var socket,
-                    store,
-                    session,
-                    json;
-
-                socket = this.get('socket');
-                store = this.get('store');
-                session = this.get('session');
-                json = {
-                    url: '/api/auth/checkSession'
-                };
-
-                socket.emit('get', json, function (data) {
-                    if (data.status === 200) {
-                        store.find('player', data.player.id).then(function (player) {
-                            session.set('account', player);
-
-                            this.retryTransition();
-                        }.bind(this));
-                    } else {
-                        session.set('account', null);
                     }
                 }.bind(this));
             }
