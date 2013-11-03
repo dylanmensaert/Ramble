@@ -30,12 +30,19 @@ module.exports = {
         })(request, response);
     },
     logout: function (request, response) {
-        request.logOut();
+        if (request.user) {
+            request.logOut();
 
-        response.send({
-            status: 200,
-            message: 'Logout successful.'
-        });
+            response.send({
+                status: 200,
+                message: 'Logout successful.'
+            });
+        } else {
+            response.send({
+                status: 200,
+                message: 'Already logged out.'
+            });
+        }
     },
     checkSession: function (request, response) {
         if (request.user) {

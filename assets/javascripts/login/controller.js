@@ -6,11 +6,8 @@ define(function (require) {
     return Ember.ObjectController.extend({
         //TODO: reset errorMessage on beforeModel/setupController
         errorMessage: '',
-        didLoginSuccessfully: function (player) {
+        retryTransition: function () {
             var attemptedTransition = this.get('session.attemptedTransition');
-
-            this.set('session.account', player);
-            this.set('errorMessage', '');
 
             if (attemptedTransition) {
                 this.set('session.attemptedTransition', null);
@@ -41,7 +38,10 @@ define(function (require) {
                     socket.emit('get', json, function (data) {
                         if (data.status === 200) {
                             this.get('store').find('player', data.player.id).then(function (player) {
-                                this.didLoginSuccessfully(player);
+                                this.set('session.account', player);
+                                this.set('errorMessage', '');
+
+                                this.retryTransition();
                             }.bind(this));
                         } else {
                             this.set('errorMessage', data.message);
@@ -83,11 +83,13 @@ define(function (require) {
                     if (data.status === 200) {
                         store.find('player', data.player.id).then(function (player) {
                             session.set('account', player);
-                        });
+
+                            this.retryTransition();
+                        }.bind(this));
                     } else {
                         session.set('account', null);
                     }
-                });
+                }.bind(this));
             }
         }
     });

@@ -107,7 +107,7 @@ define(function (require) {
                     if (data.status) {
                         Ember.run(null, reject, data);
                     } else {
-                        //TODO: handle server-side validation? should probably just check if username, email etc. is unique. other validations are shared between client/server
+                        //TODO: handle server's validation-errors? probably just check uniqueness before. other validations are same on client/server
                         Ember.run(null, resolve, data);
                     }
                 });

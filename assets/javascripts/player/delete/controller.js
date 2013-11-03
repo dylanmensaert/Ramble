@@ -10,8 +10,7 @@ define(function (require) {
 
                 model.deleteRecord();
                 model.save().then(function () {
-                    this.send('checkSession');
-                    this.transitionToRoute('index');
+                    this.send('logout');
                 }.bind(this));
 
                 //TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.

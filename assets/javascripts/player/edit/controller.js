@@ -18,7 +18,7 @@ define(function (require) {
                             this.transitionToRoute('player');
                         }
                     }
-                });
+                }.bind(this));
             }
         }
     });
