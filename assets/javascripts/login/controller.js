@@ -12,9 +12,9 @@ define(function (require) {
                 this.set('session.attemptedTransition', null);
 
                 attemptedTransition.retry();
-            } else {
-                this.transitionToRoute('player', this.get('session.account'));
             }
+
+            return attemptedTransition;
         },
         checkSession: function () {
             var socket,
@@ -64,7 +64,9 @@ define(function (require) {
                             this.get('store').find('player', data.player.id).then(function (player) {
                                 this.set('session.account', player);
 
-                                this.retryTransition();
+                                if (!this.retryTransition()) {
+                                    this.transitionToRoute('player', this.get('session.account'));
+                                }
                             }.bind(this));
                         } else {
                             this.set('errorMessage', data.message);

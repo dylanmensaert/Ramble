@@ -26,10 +26,11 @@ define(function (require) {
             });
         },
         actions: {
-            error: function () {
-                //TODO: Make error-handling more robust?
-                this.transitionTo('index');
-            },
+            /*error: function (error) {
+             //TODO: Make error-handling more robust?
+             console.debug(error);
+             this.transitionTo('index');
+             },*/
             logout: function () {
                 this.controllerFor('login').send('logout');
             }
