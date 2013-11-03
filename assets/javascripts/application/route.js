@@ -6,10 +6,13 @@ define(function (require) {
     return Ember.Route.extend({
         title: 'Ramble',
         activate: function () {
-            this.registerSocketMessages();
-            this.send('checkSession');
-
             this._super();
+
+            this.registerSocketMessages();
+            //TODO: can't send event from ApplicationRoute's activate?
+            //see: https://github.com/emberjs/ember.js/issues/3685
+            //this.send('checkSession');
+            this.controllerFor('login').send('checkSession');
         },
         registerSocketMessages: function () {
             var socket,
@@ -26,8 +29,9 @@ define(function (require) {
             });
         },
         actions: {
-            error: function () {
+            error: function (error) {
                 //TODO: Make error-handling more robust?
+                console.log(error);
                 this.transitionTo('index');
             },
             logout: function () {

@@ -106,8 +106,6 @@ define(function (require) {
                 socket.emit('get', json, function (data) {
                     if (data.status) {
                         Ember.run(null, reject, data);
-
-                        throw new Error(JSON.stringify(data));
                     } else {
                         //TODO: No model was found for 'ValidationError'
                         Ember.run(null, resolve, data);

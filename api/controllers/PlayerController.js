@@ -6,7 +6,7 @@ var crudHelper = require('./helpers/crudHelper'),
 var addLobbiesTo = function (player, sendModel) {
     Lobby.find({
         owner: player.id
-    }).done(function (error, lobbies) {
+    }).done(function (/*error, lobbies*/) {
             //TODO: objects not correctly embedded for ember-data!
             //player.ownedLobbies = lobbies;
 
@@ -14,7 +14,7 @@ var addLobbiesTo = function (player, sendModel) {
                 members: {
                     contains: player.id
                 }
-            }).done(function (error, lobbies) {
+            }).done(function (/*error, lobbies*/) {
                     //player.joinedLobbies = lobbies;
 
                     sendModel(player);
