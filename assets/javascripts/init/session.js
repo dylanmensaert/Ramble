@@ -2,9 +2,9 @@ define(function (require) {
     'use strict';
 
     var Ember = require('ember'),
-        Session;
+        session;
 
-    Session = Ember.Object.extend({
+    session = Ember.Object.extend({
         account: null,
         isLoggedIn: function () {
             return this.get('account') !== null;
@@ -16,7 +16,7 @@ define(function (require) {
         Application.initializer({
             name: 'session',
             initialize: function (container, application) {
-                application.register('session:current', Session, {
+                application.register('session:current', session, {
                     singleton: true
                 });
 

@@ -35,6 +35,7 @@ define(function (require) {
                 numericality: true
             },
             owner: {
+                //TODO: Can't have presence since not filled during creation on client?
                 presence: true
             },
             members: {
