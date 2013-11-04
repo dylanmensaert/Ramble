@@ -39,23 +39,6 @@ define(function (require) {
     App.Router.map(function () {
         this.resource('login');
 
-        this.resource('lobby', function () {
-            this.route('index',
-                {
-                    path: ':lobby_id'
-                });
-            this.route('edit',
-                {
-                    path: ':lobby_id/edit'
-                });
-            this.route('delete',
-                {
-                    path: ':lobby_id/delete'
-                });
-            this.route('list');
-            this.route('create');
-        });
-
         this.resource('player', function () {
             this.route('index',
                 {
@@ -68,6 +51,23 @@ define(function (require) {
             this.route('delete',
                 {
                     path: ':player_id/delete'
+                });
+            this.route('list');
+            this.route('create');
+        });
+
+        this.resource('lobby', function () {
+            this.route('index',
+                {
+                    path: ':lobby_id'
+                });
+            this.route('edit',
+                {
+                    path: ':lobby_id/edit'
+                });
+            this.route('delete',
+                {
+                    path: ':lobby_id/delete'
                 });
             this.route('list');
             this.route('create');

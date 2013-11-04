@@ -17,37 +17,27 @@ define(function (require) {
             return attemptedTransition;
         },
         checkSession: function () {
-            var socket,
-                store,
-                session,
-                json;
-
-            socket = this.get('socket');
-            store = this.get('store');
-            session = this.get('session');
-            json = {
+            var json = {
                 url: '/api/auth/checkSession'
             };
 
-            socket.emit('get', json, function (data) {
+            this.get('socket').emit('get', json, function (data) {
                 if (data.status === 200) {
-                    store.find('player', data.player.id).then(function (player) {
-                        session.set('account', player);
+                    this.get('store').find('player', data.player.id).then(function (player) {
+                        this.set('session.account', player);
 
                         this.retryTransition();
                     }.bind(this));
                 } else {
-                    session.set('account', null);
+                    this.set('session.account', null);
                 }
             }.bind(this));
         },
         actions: {
             login: function () {
-                var socket,
-                    json,
+                var json,
                     player;
 
-                socket = this.get('socket');
                 json = {
                     url: '/api/auth/login',
                     data: {
@@ -55,11 +45,10 @@ define(function (require) {
                         password: this.get('password')
                     }
                 };
-
                 player = this.get('model');
 
                 player.validate().then(function () {
-                    socket.emit('get', json, function (data) {
+                    this.get('socket').emit('get', json, function (data) {
                         if (data.status === 200) {
                             this.get('store').find('player', data.player.id).then(function (player) {
                                 this.set('session.account', player);
@@ -75,15 +64,11 @@ define(function (require) {
                 }.bind(this));
             },
             logout: function () {
-                var socket,
-                    json;
-
-                socket = this.get('socket');
-                json = {
+                var json = {
                     url: '/api/auth/logout'
                 };
 
-                socket.emit('get', json, function (data) {
+                this.get('socket').emit('get', json, function (data) {
                     if (data.status === 200) {
                         this.set('session.account', null);
 

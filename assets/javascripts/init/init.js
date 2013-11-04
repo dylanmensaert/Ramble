@@ -14,15 +14,15 @@ define(function (require) {
 
     require('init/templates');
     require('init/presentation');
-    require('init/session');
     require('init/socket');
+    require('init/session');
     require('init/router');
 
     require('application/init');
     require('index/init');
     require('login/init');
-    require('lobby/init');
     require('player/init');
+    require('lobby/init');
 
     App.advanceReadiness();
 });
