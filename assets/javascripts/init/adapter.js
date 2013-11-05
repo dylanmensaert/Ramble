@@ -5,7 +5,6 @@ define(function (require) {
         Ember = require('ember');
 
     return DS.RESTAdapter.extend({
-        socket: null,
         find: function (store, type, id) {
             var url = this.buildURL(type.typeKey, 'find', id);
 
@@ -34,6 +33,7 @@ define(function (require) {
             var data,
                 url;
 
+            //TODO: should includeId?
             data = store.serializerFor(type.typeKey).serialize(record, { includeId: true });
             url = this.buildURL(type.typeKey, 'create');
 
@@ -44,6 +44,7 @@ define(function (require) {
                 id,
                 url;
 
+            //TODO: should includeId?
             data = store.serializerFor(type.typeKey).serialize(record);
             id = record.get('id');
 

@@ -35,17 +35,17 @@ define(function (require) {
         },
         actions: {
             login: function () {
-                var json,
-                    player;
+                var player,
+                    json;
 
+                player = this.get('model');
                 json = {
                     url: '/api/auth/login',
                     data: {
-                        username: this.get('username'),
-                        password: this.get('password')
+                        username: player.get('username'),
+                        password: player.get('password')
                     }
                 };
-                player = this.get('model');
 
                 player.validate().then(function () {
                     this.get('socket').emit('get', json, function (data) {

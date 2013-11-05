@@ -2,6 +2,7 @@ define(function (require) {
     'use strict';
 
     var Ember = require('ember'),
+        adapter = require('init/adapter'),
         App;
 
     App = Ember.Application.create({
@@ -13,7 +14,7 @@ define(function (require) {
 
     App.deferReadiness();
 
-    App.ApplicationAdapter = require('init/adapter').extend({
+    App.ApplicationAdapter = adapter.extend({
         namespace: 'api'
     });
 

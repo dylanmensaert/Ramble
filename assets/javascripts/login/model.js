@@ -5,8 +5,8 @@ define(function (require) {
         EmberValidations = require('ember-validations');
 
     return Ember.Object.extend(EmberValidations.Mixin, {
-        username: '',
-        password: '',
+        username: null,
+        password: null,
         validations: {
             username: {
                 presence: true,

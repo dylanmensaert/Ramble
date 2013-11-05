@@ -13,6 +13,7 @@ define(function (require) {
             return this.get('members').contains(this.get('session.account'));
         }.property('members.@each', 'session.account'),
         actions: {
+            //TODO: Implement join/leave/kick via socket.io!
             leave: function () {
                 this.send('kick', this.get('session.account'));
             },

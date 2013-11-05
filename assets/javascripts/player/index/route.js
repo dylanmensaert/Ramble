@@ -4,8 +4,6 @@ define(function (require) {
     var Ember = require('ember');
 
     return Ember.Route.extend({
-        title: function () {
-            return this.get('controller.username');
-        }.property('controller.username')
+        title: Ember.computed.alias('controller.username')
     });
 });

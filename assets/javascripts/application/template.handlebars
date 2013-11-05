@@ -32,9 +32,9 @@
             {{#if session.isLoggedIn}}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{session.account.username}}
-                            <b class="caret"></b>
+                            <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
                     </li>
                 </ul>
             {{else}}
-                <form class="navbar-form navbar-right">
+                <div class="navbar-form navbar-right">
                     {{#link-to 'login' classNames='btn btn-default'}}
                         Log in
                     {{/link-to}}
@@ -61,7 +61,7 @@
                     {{#link-to 'player.create' classNames='btn btn-success'}}
                         Sign up
                     {{/link-to}}
-                </form>
+                </div>
             {{/if}}
         </div>
     </div>

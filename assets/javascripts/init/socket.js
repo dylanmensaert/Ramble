@@ -2,7 +2,10 @@ define(function (require) {
     'use strict';
 
     var Ember = require('ember'),
-        socket = require('io').connect();
+        io = require('io'),
+        socket;
+
+    socket = io.connect();
 
     Ember.onLoad('Ember.Application', function (Application) {
         Application.initializer({

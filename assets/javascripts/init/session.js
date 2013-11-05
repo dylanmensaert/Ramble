@@ -16,12 +16,12 @@ define(function (require) {
         Application.initializer({
             name: 'session',
             initialize: function (container, application) {
-                application.register('session:current', session, {
+                application.register('session:main', session, {
                     singleton: true
                 });
 
-                application.inject('route', 'session', 'session:current');
-                application.inject('controller', 'session', 'session:current');
+                application.inject('route', 'session', 'session:main');
+                application.inject('controller', 'session', 'session:main');
             }
         });
     });
