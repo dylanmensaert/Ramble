@@ -15,10 +15,7 @@ define(function (require) {
                 }
             },
             password: {
-                presence: true,
-                length: {
-                    maximum: 50
-                }
+                presence: true
             }
         }
     });

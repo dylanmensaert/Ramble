@@ -9,7 +9,7 @@ define(function (require) {
         find: function (store, type, id) {
             var url = this.buildURL(type.typeKey, 'find', id);
 
-            return this.request(url, type.typeKey);
+            return this.request(url);
         },
         findAll: function (store, type, sinceToken) {
             var query,
@@ -23,12 +23,12 @@ define(function (require) {
 
             url = this.buildURL(type.typeKey, 'find');
 
-            return this.request(url, this.pluralForType(type.typeKey), query);
+            return this.request(url, query);
         },
         findQuery: function (store, type, query) {
             var url = this.buildURL(type.typeKey, 'find');
 
-            return this.request(url, this.pluralForType(type.typeKey), query);
+            return this.request(url, query);
         },
         createRecord: function (store, type, record) {
             var data,
@@ -37,7 +37,7 @@ define(function (require) {
             data = store.serializerFor(type.typeKey).serialize(record, { includeId: true });
             url = this.buildURL(type.typeKey, 'create');
 
-            return this.request(url, type.typeKey, data);
+            return this.request(url, data);
         },
         updateRecord: function (store, type, record) {
             var data,
@@ -49,7 +49,7 @@ define(function (require) {
 
             url = this.buildURL(type.typeKey, 'update', id);
 
-            return this.request(url, type.typeKey, data);
+            return this.request(url, data);
         },
         deleteRecord: function (store, type, record) {
             var id,
@@ -58,10 +58,7 @@ define(function (require) {
             id = record.get('id');
             url = this.buildURL(type.typeKey, 'destroy', id);
 
-            return this.request(url, type.typeKey);
-        },
-        pluralForType: function (type) {
-            return Ember.String.pluralize(type);
+            return this.request(url);
         },
         buildURL: function (type, action, id) {
             var host = this.get('host'),
@@ -77,7 +74,7 @@ define(function (require) {
                 urlParts.push(namespace);
             }
 
-            urlParts.push(this.pluralForType(type));
+            urlParts.push(Ember.String.pluralize(type));
             urlParts.push(action);
 
             if (id) {
@@ -92,7 +89,7 @@ define(function (require) {
 
             return url;
         },
-        request: function (url, root, data) {
+        request: function (url, data) {
             var socket,
                 json;
 
