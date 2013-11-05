@@ -11,7 +11,7 @@
             //TODO: Use Dockyards' easyform/validations via their bower-registry.
             'ember-easyform': '../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-1.0.0.beta.1',
             'ember-validations': '../bower_components/ember-dockyard-validations/validations/ember-validations-1.0.0.beta.1',
-            handlebars: '../bower_components/handlebars.js/dist/handlebars.runtime',
+            'handlebars': '../bower_components/handlebars/handlebars.runtime.amd',
             //TODO: Add true jQuery to bower.json
             jquery: '../bower_components/jquery/jquery',
             bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
@@ -33,9 +33,6 @@
             'ember-validations': {
                 deps: ['ember'],
                 exports: 'Ember.Validations'
-            },
-            handlebars: {
-                exports: 'Handlebars'
             },
             bootstrap: {
                 deps: ['jquery'],

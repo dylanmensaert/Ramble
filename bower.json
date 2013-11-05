@@ -7,7 +7,7 @@
         "ember": "1.2.0-beta.3",
         "ember-data-shim": "1.0.0-beta.3",
         "ember-dockyard-validations": "*",
-        "handlebars.js": "1.0.0",
+        "handlebars": "1.1.0",
         "jquery": "2.0.3",
         "sass-bootstrap": "3.0.1",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
@@ -16,6 +16,7 @@
         "almond": "0.2.6"
     },
     "resolutions": {
-        "ember": "1.2.0-beta.3"
+        "ember": "1.2.0-beta.3",
+        "handlebars": "1.1.0"
     }
 }

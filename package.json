@@ -26,7 +26,7 @@
     "devDependencies": {
         "load-grunt-tasks": "0.2.0",
         "grunt": "0.4.1",
-        "grunt-ember-templates": "0.4.15",
+        "grunt-ember-templates": "0.4.16",
         "grunt-contrib-compass": "0.6.0",
         "grunt-contrib-jshint": "0.7.1",
         "grunt-contrib-csslint": "0.1.2",
