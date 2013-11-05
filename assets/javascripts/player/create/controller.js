@@ -9,11 +9,9 @@ define(function (require) {
                 var model = this.get('model');
 
                 model.validate().then(function () {
-                    if (model.get('isValid')) {
-                        model.save().then(function () {
-                            this.transitionToRoute('login');
-                        }.bind(this));
-                    }
+                    model.save().then(function () {
+                        this.transitionToRoute('login');
+                    }.bind(this));
                 }.bind(this));
             }
         }

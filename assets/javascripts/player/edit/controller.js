@@ -9,14 +9,12 @@ define(function (require) {
                 var model = this.get('model');
 
                 model.validate().then(function () {
-                    if (model.get('isValid')) {
-                        if (model.get('isDirty')) {
-                            model.save().then(function () {
-                                this.transitionToRoute('player');
-                            }.bind(this));
-                        } else {
+                    if (model.get('isDirty')) {
+                        model.save().then(function () {
                             this.transitionToRoute('player');
-                        }
+                        }.bind(this));
+                    } else {
+                        this.transitionToRoute('player');
                     }
                 }.bind(this));
             }
