@@ -1,5 +1,8 @@
 'use strict';
 
+var bcrypt = require('bcrypt');
+var hashPassword = require('./helpers/hashPassword');
+
 module.exports = {
     schema: true,
     attributes: {
@@ -8,7 +11,6 @@ module.exports = {
             required: true,
             maxLength: 50
         },
-        //TODO: modify password like Player-model
         password: {
             type: 'STRING',
             required: true
@@ -25,6 +27,36 @@ module.exports = {
         },
         members: {
             type: 'ARRAY'
+        },
+        verifyPassword: function (password, done) {
+            var lobby = this.toObject();
+
+            bcrypt.compare(password, lobby.password, done);
+        },
+        toJSON: function () {
+            var lobby = this.toObject();
+
+            delete lobby.password;
+
+            return lobby;
+        }
+    },
+    beforeCreate: function (values, next) {
+        hashPassword(values, next);
+    },
+    beforeUpdate: function (values, next) {
+        if (values.password) {
+            hashPassword(values, next);
+        } else {
+            Lobby.findOne(values.id).done(function (error, lobby) {
+                if (error) {
+                    next(error);
+                } else {
+                    values.password = lobby.password;
+
+                    next();
+                }
+            });
         }
     }
 };

@@ -1,17 +1,7 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    hashPassword = function (values, next) {
-        bcrypt.hash(values.password, 10, function (error, hashedPassword) {
-            if (error) {
-                next(error);
-            } else {
-                values.password = hashedPassword;
-
-                next();
-            }
-        });
-    };
+var bcrypt = require('bcrypt');
+var hashPassword = require('./helpers/hashPassword');
 
 module.exports = {
     schema: true,
@@ -65,7 +55,6 @@ module.exports = {
                 if (error) {
                     next(error);
                 } else {
-                    //TODO: Is needed to fill password again?
                     values.password = player.password;
 
                     next();
