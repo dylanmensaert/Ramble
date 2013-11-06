@@ -9,5 +9,5 @@ module.exports[403] = function (message, request, response) {
         result.message = message;
     }
 
-    return response.send(result, 403);
+    return response.send(403, result);
 };
