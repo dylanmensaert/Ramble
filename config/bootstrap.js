@@ -1,15 +1,5 @@
 'use strict';
 
-/**
- * Bootstrap
- *
- * An asynchronous boostrap function that runs before your Sails app gets lifted.
- * This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
- *
- * For more information on bootstrapping your app, check out:
- * http://sailsjs.org/#documentation
- */
-
 var setupPassportForSocketIO = function () {
     //TODO: Fix to make passport.js work with websockets!
     //see http://stackoverflow.com/questions/17365444/sails-js-passport-js-authentication-through-websockets/18343226#18343226

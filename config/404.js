@@ -5,5 +5,5 @@ module.exports[404] = function (request, response) {
         status: 404
     };
 
-    return response.send(result);
+    return response.send(result, 404);
 };

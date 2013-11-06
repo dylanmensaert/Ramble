@@ -14,5 +14,5 @@ module.exports[500] = function (errors, request, response) {
         result.errors = errors;
     }
 
-    return response.send(result);
+    return response.send(result, 500);
 };

@@ -11,5 +11,5 @@ module.exports[400] = function (validationErrors, redirectTo, request, response)
         result.validationErrors = validationErrors;
     }
 
-    return response.send(result);
+    return response.send(result, 400);
 };
