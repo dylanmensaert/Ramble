@@ -9,7 +9,7 @@
         "ember-dockyard-validations": "*",
         "handlebars": "1.1.2",
         "jquery": "2.0.3",
-        "sass-bootstrap": "3.0.1",
+        "sass-bootstrap": "3.0.2",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
     },
     "devDependencies": {
