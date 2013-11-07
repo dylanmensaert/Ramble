@@ -1,7 +1,7 @@
 'use strict';
 
 var bcrypt = require('bcrypt');
-var hashPassword = require('./helpers/hashPassword');
+var hashPassword = require('../helpers/hashPassword');
 
 module.exports = {
     schema: true,
