@@ -3,23 +3,42 @@
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater');
 
-var addLobbiesTo = function (player, sendModel) {
-    Lobby.find(/*{
-         owner: player.id
-         }*/).done(function (/*error, lobbies*/) {
-            //TODO: objects not correctly embedded for ember-data!
-            //player.ownedLobbies = lobbies;
+var addLobbiesTo = function (options, player, sendModel) {
+    Lobby.find({
+        owner: player.id
+    }).done(function (error, ownedLobbies) {
+            if (error) {
+                options.error(error);
+            } else {
+                var ownedLobbiesId = [],
+                    joinedLobbiesId = [],
+                    i;
 
-            Lobby.find(/*{
-                 members: {
-                 contains: player.id
-                 }
-                 }*/).done(function (/*error, lobbies*/) {
-                    //player.joinedLobbies = lobbies;
-
-                    sendModel(player);
+                for (i = 0; i < ownedLobbies.length; i += 1) {
+                    ownedLobbiesId.push(ownedLobbies[i].id);
                 }
-            );
+
+                player.ownedLobbies = ownedLobbiesId;
+
+                Lobby.find({
+                    members: {
+                        contains: player.id
+                    }
+                }).done(function (error, joinedLobbies) {
+                        if (error) {
+                            options.error(error);
+                        } else {
+                            for (var i = 0; i < joinedLobbies.length; i += 1) {
+                                joinedLobbiesId.push(joinedLobbies[i].id);
+                            }
+
+                            player.joinedLobbies = joinedLobbiesId;
+
+                            sendModel(player);
+                        }
+                    }
+                );
+            }
         }
     );
 };
@@ -33,7 +52,7 @@ module.exports = {
 
         if (request.param('id')) {
             options.success = function (player) {
-                addLobbiesTo(player, function (playerWithLobbies) {
+                addLobbiesTo(options, player, function (playerWithLobbies) {
                     response.send({
                         player: playerWithLobbies
                     });
@@ -50,7 +69,7 @@ module.exports = {
                 playersResult = [];
 
                 players.forEach(function (player) {
-                    addLobbiesTo(player, function (playerWithLobbies) {
+                    addLobbiesTo(options, player, function (playerWithLobbies) {
                         playersResult.push(playerWithLobbies);
 
                         counter -= 1;
