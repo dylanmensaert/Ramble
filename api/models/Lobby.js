@@ -1,7 +1,7 @@
 'use strict';
 
-var bcrypt = require('bcrypt');
-var hashPassword = require('../helpers/hashPassword');
+var bcrypt = require('bcrypt'),
+    setHashedPassword = require('../helpers/setHashedPassword');
 
 module.exports = {
     schema: true,
@@ -42,21 +42,9 @@ module.exports = {
         }
     },
     beforeCreate: function (values, next) {
-        hashPassword(values, next);
+        setHashedPassword(Lobby, values, next);
     },
     beforeUpdate: function (values, next) {
-        if (values.password) {
-            hashPassword(values, next);
-        } else {
-            Lobby.findOne(values.id).done(function (error, lobby) {
-                if (error) {
-                    next(error);
-                } else {
-                    values.password = lobby.password;
-
-                    next();
-                }
-            });
-        }
+        setHashedPassword(Lobby, values, next);
     }
 };
