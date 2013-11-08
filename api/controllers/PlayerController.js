@@ -3,6 +3,7 @@
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater');
 
+//TODO: Put this in Player model as getJoinedLobbies and getOwnedLobbies
 var addLobbiesTo = function (options, player, sendModel) {
     Lobby.find({
         owner: player.id
