@@ -29,6 +29,17 @@ define(function (require) {
 
             return this.request(url, query);
         },
+        findMany: function (store, type, ids) {
+            var url,
+                data;
+
+            url = this.buildURL(type.typeKey, 'find');
+            data = {
+                ids: ids
+            };
+
+            return this.request(url, data);
+        },
         createRecord: function (store, type, record) {
             var data,
                 url;
