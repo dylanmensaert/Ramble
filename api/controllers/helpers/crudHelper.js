@@ -68,11 +68,11 @@ module.exports = {
     },
     update: function (options) {
         findOneHelper(options, function () {
-            options.modelType.update(options.values.id, options.values, function (error, model) {
+            options.modelType.update(options.values.id, options.values, function (error, models) {
                 if (error) {
                     options.error(error);
                 } else {
-                    options.success(model);
+                    options.success(models[0]);
                 }
             });
         });
