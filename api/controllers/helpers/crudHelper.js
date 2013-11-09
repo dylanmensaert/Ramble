@@ -18,6 +18,17 @@ module.exports = {
             options.success(model);
         });
     },
+    findMany: function (options) {
+        options.modelType.find({id: options.values.ids}).done(function (error, models) {
+            if (error) {
+                options.error(error);
+            } else if (!models) {
+                options.notFound();
+            } else {
+                options.success(models);
+            }
+        });
+    },
     find: function (options) {
         var where,
             query;

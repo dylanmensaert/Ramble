@@ -20,6 +20,16 @@ module.exports = {
             };
 
             crudHelper.findOne(options);
+        } else if (request.param('ids')) {
+            options.success = function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                Lobby.subscribe(request.socket, lobbies);
+            };
+
+            crudHelper.findMany(options);
         } else {
             options.success = function (lobbies) {
                 lobbiesResult = [];

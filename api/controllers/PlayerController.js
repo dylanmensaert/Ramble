@@ -63,6 +63,16 @@ module.exports = {
             };
 
             crudHelper.findOne(options);
+        } else if (request.param('ids')) {
+            options.success = function (players) {
+                response.send({
+                    players: players
+                });
+
+                Player.subscribe(request.socket, players);
+            };
+
+            crudHelper.findMany(options);
         } else {
             options.success = function (players) {
                 var counter = players.length;
