@@ -1,100 +1,68 @@
 'use strict';
 
 var crudHelper = require('./helpers/crudHelper'),
-    createOptions = require('./helpers/crudOptionsCreater');
+    createOptions = require('./helpers/crudOptionsCreater'),
+    addLobbiesToSingle = function (response, player, success) {
+        player.fetchOwnedLobbies(response, function () {
+            player.fetchJoinedLobbies(response, function () {
+                success();
+            });
+        });
+    },
+    addLobbiesToMultiple = function (response, players, success) {
+        var counter = players.length;
 
-//TODO: Put this in Player model as getJoinedLobbies and getOwnedLobbies
-var addLobbiesTo = function (options, player, sendModel) {
-    Lobby.find({
-        owner: player.id
-    }).done(function (error, ownedLobbies) {
-            if (error) {
-                options.error(error);
-            } else {
-                var ownedLobbiesId = [],
-                    joinedLobbiesId = [],
-                    i;
+        players.forEach(function (player) {
+            addLobbiesToSingle(response, player, function () {
+                counter -= 1;
 
-                for (i = 0; i < ownedLobbies.length; i += 1) {
-                    ownedLobbiesId.push(ownedLobbies[i].id);
+                if (counter === 0) {
+                    success();
                 }
-
-                player.ownedLobbies = ownedLobbiesId;
-
-                Lobby.find({
-                    members: {
-                        contains: player.id
-                    }
-                }).done(function (error, joinedLobbies) {
-                        if (error) {
-                            options.error(error);
-                        } else {
-                            for (var i = 0; i < joinedLobbies.length; i += 1) {
-                                joinedLobbiesId.push(joinedLobbies[i].id);
-                            }
-
-                            player.joinedLobbies = joinedLobbiesId;
-
-                            sendModel(player);
-                        }
-                    }
-                );
-            }
-        }
-    );
-};
+            });
+        });
+    };
 
 module.exports = {
     find: function (request, response) {
-        var options,
-            playersResult;
+        var options;
 
         options = createOptions(request, response);
 
         if (request.param('id')) {
             options.success = function (player) {
-                addLobbiesTo(options, player, function (playerWithLobbies) {
+                addLobbiesToSingle(response, player, function () {
                     response.send({
-                        player: playerWithLobbies
+                        player: player
                     });
 
-                    Player.subscribe(request.socket, playerWithLobbies);
+                    Player.subscribe(request.socket, player);
                 });
             };
 
             crudHelper.findOne(options);
         } else if (request.param('ids')) {
             options.success = function (players) {
-                response.send({
-                    players: players
-                });
+                addLobbiesToMultiple(response, players, function () {
+                    response.send({
+                        players: players
+                    });
 
-                Player.subscribe(request.socket, players);
+                    Player.subscribe(request.socket, players);
+                });
             };
 
             crudHelper.findMany(options);
         } else {
             options.success = function (players) {
-                var counter = players.length;
-
-                playersResult = [];
-
-                players.forEach(function (player) {
-                    addLobbiesTo(options, player, function (playerWithLobbies) {
-                        playersResult.push(playerWithLobbies);
-
-                        counter -= 1;
-
-                        if (counter === 0) {
-                            response.send({
-                                players: playersResult
-                            });
-                        }
+                addLobbiesToMultiple(response, players, function () {
+                    response.send({
+                        players: players
                     });
-                });
 
-                Player.subscribe(request.socket);
-                Player.subscribe(request.socket, players);
+                    Player.subscribe(request.socket);
+                    Player.subscribe(request.socket, players);
+                });
             };
 
             crudHelper.find(options);
