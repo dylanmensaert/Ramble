@@ -1,7 +1,9 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    hashPassword = function (values, next) {
+var bcrypt = require('bcrypt');
+
+module.exports = function (Model, values, next) {
+    if (values.password) {
         bcrypt.hash(values.password, 10, function (error, hashedPassword) {
             if (error) {
                 next(error);
@@ -11,11 +13,6 @@ var bcrypt = require('bcrypt'),
                 next();
             }
         });
-    };
-
-module.exports = function (Model, values, next) {
-    if (values.password) {
-        hashPassword(values, next);
     } else {
         Model.findOne(values.id).done(function (error, model) {
             if (error) {

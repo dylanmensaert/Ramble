@@ -2,18 +2,19 @@
 
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater'),
-    addLobbiesToSingle = function (response, player, success) {
-        player.fetchOwnedLobbies(response, function () {
-            player.fetchJoinedLobbies(response, function () {
+    fetchLobbiesOne = function (player, success) {
+        //TODO: Both callbacks can be executed at once for performance-improvements
+        player.fetchOwnedLobbies(function () {
+            player.fetchJoinedLobbies(function () {
                 success();
             });
         });
     },
-    addLobbiesToMultiple = function (response, players, success) {
+    fetchLobbiesMany = function (players, success) {
         var counter = players.length;
 
         players.forEach(function (player) {
-            addLobbiesToSingle(response, player, function () {
+            fetchLobbiesOne(player, function () {
                 counter -= 1;
 
                 if (counter === 0) {
@@ -31,7 +32,7 @@ module.exports = {
 
         if (request.param('id')) {
             options.success = function (player) {
-                addLobbiesToSingle(response, player, function () {
+                fetchLobbiesOne(player, function () {
                     response.send({
                         player: player
                     });
@@ -43,7 +44,7 @@ module.exports = {
             crudHelper.findOne(options);
         } else if (request.param('ids')) {
             options.success = function (players) {
-                addLobbiesToMultiple(response, players, function () {
+                fetchLobbiesMany(players, function () {
                     response.send({
                         players: players
                     });
@@ -55,7 +56,7 @@ module.exports = {
             crudHelper.findMany(options);
         } else {
             options.success = function (players) {
-                addLobbiesToMultiple(response, players, function () {
+                fetchLobbiesMany(players, function () {
                     response.send({
                         players: players
                     });

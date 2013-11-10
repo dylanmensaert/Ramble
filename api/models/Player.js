@@ -1,22 +1,16 @@
-/* jshint maxparams: 4 */
 'use strict';
 
 var bcrypt = require('bcrypt'),
     setHashedPassword = require('../helpers/setHashedPassword'),
-    addLobbiesTo = function (player, query, response, success) {
+    getLobbies = function (query, success) {
         Lobby.find(query).done(function (error, lobbies) {
-            if (error) {
-                response.error(error);
-            } else {
-                var lobbiesId = [],
-                    counter;
+            var lobbyIds = [];
 
-                for (counter = 0; counter < lobbies.length; counter += 1) {
-                    lobbiesId.push(lobbies[counter].id);
-                }
+            lobbies.forEach(function (lobby) {
+                lobbyIds.push(lobby.id);
+            });
 
-                success(lobbiesId);
-            }
+            success(lobbyIds);
         });
     };
 
@@ -39,19 +33,19 @@ module.exports = {
             required: true,
             maxLength: 50
         },
-        fetchOwnedLobbies: function (response, next) {
+        fetchOwnedLobbies: function (next) {
             var query = {
                     owner: this.id
                 },
                 player = this;
 
-            addLobbiesTo(this, query, response, function (ownedLobbiesId) {
-                player.ownedLobbies = ownedLobbiesId;
+            getLobbies(query, function (ownedLobbyIds) {
+                player.ownedLobbies = ownedLobbyIds;
 
                 next();
             });
         },
-        fetchJoinedLobbies: function (response, next) {
+        fetchJoinedLobbies: function (next) {
             var query = {
                     members: {
                         contains: this.id
@@ -59,8 +53,8 @@ module.exports = {
                 },
                 player = this;
 
-            addLobbiesTo(this, query, response, function (joinedLobbiesId) {
-                player.joinedLobbies = joinedLobbiesId;
+            getLobbies(query, function (joinedLobbyIds) {
+                player.joinedLobbies = joinedLobbyIds;
 
                 next();
             });
