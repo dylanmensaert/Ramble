@@ -1,7 +1,8 @@
 'use strict';
 
 var crudHelper = require('./helpers/crudHelper'),
-    createOptions = require('./helpers/crudOptionsCreater');
+    createOptions = require('./helpers/crudOptionsCreater'),
+    Lobbybs = require('../bs-models/lobby');
 
 module.exports = {
     find: function (request, response) {
@@ -51,9 +52,9 @@ module.exports = {
         }
     },
     create: function (request, response) {
-        var options = createOptions(request, response);
+        /*var options = createOptions(request, response);
 
-        options.values.owner = request.user.id;
+         options.values.owner = request.user.id;
 
         options.success = function (lobby) {
             response.send({
@@ -63,7 +64,17 @@ module.exports = {
             Lobby.publishCreate(lobby.toJSON());
         };
 
-        crudHelper.create(options);
+         crudHelper.create(options);*/
+
+        var values = request.params.all();
+
+        values.owner = request.user.id;
+
+        Lobbybs.forge(values).save().then(function (lobby) {
+            response.send({
+                lobby: lobby
+            });
+        });
     },
     update: function (request, response) {
         var options = createOptions(request, response);

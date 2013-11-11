@@ -30,34 +30,6 @@ var setupPassportForSocketIO = function () {
 };
 
 module.exports.bootstrap = function (cb) {
-
-    var mongoose,
-        db;
-
-    mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/ramble');
-
-    db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function () {
-        //TODO: Remove this code
-        /*var kittySchema,
-         Kitten,
-         silence;
-
-         kittySchema = mongoose.Schema({
-         name: String
-         });
-
-         Kitten = mongoose.model('Kitten', kittySchema);
-
-         silence = new Kitten({ name: 'Silence' });
-
-         silence.save(function (err, fluffy) {
-
-         });*/
-    });
-
     setupPassportForSocketIO();
 
     cb();

@@ -2,7 +2,7 @@
 
 module.exports.adapters = {
     'default': 'disk',
-    //TODO: For development only..will change to Mongoose + MongoDB
+    //TODO: For development only..will change to Postgres + Bookshelf
     disk: {
         module: 'sails-disk'
     }

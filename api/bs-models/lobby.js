@@ -1,0 +1,21 @@
+'use strict';
+
+var PG = require('./pg'),
+    Playerbs = require('./player'),
+    Lobbybs;
+
+Lobbybs = PG.Model.extend({
+    tableName: 'players',
+    //TODO: Don't include attributes (columns), must do validation on our own though.
+    title: null,
+    password: null,
+    maxMembers: null,
+    owner: function () {
+        return this.hasMany(Playerbs);
+    },
+    members: function () {
+        return this.belongsToMany(Playerbs);
+    }
+});
+
+module.exports = Lobbybs;

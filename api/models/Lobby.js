@@ -20,7 +20,7 @@ module.exports = {
             required: true,
             numeric: true
         },
-        //TODO: Use association.. (Mongoose)
+        //TODO: Use association..
         owner: {
             type: 'STRING',
             required: true

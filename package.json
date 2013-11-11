@@ -18,7 +18,8 @@
         "sails-disk": "0.9.1",
         "jade": "0.35.0",
         "optimist": "0.6.0",
-        "mongoose": "3.8.0",
+        "bookshelf": "0.5.7",
+        "mysql": "2.0.0-alpha9",
         "passport": "0.1.17",
         "passport-local": "0.1.6",
         "bcrypt": "0.7.7"
