@@ -5,7 +5,7 @@ var PG = require('./pg'),
     Lobbybs;
 
 Lobbybs = PG.Model.extend({
-    tableName: 'players',
+    tableName: 'lobbies',
     //TODO: Don't include attributes (columns), must do validation on our own though.
     title: null,
     password: null,

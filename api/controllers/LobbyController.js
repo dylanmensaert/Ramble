@@ -56,17 +56,22 @@ module.exports = {
 
          options.values.owner = request.user.id;
 
-        options.success = function (lobby) {
-            response.send({
-                lobby: lobby
-            });
+         options.success = function (lobby) {
+         response.send({
+         lobby: lobby
+         });
 
-            Lobby.publishCreate(lobby.toJSON());
-        };
+         Lobby.publishCreate(lobby.toJSON());
+         };
 
          crudHelper.create(options);*/
 
-        var values = request.params.all();
+        var requestValues = request.params.all(),
+            values = {
+                title: requestValues.title,
+                password: requestValues.password,
+                maxMembers: requestValues.maxMembers
+            };
 
         values.owner = request.user.id;
 
