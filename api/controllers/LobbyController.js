@@ -66,12 +66,11 @@ module.exports = {
 
          crudHelper.create(options);*/
 
-        var requestValues = request.params.all(),
-            values = {
-                title: requestValues.title,
-                password: requestValues.password,
-                maxMembers: requestValues.maxMembers
-            };
+        var values = {
+            title: request.params.title,
+            password: request.params.password,
+            maxMembers: request.params.maxMembers
+        };
 
         values.owner = request.user.id;
 
