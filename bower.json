@@ -4,19 +4,19 @@
     "dependencies": {
         "requirejs": "2.1.9",
         "socket.io-client": "0.9.16",
-        "ember": "1.2.0-beta.3",
+        "ember": "1.2.0",
         "ember-data-shim": "1.0.0-beta.3",
         "ember-dockyard-validations": "*",
         "handlebars": "1.1.2",
-        "jquery": "2.0.3",
+        "jQuery": "2.1.0-beta2",
         "sass-bootstrap": "3.0.2",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
     },
     "devDependencies": {
-        "almond": "0.2.6"
+        "almond": "0.2.7"
     },
     "resolutions": {
-        "ember": "1.2.0-beta.3",
+        "ember": "1.2.0",
         "handlebars": "1.1.2"
     }
 }
