@@ -52,27 +52,12 @@ module.exports = {
         }
     },
     create: function (request, response) {
-        /*var options = createOptions(request, response);
-
-         options.values.owner = request.user.id;
-
-         options.success = function (lobby) {
-         response.send({
-         lobby: lobby
-         });
-
-         Lobby.publishCreate(lobby.toJSON());
-         };
-
-         crudHelper.create(options);*/
-
         var values = {
-            title: request.params.title,
-            password: request.params.password,
-            maxMembers: request.params.maxMembers
+            title: request.param('title'),
+            password: request.param('password'),
+            maxMembers: request.param('maxMembers'),
+            owner: request.user.id
         };
-
-        values.owner = request.user.id;
 
         Lobbybs.forge(values).save().then(function (lobby) {
             response.send({

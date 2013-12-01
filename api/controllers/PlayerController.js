@@ -2,6 +2,7 @@
 
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater'),
+    Playerbs = require('../bs-models/lobby'),
     fetchLobbiesOne = function (player, success) {
         //TODO: Both callbacks can be executed at once for performance-improvements
         player.fetchOwnedLobbies(function () {
@@ -70,17 +71,17 @@ module.exports = {
         }
     },
     create: function (request, response) {
-        var options = createOptions(request, response);
+        var values = {
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        };
 
-        options.success = function (player) {
+        Playerbs.forge(values).save().then(function (player) {
             response.send({
                 player: player
             });
-
-            Player.publishCreate(player.toJSON());
-        };
-
-        crudHelper.create(options);
+        });
     },
     update: function (request, response) {
         var options = createOptions(request, response);
