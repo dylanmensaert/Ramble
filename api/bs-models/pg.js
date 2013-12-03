@@ -9,7 +9,7 @@ PG = Bookshelf.initialize({
     connection: {
         //TODO: Put this info in a separate file, not included in git
         host: 'localhost',
-        user: 'postgres',
+        user: 'root',
         password: 'toor',
         database: 'ramble',
         charset: 'utf8'
