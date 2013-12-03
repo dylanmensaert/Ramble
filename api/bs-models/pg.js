@@ -6,7 +6,7 @@ var Bookshelf = require('bookshelf'),
 
 PG = Bookshelf.initialize({
     debug: true,
-    client: 'postgres',
+    client: 'pg',
     connection: connection
 });
 
