@@ -2,7 +2,7 @@
 
 var crudHelper = require('./helpers/crudHelper'),
     createOptions = require('./helpers/crudOptionsCreater'),
-    Playerbs = require('../bs-models/lobby'),
+    Playerbs = require('../bs-models/player'),
     fetchLobbiesOne = function (player, success) {
         //TODO: Both callbacks can be executed at once for performance-improvements
         player.fetchOwnedLobbies(function () {

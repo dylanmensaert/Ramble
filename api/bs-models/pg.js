@@ -5,11 +5,11 @@ var Bookshelf = require('bookshelf'),
 
 PG = Bookshelf.initialize({
     debug: true,
-    client: 'mysql',
+    client: 'postgres',
     connection: {
         //TODO: Put this info in a separate file, not included in git
         host: 'localhost',
-        user: 'root',
+        user: 'postgres',
         password: 'toor',
         database: 'ramble',
         charset: 'utf8'
