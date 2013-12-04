@@ -84,9 +84,7 @@ module.exports = function (grunt) {
                         templateName = templateName.replace('/template', '');
 
                         return templateName;
-                    },
-                    templateCompilerPath: 'assets/bower_components/ember/ember-template-compiler.js',
-                    handlebarsPath: 'assets/bower_components/handlebars/handlebars.js'
+                    }
                 },
                 files: {
                     '<%= config.templatesjs %>': '<%= config.javascripts %>/**/*.handlebars'
