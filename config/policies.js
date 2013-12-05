@@ -7,10 +7,11 @@ module.exports.policies = {
         checkSession: true
     },
     player: {
+        //TODO: Set policy when login implemented
         find: true,
         create: true,
-        update: 'isOwnerOfAccount',
-        destroy: 'isOwnerOfAccount'
+        update: true, //'isOwnerOfAccount',
+        destroy: true //'isOwnerOfAccount'
     },
     lobby: {
         find: true,

@@ -11,7 +11,7 @@ Lobbybs = PG.Model.extend({
     password: null,
     maxMembers: null,
     owner: function () {
-        return this.hasMany(Playerbs);
+        return this.belongsTo(Playerbs);
     },
     members: function () {
         return this.belongsToMany(Playerbs);

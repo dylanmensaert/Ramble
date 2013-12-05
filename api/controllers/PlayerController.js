@@ -1,76 +1,44 @@
 'use strict';
 
-var crudHelper = require('./helpers/crudHelper'),
-    createOptions = require('./helpers/crudOptionsCreater'),
-    Playerbs = require('../bs-models/player'),
-    fetchLobbiesOne = function (player, success) {
-        //TODO: Both callbacks can be executed at once for performance-improvements
-        player.fetchOwnedLobbies(function () {
-            player.fetchJoinedLobbies(function () {
-                success();
-            });
-        });
-    },
-    fetchLobbiesMany = function (players, success) {
-        var counter = players.length;
-
-        players.forEach(function (player) {
-            fetchLobbiesOne(player, function () {
-                counter -= 1;
-
-                if (counter === 0) {
-                    success();
-                }
-            });
-        });
-    };
+var Playerbs = require('../bs-models/player'),
+    Bookshelf = require('../bs-models/pg');
 
 module.exports = {
     find: function (request, response) {
-        var options;
+        var id = request.param('id'),
+            ids = request.param('ids'),
+            query = request.params.all(),
+            players = Bookshelf.Collection.extend({model: Playerbs}).forge();
 
-        options = createOptions(request, response);
-
-        if (request.param('id')) {
-            options.success = function (player) {
-                fetchLobbiesOne(player, function () {
-                    response.send({
-                        player: player
-                    });
-
-                    Player.subscribe(request.socket, player);
+        if (id) {
+            //TODO: Implement relationships correctly
+            Playerbs.forge({id: id}).fetch(/*{withRelated: ['ownedLobbies', 'joinedLobbies']}*/).then(function (player) {
+                response.send({
+                    player: player
                 });
-            };
 
-            crudHelper.findOne(options);
-        } else if (request.param('ids')) {
-            options.success = function (players) {
-                fetchLobbiesMany(players, function () {
-                    response.send({
-                        players: players
-                    });
-
-                    Player.subscribe(request.socket, players);
+                //Playerbs.subscribe(request.socket, player);
+            });
+        } else if (ids) {
+            players.query().whereIn(ids).then(function (players) {
+                response.send({
+                    players: players
                 });
-            };
-
-            crudHelper.findMany(options);
+            });
         } else {
-            options.success = function (players) {
-                fetchLobbiesMany(players, function () {
-                    response.send({
-                        players: players
-                    });
-
-                    Player.subscribe(request.socket);
-                    Player.subscribe(request.socket, players);
+            //TODO: Implement limit skip sort.
+            players.query().where(query).then(function (players) {
+                response.send({
+                    players: players
                 });
-            };
 
-            crudHelper.find(options);
+                //Playerbs.subscribe(request.socket);
+                //Playerbs.subscribe(request.socket, players);
+            });
         }
     },
     create: function (request, response) {
+        //TODO; Refactor syntax without using extra variable
         var values = {
             username: request.param('username'),
             password: request.param('password'),
@@ -84,31 +52,34 @@ module.exports = {
         });
     },
     update: function (request, response) {
-        var options = createOptions(request, response);
+        var values = {
+            id: request.param('id'),
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        };
 
-        options.success = function (player) {
+        Playerbs.forge(values).save().then(function (player) {
             response.send({
                 player: player
             });
 
-            Player.publishUpdate(player.id, player.toJSON());
-        };
-
-        crudHelper.update(options);
+            //Playerbs.publishUpdate(player.id, player.toJSON());
+        });
     },
     destroy: function (request, response) {
-        var options = createOptions(request, response);
+        var id = request.param('id');
 
-        options.success = function (player) {
+        Playerbs.forge({id: id}).destroy().then(function () {
             request.logOut();
 
             response.send({
-                player: player
+                player: {
+                    id: id
+                }
             });
 
-            Player.publishDestroy(player.id);
-        };
-
-        crudHelper.destroy(options);
+            //Playerbs.publishDestroy(player.id);
+        });
     }
 };

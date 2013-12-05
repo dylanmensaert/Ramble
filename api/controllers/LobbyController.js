@@ -1,62 +1,48 @@
 'use strict';
 
-var crudHelper = require('./helpers/crudHelper'),
-    createOptions = require('./helpers/crudOptionsCreater'),
-    Lobbybs = require('../bs-models/lobby');
+var Lobbybs = require('../bs-models/lobby'),
+    Bookshelf = require('../bs-models/pg');
 
 module.exports = {
     find: function (request, response) {
-        var options,
-            lobbiesResult;
+        var id = request.param('id'),
+            ids = request.param('ids'),
+            query = request.params.all(),
+            lobbies = Bookshelf.Collection.extend({model: Lobbybs}).forge();
 
-        options = createOptions(request, response);
-
-        if (request.param('id')) {
-            options.success = function (lobby) {
+        if (id) {
+            //TODO: Implement relationships correctly
+            Lobbybs.forge({id: id}).fetch(/*{withRelated: ['owner', 'members']}*/).then(function (lobby) {
                 response.send({
                     lobby: lobby
                 });
 
-                Lobby.subscribe(request.socket, lobby);
-            };
-
-            crudHelper.findOne(options);
-        } else if (request.param('ids')) {
-            options.success = function (lobbies) {
+                //Lobbybs.subscribe(request.socket, lobby);
+            });
+        } else if (ids) {
+            lobbies.query().whereIn(ids).then(function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+            });
+        } else {
+            //TODO: Implement limit skip sort.
+            lobbies.query().where(query).then(function (lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
 
-                Lobby.subscribe(request.socket, lobbies);
-            };
-
-            crudHelper.findMany(options);
-        } else {
-            options.success = function (lobbies) {
-                lobbiesResult = [];
-
-                lobbies.forEach(function (lobby) {
-                    lobbiesResult.push(lobby);
-                });
-
-                response.send({
-                    lobbies: lobbiesResult
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly do!
-                Lobby.subscribe(request.socket);
-                Lobby.subscribe(request.socket, lobbies);
-            };
-
-            crudHelper.find(options);
+                //Lobbybs.subscribe(request.socket);
+                //Lobbybs.subscribe(request.socket, lobbies);
+            });
         }
     },
     create: function (request, response) {
+        //TODO; Refactor syntax without using extra variable
         var values = {
             title: request.param('title'),
             password: request.param('password'),
-            maxMembers: request.param('maxMembers'),
-            owner: request.user.id
+            maxMembers: request.param('maxMembers')
         };
 
         Lobbybs.forge(values).save().then(function (lobby) {
@@ -66,29 +52,34 @@ module.exports = {
         });
     },
     update: function (request, response) {
-        var options = createOptions(request, response);
+        var values = {
+            id: request.param('id'),
+            title: request.param('title'),
+            password: request.param('password'),
+            maxMembers: request.param('maxMembers')
+        };
 
-        options.success = function (lobby) {
+        Lobbybs.forge(values).save().then(function (lobby) {
             response.send({
                 lobby: lobby
             });
 
-            Lobby.publishUpdate(lobby.id, lobby.toJSON());
-        };
-
-        crudHelper.update(options);
+            //Lobbybs.publishUpdate(lobby.id, lobby.toJSON());
+        });
     },
     destroy: function (request, response) {
-        var options = createOptions(request, response);
+        var id = request.param('id');
 
-        options.success = function (lobby) {
+        Lobbybs.forge({id: id}).destroy().then(function () {
+            request.logOut();
+
             response.send({
-                lobby: lobby
+                lobby: {
+                    id: id
+                }
             });
 
-            Lobby.publishDestroy(lobby.id);
-        };
-
-        crudHelper.destroy(options);
+            //Lobbybs.publishDestroy(lobby.id);
+        });
     }
 };
