@@ -1,4 +1,5 @@
 'use strict';
+//TODO: Check in sails-code what subscribe/publish exactly
 
 var Lobbybs = require('../bs-models/lobby'),
     Bookshelf = require('../bs-models/pg');
@@ -42,7 +43,8 @@ module.exports = {
         var values = {
             title: request.param('title'),
             password: request.param('password'),
-            maxMembers: request.param('maxMembers')
+            maxMembers: request.param('maxMembers'),
+            owner: request.user.id
         };
 
         Lobbybs.forge(values).save().then(function (lobby) {

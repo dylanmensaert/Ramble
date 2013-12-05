@@ -1,4 +1,5 @@
 'use strict';
+//TODO: Check in sails-code what subscribe/publish exactly
 
 var Playerbs = require('../bs-models/player'),
     Bookshelf = require('../bs-models/pg');
