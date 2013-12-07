@@ -1,20 +1,17 @@
 'use strict';
 
-var PG = require('./pg'),
-    Lobbybs = require('./lobby'),
-    Playerbs;
+var PG = require('./pg');
+//TODO: lobby = require('./lobby');
 
-Playerbs = PG.Model.extend({
+module.exports = PG.Model.extend({
     tableName: 'players',
     username: null,
     password: null,
     email: null,
     ownedLobbies: function () {
-        return this.hasMany(Lobbybs);
+        return this.hasMany(require('./lobby'), 'owner');
     },
     joinedLobbies: function () {
-        return this.belongsToMany(Lobbybs);
+        return this.belongsToMany(require('./lobby'));
     }
 });
-
-module.exports = Playerbs;
