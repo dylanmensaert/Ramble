@@ -1,7 +1,7 @@
 'use strict';
 //TODO: Check in sails-code what subscribe/publish exactly
 
-var Playerbs = require('../bs-models/player'),
+var Player = require('../bs-models/player'),
     Bookshelf = require('../bs-models/pg');
 
 module.exports = {
@@ -9,32 +9,42 @@ module.exports = {
         var id = request.param('id'),
             ids = request.param('ids'),
             query = request.params.all(),
-            players = Bookshelf.Collection.extend({model: Playerbs}).forge();
+            Players = Bookshelf.Collection.extend({model: Player}).forge(),
+            relations = ['ownedLobbies', 'joinedLobbies'];
 
         if (id) {
             //TODO: Implement relationships correctly
-            Playerbs.forge({id: id}).fetch(/*{withRelated: ['ownedLobbies', 'joinedLobbies']}*/).then(function (player) {
+            Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
                 response.send({
                     player: player
                 });
 
-                //Playerbs.subscribe(request.socket, player);
+                //Player.subscribe(request.socket, player);
             });
         } else if (ids) {
-            players.query().whereIn(ids).then(function (players) {
-                response.send({
-                    players: players
+            Players.query().whereIn(ids).then(function (players) {
+                Players.add(players);
+
+                Players.load(relations).then(function (players) {
+                    response.send({
+                        players: players
+                    });
                 });
             });
         } else {
             //TODO: Implement limit skip sort.
-            players.query().where(query).then(function (players) {
-                response.send({
-                    players: players
-                });
+            //TODO: Remove duplicate code
+            Players.query().where(query).then(function (players) {
+                Players.add(players);
 
-                //Playerbs.subscribe(request.socket);
-                //Playerbs.subscribe(request.socket, players);
+                Players.load(relations).then(function (players) {
+                    response.send({
+                        players: players
+                    });
+
+                    //Player.subscribe(request.socket);
+                    //Player.subscribe(request.socket, players);
+                });
             });
         }
     },
@@ -46,7 +56,7 @@ module.exports = {
             email: request.param('email')
         };
 
-        Playerbs.forge(values).save().then(function (player) {
+        Player.forge(values).save().then(function (player) {
             response.send({
                 player: player
             });
@@ -60,18 +70,18 @@ module.exports = {
             email: request.param('email')
         };
 
-        Playerbs.forge(values).save().then(function (player) {
+        Player.forge(values).save().then(function (player) {
             response.send({
                 player: player
             });
 
-            //Playerbs.publishUpdate(player.id, player.toJSON());
+            //Player.publishUpdate(player.id, player.toJSON());
         });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        Playerbs.forge({id: id}).destroy().then(function () {
+        Player.forge({id: id}).destroy().then(function () {
             request.logOut();
 
             response.send({
@@ -80,7 +90,7 @@ module.exports = {
                 }
             });
 
-            //Playerbs.publishDestroy(player.id);
+            //Player.publishDestroy(player.id);
         });
     }
 };

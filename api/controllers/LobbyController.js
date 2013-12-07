@@ -1,7 +1,7 @@
 'use strict';
 //TODO: Check in sails-code what subscribe/publish exactly
 
-var Lobbybs = require('../bs-models/lobby'),
+var Lobby = require('../bs-models/lobby'),
     Bookshelf = require('../bs-models/pg');
 
 module.exports = {
@@ -9,32 +9,41 @@ module.exports = {
         var id = request.param('id'),
             ids = request.param('ids'),
             query = request.params.all(),
-            lobbies = Bookshelf.Collection.extend({model: Lobbybs}).forge();
+            Lobbies = Bookshelf.Collection.extend({model: Lobby}).forge(),
+            relations = ['owner', 'members'];
 
         if (id) {
-            //TODO: Implement relationships correctly
-            Lobbybs.forge({id: id}).fetch(/*{withRelated: ['owner', 'members']}*/).then(function (lobby) {
+            Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
                 response.send({
                     lobby: lobby
                 });
 
-                //Lobbybs.subscribe(request.socket, lobby);
+                //Lobby.subscribe(request.socket, lobby);
             });
         } else if (ids) {
-            lobbies.query().whereIn(ids).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
+            Lobbies.query().whereIn(ids).then(function (lobbies) {
+                Lobbies.add(lobbies);
+
+                Lobbies.load(relations).then(function (lobbies) {
+                    response.send({
+                        lobbies: lobbies
+                    });
                 });
             });
         } else {
             //TODO: Implement limit skip sort.
-            lobbies.query().where(query).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
+            //TODO: Remove duplicate code
+            Lobbies.query().where(query).then(function (lobbies) {
+                Lobbies.add(lobbies);
 
-                //Lobbybs.subscribe(request.socket);
-                //Lobbybs.subscribe(request.socket, lobbies);
+                Lobbies.load(relations).then(function (lobbies) {
+                    response.send({
+                        lobbies: lobbies
+                    });
+
+                    //Lobby.subscribe(request.socket);
+                    //Lobby.subscribe(request.socket, lobbies);
+                });
             });
         }
     },
@@ -47,7 +56,7 @@ module.exports = {
             owner: request.user.id
         };
 
-        Lobbybs.forge(values).save().then(function (lobby) {
+        Lobby.forge(values).save().then(function (lobby) {
             response.send({
                 lobby: lobby
             });
@@ -61,18 +70,18 @@ module.exports = {
             maxMembers: request.param('maxMembers')
         };
 
-        Lobbybs.forge(values).save().then(function (lobby) {
+        Lobby.forge(values).save().then(function (lobby) {
             response.send({
                 lobby: lobby
             });
 
-            //Lobbybs.publishUpdate(lobby.id, lobby.toJSON());
+            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
         });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        Lobbybs.forge({id: id}).destroy().then(function () {
+        Lobby.forge({id: id}).destroy().then(function () {
             request.logOut();
 
             response.send({
@@ -81,7 +90,7 @@ module.exports = {
                 }
             });
 
-            //Lobbybs.publishDestroy(lobby.id);
+            //Lobby.publishDestroy(lobby.id);
         });
     }
 };
