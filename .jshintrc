@@ -79,8 +79,6 @@
     "white": true,
 
     "globals": {
-        "sails": false,
-        "Lobby": false,
-        "Player": false
+        "sails": false
     }
 }

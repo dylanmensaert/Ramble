@@ -1,6 +1,6 @@
 # TODO: update connection.js connection.js. local.js may be removed
 config/local.js
-api/bs-models/connection.js
+api/models/connection.js
 assets/javascripts/init/templates.js
 
 node_modules/

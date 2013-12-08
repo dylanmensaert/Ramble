@@ -1,13 +1,10 @@
 'use strict';
 
 var Bookshelf = require('bookshelf'),
-    connection = require('./connection'),
-    PG;
+    connection = require('./connection');
 
-PG = Bookshelf.initialize({
+module.exports = Bookshelf.initialize({
     debug: true,
     client: 'pg',
     connection: connection
 });
-
-module.exports = PG;

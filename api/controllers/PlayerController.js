@@ -1,7 +1,7 @@
 'use strict';
 
-var Bookshelf = require('../bs-models/pg'),
-    Player = require('../bs-models/player'),
+var Bookshelf = require('../models/bookshelf'),
+    Player = require('../models/player'),
     Players = Bookshelf.Collection.extend({model: Player}),
     relations = ['ownedLobbies', 'joinedLobbies'],
     findMany = function (request, response) {

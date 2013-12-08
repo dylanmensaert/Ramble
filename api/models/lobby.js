@@ -1,9 +1,9 @@
 'use strict';
 
-var PG = require('./pg');
+var Bookshelf = require('./bookshelf');
 //TODO: player = require('./player');
 
-module.exports = PG.Model.extend({
+module.exports = Bookshelf.Model.extend({
     tableName: 'lobbies',
     //TODO: Don't include attributes (columns), must do validation on our own though.
     title: null,
@@ -16,4 +16,3 @@ module.exports = PG.Model.extend({
         return this.belongsToMany(require('./player'));
     }
 });
-

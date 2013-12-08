@@ -1,9 +1,9 @@
 'use strict';
 
-var PG = require('./pg');
+var Bookshelf = require('./bookshelf');
 //TODO: lobby = require('./lobby');
 
-module.exports = PG.Model.extend({
+module.exports = Bookshelf.Model.extend({
     tableName: 'players',
     username: null,
     password: null,
