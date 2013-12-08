@@ -1,18 +1,45 @@
 'use strict';
-//TODO: Check in sails-code what subscribe/publish exactly
 
-var Lobby = require('../bs-models/lobby'),
-    Bookshelf = require('../bs-models/pg');
+//TODO: create crudHelper?
+
+var Bookshelf = require('../bs-models/pg'),
+    Lobby = require('../bs-models/lobby'),
+    Lobbies = Bookshelf.Collection.extend({model: Lobby}),
+    relations = ['owner', 'members'],
+    findMany = function (request, response) {
+        var ids = request.param('ids'),
+            queryParams = request.params.all(),
+            lobbyCollection = Lobbies.forge(),
+            promise = lobbyCollection.query();
+
+        //TODO: Implement limit skip sort.
+        if (ids) {
+            promise = promise.whereIn(ids);
+        } else {
+            promise = promise.where(queryParams);
+        }
+
+        promise.then(function (lobbies) {
+            lobbyCollection.add(lobbies);
+
+            return lobbyCollection.load(relations);
+        }).then(function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //TODO: Check in sails-code what subscribe/publish exactly
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
+    };
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            query = request.params.all(),
-            Lobbies = Bookshelf.Collection.extend({model: Lobby}).forge(),
-            relations = ['owner', 'members'];
+        var id = request.param('id');
 
         if (id) {
+            //TODO: Implement relationships correctly
             Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
                 response.send({
                     lobby: lobby
@@ -20,31 +47,8 @@ module.exports = {
 
                 //Lobby.subscribe(request.socket, lobby);
             });
-        } else if (ids) {
-            Lobbies.query().whereIn(ids).then(function (lobbies) {
-                Lobbies.add(lobbies);
-
-                Lobbies.load(relations).then(function (lobbies) {
-                    response.send({
-                        lobbies: lobbies
-                    });
-                });
-            });
         } else {
-            //TODO: Implement limit skip sort.
-            //TODO: Remove duplicate code
-            Lobbies.query().where(query).then(function (lobbies) {
-                Lobbies.add(lobbies);
-
-                Lobbies.load(relations).then(function (lobbies) {
-                    response.send({
-                        lobbies: lobbies
-                    });
-
-                    //Lobby.subscribe(request.socket);
-                    //Lobby.subscribe(request.socket, lobbies);
-                });
-            });
+            findMany(request, response);
         }
     },
     create: function (request, response) {
@@ -82,8 +86,6 @@ module.exports = {
         var id = request.param('id');
 
         Lobby.forge({id: id}).destroy().then(function () {
-            request.logOut();
-
             response.send({
                 lobby: {
                     id: id

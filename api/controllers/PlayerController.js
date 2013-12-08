@@ -1,16 +1,40 @@
 'use strict';
-//TODO: Check in sails-code what subscribe/publish exactly
 
-var Player = require('../bs-models/player'),
-    Bookshelf = require('../bs-models/pg');
+var Bookshelf = require('../bs-models/pg'),
+    Player = require('../bs-models/player'),
+    Players = Bookshelf.Collection.extend({model: Player}),
+    relations = ['ownedLobbies', 'joinedLobbies'],
+    findMany = function (request, response) {
+        var ids = request.param('ids'),
+            queryParams = request.params.all(),
+            playerCollection = Players.forge(),
+            promise = playerCollection.query();
+
+        //TODO: Implement limit skip sort.
+        if (ids) {
+            promise = promise.whereIn(ids);
+        } else {
+            promise = promise.where(queryParams);
+        }
+
+        promise.then(function (players) {
+            playerCollection.add(players);
+
+            return playerCollection.load(relations);
+        }).then(function (players) {
+                response.send({
+                    players: players
+                });
+
+                //TODO: Check in sails-code what subscribe/publish exactly
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
+    };
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            query = request.params.all(),
-            Players = Bookshelf.Collection.extend({model: Player}).forge(),
-            relations = ['ownedLobbies', 'joinedLobbies'];
+        var id = request.param('id');
 
         if (id) {
             //TODO: Implement relationships correctly
@@ -21,31 +45,8 @@ module.exports = {
 
                 //Player.subscribe(request.socket, player);
             });
-        } else if (ids) {
-            Players.query().whereIn(ids).then(function (players) {
-                Players.add(players);
-
-                Players.load(relations).then(function (players) {
-                    response.send({
-                        players: players
-                    });
-                });
-            });
         } else {
-            //TODO: Implement limit skip sort.
-            //TODO: Remove duplicate code
-            Players.query().where(query).then(function (players) {
-                Players.add(players);
-
-                Players.load(relations).then(function (players) {
-                    response.send({
-                        players: players
-                    });
-
-                    //Player.subscribe(request.socket);
-                    //Player.subscribe(request.socket, players);
-                });
-            });
+            findMany(request, response);
         }
     },
     create: function (request, response) {
