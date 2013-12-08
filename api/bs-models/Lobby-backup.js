@@ -1,3 +1,4 @@
+/* global Lobby */
 'use strict';
 
 var bcrypt = require('bcrypt'),
