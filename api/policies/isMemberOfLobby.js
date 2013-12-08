@@ -1,7 +1,9 @@
 'use strict';
 
+var Lobby = require('../bs-models/lobby');
+
 module.exports = function (request, response, ok) {
-    Lobby.findOne(request.param('id')).done(function (error, lobby) {
+    Lobby.forge({id: request.param('id')}).fetch({withRelated: ['owner', 'members']}).then(function (lobby) {
         if (request.isAuthenticated() && lobby.members.contains(request.user.id)) {
             ok();
         } else {

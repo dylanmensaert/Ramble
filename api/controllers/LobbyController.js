@@ -2,8 +2,8 @@
 
 //TODO: create crudHelper?
 
-var Bookshelf = require('../models/bookshelf'),
-    Lobby = require('../models/lobby'),
+var Bookshelf = require('../bs-models/bookshelf'),
+    Lobby = require('../bs-models/lobby'),
     Lobbies = Bookshelf.Collection.extend({model: Lobby}),
     relations = ['owner', 'members'],
     findMany = function (request, response) {
