@@ -17,25 +17,24 @@ passport.deserializeUser(function (id, done) {
 
 module.exports.express = {
     customMiddleware: function (app) {
+        var player;
+
         passport.use(new LocalStrategy(function (username, password, done) {
-            Player.forge({username: username}).fetch().then(function (player) {
-                if (!player) {
+            Player.forge({username: username}).fetch().then(function (playerResult) {
+                player = playerResult.toJSON();
+
+                if (!playerResult) {
                     done(null, false);
                 } else {
-                    //TODO: Call toJSON() or just use .attributes?
-                    player = player.toJSON();
-
-                    bcrypt.compare(password, player.password, function (error, isValid) {
-                        if (error) {
-                            done(error);
-                        } else if (!isValid) {
-                            done(null, false);
-                        } else {
-                            done(null, player);
-                        }
-                    });
+                    return playerResult.verifyPassword(password);
                 }
-            });
+            }).then(function (isValid) {
+                    if (!isValid) {
+                        done(null, false);
+                    } else {
+                        done(null, player);
+                    }
+                });
         }));
 
         app.use(passport.initialize());

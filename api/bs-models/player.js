@@ -1,7 +1,8 @@
 'use strict';
 
 var Bookshelf = require('./bookshelf'),
-    setHashedPassword = require('../helpers/setHashedPassword');
+    setHashedPassword = require('../helpers/setHashedPassword'),
+    verifyPassword = require('../helpers/verifyPassword');
 //TODO: lobby = require('./lobby');
 
 module.exports = Bookshelf.Model.extend({
@@ -17,5 +18,8 @@ module.exports = Bookshelf.Model.extend({
     },
     hashPassword: function () {
         return setHashedPassword(this.attributes);
+    },
+    verifyPassword: function (password) {
+        return verifyPassword(password, this.toJSON().password);
     }
 });
