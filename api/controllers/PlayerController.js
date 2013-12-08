@@ -52,12 +52,15 @@ module.exports = {
     create: function (request, response) {
         //TODO; Refactor syntax without using extra variable
         var values = {
-            username: request.param('username'),
-            password: request.param('password'),
-            email: request.param('email')
-        };
+                username: request.param('username'),
+                password: request.param('password'),
+                email: request.param('email')
+            },
+            player = Player.forge(values);
 
-        Player.forge(values).save().then(function (player) {
+        player.hashPassword().then(function () {
+            return player.save();
+        }).then(function (player) {
             response.send({
                 player: player
             });
@@ -65,13 +68,16 @@ module.exports = {
     },
     update: function (request, response) {
         var values = {
-            id: request.param('id'),
-            username: request.param('username'),
-            password: request.param('password'),
-            email: request.param('email')
-        };
+                id: request.param('id'),
+                username: request.param('username'),
+                password: request.param('password'),
+                email: request.param('email')
+            },
+            player = Player.forge(values);
 
-        Player.forge(values).save().then(function (player) {
+        player.hashPassword().then(function () {
+            return player.save();
+        }).then(function (player) {
             response.send({
                 player: player
             });

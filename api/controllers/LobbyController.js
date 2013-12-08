@@ -54,33 +54,39 @@ module.exports = {
     create: function (request, response) {
         //TODO; Refactor syntax without using extra variable
         var values = {
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers'),
-            owner: request.user.id
-        };
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers'),
+                owner: request.user.id
+            },
+            lobby = Lobby.forge(values);
 
-        Lobby.forge(values).save().then(function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
             });
-        });
     },
     update: function (request, response) {
         var values = {
-            id: request.param('id'),
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers')
-        };
+                id: request.param('id'),
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers')
+            },
+            lobby = Lobby.forge(values);
 
-        Lobby.forge(values).save().then(function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
+
+                //Lobby.publishUpdate(lobby.id, lobby.toJSON());
             });
-
-            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
-        });
     },
     destroy: function (request, response) {
         var id = request.param('id');

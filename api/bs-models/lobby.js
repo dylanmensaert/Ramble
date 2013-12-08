@@ -1,6 +1,7 @@
 'use strict';
 
-var Bookshelf = require('./bookshelf');
+var Bookshelf = require('./bookshelf'),
+    setHashedPassword = require('../helpers/setHashedPassword');
 //TODO: player = require('./player');
 
 module.exports = Bookshelf.Model.extend({
@@ -14,5 +15,8 @@ module.exports = Bookshelf.Model.extend({
     },
     members: function () {
         return this.belongsToMany(require('./player'));
+    },
+    hashPassword: function () {
+        return setHashedPassword(this.attributes);
     }
 });

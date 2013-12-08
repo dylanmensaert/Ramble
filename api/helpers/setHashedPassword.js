@@ -1,27 +1,18 @@
 'use strict';
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'),
+    Promise = require('bluebird');
 
-module.exports = function (Model, values, next) {
+module.exports = Promise.method(function (values) {
+    var hash = Promise.promisify(bcrypt.hash, bcrypt);
+
     if (values.password) {
-        bcrypt.hash(values.password, 10, function (error, hashedPassword) {
-            if (error) {
-                next(error);
-            } else {
-                values.password = hashedPassword;
+        return hash(values.password, 10).then(function (hashedPassword) {
+            values.password = hashedPassword;
 
-                next();
-            }
+            return Promise.resolve();
         });
     } else {
-        Model.findOne(values.id).done(function (error, model) {
-            if (error) {
-                next(error);
-            } else {
-                values.password = model.password;
-
-                next();
-            }
-        });
+        return Promise.resolve();
     }
-};
+});

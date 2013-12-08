@@ -22,7 +22,8 @@
         "pg": "2.8.3",
         "passport": "0.1.17",
         "passport-local": "0.1.6",
-        "bcrypt": "0.7.7"
+        "bcrypt": "0.7.7",
+        "bluebird": "0.11.5-0"
     },
     "devDependencies": {
         "load-grunt-tasks": "0.2.0",
