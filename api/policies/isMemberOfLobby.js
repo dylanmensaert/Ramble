@@ -1,10 +1,10 @@
 'use strict';
 
-var Lobby_Player = require('../bs-models/lobby_player');
+var Membership = require('../bs-models/membership');
 
 module.exports = function (request, response, ok) {
-    Lobby_Player.forge().query().where({player_id: request.user.id}).andWhere({lobby_id: request.param('id')}).then(function (ids) {
-        if (request.isAuthenticated() && ids.length !== 0) {
+    Membership.forge().query().where({player_id: request.user.id, lobby_id: request.param('id')}).then(function (ids) {
+        if (request.isAuthenticated() && ids.length > 0) {
             ok();
         } else {
             //TODO: Check if error and send it as response (ex: if lobby not found)
