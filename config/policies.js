@@ -10,13 +10,16 @@ module.exports.policies = {
         //TODO: Set policy when login implemented
         find: true,
         create: true,
-        update: true, //'isOwnerOfAccount',
-        destroy: true //'isOwnerOfAccount'
+        update: 'isOwnerOfAccount',
+        destroy: 'isOwnerOfAccount'
     },
     lobby: {
         find: true,
         create: 'isAuthenticated',
         update: 'isOwnerOfLobby',
-        destroy: 'isOwnerOfLobby'
+        destroy: 'isOwnerOfLobby',
+        join: 'isAuthenticated',
+        leave: 'isMemberOfLobby',
+        kick: 'isOwnerOfLobby'
     }
 };
