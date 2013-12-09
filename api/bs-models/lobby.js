@@ -15,7 +15,7 @@ module.exports = Bookshelf.Model.extend({
         return this.belongsTo(require('./player'));
     },
     members: function () {
-        return this.belongsToMany(require('./player'));
+        return this.belongsToMany(require('./player')).through(require('./membership'));
     },
     hashPassword: function () {
         return setHashedPassword(this.attributes);
