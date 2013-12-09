@@ -13,26 +13,66 @@ define(function (require) {
             return this.get('members').contains(this.get('session.account'));
         }.property('members.@each', 'session.account'),
         actions: {
-            //TODO: Implement join/leave/kick via socket.io!
-            leave: function () {
-                this.send('kick', this.get('session.account'));
-            },
-            kick: function (member) {
-                var model = this.get('model');
-
-                model.get('members').removeObject(member);
-                model.save();
-            },
             join: function () {
-                var model = this.get('model');
+                var model,
+                    json,
+                    socket;
 
-                //TODO: Check if password is correct on server!
+                model = this.get('model');
+                json = {
+                    url: '/api/lobbies/join/' + model.get('id')
+                };
+                socket = this.get('socket');
+
                 if (this.get('session.isLoggedIn')) {
-                    model.get('members').pushObject(this.get('session.account'));
-                    model.save();
+                    socket.emit('get', json, function (data) {
+                        if (data.status === 200) {
+                            //TODO: show notification?
+                            //return undefined;
+                        }
+                    }.bind(this));
                 } else {
                     this.transitionToRoute('login');
                 }
+            },
+            leave: function () {
+                var model,
+                    json,
+                    socket;
+
+                model = this.get('model');
+                json = {
+                    url: '/api/lobbies/leave/' + model.get('id')
+                };
+                socket = this.get('socket');
+
+                socket.emit('get', json, function (data) {
+                    if (data.status === 200) {
+                        //TODO: show notification?
+                        //return undefined;
+                    }
+                }.bind(this));
+            },
+            kick: function (member) {
+                var model,
+                    json,
+                    socket;
+
+                model = this.get('model');
+                json = {
+                    url: '/api/lobbies/kick/' + model.get('id'),
+                    data: {
+                        member: member
+                    }
+                };
+                socket = this.get('socket');
+
+                socket.emit('get', json, function (data) {
+                    if (data.status === 200) {
+                        //TODO: show notification?
+                        //return undefined;
+                    }
+                }.bind(this));
             }
         }
     });

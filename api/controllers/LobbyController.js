@@ -1,3 +1,4 @@
+/* jshint camelcase:false */
 'use strict';
 
 //TODO: create crudHelper?
@@ -6,6 +7,7 @@ var Bookshelf = require('../bs-models/bookshelf'),
     Lobby = require('../bs-models/lobby'),
     Lobbies = Bookshelf.Collection.extend({model: Lobby}),
     relations = ['owner', 'members'],
+    Membership = require('../bs-models/membership'),
     findMany = function (request, response) {
         var ids = request.param('ids'),
             queryParams = request.params.all(),
@@ -99,6 +101,47 @@ module.exports = {
             });
 
             //Lobby.publishDestroy(lobby.id);
+        });
+    },
+    join: function (request, response) {
+        var values = {
+            player_id: request.user.id,
+            lobby_id: request.param('id')
+        };
+
+        Membership.forge(values).save().then(function (lobby) {
+            response.send({
+                lobby: lobby
+            });
+        });
+    },
+    leave: function (request, response) {
+        var values = {
+            lobby_id: request.param('id'),
+            player_id: request.user.id
+        };
+
+        Membership.forge().query().where(values).del().then(function () {
+            response.send({
+                //TODO: Look into what to send to client
+                lobby: {
+                    id: request.param('id')
+                }
+            });
+        });
+    },
+    kick: function (request, response) {
+        var values = {
+            lobby_id: request.param('id'),
+            player_id: request.param('member').id
+        };
+
+        Membership.forge().query().where(values).del().then(function () {
+            response.send({
+                lobby: {
+                    id: request.param('id')
+                }
+            });
         });
     }
 };
