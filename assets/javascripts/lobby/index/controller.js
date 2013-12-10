@@ -53,7 +53,7 @@ define(function (require) {
                     }
                 }.bind(this));
             },
-            kick: function (member) {
+            kick: function (player) {
                 var model,
                     json,
                     socket;
@@ -62,7 +62,7 @@ define(function (require) {
                 json = {
                     url: '/api/membership/kick/' + model.get('id'),
                     data: {
-                        member: member
+                        player: player
                     }
                 };
                 socket = this.get('socket');
