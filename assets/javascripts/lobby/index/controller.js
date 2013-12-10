@@ -28,7 +28,7 @@ define(function (require) {
                     socket.emit('get', json, function (data) {
                         if (data.status === 200) {
                             //TODO: show notification?
-                            //return undefined;
+                            return undefined;
                         }
                     }.bind(this));
                 } else {
@@ -49,7 +49,7 @@ define(function (require) {
                 socket.emit('get', json, function (data) {
                     if (data.status === 200) {
                         //TODO: show notification?
-                        //return undefined;
+                        return undefined;
                     }
                 }.bind(this));
             },
@@ -70,7 +70,7 @@ define(function (require) {
                 socket.emit('get', json, function (data) {
                     if (data.status === 200) {
                         //TODO: show notification?
-                        //return undefined;
+                        return undefined;
                     }
                 }.bind(this));
             }
