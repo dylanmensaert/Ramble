@@ -22,6 +22,7 @@ module.exports = {
             player_id: request.user.id
         };
 
+        //TODO: Can be shorter? : Membership.forge(values).destroy().then(function () {
         Membership.forge().query().where(values).del().then(function () {
             response.send({
                 //TODO: Look into what to send to client
