@@ -17,7 +17,9 @@ module.exports.policies = {
         find: true,
         create: 'isAuthenticated',
         update: 'isOwnerOfLobby',
-        destroy: 'isOwnerOfLobby',
+        destroy: 'isOwnerOfLobby'
+    },
+    membership: {
         join: 'isAuthenticated',
         leave: 'isMemberOfLobby',
         kick: 'isOwnerOfLobby'
