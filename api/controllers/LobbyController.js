@@ -1,4 +1,3 @@
-/* jshint camelcase:false */
 'use strict';
 
 //TODO: create crudHelper?

@@ -1,4 +1,3 @@
-/* jshint camelcase:false */
 'use strict';
 
 var Bookshelf = require('./bookshelf');
@@ -6,10 +5,10 @@ var Bookshelf = require('./bookshelf');
 
 module.exports = Bookshelf.Model.extend({
     tableName: 'memberships',
-    player_id: function () {
+    player: function () {
         return this.belongsTo(require('./player'));
     },
-    lobby_id: function () {
+    lobby: function () {
         return this.belongsTo(require('./lobby'));
     }
 });

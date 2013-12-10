@@ -1,10 +1,9 @@
-/* jshint camelcase:false */
 'use strict';
 
 var Membership = require('../bs-models/membership');
 
 module.exports = function (request, response, ok) {
-    Membership.forge().query().where({player_id: request.user.id, lobby_id: request.param('id')}).then(function (ids) {
+    Membership.forge().query().where({player: request.user.id, lobby: request.param('id')}).then(function (ids) {
         if (request.isAuthenticated() && ids.length > 0) {
             ok();
         } else {

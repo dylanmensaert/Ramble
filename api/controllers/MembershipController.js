@@ -1,14 +1,12 @@
-/* jshint camelcase:false */
 'use strict';
 
-var Bookshelf = require('../bs-models/bookshelf'),
-    Membership = require('../bs-models/membership');
+var Membership = require('../bs-models/membership');
 
 module.exports = {
     join: function (request, response) {
         var values = {
-            player_id: request.user.id,
-            lobby_id: request.param('id')
+            player: request.user.id,
+            lobby: request.param('id')
         };
 
         Membership.forge(values).save().then(function (lobby) {
@@ -19,8 +17,8 @@ module.exports = {
     },
     leave: function (request, response) {
         var values = {
-            lobby_id: request.param('id'),
-            player_id: request.user.id
+            lobby: request.param('id'),
+            player: request.user.id
         };
 
         Membership.forge().query().where(values).del().then(function () {
@@ -34,8 +32,8 @@ module.exports = {
     },
     kick: function (request, response) {
         var values = {
-            lobby_id: request.param('id'),
-            player_id: request.param('member').id
+            lobby: request.param('id'),
+            player: request.param('member').id
         };
 
         Membership.forge().query().where(values).del().then(function () {
