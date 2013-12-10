@@ -3,7 +3,8 @@
 module.exports.policies = {
     auth: {
         login: true,
-        logout: true,
+        //TODO: there seems to be a problem with logout: 'isAuthenticated'
+        logout: 'isAuthenticated',
         checkSession: true
     },
     player: {
