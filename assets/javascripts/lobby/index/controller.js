@@ -20,7 +20,7 @@ define(function (require) {
 
                 model = this.get('model');
                 json = {
-                    url: '/api/lobbies/join/' + model.get('id')
+                    url: '/api/membership/join/' + model.get('id')
                 };
                 socket = this.get('socket');
 
@@ -42,7 +42,7 @@ define(function (require) {
 
                 model = this.get('model');
                 json = {
-                    url: '/api/lobbies/leave/' + model.get('id')
+                    url: '/api/membership/leave/' + model.get('id')
                 };
                 socket = this.get('socket');
 
@@ -60,7 +60,7 @@ define(function (require) {
 
                 model = this.get('model');
                 json = {
-                    url: '/api/lobbies/kick/' + model.get('id'),
+                    url: '/api/membership/kick/' + model.get('id'),
                     data: {
                         member: member
                     }
