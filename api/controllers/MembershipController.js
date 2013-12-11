@@ -1,7 +1,18 @@
 /* jshint camelcase:false */
 'use strict';
 
-var Membership = require('../bs-models/membership');
+var Membership = require('../bs-models/membership'),
+    deleteMembership = function (values, response) {
+        //TODO: Can be shorter? : Membership.forge(values).destroy().then(function () {
+        Membership.forge().query().where(values).del().then(function () {
+            response.send({
+                //TODO: Look into what to send to client
+                lobby: {
+                    id: request.param('id')
+                }
+            });
+        });
+    };
 
 module.exports = {
     join: function (request, response) {
@@ -22,28 +33,14 @@ module.exports = {
             player_id: request.user.id
         };
 
-        //TODO: Can be shorter? : Membership.forge(values).destroy().then(function () {
-        Membership.forge().query().where(values).del().then(function () {
-            response.send({
-                //TODO: Look into what to send to client
-                lobby: {
-                    id: request.param('id')
-                }
-            });
-        });
+        deleteMembership(values, response);
     },
     kick: function (request, response) {
         var values = {
             lobby_id: request.param('id'),
-            player_id: request.param('member').id
+            player_id: request.param('player').id
         };
 
-        Membership.forge().query().where(values).del().then(function () {
-            response.send({
-                lobby: {
-                    id: request.param('id')
-                }
-            });
-        });
+        deleteMembership(values, response);
     }
 };
