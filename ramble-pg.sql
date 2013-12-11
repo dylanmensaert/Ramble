@@ -9,14 +9,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -29,7 +29,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: lobbies; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: lobbies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE lobbies (
@@ -41,10 +41,8 @@ CREATE TABLE lobbies (
 );
 
 
-ALTER TABLE public.lobbies OWNER TO root;
-
 --
--- Name: lobbies_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: lobbies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE lobbies_id_seq
@@ -55,17 +53,15 @@ CREATE SEQUENCE lobbies_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.lobbies_id_seq OWNER TO root;
-
 --
--- Name: lobbies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: lobbies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE lobbies_id_seq OWNED BY lobbies.id;
 
 
 --
--- Name: memberships; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE memberships (
@@ -75,10 +71,8 @@ CREATE TABLE memberships (
 );
 
 
-ALTER TABLE public.memberships OWNER TO root;
-
 --
--- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE memberships_id_seq
@@ -89,17 +83,15 @@ CREATE SEQUENCE memberships_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.memberships_id_seq OWNER TO root;
-
 --
--- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
 
 
 --
--- Name: players; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: players; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE players (
@@ -110,10 +102,8 @@ CREATE TABLE players (
 );
 
 
-ALTER TABLE public.players OWNER TO root;
-
 --
--- Name: players_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: players_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE players_id_seq
@@ -124,38 +114,36 @@ CREATE SEQUENCE players_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.players_id_seq OWNER TO root;
-
 --
--- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE players_id_seq OWNED BY players.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lobbies ALTER COLUMN id SET DEFAULT nextval('lobbies_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY memberships ALTER COLUMN id SET DEFAULT nextval('memberships_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::regclass);
 
 
 --
--- Name: lobbies_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: lobbies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY lobbies
@@ -163,7 +151,7 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: lobbies_title_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: lobbies_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY lobbies
@@ -171,7 +159,7 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY memberships
@@ -179,7 +167,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: memberships_player_id_lobby_id_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: memberships_player_id_lobby_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY memberships
@@ -187,7 +175,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: players_email_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: players_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY players
@@ -195,7 +183,7 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY players
@@ -203,7 +191,7 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: players_username_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: players_username_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY players
@@ -211,7 +199,7 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: lobbies_owner_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: lobbies_owner_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lobbies
@@ -219,7 +207,7 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: player_lobby_lobby_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: player_lobby_lobby_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY memberships
@@ -227,7 +215,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: player_lobby_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: player_lobby_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY memberships
@@ -235,7 +223,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: postgres
+-- Name: public; Type: ACL; Schema: -; Owner: -
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
