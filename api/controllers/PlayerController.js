@@ -7,11 +7,13 @@ var Bookshelf = require('../bs-models/bookshelf'),
     findMany = function (request, response) {
         var ids = request.param('ids'),
             limit = request.param('limit'),
+            offset = request.param('offset'),
             queryParams = request.params.all(),
             playerCollection = Players.forge(),
             promise = playerCollection.query();
 
         delete queryParams.limit;
+        delete queryParams.offset;
 
         //TODO: Implement limit skip sort.
         if (ids) {
@@ -20,7 +22,7 @@ var Bookshelf = require('../bs-models/bookshelf'),
             promise = promise.where(queryParams);
         }
 
-        promise.limit(limit).then(function (players) {
+        promise.limit(limit).offset(offset).then(function (players) {
             playerCollection.add(players);
 
             return playerCollection.load(relations);
