@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.10
 -- Dumped by pg_dump version 9.1.10
--- Started on 2013-12-11 13:06:19 CET
+-- Started on 2013-12-11 13:12:54 CET
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -21,7 +21,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1933 (class 0 OID 0)
+-- TOC entry 1927 (class 0 OID 0)
 -- Dependencies: 167
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -69,7 +69,7 @@ CREATE SEQUENCE lobbies_id_seq
 ALTER TABLE public.lobbies_id_seq OWNER TO root;
 
 --
--- TOC entry 1934 (class 0 OID 0)
+-- TOC entry 1928 (class 0 OID 0)
 -- Dependencies: 162
 -- Name: lobbies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
@@ -109,7 +109,7 @@ CREATE SEQUENCE memberships_id_seq
 ALTER TABLE public.memberships_id_seq OWNER TO root;
 
 --
--- TOC entry 1935 (class 0 OID 0)
+-- TOC entry 1929 (class 0 OID 0)
 -- Dependencies: 166
 -- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
@@ -150,7 +150,7 @@ CREATE SEQUENCE players_id_seq
 ALTER TABLE public.players_id_seq OWNER TO root;
 
 --
--- TOC entry 1936 (class 0 OID 0)
+-- TOC entry 1930 (class 0 OID 0)
 -- Dependencies: 163
 -- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
@@ -186,77 +186,8 @@ ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::r
 
 
 --
--- TOC entry 1920 (class 0 OID 16387)
--- Dependencies: 161 1926
--- Data for Name: lobbies; Type: TABLE DATA; Schema: public; Owner: root
---
-
-COPY lobbies (title, password, "maxMembers", owner, id) FROM stdin;
-lobby van brother	b	10	8	1
-Test Lobby	$2a$10$6/6IukjsZoG4Ej9M4kDXxOnD/dOfkQbaHRfHCkcW/XcWIu.L0wvWW	11	12	2
-lobby dimi	$2a$10$TVNGnm39rRI6GFX9zy/dYuOww/.ocVvGTZ03UN0Hps4M/a9BErOjK	20	11	3
-\.
-
-
---
--- TOC entry 1937 (class 0 OID 0)
--- Dependencies: 162
--- Name: lobbies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
---
-
-SELECT pg_catalog.setval('lobbies_id_seq', 5, true);
-
-
---
--- TOC entry 1924 (class 0 OID 16446)
--- Dependencies: 165 1926
--- Data for Name: memberships; Type: TABLE DATA; Schema: public; Owner: root
---
-
-COPY memberships (player_id, lobby_id, id) FROM stdin;
-14	1	1
-12	1	3
-12	3	4
-\.
-
-
---
--- TOC entry 1938 (class 0 OID 0)
--- Dependencies: 166
--- Name: memberships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
---
-
-SELECT pg_catalog.setval('memberships_id_seq', 4, true);
-
-
---
--- TOC entry 1923 (class 0 OID 16437)
--- Dependencies: 164 1926
--- Data for Name: players; Type: TABLE DATA; Schema: public; Owner: root
---
-
-COPY players (username, password, email, id) FROM stdin;
-master	$2a$10$e0FfY5Zsyx9rp9BGLGVBSeFI9NK3JoZ/hfg.rkSXneWqLmX8TdvWu	master@gmail.com	8
-dimi	$2a$10$bvxDR31WKUMnaKM5EHoehuWKlptVJRmjUJjMRibloKZ49yrtK2HKu	dimi@test.test	11
-test	$2a$10$X07eY9xqp.NT738/x5QbEOeZHJOXRRZr1etWsyW16huGP/7oLwnS2	test@test.test	12
-t	$2a$10$bF6brVy1GqSqE.2VFjB5FuKy5keYR91rPSuJRGK2M.ivKpz4if26.	t@t.t	13
-poe	$2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe	poe@gmail.com	14
-bob	$2a$10$B7JRqqDBU1Hzs3.6eJjPU.CNq4uaBP1/c/uWk1cEauxi4Wn9KgALC	sdfa.gmail.com	15
-\.
-
-
---
--- TOC entry 1939 (class 0 OID 0)
--- Dependencies: 163
--- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
---
-
-SELECT pg_catalog.setval('players_id_seq', 15, true);
-
-
---
 -- TOC entry 1803 (class 2606 OID 16422)
--- Dependencies: 161 161 1927
+-- Dependencies: 161 161 1921
 -- Name: lobbies_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -266,7 +197,7 @@ ALTER TABLE ONLY lobbies
 
 --
 -- TOC entry 1805 (class 2606 OID 16396)
--- Dependencies: 161 161 1927
+-- Dependencies: 161 161 1921
 -- Name: lobbies_title_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -276,7 +207,7 @@ ALTER TABLE ONLY lobbies
 
 --
 -- TOC entry 1813 (class 2606 OID 16584)
--- Dependencies: 165 165 1927
+-- Dependencies: 165 165 1921
 -- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -286,7 +217,7 @@ ALTER TABLE ONLY memberships
 
 --
 -- TOC entry 1815 (class 2606 OID 16586)
--- Dependencies: 165 165 165 1927
+-- Dependencies: 165 165 165 1921
 -- Name: memberships_player_id_lobby_id_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -296,7 +227,7 @@ ALTER TABLE ONLY memberships
 
 --
 -- TOC entry 1807 (class 2606 OID 16454)
--- Dependencies: 164 164 1927
+-- Dependencies: 164 164 1921
 -- Name: players_email_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -306,7 +237,7 @@ ALTER TABLE ONLY players
 
 --
 -- TOC entry 1809 (class 2606 OID 16445)
--- Dependencies: 164 164 1927
+-- Dependencies: 164 164 1921
 -- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -316,7 +247,7 @@ ALTER TABLE ONLY players
 
 --
 -- TOC entry 1811 (class 2606 OID 16450)
--- Dependencies: 164 164 1927
+-- Dependencies: 164 164 1921
 -- Name: players_username_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -326,7 +257,7 @@ ALTER TABLE ONLY players
 
 --
 -- TOC entry 1816 (class 2606 OID 16541)
--- Dependencies: 161 164 1808 1927
+-- Dependencies: 161 164 1808 1921
 -- Name: lobbies_owner_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -336,7 +267,7 @@ ALTER TABLE ONLY lobbies
 
 --
 -- TOC entry 1817 (class 2606 OID 16573)
--- Dependencies: 161 165 1802 1927
+-- Dependencies: 161 165 1802 1921
 -- Name: player_lobby_lobby_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -346,7 +277,7 @@ ALTER TABLE ONLY memberships
 
 --
 -- TOC entry 1818 (class 2606 OID 16578)
--- Dependencies: 164 1808 165 1927
+-- Dependencies: 164 1808 165 1921
 -- Name: player_lobby_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -355,7 +286,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- TOC entry 1932 (class 0 OID 0)
+-- TOC entry 1926 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -366,7 +297,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2013-12-11 13:06:19 CET
+-- Completed on 2013-12-11 13:12:54 CET
 
 --
 -- PostgreSQL database dump complete
