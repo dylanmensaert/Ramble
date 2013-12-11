@@ -8,18 +8,21 @@ var Bookshelf = require('../bs-models/bookshelf'),
     relations = ['owner', 'members'],
     findMany = function (request, response) {
         var ids = request.param('ids'),
+            limit = request.param('limit'),
             queryParams = request.params.all(),
             lobbyCollection = Lobbies.forge(),
             promise = lobbyCollection.query();
 
-        //TODO: Implement limit skip sort.
+        delete queryParams.limit;
+
+        //TODO: Implement skip sort.
         if (ids) {
             promise = promise.whereIn(ids);
         } else {
             promise = promise.where(queryParams);
         }
 
-        promise.then(function (lobbies) {
+        promise.limit(limit).then(function (lobbies) {
             lobbyCollection.add(lobbies);
 
             return lobbyCollection.load(relations);
@@ -39,7 +42,6 @@ module.exports = {
         var id = request.param('id');
 
         if (id) {
-            //TODO: Implement relationships correctly
             Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
                 response.send({
                     lobby: lobby

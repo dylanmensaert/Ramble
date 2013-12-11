@@ -6,9 +6,12 @@ var Bookshelf = require('../bs-models/bookshelf'),
     relations = ['ownedLobbies', 'joinedLobbies'],
     findMany = function (request, response) {
         var ids = request.param('ids'),
+            limit = request.param('limit'),
             queryParams = request.params.all(),
             playerCollection = Players.forge(),
             promise = playerCollection.query();
+
+        delete queryParams.limit;
 
         //TODO: Implement limit skip sort.
         if (ids) {
@@ -17,7 +20,7 @@ var Bookshelf = require('../bs-models/bookshelf'),
             promise = promise.where(queryParams);
         }
 
-        promise.then(function (players) {
+        promise.limit(limit).then(function (players) {
             playerCollection.add(players);
 
             return playerCollection.load(relations);

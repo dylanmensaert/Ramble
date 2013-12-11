@@ -3,7 +3,6 @@
 var Bookshelf = require('./bookshelf'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
-//TODO: lobby = require('./lobby');
 
 module.exports = Bookshelf.Model.extend({
     tableName: 'players',
