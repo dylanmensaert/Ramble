@@ -8,7 +8,7 @@ var Membership = require('../bs-models/membership'),
             response.send({
                 //TODO: Look into what to send to client
                 lobby: {
-                    id: request.param('id')
+                    id: values.lobby_id
                 }
             });
         });
