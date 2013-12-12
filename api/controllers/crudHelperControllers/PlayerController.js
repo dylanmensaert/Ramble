@@ -2,7 +2,7 @@
 
 var Bookshelf = require('../../bs-models/bookshelf'),
     crudHelper = require('./helpers/crudHelper'),
-    optionsCreator =  require('./helpers/crudOptionsCreator'),
+    optionsCreator = require('./helpers/crudOptionsCreator'),
     Player = require('../../bs-models/player');
 
 module.exports = {
