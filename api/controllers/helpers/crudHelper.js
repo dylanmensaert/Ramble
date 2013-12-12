@@ -28,11 +28,9 @@ module.exports = {
         promise = modelCollection.query().where(options.queryParams);
 
         if (options.limit) {
-
             promise = promise.limit(options.limit);
 
             if (options.offset) {
-
                 promise = promise.offset(options.offset);
             }
         }
@@ -43,7 +41,6 @@ module.exports = {
             return modelCollection.load(options.relations);
         }).then(function (models) {
                 success(models);
-
             });
     },
     save: function (Model, values, success) {
