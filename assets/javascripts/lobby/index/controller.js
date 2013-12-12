@@ -14,20 +14,15 @@ define(function (require) {
         }.property('members.@each', 'session.account'),
         actions: {
             join: function () {
-                var model,
-                    json,
-                    socket;
-
-                model = this.get('model');
-                json = {
-                    url: '/api/membership/join/' + model.get('id')
+                var json = {
+                    url: '/api/membership/join/' + this.get('model.id')
                 };
-                socket = this.get('socket');
 
                 if (this.get('session.isLoggedIn')) {
-                    socket.emit('get', json, function (data) {
+                    this.get('socket').emit('get', json, function (data) {
                         if (data.status === 200) {
                             //TODO: show notification?
+                            //TODO: Update data in ember-data store? or via websockets?
                             return undefined;
                         }
                     }.bind(this));
@@ -36,17 +31,11 @@ define(function (require) {
                 }
             },
             leave: function () {
-                var model,
-                    json,
-                    socket;
-
-                model = this.get('model');
-                json = {
-                    url: '/api/membership/leave/' + model.get('id')
+                var json = {
+                    url: '/api/membership/leave/' + this.get('model.id')
                 };
-                socket = this.get('socket');
 
-                socket.emit('get', json, function (data) {
+                this.get('socket').emit('get', json, function (data) {
                     if (data.status === 200) {
                         //TODO: show notification?
                         return undefined;
@@ -54,20 +43,14 @@ define(function (require) {
                 }.bind(this));
             },
             kick: function (player) {
-                var model,
-                    json,
-                    socket;
-
-                model = this.get('model');
-                json = {
-                    url: '/api/membership/kick/' + model.get('id'),
+                var json = {
+                    url: '/api/membership/kick/' + this.get('model.id'),
                     data: {
                         player: player
                     }
                 };
-                socket = this.get('socket');
 
-                socket.emit('get', json, function (data) {
+                this.get('socket').emit('get', json, function (data) {
                     if (data.status === 200) {
                         //TODO: show notification?
                         return undefined;
