@@ -1,64 +1,48 @@
 'use strict';
 
-var Bookshelf = require('../bs-models/bookshelf'),
-    Lobby = require('../bs-models/lobby'),
-    Lobbies = Bookshelf.Collection.extend({model: Lobby}),
-    relations = ['owner', 'members'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            lobbyCollection = Lobbies.forge(),
-            query = lobbyCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        //TODO: Implement skip sort.
-        if (ids) {
-            query = query.whereIn(ids);
-        } else {
-            query = query.where(queryParams);
-        }
-
-        if (limit) {
-            query = query.limit(limit);
-
-            if (offset) {
-                query = query.offset(offset);
-            }
-        }
-
-        query.then(function (lobbies) {
-            lobbyCollection.add(lobbies);
-
-            return lobbyCollection.load(relations);
-        }).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
-    };
+var Bookshelf = require('../../bs-models/bookshelf'),
+    crudHelper = require('./helpers/findHelper'),
+    optionsCreator = require('./helpers/findOptionsCreator'),
+    Lobby = require('../../bs-models/lobby');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var Lobbies = Bookshelf.Collection.extend({model: Lobby}),
+            relations = ['owner', 'members'],
+            options;
 
-        if (id) {
-            Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
+        if (request.param('id')) {
+            options = optionsCreator.getFindOneOptions(Lobby, relations, request);
+
+            crudHelper.findOne(options, function (lobby) {
                 response.send({
                     lobby: lobby
                 });
 
                 //Lobby.subscribe(request.socket, lobby);
             });
+        } else if (request.param('ids')) {
+            options = optionsCreator.getFindManyOptions(Lobbies, relations, request);
+
+            crudHelper.findMany(options, function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         } else {
-            findMany(request, response);
+            options = optionsCreator.getFindOptions(Lobbies, relations, request);
+
+            crudHelper.find(options, function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         }
     },
     create: function (request, response) {
