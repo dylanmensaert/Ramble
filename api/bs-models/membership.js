@@ -5,10 +5,10 @@ var Bookshelf = require('./bookshelf');
 
 module.exports = Bookshelf.Model.extend({
     tableName: 'memberships',
-    player: function () {
-        return this.belongsTo(require('./player'));
-    },
     lobby: function () {
         return this.belongsTo(require('./lobby'));
+    },
+    player: function () {
+        return this.belongsTo(require('./player'));
     }
 });
