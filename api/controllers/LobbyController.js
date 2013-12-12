@@ -1,84 +1,109 @@
 'use strict';
 
+//TODO: create crudHelper?
+
 var Bookshelf = require('../bs-models/bookshelf'),
-    crudHelper = require('./helpers/crudHelper'),
-    optionsCreator =  require('./helpers/optionsCreator'),
-    Lobby = require('../bs-models/lobby');
+    Lobby = require('../bs-models/lobby'),
+    Lobbies = Bookshelf.Collection.extend({model: Lobby}),
+    relations = ['owner', 'members'],
+    findMany = function (request, response) {
+        var ids = request.param('ids'),
+            limit = request.param('limit'),
+            offset = request.param('offset'),
+            queryParams = request.params.all(),
+            lobbyCollection = Lobbies.forge(),
+            promise = lobbyCollection.query();
+
+        delete queryParams.limit;
+        delete queryParams.offset;
+
+        //TODO: Implement skip sort.
+        if (ids) {
+            promise = promise.whereIn(ids);
+        } else {
+            promise = promise.where(queryParams);
+        }
+
+        if (limit) {
+            promise = promise.limit(limit);
+
+            if (offset) {
+                promise = promise.offset(offset);
+            }
+        }
+
+        promise.then(function (lobbies) {
+            lobbyCollection.add(lobbies);
+
+            return lobbyCollection.load(relations);
+        }).then(function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //TODO: Check in sails-code what subscribe/publish exactly
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
+    };
 
 module.exports = {
     find: function (request, response) {
-        var Lobbies = Bookshelf.Collection.extend({model: Lobby}),
-            relations = ['owner', 'members'],
-            options;
+        var id = request.param('id');
 
-        if (request.param('id')) {
-            options = optionsCreator.getIdOptions(Lobby, relations, request);
-
-            crudHelper.findOne(options, function (lobby) {
+        if (id) {
+            Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
                 response.send({
                     lobby: lobby
                 });
 
                 //Lobby.subscribe(request.socket, lobby);
             });
-        } else if (request.param('ids')) {
-            options = optionsCreator.getIdsOptions(Lobbies, relations, request);
-
-            crudHelper.findMany(options, function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
         } else {
-            options = optionsCreator.getQueryOptions(Lobbies, relations, request);
-
-            crudHelper.find(options, function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
+            findMany(request, response);
         }
     },
     create: function (request, response) {
+        //TODO; Refactor syntax without using extra variable
         var values = {
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers'),
-            owner: request.user.id
-        };
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers'),
+                owner: request.user.id
+            },
+            lobby = Lobby.forge(values);
 
-        crudHelper.save(Lobby, values, function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
             });
-        });
     },
     update: function (request, response) {
         var values = {
-            id: request.param('id'),
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers')
-        };
+                id: request.param('id'),
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers')
+            },
+            lobby = Lobby.forge(values);
 
-        crudHelper.save(Lobby, values, function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
+
+                //Lobby.publishUpdate(lobby.id, lobby.toJSON());
             });
-
-            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
-        });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        crudHelper.destroy(Lobby, id, function () {
+        Lobby.forge({id: id}).destroy().then(function () {
             response.send({
                 lobby: {
                     id: id
