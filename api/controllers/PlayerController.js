@@ -2,22 +2,17 @@
 
 var Bookshelf = require('../bs-models/bookshelf'),
     crudHelper = require('./helpers/crudHelper'),
+    optionsCreator =  require('./helpers/optionsCreator'),
     Player = require('../bs-models/player');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            Players = Bookshelf.Collection.extend({model: Player}),
+        var Players = Bookshelf.Collection.extend({model: Player}),
             relations = ['ownedLobbies', 'joinedLobbies'],
             options;
 
-        if (id) {
-            options = {
-                Model: Player,
-                id: id,
-                relations: relations
-            };
+        if (request.param('id')) {
+            options = optionsCreator.getIdOptions(Player, relations, request);
 
             crudHelper.findOne(options, function (player) {
                 response.send({
@@ -26,12 +21,8 @@ module.exports = {
 
                 //Player.subscribe(request.socket, player);
             });
-        } else if (ids) {
-            options = {
-                Models: Players,
-                ids: ids,
-                relations: relations
-            };
+        } else if (request.param('ids')) {
+            options = optionsCreator.getIdsOptions(Players, relations, request);
 
             crudHelper.findMany(options, function (players) {
                 response.send({
@@ -42,14 +33,8 @@ module.exports = {
                 //Player.subscribe(request.socket, players);
             });
         } else {
-            options = {
-                Models: Players,
-                queryParams: request.params.all(),
-                relations: relations,
-                limit: request.param('limit'),
-                offset: request.param('offset')
-            };
-            
+            options = optionsCreator.getQueryOptions(Players, relations, request);
+
             crudHelper.find(options, function (players) {
                 response.send({
                     players: players

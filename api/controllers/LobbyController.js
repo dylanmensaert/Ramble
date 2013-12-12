@@ -2,22 +2,17 @@
 
 var Bookshelf = require('../bs-models/bookshelf'),
     crudHelper = require('./helpers/crudHelper'),
+    optionsCreator =  require('./helpers/optionsCreator'),
     Lobby = require('../bs-models/lobby');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            Lobbies = Bookshelf.Collection.extend({model: Lobby}),
+        var Lobbies = Bookshelf.Collection.extend({model: Lobby}),
             relations = ['owner', 'members'],
             options;
 
-        if (id) {
-            options = {
-                Model: Lobby,
-                id: id,
-                relations: relations
-            };
+        if (request.param('id')) {
+            options = optionsCreator.getIdOptions(Lobby, relations, request);
 
             crudHelper.findOne(options, function (lobby) {
                 response.send({
@@ -26,12 +21,8 @@ module.exports = {
 
                 //Lobby.subscribe(request.socket, lobby);
             });
-        } else if (ids) {
-            options = {
-                Models: Lobbies,
-                ids: ids,
-                relations: relations
-            };
+        } else if (request.param('ids')) {
+            options = optionsCreator.getIdsOptions(Lobbies, relations, request);
 
             crudHelper.findMany(options, function (lobbies) {
                 response.send({
@@ -42,13 +33,7 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobbies);
             });
         } else {
-            options = {
-                Models: Lobbies,
-                queryParams: request.params.all(),
-                relations: relations,
-                limit: request.param('limit'),
-                offset: request.param('offset')
-            };
+            options = optionsCreator.getQueryOptions(Lobbies, relations, request);
 
             crudHelper.find(options, function (lobbies) {
                 response.send({
