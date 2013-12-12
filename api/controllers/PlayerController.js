@@ -1,4 +1,3 @@
-
 'use strict';
 
 var Bookshelf = require('../bs-models/bookshelf'),

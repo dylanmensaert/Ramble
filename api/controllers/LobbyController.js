@@ -1,7 +1,5 @@
 'use strict';
 
-//TODO: create crudHelper?
-
 var Bookshelf = require('../bs-models/bookshelf'),
     Lobby = require('../bs-models/lobby'),
     Lobbies = Bookshelf.Collection.extend({model: Lobby}),
