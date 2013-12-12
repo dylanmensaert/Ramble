@@ -48,8 +48,8 @@ module.exports = {
                 relations: relations,
                 limit: request.param('limit'),
                 offset: request.param('offset')
-
             };
+            
             crudHelper.find(options, function (players) {
                 response.send({
                     players: players
