@@ -10,27 +10,26 @@ var Bookshelf = require('../bs-models/bookshelf'),
             offset = request.param('offset'),
             queryParams = request.params.all(),
             playerCollection = Players.forge(),
-            promise = playerCollection.query();
+            query = playerCollection.query();
 
         delete queryParams.limit;
         delete queryParams.offset;
 
-        //TODO: Implement limit skip sort.
         if (ids) {
-            promise = promise.whereIn(ids);
+            query = query.whereIn(ids);
         } else {
-            promise = promise.where(queryParams);
+            query = query.where(queryParams);
         }
 
+        //TODO: Implement sort.
         if (limit) {
-            promise = promise.limit(limit);
-
-            if (offset) {
-                promise = promise.offset(offset);
-            }
+            query = query.limit(limit);
+        }
+        if (offset) {
+            query = query.offset(offset);
         }
 
-        promise.then(function (players) {
+        query.then(function (players) {
             playerCollection.add(players);
 
             return playerCollection.load(relations);

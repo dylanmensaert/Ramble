@@ -10,27 +10,25 @@ var Bookshelf = require('../bs-models/bookshelf'),
             offset = request.param('offset'),
             queryParams = request.params.all(),
             lobbyCollection = Lobbies.forge(),
-            promise = lobbyCollection.query();
+            query = lobbyCollection.query();
 
         delete queryParams.limit;
         delete queryParams.offset;
 
-        //TODO: Implement skip sort.
         if (ids) {
-            promise = promise.whereIn(ids);
+            query = query.whereIn(ids);
         } else {
-            promise = promise.where(queryParams);
+            query = query.where(queryParams);
         }
 
         if (limit) {
-            promise = promise.limit(limit);
-
-            if (offset) {
-                promise = promise.offset(offset);
-            }
+            query = query.limit(limit);
+        }
+        if (offset) {
+            query = query.offset(offset);
         }
 
-        promise.then(function (lobbies) {
+        query.then(function (lobbies) {
             lobbyCollection.add(lobbies);
 
             return lobbyCollection.load(relations);
@@ -39,7 +37,6 @@ var Bookshelf = require('../bs-models/bookshelf'),
                     lobbies: lobbies
                 });
 
-                //TODO: Check in sails-code what subscribe/publish exactly
                 //Lobby.subscribe(request.socket);
                 //Lobby.subscribe(request.socket, lobbies);
             });
