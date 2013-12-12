@@ -52,19 +52,5 @@ module.exports = {
         };
 
         executeMany(options, success);
-    },
-    save: function (Model, values, success) {
-        var model = Model.forge(values);
-
-        model.hashPassword().then(function () {
-            return model.save();
-        }).then(function (model) {
-                success(model);
-            });
-    },
-    destroy: function (Model, id, success) {
-        Model.forge({id: id}).destroy().then(function (model) {
-            success(model);
-        });
     }
 };

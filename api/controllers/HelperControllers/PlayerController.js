@@ -1,8 +1,8 @@
 'use strict';
 
 var Bookshelf = require('../../bs-models/bookshelf'),
-    crudHelper = require('./helpers/crudHelper'),
-    optionsCreator = require('./helpers/crudOptionsCreator'),
+    crudHelper = require('./helpers/findHelper'),
+    optionsCreator = require('./helpers/findOptionsCreator'),
     Player = require('../../bs-models/player');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
             options;
 
         if (request.param('id')) {
-            options = optionsCreator.getIdOptions(Player, relations, request);
+            options = optionsCreator.getFindOneOptions(Player, relations, request);
 
             crudHelper.findOne(options, function (player) {
                 response.send({
@@ -22,7 +22,7 @@ module.exports = {
                 //Player.subscribe(request.socket, player);
             });
         } else if (request.param('ids')) {
-            options = optionsCreator.getIdsOptions(Players, relations, request);
+            options = optionsCreator.getFindManyOptions(Players, relations, request);
 
             crudHelper.findMany(options, function (players) {
                 response.send({
@@ -33,7 +33,7 @@ module.exports = {
                 //Player.subscribe(request.socket, players);
             });
         } else {
-            options = optionsCreator.getQueryOptions(Players, relations, request);
+            options = optionsCreator.getFindOptions(Players, relations, request);
 
             crudHelper.find(options, function (players) {
                 response.send({
@@ -46,38 +46,45 @@ module.exports = {
         }
     },
     create: function (request, response) {
+        //TODO; Refactor syntax without using extra variable
         var values = {
-            username: request.param('username'),
-            password: request.param('password'),
-            email: request.param('email')
-        };
+                username: request.param('username'),
+                password: request.param('password'),
+                email: request.param('email')
+            },
+            player = Player.forge(values);
 
-        crudHelper.save(Player, values, function (player) {
-            response.send({
-                player: player
+        player.hashPassword().then(function () {
+            return player.save();
+        }).then(function (player) {
+                response.send({
+                    player: player
+                });
             });
-        });
     },
     update: function (request, response) {
         var values = {
-            id: request.param('id'),
-            username: request.param('username'),
-            password: request.param('password'),
-            email: request.param('email')
-        };
+                id: request.param('id'),
+                username: request.param('username'),
+                password: request.param('password'),
+                email: request.param('email')
+            },
+            player = Player.forge(values);
 
-        crudHelper.save(Player, values, function (player) {
-            response.send({
-                player: player
+        player.hashPassword().then(function () {
+            return player.save();
+        }).then(function (player) {
+                response.send({
+                    player: player
+                });
+
+                //Player.publishUpdate(player.id, player.toJSON());
             });
-
-            //Player.publishUpdate(player.id, player.toJSON());
-        });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        crudHelper.destroy(Player, id, function () {
+        Player.forge({id: id}).destroy().then(function () {
             request.logOut();
 
             response.send({

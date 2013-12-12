@@ -1,8 +1,8 @@
 'use strict';
 
 var Bookshelf = require('../../bs-models/bookshelf'),
-    crudHelper = require('./helpers/crudHelper'),
-    optionsCreator = require('./helpers/crudOptionsCreator'),
+    crudHelper = require('./helpers/findHelper'),
+    optionsCreator = require('./helpers/findOptionsCreator'),
     Lobby = require('../../bs-models/lobby');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
             options;
 
         if (request.param('id')) {
-            options = optionsCreator.getIdOptions(Lobby, relations, request);
+            options = optionsCreator.getFindOneOptions(Lobby, relations, request);
 
             crudHelper.findOne(options, function (lobby) {
                 response.send({
@@ -22,7 +22,7 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobby);
             });
         } else if (request.param('ids')) {
-            options = optionsCreator.getIdsOptions(Lobbies, relations, request);
+            options = optionsCreator.getFindManyOptions(Lobbies, relations, request);
 
             crudHelper.findMany(options, function (lobbies) {
                 response.send({
@@ -33,7 +33,7 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobbies);
             });
         } else {
-            options = optionsCreator.getQueryOptions(Lobbies, relations, request);
+            options = optionsCreator.getFindOptions(Lobbies, relations, request);
 
             crudHelper.find(options, function (lobbies) {
                 response.send({
@@ -46,39 +46,46 @@ module.exports = {
         }
     },
     create: function (request, response) {
+        //TODO; Refactor syntax without using extra variable
         var values = {
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers'),
-            owner: request.user.id
-        };
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers'),
+                owner: request.user.id
+            },
+            lobby = Lobby.forge(values);
 
-        crudHelper.save(Lobby, values, function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
             });
-        });
     },
     update: function (request, response) {
         var values = {
-            id: request.param('id'),
-            title: request.param('title'),
-            password: request.param('password'),
-            maxMembers: request.param('maxMembers')
-        };
+                id: request.param('id'),
+                title: request.param('title'),
+                password: request.param('password'),
+                maxMembers: request.param('maxMembers')
+            },
+            lobby = Lobby.forge(values);
 
-        crudHelper.save(Lobby, values, function (lobby) {
-            response.send({
-                lobby: lobby
+        lobby.hashPassword().then(function () {
+            return lobby.save();
+        }).then(function (lobby) {
+                response.send({
+                    lobby: lobby
+                });
+
+                //Lobby.publishUpdate(lobby.id, lobby.toJSON());
             });
-
-            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
-        });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        crudHelper.destroy(Lobby, id, function () {
+        Lobby.forge({id: id}).destroy().then(function () {
             response.send({
                 lobby: {
                     id: id

@@ -1,21 +1,21 @@
 'use strict';
 
 module.exports = {
-    getIdOptions: function (Model, relations, request) {
+    getFindOneOptions: function (Model, relations, request) {
         return {
             Model: Model,
             id: request.param('id'),
             relations: relations
         };
     },
-    getIdsOptions: function (Models, relations, request) {
+    getFindManyOptions: function (Models, relations, request) {
         return {
             Models: Models,
             ids: request.param('ids'),
             relations: relations
         };
     },
-    getQueryOptions: function (Models, relations, request) {
+    getFindOptions: function (Models, relations, request) {
         return {
             Models: Models,
             queryParams: request.params.all(),

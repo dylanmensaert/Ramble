@@ -1,64 +1,48 @@
 'use strict';
 
-var Bookshelf = require('../bs-models/bookshelf'),
-    Player = require('../bs-models/player'),
-    Players = Bookshelf.Collection.extend({model: Player}),
-    relations = ['ownedLobbies', 'joinedLobbies'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            playerCollection = Players.forge(),
-            query = playerCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        if (ids) {
-            query = query.whereIn(ids);
-        } else {
-            query = query.where(queryParams);
-        }
-
-        //TODO: Implement sort.
-        if (limit) {
-            query = query.limit(limit);
-        }
-        if (offset) {
-            query = query.offset(offset);
-        }
-
-        query.then(function (players) {
-            playerCollection.add(players);
-
-            return playerCollection.load(relations);
-        }).then(function (players) {
-                response.send({
-                    players: players
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
-            });
-    };
+var Bookshelf = require('../../bs-models/bookshelf'),
+    crudHelper = require('./helpers/findHelper'),
+    optionsCreator = require('./helpers/findOptionsCreator'),
+    Player = require('../../bs-models/player');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var Players = Bookshelf.Collection.extend({model: Player}),
+            relations = ['ownedLobbies', 'joinedLobbies'],
+            options;
 
-        if (id) {
-            //TODO: Implement relationships correctly
-            Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
+        if (request.param('id')) {
+            options = optionsCreator.getFindOneOptions(Player, relations, request);
+
+            crudHelper.findOne(options, function (player) {
                 response.send({
                     player: player
                 });
 
                 //Player.subscribe(request.socket, player);
             });
+        } else if (request.param('ids')) {
+            options = optionsCreator.getFindManyOptions(Players, relations, request);
+
+            crudHelper.findMany(options, function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         } else {
-            findMany(request, response);
+            options = optionsCreator.getFindOptions(Players, relations, request);
+
+            crudHelper.find(options, function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         }
     },
     create: function (request, response) {
