@@ -1,9 +1,9 @@
 'use strict';
 
-var Bookshelf = require('../../bs-models/bookshelf'),
+var Bookshelf = require('../bs-models/bookshelf'),
     crudHelper = require('./helpers/findHelper'),
     optionsCreator = require('./helpers/findOptionsCreator'),
-    Lobby = require('../../bs-models/lobby');
+    Lobby = require('../bs-models/lobby');
 
 module.exports = {
     find: function (request, response) {
