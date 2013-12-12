@@ -1,7 +1,7 @@
 'use strict';
 
 var executeMany = function (options, success) {
-    options.promise.then(function (models) {
+    options.query.then(function (models) {
         options.modelCollection.add(models);
 
         return options.modelCollection.load(options.relations);
@@ -18,10 +18,10 @@ module.exports = {
     },
     findMany: function (options, success) {
         var modelCollection = options.Models.forge(),
-            promise = modelCollection.query().whereIn(options.ids);
+            query = modelCollection.query().whereIn(options.ids);
 
         options = {
-            promise: promise,
+            query: query,
             modelCollection: modelCollection,
             relations: options.relations
         };
@@ -30,23 +30,23 @@ module.exports = {
     },
     find: function (options, success) {
         var modelCollection = options.Models.forge(),
-            promise;
+            query;
 
         delete options.queryParams.limit;
         delete options.queryParams.offset;
 
-        promise = modelCollection.query().where(options.queryParams);
+        query = modelCollection.query().where(options.queryParams);
 
         if (options.limit) {
-            promise = promise.limit(options.limit);
+            query = query.limit(options.limit);
 
             if (options.offset) {
-                promise = promise.offset(options.offset);
+                query = query.offset(options.offset);
             }
         }
 
         options = {
-            promise: promise,
+            query: query,
             modelCollection: modelCollection,
             relations: options.relations
         };
