@@ -1,71 +1,73 @@
 'use strict';
 
 var Bookshelf = require('../bs-models/bookshelf'),
-    Player = require('../bs-models/player'),
-    Players = Bookshelf.Collection.extend({model: Player}),
-    relations = ['ownedLobbies', 'joinedLobbies'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            playerCollection = Players.forge(),
-            promise = playerCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        //TODO: Implement limit skip sort.
-        if (ids) {
-            promise = promise.whereIn(ids);
-        } else {
-            promise = promise.where(queryParams);
-        }
-
-        promise.limit(limit).offset(offset).then(function (players) {
-            playerCollection.add(players);
-
-            return playerCollection.load(relations);
-        }).then(function (players) {
-                response.send({
-                    players: players
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
-            });
-    };
+    crudHelper = require('./helpers/crudHelper'),
+    Player = require('../bs-models/player');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var id = request.param('id'),
+            ids = request.param('ids'),
+            Players = Bookshelf.Collection.extend({model: Player}),
+            relations = ['ownedLobbies', 'joinedLobbies'],
+            options;
 
         if (id) {
-            //TODO: Implement relationships correctly
-            Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
+            options = {
+                Model: Player,
+                id: id,
+                relations: relations
+            };
+
+            crudHelper.findOne(options, function (player) {
                 response.send({
                     player: player
                 });
 
                 //Player.subscribe(request.socket, player);
             });
+        } else if (ids) {
+            options = {
+                Models: Players,
+                ids: ids,
+                relations: relations
+            };
+
+            crudHelper.findMany(options, function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         } else {
-            findMany(request, response);
+            options = {
+                Models: Players,
+                queryParams: request.params.all(),
+                relations: relations,
+                limit: request.param('limit'),
+                offset: request.param('offset')
+
+            };
+            crudHelper.find(options, function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         }
     },
     create: function (request, response) {
-        //TODO; Refactor syntax without using extra variable
         var values = {
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
-            player = Player.forge(values);
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        };
 
-        player.hashPassword().then(function () {
-            return player.save();
-        }).then(function (player) {
+        crudHelper.save(Player, values, function (player) {
             response.send({
                 player: player
             });
@@ -73,16 +75,13 @@ module.exports = {
     },
     update: function (request, response) {
         var values = {
-                id: request.param('id'),
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
-            player = Player.forge(values);
+            id: request.param('id'),
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        };
 
-        player.hashPassword().then(function () {
-            return player.save();
-        }).then(function (player) {
+        crudHelper.save(Player, values, function (player) {
             response.send({
                 player: player
             });
@@ -93,7 +92,7 @@ module.exports = {
     destroy: function (request, response) {
         var id = request.param('id');
 
-        Player.forge({id: id}).destroy().then(function () {
+        crudHelper.destroy(Player, id, function () {
             request.logOut();
 
             response.send({

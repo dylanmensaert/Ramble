@@ -1,101 +1,99 @@
 'use strict';
 
-//TODO: create crudHelper?
-
 var Bookshelf = require('../bs-models/bookshelf'),
-    Lobby = require('../bs-models/lobby'),
-    Lobbies = Bookshelf.Collection.extend({model: Lobby}),
-    relations = ['owner', 'members'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            lobbyCollection = Lobbies.forge(),
-            promise = lobbyCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        //TODO: Implement skip sort.
-        if (ids) {
-            promise = promise.whereIn(ids);
-        } else {
-            promise = promise.where(queryParams);
-        }
-
-        promise.limit(limit).offset(offset).then(function (lobbies) {
-            lobbyCollection.add(lobbies);
-
-            return lobbyCollection.load(relations);
-        }).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
-    };
+    crudHelper = require('./helpers/crudHelper'),
+    Lobby = require('../bs-models/lobby');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var id = request.param('id'),
+            ids = request.param('ids'),
+            Lobbies = Bookshelf.Collection.extend({model: Lobby}),
+            relations = ['owner', 'members'],
+            options;
 
         if (id) {
-            Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
+            options = {
+                Model: Lobby,
+                id: id,
+                relations: relations
+            };
+
+            crudHelper.findOne(options, function (lobby) {
                 response.send({
                     lobby: lobby
                 });
 
                 //Lobby.subscribe(request.socket, lobby);
             });
+        } else if (ids) {
+            options = {
+                Models: Lobbies,
+                ids: ids,
+                relations: relations
+            };
+
+            crudHelper.findMany(options, function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         } else {
-            findMany(request, response);
+            options = {
+                Models: Lobbies,
+                queryParams: request.params.all(),
+                relations: relations,
+                limit: request.param('limit'),
+                offset: request.param('offset')
+
+            };
+            crudHelper.find(options, function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         }
     },
     create: function (request, response) {
-        //TODO; Refactor syntax without using extra variable
         var values = {
-                title: request.param('title'),
-                password: request.param('password'),
-                maxMembers: request.param('maxMembers'),
-                owner: request.user.id
-            },
-            lobby = Lobby.forge(values);
+            title: request.param('title'),
+            password: request.param('password'),
+            maxMembers: request.param('maxMembers'),
+            owner: request.user.id
+        };
 
-        lobby.hashPassword().then(function () {
-            return lobby.save();
-        }).then(function (lobby) {
-                response.send({
-                    lobby: lobby
-                });
+        crudHelper.save(Lobby, values, function (lobby) {
+            response.send({
+                lobby: lobby
             });
+        });
     },
     update: function (request, response) {
         var values = {
-                id: request.param('id'),
-                title: request.param('title'),
-                password: request.param('password'),
-                maxMembers: request.param('maxMembers')
-            },
-            lobby = Lobby.forge(values);
+            id: request.param('id'),
+            title: request.param('title'),
+            password: request.param('password'),
+            maxMembers: request.param('maxMembers')
+        };
 
-        lobby.hashPassword().then(function () {
-            return lobby.save();
-        }).then(function (lobby) {
-                response.send({
-                    lobby: lobby
-                });
-
-                //Lobby.publishUpdate(lobby.id, lobby.toJSON());
+        crudHelper.save(Lobby, values, function (lobby) {
+            response.send({
+                lobby: lobby
             });
+
+            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
+        });
     },
     destroy: function (request, response) {
         var id = request.param('id');
 
-        Lobby.forge({id: id}).destroy().then(function () {
+        crudHelper.destroy(Lobby, id, function () {
             response.send({
                 lobby: {
                     id: id
