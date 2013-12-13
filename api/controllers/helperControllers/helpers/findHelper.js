@@ -1,6 +1,6 @@
 'use strict';
 
-var executeMany = function (options, success) {
+var executeQuery = function (options, success) {
     options.query.then(function (models) {
         options.modelCollection.add(models);
 
@@ -26,7 +26,7 @@ module.exports = {
             relations: options.relations
         };
 
-        executeMany(options, success);
+        executeQuery(options, success);
     },
     find: function (options, success) {
         var modelCollection = options.Models.forge(),
@@ -51,6 +51,6 @@ module.exports = {
             relations: options.relations
         };
 
-        executeMany(options, success);
+        executeQuery(options, success);
     }
 };
