@@ -14,7 +14,7 @@ module.exports = {
         if (request.param('id')) {
             options = optionsCreator.getFindOneOptions(Lobby, relations, request);
 
-            crudHelper.findOne(options, function (lobby) {
+            crudHelper.findOne(options).then(function (lobby) {
                 response.send({
                     lobby: lobby
                 });
@@ -24,7 +24,7 @@ module.exports = {
         } else if (request.param('ids')) {
             options = optionsCreator.getFindManyOptions(Lobbies, relations, request);
 
-            crudHelper.findMany(options, function (lobbies) {
+            crudHelper.findMany(options).then(function (lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
@@ -35,7 +35,7 @@ module.exports = {
         } else {
             options = optionsCreator.getFindOptions(Lobbies, relations, request);
 
-            crudHelper.find(options, function (lobbies) {
+            crudHelper.find(options).then(function (lobbies) {
                 response.send({
                     lobbies: lobbies
                 });

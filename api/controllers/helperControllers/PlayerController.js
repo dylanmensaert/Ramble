@@ -14,7 +14,7 @@ module.exports = {
         if (request.param('id')) {
             options = optionsCreator.getFindOneOptions(Player, relations, request);
 
-            crudHelper.findOne(options, function (player) {
+            crudHelper.findOne(options).then(function (player) {
                 response.send({
                     player: player
                 });
@@ -24,7 +24,7 @@ module.exports = {
         } else if (request.param('ids')) {
             options = optionsCreator.getFindManyOptions(Players, relations, request);
 
-            crudHelper.findMany(options, function (players) {
+            crudHelper.findMany(options).then(function (players) {
                 response.send({
                     players: players
                 });
@@ -35,7 +35,7 @@ module.exports = {
         } else {
             options = optionsCreator.getFindOptions(Players, relations, request);
 
-            crudHelper.find(options, function (players) {
+            crudHelper.find(options).then(function (players) {
                 response.send({
                     players: players
                 });

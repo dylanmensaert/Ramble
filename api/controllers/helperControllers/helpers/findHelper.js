@@ -1,22 +1,18 @@
 'use strict';
 
-var executeQuery = function (options, success) {
-    options.query.then(function (models) {
+var executeQuery = function (options) {
+    return options.query.then(function (models) {
         options.modelCollection.add(models);
 
         return options.modelCollection.load(options.relations);
-    }).then(function (models) {
-            success(models);
-        });
+    });
 };
 
 module.exports = {
-    findOne: function (options, success) {
-        options.Model.forge({id: options.id}).fetch({withRelated: options.relations}).then(function (model) {
-            success(model);
-        });
+    findOne: function (options) {
+        return options.Model.forge({id: options.id}).fetch({withRelated: options.relations});
     },
-    findMany: function (options, success) {
+    findMany: function (options) {
         var modelCollection = options.Models.forge(),
             query = modelCollection.query().whereIn(options.ids);
 
@@ -26,9 +22,9 @@ module.exports = {
             relations: options.relations
         };
 
-        executeQuery(options, success);
+        return executeQuery(options);
     },
-    find: function (options, success) {
+    find: function (options) {
         var modelCollection = options.Models.forge(),
             query;
 
@@ -51,6 +47,6 @@ module.exports = {
             relations: options.relations
         };
 
-        executeQuery(options, success);
+        return executeQuery(options);
     }
 };
