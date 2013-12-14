@@ -1,15 +1,17 @@
 'use strict';
 
-var Bookshelf = require('../../bs-models/bookshelf'),
-    crudHelper = require('./helpers/findHelper'),
+var crudHelper = require('./helpers/findHelper'),
     optionsCreator = require('./helpers/findOptionsCreator'),
-    Player = require('../../bs-models/player');
+    Player = require('../../bs-models/player'),
+    Players = require('../../bs-models/players');
 
 module.exports = {
     find: function (request, response) {
-        var Players = Bookshelf.Collection.extend({model: Player}),
-            relations = ['ownedLobbies', 'joinedLobbies'],
+        var relations = Player.relationNames,
             id = request.param('id'),
+        //TODO: needs to decode ids-parameter?
+            ids = request.param('ids'),
+            playerCollection,
             options;
 
         if (id) {
@@ -20,21 +22,17 @@ module.exports = {
 
                 //Player.subscribe(request.socket, player);
             });
-        } else if (request.param('ids')) {
-            var playerCollection = Players.forge();
+        } else if (ids) {
+            playerCollection = Players.forge();
 
-            playerCollection.query().whereIn(ids).then(function (players) {
-                playerCollection.add(players);
-
-                return playerCollection.load(relations);
-            }).then(function (players) {
-                    response.send({
-                        players: players
-                    });
-
-                    //Player.subscribe(request.socket);
-                    //Player.subscribe(request.socket, players);
+            playerCollection.findMany(ids).then(function (players) {
+                response.send({
+                    players: players
                 });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         } else {
             options = optionsCreator.getFindOptions(Players, relations, request);
 
