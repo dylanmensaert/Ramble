@@ -10,6 +10,7 @@ module.exports = {
         var Lobbies = Bookshelf.Collection.extend({model: Lobby}),
             relations = ['owner', 'members'],
             id = request.param('id'),
+            ids = request.param('ids'),
             options;
 
         if (id) {
@@ -20,17 +21,21 @@ module.exports = {
 
                 //Lobby.subscribe(request.socket, lobby);
             });
-        } else if (request.param('ids')) {
-            options = optionsCreator.getFindManyOptions(Lobbies, relations, request);
+        } else if (ids) {
+            var lobbyCollection = Lobbies.forge();
 
-            crudHelper.findMany(options).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
+            lobbyCollection.query().whereIn(ids).then(function (lobbies) {
+                lobbyCollection.add(lobbies);
+
+                return lobbyCollection.load(relations);
+            }).then(function (lobbies) {
+                    response.send({
+                        lobbies: lobbies
+                    });
+
+                    //Lobby.subscribe(request.socket);
+                    //Lobby.subscribe(request.socket, lobbies);
                 });
-
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
         } else {
             options = optionsCreator.getFindOptions(Lobbies, relations, request);
 

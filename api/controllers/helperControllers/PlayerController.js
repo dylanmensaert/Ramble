@@ -21,16 +21,20 @@ module.exports = {
                 //Player.subscribe(request.socket, player);
             });
         } else if (request.param('ids')) {
-            options = optionsCreator.getFindManyOptions(Players, relations, request);
+            var playerCollection = Players.forge();
 
-            crudHelper.findMany(options).then(function (players) {
-                response.send({
-                    players: players
+            playerCollection.query().whereIn(ids).then(function (players) {
+                playerCollection.add(players);
+
+                return playerCollection.load(relations);
+            }).then(function (players) {
+                    response.send({
+                        players: players
+                    });
+
+                    //Player.subscribe(request.socket);
+                    //Player.subscribe(request.socket, players);
                 });
-
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
-            });
         } else {
             options = optionsCreator.getFindOptions(Players, relations, request);
 

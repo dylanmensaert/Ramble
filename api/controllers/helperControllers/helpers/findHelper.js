@@ -9,18 +9,6 @@ var executeQuery = function (options) {
 };
 
 module.exports = {
-    findMany: function (options) {
-        var modelCollection = options.Models.forge(),
-            query = modelCollection.query().whereIn(options.ids);
-
-        options = {
-            query: query,
-            modelCollection: modelCollection,
-            relations: options.relations
-        };
-
-        return executeQuery(options);
-    },
     find: function (options) {
         var modelCollection = options.Models.forge(),
             query;
