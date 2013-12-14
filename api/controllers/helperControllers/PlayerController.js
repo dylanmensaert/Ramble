@@ -9,12 +9,11 @@ module.exports = {
     find: function (request, response) {
         var Players = Bookshelf.Collection.extend({model: Player}),
             relations = ['ownedLobbies', 'joinedLobbies'],
+            id = request.param('id'),
             options;
 
-        if (request.param('id')) {
-            options = optionsCreator.getFindOneOptions(Player, relations, request);
-
-            crudHelper.findOne(options).then(function (player) {
+        if (id) {
+            Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
                 response.send({
                     player: player
                 });

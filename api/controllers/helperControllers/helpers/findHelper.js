@@ -9,9 +9,6 @@ var executeQuery = function (options) {
 };
 
 module.exports = {
-    findOne: function (options) {
-        return options.Model.forge({id: options.id}).fetch({withRelated: options.relations});
-    },
     findMany: function (options) {
         var modelCollection = options.Models.forge(),
             query = modelCollection.query().whereIn(options.ids);
