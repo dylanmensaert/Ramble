@@ -38,7 +38,6 @@ module.exports = {
         }
     },
     create: function (request, response) {
-        //TODO; Refactor syntax without using extra variable
         var values = {
                 username: request.param('username'),
                 password: request.param('password'),

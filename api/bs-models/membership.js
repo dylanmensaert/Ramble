@@ -1,7 +1,8 @@
 'use strict';
 
 var db = require('./db');
-//TODO: player = require('./player');
+//TODO: can't use variable because of cyclic dependency
+// player = require('./player');
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
