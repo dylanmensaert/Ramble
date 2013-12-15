@@ -1,8 +1,7 @@
 'use strict';
 
 var Lobby = require('../bs-models/lobby'),
-    Lobbies = require('../bs-models/lobbies'),
-    relations = require('../bs-models/relations').lobby;
+    Lobbies = require('../bs-models/lobbies');
 
 module.exports = {
     find: function (request, response) {
@@ -10,7 +9,7 @@ module.exports = {
             ids = request.param('ids');
 
         if (id) {
-            Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
+            Lobby.forge({id: id}).fetchWithRelated().then(function (lobby) {
                 response.send({
                     lobby: lobby
                 });

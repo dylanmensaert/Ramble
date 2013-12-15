@@ -1,6 +1,7 @@
 'use strict';
 
 var Bookshelf = require('./bookshelf'),
+    relations = require('./relations').player,
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
@@ -14,6 +15,9 @@ module.exports = Bookshelf.Model.extend({
     },
     joinedLobbies: function () {
         return this.belongsToMany(require('./lobby')).through(require('./membership'));
+    },
+    fetchWithRelated: function () {
+        return this.fetch({withRelated: relations});
     },
     hashPassword: function () {
         return setHashedPassword(this.attributes);

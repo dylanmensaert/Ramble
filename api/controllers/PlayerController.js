@@ -1,8 +1,7 @@
 'use strict';
 
 var Player = require('../bs-models/player'),
-    Players = require('../bs-models/players'),
-    relations = require('../bs-models/relations').player;
+    Players = require('../bs-models/players');
 
 module.exports = {
     find: function (request, response) {
@@ -11,7 +10,7 @@ module.exports = {
             ids = request.param('ids');
 
         if (id) {
-            Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
+            Player.forge({id: id}).fetchWithRelated().then(function (player) {
                 response.send({
                     player: player
                 });
