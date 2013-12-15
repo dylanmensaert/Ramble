@@ -13,14 +13,12 @@ var setupPassportForSocketIO = function () {
     sails.on('router:request', function (request, response) {
         initialize(request, response, function () {
             session(request, response, function (error) {
-                var index;
-
                 if (error) {
                     sails.config[500](500, request, response);
                 } else {
-                    for (index = 0; index < methods.length; index += 1) {
-                        request[methods[index]] = http.IncomingMessage.prototype[methods[index]].bind(request);
-                    }
+                    methods.forEach(function (method) {
+                        request[method] = http.IncomingMessage.prototype[method].bind(request);
+                    });
 
                     sails.router.route(request, response);
                 }

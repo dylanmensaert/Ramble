@@ -15,15 +15,13 @@ define(function (require) {
      this._super(infos);
 
      var titleList = [],
-     title,
-     documentTitle,
-     index;
+     documentTitle;
 
-     for (index = 0; index < infos.length; index += 1) {
-     title = infos[index].handler.get('title');
+     infos.forEach(function (info) {
+     var title = info.handler.get('title');
 
      titleList.push(title);
-     }
+     });
 
      documentTitle = titleList.join(' - ');
 

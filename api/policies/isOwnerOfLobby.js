@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 var Lobby = require('../bs-models/lobby');
