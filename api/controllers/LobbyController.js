@@ -1,12 +1,12 @@
 'use strict';
 
 var Lobby = require('../bs-models/lobby'),
-    Lobbies = require('../bs-models/lobbies');
+    Lobbies = require('../bs-models/lobbies'),
+    relations = require('../bs-models/relations').lobby;
 
 module.exports = {
     find: function (request, response) {
-        var relations = Lobby.forge().getRelationNames(),
-            id = request.param('id'),
+        var id = request.param('id'),
             ids = request.param('ids');
 
         if (id) {

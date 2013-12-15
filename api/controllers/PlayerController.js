@@ -1,12 +1,12 @@
 'use strict';
 
 var Player = require('../bs-models/player'),
-    Players = require('../bs-models/players');
+    Players = require('../bs-models/players'),
+    relations = require('../bs-models/relations').player;
 
 module.exports = {
     find: function (request, response) {
-        var relations = Player.forge().getRelationNames(),
-            id = request.param('id'),
+        var id = request.param('id'),
         //TODO: needs to decode ids-parameter?
             ids = request.param('ids');
 

@@ -2,7 +2,7 @@
 
 var Bookshelf = require('./bookshelf'),
     Player = require('./player'),
-    relations = Player.forge().getRelationNames(),
+    relations = require('./relations').player,
     findMany = require('../helpers/findMany'),
     findQuery = require('../helpers/findQuery');
 

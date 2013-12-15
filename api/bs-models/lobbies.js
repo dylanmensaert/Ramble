@@ -2,7 +2,7 @@
 
 var Bookshelf = require('./bookshelf'),
     Lobby = require('./lobby'),
-    relations = Lobby.forge().getRelationNames(),
+    relations = require('./relations').lobby,
     findMany = require('../helpers/findMany'),
     findQuery = require('../helpers/findQuery');
 
