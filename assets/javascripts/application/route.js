@@ -1,9 +1,10 @@
 define(function (require) {
     'use strict';
 
-    var Ember = require('ember');
+    var Ember = require('ember'),
+        googleAnalytics = require('google-analytics');
 
-    return Ember.Route.extend({
+    return Ember.Route.extend(require('helpers/update-title-mixin'), {
         title: 'Ramble',
         activate: function () {
             this._super();
@@ -20,6 +21,19 @@ define(function (require) {
             }.bind(this));
         },
         actions: {
+            updateTitle: function (tokens) {
+                this._super(tokens);
+
+                var documentTitle;
+
+                tokens.reverse();
+                documentTitle = tokens.join(' - ');
+                document.title = documentTitle;
+
+                googleAnalytics('send', 'pageview', {
+                    title: documentTitle
+                });
+            },
             /*error: function (error) {
              //TODO: Make error-handling more robust?
              console.debug(error);

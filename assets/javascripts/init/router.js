@@ -8,31 +8,11 @@ define(function (require) {
 
     googleAnalytics('create', config.googleAnalyticsAccount);
 
-    /*
-     //TODO: use the built-in features of the new router, see: https://github.com/emberjs/ember.js/pull/2757.
-     App.Router.reopen({
-     didTransition: function (infos) {
-     this._super(infos);
-
-     var titleList = [],
-     documentTitle;
-
-     infos.forEach(function (info) {
-     var title = info.handler.get('title');
-
-     titleList.push(title);
-     });
-
-     documentTitle = titleList.join(' - ');
-
-     document.title = documentTitle;
-
-     googleAnalytics('send', 'pageview', {
-     title: documentTitle
-     });
-     }
-     });
-     */
+    App.Router.reopen({
+        updateTitle: function () {
+            this.send('updateTitle', []);
+        }.on('didTransition')
+    });
 
     App.Router.map(function () {
         this.resource('login');
