@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require('ember');
 
-    return Ember.Route.extend(require('helpers/update-title-mixin'), {
+    return Ember.Route.extend(require('helpers/update-title'), {
         title: 'Lobby'
     });
 });

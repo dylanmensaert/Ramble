@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require('ember'),
         loginModel = require('login/model');
 
-    return Ember.Route.extend(require('helpers/update-title-mixin'), {
+    return Ember.Route.extend(require('helpers/update-title'), {
         title: 'Log in',
         model: function () {
             return loginModel.create();

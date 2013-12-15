@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require('ember');
 
-    return Ember.Route.extend(require('helpers/update-title-mixin'), require('login/helpers/redirect-login-mixin'), require('helpers/model-rollback-mixin'), {
+    return Ember.Route.extend(require('helpers/update-title'), require('login/helpers/redirect-login'), require('helpers/model-rollback'), {
         title: 'Create',
         model: function () {
             return this.get('store').createRecord('lobby');

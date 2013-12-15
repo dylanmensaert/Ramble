@@ -4,7 +4,7 @@ define(function (require) {
     var Ember = require('ember'),
         googleAnalytics = require('google-analytics');
 
-    return Ember.Route.extend(require('helpers/update-title-mixin'), {
+    return Ember.Route.extend(require('helpers/update-title'), {
         title: 'Ramble',
         activate: function () {
             this._super();

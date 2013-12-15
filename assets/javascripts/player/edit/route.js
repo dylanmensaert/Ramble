@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require('ember');
 
-    return Ember.Route.extend(require('helpers/update-title-mixin'), require('login/helpers/ownership-check-mixin'), require('helpers/model-rollback-mixin'), {
+    return Ember.Route.extend(require('helpers/update-title'), require('login/helpers/ownership-check'), require('helpers/model-rollback'), {
         title: function () {
             return this.controller.get('username') + ' - Edit';
         }.property(),

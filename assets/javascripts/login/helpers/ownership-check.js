@@ -3,7 +3,7 @@ define(function (require) {
 
     var Ember = require('ember');
 
-    return Ember.Mixin.create(require('login/helpers/redirect-login-mixin'), {
+    return Ember.Mixin.create(require('login/helpers/redirect-login'), {
         checkOwnershipAndRedirect: function (owner, transition) {
             if (!this.get('session.isLoggedIn')) {
                 this.redirectToLogin(transition);
