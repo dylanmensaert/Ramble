@@ -1,15 +1,18 @@
 'use strict';
 
-var db = require('./db');
-//TODO: can't use variable because of cyclic dependency
-// player = require('./player');
+var db = require('./db'),
+    lobby,
+    player;
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
     lobby: function () {
-        return this.belongsTo(require('./lobby'));
+        return this.belongsTo(lobby);
     },
     player: function () {
-        return this.belongsTo(require('./player'));
+        return this.belongsTo(player);
     }
 });
+
+lobby = require('./lobby');
+player = require('./player');

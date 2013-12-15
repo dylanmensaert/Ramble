@@ -1,6 +1,8 @@
 'use strict';
 
 var db = require('./db'),
+    lobby,
+    membership,
     relations = require('./relations').player,
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
@@ -11,10 +13,10 @@ module.exports = db.Model.extend({
     password: null,
     email: null,
     ownedLobbies: function () {
-        return this.hasMany(require('./lobby'), 'owner_id');
+        return this.hasMany(lobby, 'owner_id');
     },
     joinedLobbies: function () {
-        return this.belongsToMany(require('./lobby')).through(require('./membership'));
+        return this.belongsToMany(lobby).through(membership);
     },
     fetchWithRelated: function () {
         return this.fetch({withRelated: relations});
@@ -26,3 +28,6 @@ module.exports = db.Model.extend({
         return verifyPassword(password, this.toJSON().password);
     }
 });
+
+lobby = require('./lobby');
+membership = require('./membership');
