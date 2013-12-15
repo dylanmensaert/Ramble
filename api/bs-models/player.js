@@ -13,7 +13,7 @@ module.exports = Bookshelf.Model.extend({
     password: null,
     email: null,
     ownedLobbies: function () {
-        return this.hasMany(require('./lobby'), 'owner');
+        return this.hasMany(require('./lobby'), 'owner_id');
     },
     joinedLobbies: function () {
         return this.belongsToMany(require('./lobby')).through(require('./membership'));
