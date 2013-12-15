@@ -1,8 +1,6 @@
 'use strict';
 
-var crudHelper = require('./helpers/findHelper'),
-    optionsCreator = require('./helpers/findOptionsCreator'),
-    Lobby = require('../../bs-models/lobby'),
+var Lobby = require('../../bs-models/lobby'),
     Lobbies = require('../../bs-models/lobbies');
 
 module.exports = {
@@ -10,8 +8,7 @@ module.exports = {
         var relations = Lobby.relationNames,
             id = request.param('id'),
             ids = request.param('ids'),
-            lobbyCollection,
-            options;
+            lobbyCollection;
 
         if (id) {
             Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
@@ -33,9 +30,9 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobbies);
             });
         } else {
-            options = optionsCreator.getFindOptions(Lobbies, relations, request);
+            lobbyCollection = Lobbies.forge();
 
-            crudHelper.find(options).then(function (lobbies) {
+            lobbyCollection.findQuery(request.params.all()).then(function (lobbies) {
                 response.send({
                     lobbies: lobbies
                 });

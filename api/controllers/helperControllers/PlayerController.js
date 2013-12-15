@@ -1,8 +1,6 @@
 'use strict';
 
-var crudHelper = require('./helpers/findHelper'),
-    optionsCreator = require('./helpers/findOptionsCreator'),
-    Player = require('../../bs-models/player'),
+var Player = require('../../bs-models/player'),
     Players = require('../../bs-models/players');
 
 module.exports = {
@@ -11,8 +9,7 @@ module.exports = {
             id = request.param('id'),
         //TODO: needs to decode ids-parameter?
             ids = request.param('ids'),
-            playerCollection,
-            options;
+            playerCollection;
 
         if (id) {
             Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
@@ -34,9 +31,9 @@ module.exports = {
                 //Player.subscribe(request.socket, players);
             });
         } else {
-            options = optionsCreator.getFindOptions(Players, relations, request);
+            playerCollection = Players.forge();
 
-            crudHelper.find(options).then(function (players) {
+            playerCollection.findQuery(request.params.all()).then(function (players) {
                 response.send({
                     players: players
                 });
