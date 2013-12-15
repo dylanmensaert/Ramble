@@ -3,7 +3,7 @@
 var bcrypt = require('bcrypt'),
     Promise = require('bluebird');
 
-module.exports = Promise.method(function (values) {
+module.exports = function (values) {
     var hash = Promise.promisify(bcrypt.hash, bcrypt);
 
     if (values.password) {
@@ -15,4 +15,4 @@ module.exports = Promise.method(function (values) {
     } else {
         return Promise.resolve();
     }
-});
+};
