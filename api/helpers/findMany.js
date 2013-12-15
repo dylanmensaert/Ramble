@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function (ids) {
-    return this.query().whereIn(ids).then(function (models) {
-        this.add(models);
+module.exports = function (collection, relations, ids) {
+    return collection.query().whereIn(ids).then(function (models) {
+        collection.add(models);
 
-        return this.load(this.relationNames);
-    }.bind(this));
+        return collection.load(relations);
+    });
 };

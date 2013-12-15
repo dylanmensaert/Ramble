@@ -1,53 +1,13 @@
 'use strict';
 
-var Bookshelf = require('../bs-models/bookshelf'),
-    Lobby = require('../bs-models/lobby'),
-    Lobbies = Bookshelf.Collection.extend({model: Lobby}),
-    relations = ['owner', 'members'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            lobbyCollection = Lobbies.forge(),
-            query = lobbyCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        //TODO: Implement skip sort.
-        if (ids) {
-            query = query.whereIn(ids);
-        } else {
-            query = query.where(queryParams);
-        }
-
-        if (limit) {
-            query = query.limit(limit);
-
-            if (offset) {
-                query = query.offset(offset);
-            }
-        }
-
-        query.then(function (lobbies) {
-            lobbyCollection.add(lobbies);
-
-            return lobbyCollection.load(relations);
-        }).then(function (lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
-            });
-    };
+var Lobby = require('../bs-models/lobby'),
+    Lobbies = require('../bs-models/lobbies');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var relations = Lobby.forge().getRelationNames(),
+            id = request.param('id'),
+            ids = request.param('ids');
 
         if (id) {
             Lobby.forge({id: id}).fetch({withRelated: relations}).then(function (lobby) {
@@ -57,8 +17,24 @@ module.exports = {
 
                 //Lobby.subscribe(request.socket, lobby);
             });
+        } else if (ids) {
+            Lobbies.forge().findMany(ids).then(function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         } else {
-            findMany(request, response);
+            Lobbies.forge().findQuery(request.params.all()).then(function (lobbies) {
+                response.send({
+                    lobbies: lobbies
+                });
+
+                //Lobby.subscribe(request.socket);
+                //Lobby.subscribe(request.socket, lobbies);
+            });
         }
     },
     create: function (request, response) {

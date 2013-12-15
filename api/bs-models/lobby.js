@@ -6,12 +6,15 @@ var Bookshelf = require('./bookshelf'),
 
 module.exports = Bookshelf.Model.extend({
     tableName: 'lobbies',
-    relationNames: ['owner', 'members'],
+    //TODO: Put relations in separate config-file.
+    getRelationNames: function () {
+        return ['owner', 'members'];
+    },
     title: null,
     password: null,
     maxMembers: null,
     owner: function () {
-        return this.belongsTo(require('./player'));
+        return this.belongsTo(require('./player'), 'owner_id');
     },
     members: function () {
         return this.belongsToMany(require('./player')).through(require('./membership'));

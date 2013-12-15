@@ -36,7 +36,7 @@ CREATE TABLE lobbies (
     title character varying(50) NOT NULL,
     password character varying NOT NULL,
     "maxMembers" integer NOT NULL,
-    owner integer NOT NULL,
+    owner_id integer NOT NULL,
     id integer NOT NULL
 );
 
@@ -199,11 +199,11 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: lobbies_owner_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: lobbies_owner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lobbies
-    ADD CONSTRAINT lobbies_owner_fkey FOREIGN KEY (owner) REFERENCES players(id);
+    ADD CONSTRAINT lobbies_owner_id_fkey FOREIGN KEY (owner_id) REFERENCES players(id);
 
 
 --
@@ -223,15 +223,6 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: -
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
 -- PostgreSQL database dump complete
 --
+

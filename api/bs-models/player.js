@@ -6,7 +6,9 @@ var Bookshelf = require('./bookshelf'),
 
 module.exports = Bookshelf.Model.extend({
     tableName: 'players',
-    relationNames: ['ownedLobbies', 'joinedLobbies'],
+    getRelationNames: function () {
+        return ['ownedLobbies', 'joinedLobbies'];
+    },
     username: null,
     password: null,
     email: null,

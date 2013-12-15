@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = function (queryParams) {
+module.exports = function (collection, relations, queryParams) {
+    //TODO: Implement skip sort.
     var limit = queryParams.limit,
         offset = queryParams.offset,
         query;
@@ -8,7 +9,7 @@ module.exports = function (queryParams) {
     delete queryParams.limit;
     delete queryParams.offset;
 
-    query = this.query().where(queryParams);
+    query = collection.query().where(queryParams);
 
     if (limit) {
         query = query.limit(limit);
@@ -19,8 +20,8 @@ module.exports = function (queryParams) {
     }
 
     return query.then(function (models) {
-        this.add(models);
+        collection.add(models);
 
-        return this.load(this.relationNames);
-    }.bind(this));
+        return collection.load(relations);
+    });
 };

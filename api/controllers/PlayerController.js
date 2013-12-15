@@ -1,56 +1,16 @@
 'use strict';
 
-var Bookshelf = require('../bs-models/bookshelf'),
-    Player = require('../bs-models/player'),
-    Players = Bookshelf.Collection.extend({model: Player}),
-    relations = ['ownedLobbies', 'joinedLobbies'],
-    findMany = function (request, response) {
-        var ids = request.param('ids'),
-            limit = request.param('limit'),
-            offset = request.param('offset'),
-            queryParams = request.params.all(),
-            playerCollection = Players.forge(),
-            query = playerCollection.query();
-
-        delete queryParams.limit;
-        delete queryParams.offset;
-
-        //TODO: Implement limit skip sort.
-        if (ids) {
-            query = query.whereIn(ids);
-        } else {
-            query = query.where(queryParams);
-        }
-
-        if (limit) {
-            query = query.limit(limit);
-
-            if (offset) {
-                query = query.offset(offset);
-            }
-        }
-
-        query.then(function (players) {
-            playerCollection.add(players);
-
-            return playerCollection.load(relations);
-        }).then(function (players) {
-                response.send({
-                    players: players
-                });
-
-                //TODO: Check in sails-code what subscribe/publish exactly
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
-            });
-    };
+var Player = require('../bs-models/player'),
+    Players = require('../bs-models/players');
 
 module.exports = {
     find: function (request, response) {
-        var id = request.param('id');
+        var relations = Player.forge().getRelationNames(),
+            id = request.param('id'),
+        //TODO: needs to decode ids-parameter?
+            ids = request.param('ids');
 
         if (id) {
-            //TODO: Implement relationships correctly
             Player.forge({id: id}).fetch({withRelated: relations}).then(function (player) {
                 response.send({
                     player: player
@@ -58,8 +18,24 @@ module.exports = {
 
                 //Player.subscribe(request.socket, player);
             });
+        } else if (ids) {
+            Players.forge().findMany(ids).then(function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         } else {
-            findMany(request, response);
+            Players.forge().findQuery(request.params.all()).then(function (players) {
+                response.send({
+                    players: players
+                });
+
+                //Player.subscribe(request.socket);
+                //Player.subscribe(request.socket, players);
+            });
         }
     },
     create: function (request, response) {
