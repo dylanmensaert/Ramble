@@ -65,8 +65,8 @@ ALTER SEQUENCE lobbies_id_seq OWNED BY lobbies.id;
 --
 
 CREATE TABLE memberships (
-    player_id integer NOT NULL,
     lobby_id integer NOT NULL,
+    player_id integer NOT NULL,
     id integer NOT NULL
 );
 
@@ -167,11 +167,11 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: memberships_player_id_lobby_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: memberships_lobby_id_player_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY memberships
-    ADD CONSTRAINT memberships_player_id_lobby_id_key UNIQUE (player_id, lobby_id);
+    ADD CONSTRAINT memberships_lobby_id_player_id_key UNIQUE (lobby_id, player_id);
 
 
 --
@@ -207,19 +207,19 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: player_lobby_lobby_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: memberships_lobby_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY memberships
-    ADD CONSTRAINT player_lobby_lobby_id_fkey FOREIGN KEY (lobby_id) REFERENCES lobbies(id);
+    ADD CONSTRAINT memberships_lobby_id_fkey FOREIGN KEY (lobby_id) REFERENCES lobbies(id);
 
 
 --
--- Name: player_lobby_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: memberships_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY memberships
-    ADD CONSTRAINT player_lobby_player_id_fkey FOREIGN KEY (player_id) REFERENCES players(id);
+    ADD CONSTRAINT memberships_player_id_fkey FOREIGN KEY (player_id) REFERENCES players(id);
 
 
 --
