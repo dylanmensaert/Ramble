@@ -1,3 +1,4 @@
+/* jshint browser: true */
 define(function (require) {
     'use strict';
 
