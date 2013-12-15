@@ -20,12 +20,12 @@ module.exports.express = {
 
         passport.use(new LocalStrategy(function (username, password, done) {
             Player.forge({username: username}).fetch().then(function (playerResult) {
-                player = playerResult.toJSON();
-
                 if (!playerResult) {
                     done(null, false);
                 } else {
-                    return playerResult.verifyPassword(password);
+                    player = playerResult;
+
+                    return player.verifyPassword(password);
                 }
             }).then(function (isValid) {
                     if (!isValid) {

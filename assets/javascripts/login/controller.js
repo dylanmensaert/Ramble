@@ -69,7 +69,7 @@ define(function (require) {
                 };
 
                 this.get('socket').emit('get', json, function (data) {
-                    if (data.status === 200) {
+                    if (data.status === 200 || data.status === 403) {
                         this.set('session.account', null);
 
                         this.transitionToRoute('index');

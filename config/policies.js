@@ -3,12 +3,10 @@
 module.exports.policies = {
     auth: {
         login: true,
-        //TODO: there seems to be a problem with logout: 'isAuthenticated'
         logout: 'isAuthenticated',
         checkSession: true
     },
     player: {
-        //TODO: Set policy when login implemented
         find: true,
         create: true,
         update: 'isOwnerOfAccount',
