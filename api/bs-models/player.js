@@ -1,11 +1,11 @@
 'use strict';
 
-var Bookshelf = require('./bookshelf'),
+var db = require('./db'),
     relations = require('./relations').player,
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
-module.exports = Bookshelf.Model.extend({
+module.exports = db.Model.extend({
     tableName: 'players',
     username: null,
     password: null,

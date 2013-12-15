@@ -1,9 +1,9 @@
 'use strict';
 
-var Bookshelf = require('./bookshelf');
+var db = require('./db');
 //TODO: player = require('./player');
 
-module.exports = Bookshelf.Model.extend({
+module.exports = db.Model.extend({
     tableName: 'memberships',
     lobby: function () {
         return this.belongsTo(require('./lobby'));
