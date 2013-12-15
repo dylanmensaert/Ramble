@@ -5,8 +5,8 @@ define(function (require) {
 
     return Ember.Route.extend(require('helpers/update-title-mixin'), require('login/helpers/ownership-check-mixin'), {
         title: function () {
-            return this.get('controller.username') + ' - Delete';
-        }.property('controller.username'),
+            return this.controller.get('username') + ' - Delete';
+        }.property(),
         afterModel: function (model, transition) {
             this.checkOwnershipAndRedirect(model, transition);
         }

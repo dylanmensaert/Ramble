@@ -4,6 +4,8 @@ define(function (require) {
     var Ember = require('ember');
 
     return Ember.Route.extend(require('helpers/update-title-mixin'), {
-        title: Ember.computed.alias('controller.username')
+        title: function () {
+            return this.controller.get('username');
+        }.property()
     });
 });
