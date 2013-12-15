@@ -2,15 +2,12 @@
 
 var Bookshelf = require('./bookshelf'),
     Player = require('./player'),
-    relations = Player.relationNames;
+    findMany = require('./helpers/findMany');
 
 module.exports = Bookshelf.Collection.extend({
     model: Player,
+    relationNames: Player.relationNames,
     findMany: function (ids) {
-        return this.query().whereIn(ids).then(function (players) {
-            this.add(players);
-
-            return this.load(relations);
-        }.bind(this));
+        return findMany(ids);
     }
 });
