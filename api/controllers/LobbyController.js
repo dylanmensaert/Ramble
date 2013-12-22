@@ -41,7 +41,7 @@ module.exports = {
         var values = {
                 title: request.param('title'),
                 password: request.param('password'),
-                maxMembers: request.param('maxMembers'),
+                max_members: request.param('max_members'),
                 owner_id: request.user.id
             },
             lobby = Lobby.forge(values);
@@ -59,7 +59,7 @@ module.exports = {
                 id: request.param('id'),
                 title: request.param('title'),
                 password: request.param('password'),
-                maxMembers: request.param('maxMembers')
+                max_members: request.param('max_members')
             },
             lobby = Lobby.forge(values);
 

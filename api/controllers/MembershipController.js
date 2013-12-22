@@ -21,6 +21,8 @@ module.exports = {
             player_id: request.user.id
         };
 
+        //TODO: Check the password!
+
         Membership.forge(values).save().then(function (lobby) {
             response.send({
                 lobby: lobby
