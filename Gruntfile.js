@@ -84,6 +84,9 @@ module.exports = function (grunt) {
                         templateName = templateName.replace('/template', '');
 
                         return templateName;
+                    },
+                    preprocess: function (source) {
+                        return source.replace(/\s+/g, ' ');
                     }
                 },
                 files: {
