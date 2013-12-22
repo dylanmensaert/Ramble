@@ -9,12 +9,10 @@ define(function (require) {
         password: DS.attr('string'),
         maxMembers: DS.attr('number'),
         owner: DS.belongsTo('player', {
-            inverse: 'ownedLobbies',
-            async: true
+            inverse: 'ownedLobbies'
         }),
         members: DS.hasMany('player', {
-            inverse: 'joinedLobbies',
-            async: true
+            inverse: 'joinedLobbies'
         }),
         validations: {
             title: {

@@ -2,7 +2,8 @@
 
 var db = require('./db'),
     lobby,
-    player;
+    player,
+    relations = require('./relations').membership;
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
@@ -11,6 +12,9 @@ module.exports = db.Model.extend({
     },
     player: function () {
         return this.belongsTo(player);
+    },
+    fetchWithRelated: function () {
+        return this.fetch({withRelated: relations});
     }
 });
 

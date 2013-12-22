@@ -9,12 +9,10 @@ define(function (require) {
         password: DS.attr('string'),
         email: DS.attr('string'),
         ownedLobbies: DS.hasMany('lobby', {
-            inverse: 'owner',
-            async: true
+            inverse: 'owner'
         }),
         joinedLobbies: DS.hasMany('lobby', {
-            inverse: 'members',
-            async: true
+            inverse: 'members'
         }),
         validations: {
             username: {
