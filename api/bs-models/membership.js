@@ -9,8 +9,10 @@ var db = require('./db'),
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
-    parse: function (attrs) {
-        return toUnderscore(attrs);
+    toJSON: function () {
+        var model = db.Model.prototype.toJSON.apply(this, arguments);
+
+        return toUnderscore(model);
     },
     format: function (attrs) {
         return toCamelCase(attrs);

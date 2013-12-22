@@ -14,8 +14,10 @@ module.exports = db.Model.extend({
     title: null,
     password: null,
     maxMembers: null,
-    parse: function (attrs) {
-        return toUnderscore(attrs);
+    toJSON: function () {
+        var model = db.Model.prototype.toJSON.apply(this, arguments);
+
+        return toUnderscore(model);
     },
     format: function (attrs) {
         return toCamelCase(attrs);
