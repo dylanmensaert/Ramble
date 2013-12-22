@@ -1,10 +1,11 @@
 'use strict';
 
-var _ = require('underscore');
+var _ = require('lodash'),
+    _s = require('underscore.string');
 
 module.exports = function (attrs) {
     return _.reduce(attrs, function (memo, value, key) {
-        memo[_.str.camelize(key)] = value;
+        memo[_s.camelize(key)] = value;
         return memo;
     }, {});
 };
