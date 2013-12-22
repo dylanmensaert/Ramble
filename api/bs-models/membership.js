@@ -3,10 +3,18 @@
 var db = require('./db'),
     lobby,
     player,
+    toUnderscore = require('../helpers/toUnderscore'),
+    toCamelCase = require('../helpers/toCamelCase'),
     relations = require('./relations').membership;
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
+    parse: function (attrs) {
+        return toUnderscore(attrs);
+    },
+    format: function (attrs) {
+        return toCamelCase(attrs);
+    },
     lobby: function () {
         return this.belongsTo(lobby);
     },

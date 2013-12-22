@@ -4,6 +4,8 @@ var db = require('./db'),
     player,
     membership,
     relations = require('./relations').lobby,
+    toUnderscore = require('../helpers/toUnderscore'),
+    toCamelCase = require('../helpers/toCamelCase'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
@@ -12,6 +14,12 @@ module.exports = db.Model.extend({
     title: null,
     password: null,
     maxMembers: null,
+    parse: function (attrs) {
+        return toUnderscore(attrs);
+    },
+    format: function (attrs) {
+        return toCamelCase(attrs);
+    },
     owner: function () {
         return this.belongsTo(player, 'owner_id');
     },
