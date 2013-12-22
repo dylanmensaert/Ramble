@@ -17,6 +17,8 @@ module.exports = db.Model.extend({
     toJSON: function () {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
+        delete model.password;
+
         return toUnderscore(model);
     },
     format: function (attrs) {
@@ -35,7 +37,7 @@ module.exports = db.Model.extend({
         return setHashedPassword(this.attributes);
     },
     verifyPassword: function (password) {
-        return verifyPassword(password, this.toJSON().password);
+        return verifyPassword(password, this.attributes.password);
     }
 });
 
