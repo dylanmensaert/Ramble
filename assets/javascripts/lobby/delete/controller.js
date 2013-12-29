@@ -1,15 +1,15 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
         actions: {
-            delete: function () {
+            delete: function() {
                 var model = this.get('model');
 
                 model.deleteRecord();
-                model.save().then(function () {
+                model.save().then(function() {
                     this.transitionToRoute('lobby.list');
                 }.bind(this));
 

@@ -3,11 +3,11 @@
 
 var bcrypt = require('bcrypt'),
     setHashedPassword = require('../helpers/setHashedPassword'),
-    getLobbies = function (query, success) {
-        Lobby.find(query).done(function (error, lobbies) {
+    getLobbies = function(query, success) {
+        Lobby.find(query).done(function(error, lobbies) {
             var lobbyIds = [];
 
-            lobbies.forEach(function (lobby) {
+            lobbies.forEach(function(lobby) {
                 lobbyIds.push(lobby.id);
             });
 
@@ -34,19 +34,19 @@ module.exports = {
             required: true,
             maxLength: 50
         },
-        fetchOwnedLobbies: function (next) {
+        fetchOwnedLobbies: function(next) {
             var query = {
                     owner: this.id
                 },
                 player = this;
 
-            getLobbies(query, function (ownedLobbyIds) {
+            getLobbies(query, function(ownedLobbyIds) {
                 player.ownedLobbies = ownedLobbyIds;
 
                 next();
             });
         },
-        fetchJoinedLobbies: function (next) {
+        fetchJoinedLobbies: function(next) {
             var query = {
                     members: {
                         contains: this.id
@@ -54,18 +54,18 @@ module.exports = {
                 },
                 player = this;
 
-            getLobbies(query, function (joinedLobbyIds) {
+            getLobbies(query, function(joinedLobbyIds) {
                 player.joinedLobbies = joinedLobbyIds;
 
                 next();
             });
         },
-        verifyPassword: function (password, done) {
+        verifyPassword: function(password, done) {
             var player = this.toObject();
 
             bcrypt.compare(password, player.password, done);
         },
-        toJSON: function () {
+        toJSON: function() {
             var player = this.toObject();
 
             delete player.password;
@@ -73,10 +73,10 @@ module.exports = {
             return player;
         }
     },
-    beforeCreate: function (values, next) {
+    beforeCreate: function(values, next) {
         setHashedPassword(Player, values, next);
     },
-    beforeUpdate: function (values, next) {
+    beforeUpdate: function(values, next) {
         setHashedPassword(Player, values, next);
     }
 };

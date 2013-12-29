@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
@@ -6,15 +6,15 @@ define(function (require) {
 
     return Ember.Route.extend(require('helpers/update-title'), {
         title: 'Log in',
-        model: function () {
+        model: function() {
             return loginModel.create();
         },
-        beforeModel: function () {
+        beforeModel: function() {
             if (this.get('session.isLoggedIn')) {
                 this.transitionTo('index');
             }
         },
-        setupController: function (controller, model) {
+        setupController: function(controller, model) {
             this._super(controller, model);
 
             controller.set('errorMessage', null);

@@ -1,7 +1,7 @@
 /* jshint maxparams: false */
 'use strict';
 
-module.exports[400] = function (validationErrors, redirectTo, request, response) {
+module.exports[400] = function(validationErrors, redirectTo, request, response) {
     var result = {
         status: 400
     };

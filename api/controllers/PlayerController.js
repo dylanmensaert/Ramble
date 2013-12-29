@@ -4,13 +4,13 @@ var Player = require('../bs-models/player'),
     Players = require('../bs-models/players');
 
 module.exports = {
-    find: function (request, response) {
+    find: function(request, response) {
         var id = request.param('id'),
         //TODO: needs to decode ids-parameter?
             ids = request.param('ids');
 
         if (id) {
-            Player.forge({id: id}).fetchWithRelated().then(function (player) {
+            Player.forge({id: id}).fetchWithRelated().then(function(player) {
                 response.send({
                     player: player
                 });
@@ -18,7 +18,7 @@ module.exports = {
                 //Player.subscribe(request.socket, player);
             });
         } else if (ids) {
-            Players.forge().findMany(ids).then(function (players) {
+            Players.forge().findMany(ids).then(function(players) {
                 response.send({
                     players: players
                 });
@@ -27,7 +27,7 @@ module.exports = {
                 //Player.subscribe(request.socket, players);
             });
         } else {
-            Players.forge().findQuery(request.params.all()).then(function (players) {
+            Players.forge().findQuery(request.params.all()).then(function(players) {
                 response.send({
                     players: players
                 });
@@ -37,7 +37,7 @@ module.exports = {
             });
         }
     },
-    create: function (request, response) {
+    create: function(request, response) {
         var values = {
                 username: request.param('username'),
                 password: request.param('password'),
@@ -45,15 +45,15 @@ module.exports = {
             },
             player = Player.forge(values);
 
-        player.hashPassword().then(function () {
+        player.hashPassword().then(function() {
             return player.save();
-        }).then(function (player) {
+        }).then(function(player) {
                 response.send({
                     player: player
                 });
             });
     },
-    update: function (request, response) {
+    update: function(request, response) {
         var values = {
                 id: request.param('id'),
                 username: request.param('username'),
@@ -62,9 +62,9 @@ module.exports = {
             },
             player = Player.forge(values);
 
-        player.hashPassword().then(function () {
+        player.hashPassword().then(function() {
             return player.save();
-        }).then(function (player) {
+        }).then(function(player) {
                 response.send({
                     player: player
                 });
@@ -72,10 +72,10 @@ module.exports = {
                 //Player.publishUpdate(player.id, player.toJSON());
             });
     },
-    destroy: function (request, response) {
+    destroy: function(request, response) {
         var id = request.param('id');
 
-        Player.forge({id: id}).destroy().then(function () {
+        Player.forge({id: id}).destroy().then(function() {
             request.logOut();
 
             response.send({

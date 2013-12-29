@@ -8,14 +8,14 @@ module.exports = {
             pluralize: false
         }
     },
-    login: function (request, response) {
-        passport.authenticate('local', function (error, player) {
+    login: function(request, response) {
+        passport.authenticate('local', function(error, player) {
             if (error) {
                 response.error(error);
             } else if (!player) {
                 response.forbidden('Login unsuccessful.');
             } else {
-                request.logIn(player, function (error) {
+                request.logIn(player, function(error) {
                     if (error) {
                         response.error(error);
                     } else {
@@ -29,7 +29,7 @@ module.exports = {
             }
         })(request, response);
     },
-    logout: function (request, response) {
+    logout: function(request, response) {
         request.logOut();
 
         response.send({
@@ -37,7 +37,7 @@ module.exports = {
             message: 'Logout successful.'
         });
     },
-    checkSession: function (request, response) {
+    checkSession: function(request, response) {
         if (request.user) {
             response.send({
                 status: 200,

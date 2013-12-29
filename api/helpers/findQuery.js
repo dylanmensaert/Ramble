@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (collection, relations, queryParams) {
+module.exports = function(collection, relations, queryParams) {
     //TODO: Implement sort.
     var limit = queryParams.limit,
         offset = queryParams.offset,
@@ -19,7 +19,7 @@ module.exports = function (collection, relations, queryParams) {
         }
     }
 
-    return query.then(function (models) {
+    return query.then(function(models) {
         collection.add(models);
 
         return collection.load(relations);

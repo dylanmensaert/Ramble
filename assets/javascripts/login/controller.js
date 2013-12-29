@@ -1,11 +1,11 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
         errorMessage: null,
-        retryTransition: function () {
+        retryTransition: function() {
             var attemptedTransition = this.get('session.attemptedTransition');
 
             if (attemptedTransition) {
@@ -16,14 +16,14 @@ define(function (require) {
 
             return attemptedTransition;
         },
-        checkSession: function () {
+        checkSession: function() {
             var json = {
                 url: '/api/auth/checkSession'
             };
 
-            this.get('socket').emit('get', json, function (data) {
+            this.get('socket').emit('get', json, function(data) {
                 if (data.status === 200) {
-                    this.get('store').find('player', data.player.id).then(function (player) {
+                    this.get('store').find('player', data.player.id).then(function(player) {
                         this.set('session.account', player);
 
                         this.retryTransition();
@@ -34,7 +34,7 @@ define(function (require) {
             }.bind(this));
         },
         actions: {
-            login: function () {
+            login: function() {
                 var player,
                     json;
 
@@ -47,10 +47,10 @@ define(function (require) {
                     }
                 };
 
-                player.validate().then(function () {
-                    this.get('socket').emit('get', json, function (data) {
+                player.validate().then(function() {
+                    this.get('socket').emit('get', json, function(data) {
                         if (data.status === 200) {
-                            this.get('store').find('player', data.player.id).then(function (player) {
+                            this.get('store').find('player', data.player.id).then(function(player) {
                                 this.set('session.account', player);
 
                                 if (!this.retryTransition()) {
@@ -63,12 +63,12 @@ define(function (require) {
                     }.bind(this));
                 }.bind(this));
             },
-            logout: function () {
+            logout: function() {
                 var json = {
                     url: '/api/auth/logout'
                 };
 
-                this.get('socket').emit('get', json, function (data) {
+                this.get('socket').emit('get', json, function(data) {
                     if (data.status === 200 || data.status === 403) {
                         this.set('session.account', null);
 

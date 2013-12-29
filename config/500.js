@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports[500] = function (errors, request, response) {
+module.exports[500] = function(errors, request, response) {
     var result = {
         status: 500
     };

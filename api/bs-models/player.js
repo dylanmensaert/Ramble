@@ -14,29 +14,29 @@ module.exports = db.Model.extend({
     username: null,
     password: null,
     email: null,
-    toJSON: function () {
+    toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
         delete model.password;
 
         return toUnderscore(model);
     },
-    format: function (attrs) {
+    format: function(attrs) {
         return toCamelCase(attrs);
     },
-    ownedLobbies: function () {
+    ownedLobbies: function() {
         return this.hasMany(lobby, 'owner_id');
     },
-    joinedLobbies: function () {
+    joinedLobbies: function() {
         return this.belongsToMany(lobby).through(membership);
     },
-    fetchWithRelated: function () {
+    fetchWithRelated: function() {
         return this.fetch({withRelated: relations});
     },
-    hashPassword: function () {
+    hashPassword: function() {
         return setHashedPassword(this.attributes);
     },
-    verifyPassword: function (password) {
+    verifyPassword: function(password) {
         return verifyPassword(password, this.attributes.password);
     }
 });

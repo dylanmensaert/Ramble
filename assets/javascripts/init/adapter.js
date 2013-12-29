@@ -1,16 +1,16 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var DS = require('ember-data'),
         Ember = require('ember');
 
     return DS.RESTAdapter.extend({
-        find: function (store, type, id) {
+        find: function(store, type, id) {
             var url = this.buildURL(type.typeKey, 'find', id);
 
             return this.request(url);
         },
-        findAll: function (store, type, sinceToken) {
+        findAll: function(store, type, sinceToken) {
             var query,
                 url;
 
@@ -24,12 +24,12 @@ define(function (require) {
 
             return this.request(url, query);
         },
-        findQuery: function (store, type, query) {
+        findQuery: function(store, type, query) {
             var url = this.buildURL(type.typeKey, 'find');
 
             return this.request(url, query);
         },
-        findMany: function (store, type, ids) {
+        findMany: function(store, type, ids) {
             var url,
                 data;
 
@@ -40,7 +40,7 @@ define(function (require) {
 
             return this.request(url, data);
         },
-        createRecord: function (store, type, record) {
+        createRecord: function(store, type, record) {
             var data,
                 url;
 
@@ -50,7 +50,7 @@ define(function (require) {
 
             return this.request(url, data);
         },
-        updateRecord: function (store, type, record) {
+        updateRecord: function(store, type, record) {
             var data,
                 id,
                 url;
@@ -63,7 +63,7 @@ define(function (require) {
 
             return this.request(url, data);
         },
-        deleteRecord: function (store, type, record) {
+        deleteRecord: function(store, type, record) {
             var id,
                 url;
 
@@ -72,7 +72,7 @@ define(function (require) {
 
             return this.request(url);
         },
-        buildURL: function (type, action, id) {
+        buildURL: function(type, action, id) {
             var host = this.get('host'),
                 namespace = this.get('namespace'),
                 urlParts = [],
@@ -101,7 +101,7 @@ define(function (require) {
 
             return url;
         },
-        request: function (url, data) {
+        request: function(url, data) {
             var socket,
                 json;
 
@@ -111,8 +111,8 @@ define(function (require) {
                 data: data
             };
 
-            return new Ember.RSVP.Promise(function (resolve, reject) {
-                socket.emit('get', json, function (data) {
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                socket.emit('get', json, function(data) {
                     if (data.status) {
                         Ember.run(null, reject, data);
                     } else {

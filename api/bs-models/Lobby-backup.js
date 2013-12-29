@@ -28,12 +28,12 @@ module.exports = {
         members: {
             type: 'ARRAY'
         },
-        verifyPassword: function (password, done) {
+        verifyPassword: function(password, done) {
             var lobby = this.toObject();
 
             bcrypt.compare(password, lobby.password, done);
         },
-        toJSON: function () {
+        toJSON: function() {
             var lobby = this.toObject();
 
             delete lobby.password;
@@ -41,10 +41,10 @@ module.exports = {
             return lobby;
         }
     },
-    beforeCreate: function (values, next) {
+    beforeCreate: function(values, next) {
         setHashedPassword(Lobby, values, next);
     },
-    beforeUpdate: function (values, next) {
+    beforeUpdate: function(values, next) {
         setHashedPassword(Lobby, values, next);
     }
 };

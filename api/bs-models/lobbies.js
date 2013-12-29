@@ -8,10 +8,10 @@ var db = require('./db'),
 
 module.exports = db.Collection.extend({
     model: Lobby,
-    findMany: function (ids) {
+    findMany: function(ids) {
         return findMany(this, relations, ids);
     },
-    findQuery: function (queryParams) {
+    findQuery: function(queryParams) {
         return findQuery(this, relations, queryParams);
     }
 });

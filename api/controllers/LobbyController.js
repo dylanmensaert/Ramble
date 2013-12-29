@@ -5,12 +5,12 @@ var Lobby = require('../bs-models/lobby'),
     Lobbies = require('../bs-models/lobbies');
 
 module.exports = {
-    find: function (request, response) {
+    find: function(request, response) {
         var id = request.param('id'),
             ids = request.param('ids');
 
         if (id) {
-            Lobby.forge({id: id}).fetchWithRelated().then(function (lobby) {
+            Lobby.forge({id: id}).fetchWithRelated().then(function(lobby) {
                 response.send({
                     lobby: lobby
                 });
@@ -18,7 +18,7 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobby);
             });
         } else if (ids) {
-            Lobbies.forge().findMany(ids).then(function (lobbies) {
+            Lobbies.forge().findMany(ids).then(function(lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
@@ -27,7 +27,7 @@ module.exports = {
                 //Lobby.subscribe(request.socket, lobbies);
             });
         } else {
-            Lobbies.forge().findQuery(request.params.all()).then(function (lobbies) {
+            Lobbies.forge().findQuery(request.params.all()).then(function(lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
@@ -37,7 +37,7 @@ module.exports = {
             });
         }
     },
-    create: function (request, response) {
+    create: function(request, response) {
         var values = {
                 title: request.param('title'),
                 password: request.param('password'),
@@ -46,15 +46,15 @@ module.exports = {
             },
             lobby = Lobby.forge(values);
 
-        lobby.hashPassword().then(function () {
+        lobby.hashPassword().then(function() {
             return lobby.save();
-        }).then(function (lobby) {
+        }).then(function(lobby) {
                 response.send({
                     lobby: lobby
                 });
             });
     },
-    update: function (request, response) {
+    update: function(request, response) {
         var values = {
                 id: request.param('id'),
                 title: request.param('title'),
@@ -63,9 +63,9 @@ module.exports = {
             },
             lobby = Lobby.forge(values);
 
-        lobby.hashPassword().then(function () {
+        lobby.hashPassword().then(function() {
             return lobby.save();
-        }).then(function (lobby) {
+        }).then(function(lobby) {
                 response.send({
                     lobby: lobby
                 });
@@ -73,10 +73,10 @@ module.exports = {
                 //Lobby.publishUpdate(lobby.id, lobby.toJSON());
             });
     },
-    destroy: function (request, response) {
+    destroy: function(request, response) {
         var id = request.param('id');
 
-        Lobby.forge({id: id}).destroy().then(function () {
+        Lobby.forge({id: id}).destroy().then(function() {
             response.send({
                 lobby: {
                     id: id

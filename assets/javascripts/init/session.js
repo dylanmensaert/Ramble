@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
@@ -6,16 +6,16 @@ define(function (require) {
 
     session = Ember.Object.extend({
         account: null,
-        isLoggedIn: function () {
+        isLoggedIn: function() {
             return this.get('account') !== null;
         }.property('account'),
         attemptedTransition: null
     });
 
-    Ember.onLoad('Ember.Application', function (Application) {
+    Ember.onLoad('Ember.Application', function(Application) {
         Application.initializer({
             name: 'session',
-            initialize: function (container, application) {
+            initialize: function(container, application) {
                 application.register('session:main', session, {
                     singleton: true
                 });

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     var config = {
         //server
         api: 'api',
@@ -77,14 +77,14 @@ module.exports = function (grunt) {
                 options: {
                     amd: true,
                     templateBasePath: '<%= config.javascripts %>' + '/',
-                    templateName: function (sourceFile) {
+                    templateName: function(sourceFile) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace('/template', '');
 
                         return templateName;
                     },
-                    preprocess: function (source) {
+                    preprocess: function(source) {
                         return source.replace(/\s+/g, ' ');
                     }
                 },
@@ -139,7 +139,18 @@ module.exports = function (grunt) {
                 jshintrc: true
             },
             client: {
-                src: ['<%= config.javascripts %>/**/*.js']
+                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
+            },
+            test: {
+                src: ['<%= config.test %>/**/*.js']
+            },
+            server: {
+                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
+            }
+        },
+        jscs: {
+            client: {
+                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
             },
             test: {
                 src: ['<%= config.test %>/**/*.js']
@@ -206,7 +217,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'less:development', 'copy:development', 'copy:bootstrapFonts']);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
+    grunt.registerTask('test', ['jshint', 'jscs', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
     grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts']);
 
     grunt.registerTask('develop', ['concurrent:development']);

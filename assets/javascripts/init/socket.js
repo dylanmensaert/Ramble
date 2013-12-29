@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
@@ -7,10 +7,10 @@ define(function (require) {
 
     socket = io.connect();
 
-    Ember.onLoad('Ember.Application', function (Application) {
+    Ember.onLoad('Ember.Application', function(Application) {
         Application.initializer({
             name: 'socket',
-            initialize: function (container, application) {
+            initialize: function(container, application) {
                 application.register('socket:main', socket, {
                     instantiate: false
                 });

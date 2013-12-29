@@ -1,6 +1,6 @@
 'use strict';
 
-var setupPassportForSocketIO = function () {
+var setupPassportForSocketIO = function() {
     //TODO: Fix to make passport.js work with websockets!
     //see http://stackoverflow.com/questions/17365444/sails-js-passport-js-authentication-through-websockets/18343226#18343226
     var passport = require('passport'),
@@ -10,13 +10,13 @@ var setupPassportForSocketIO = function () {
         methods = ['login', 'logIn', 'logout', 'logOut', 'isAuthenticated', 'isUnauthenticated'];
 
     sails.removeAllListeners('router:request');
-    sails.on('router:request', function (request, response) {
-        initialize(request, response, function () {
-            session(request, response, function (error) {
+    sails.on('router:request', function(request, response) {
+        initialize(request, response, function() {
+            session(request, response, function(error) {
                 if (error) {
                     sails.config[500](500, request, response);
                 } else {
-                    methods.forEach(function (method) {
+                    methods.forEach(function(method) {
                         request[method] = http.IncomingMessage.prototype[method].bind(request);
                     });
 
@@ -27,7 +27,7 @@ var setupPassportForSocketIO = function () {
     });
 };
 
-module.exports.bootstrap = function (cb) {
+module.exports.bootstrap = function(cb) {
     setupPassportForSocketIO();
 
     cb();

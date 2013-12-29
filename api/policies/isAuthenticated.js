@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (request, response, ok) {
+module.exports = function(request, response, ok) {
     if (request.isAuthenticated()) {
         ok();
     } else {

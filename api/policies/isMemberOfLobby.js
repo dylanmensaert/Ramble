@@ -3,11 +3,11 @@
 
 var Membership = require('../bs-models/membership');
 
-module.exports = function (request, response, ok) {
+module.exports = function(request, response, ok) {
     var lobby_id = request.param('id'),
         player_id = request.user.id;
 
-    Membership.forge({lobby_id: lobby_id, player_id: player_id}).fetch().then(function (membership) {
+    Membership.forge({lobby_id: lobby_id, player_id: player_id}).fetch().then(function(membership) {
         if (request.isAuthenticated() && membership) {
             ok();
         } else {

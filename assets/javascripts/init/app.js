@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
@@ -6,7 +6,7 @@ define(function (require) {
         App;
 
     App = Ember.Application.create({
-        ready: function () {
+        ready: function() {
             Ember.$('.my-initial-loading').remove();
         },
         LOG_TRANSITIONS: true

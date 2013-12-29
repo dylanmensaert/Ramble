@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var App = require('init/app'),
@@ -8,15 +8,15 @@ define(function (require) {
     googleAnalytics('create', config.googleAnalyticsAccount);
 
     App.Router.reopen({
-        updateTitle: function () {
+        updateTitle: function() {
             this.send('updateTitle', []);
         }.on('didTransition')
     });
 
-    App.Router.map(function () {
+    App.Router.map(function() {
         this.resource('login');
 
-        this.resource('player', function () {
+        this.resource('player', function() {
             this.route('index',
                 {
                     path: ':player_id'
@@ -33,7 +33,7 @@ define(function (require) {
             this.route('create');
         });
 
-        this.resource('lobby', function () {
+        this.resource('lobby', function() {
             this.route('index',
                 {
                     path: ':lobby_id'

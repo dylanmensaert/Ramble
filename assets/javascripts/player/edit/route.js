@@ -1,16 +1,16 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember');
 
     return Ember.Route.extend(require('helpers/update-title'), require('login/helpers/ownership-check'), require('helpers/model-rollback'), {
-        title: function () {
+        title: function() {
             return this.controller.get('username') + ' - Edit';
         }.property(),
-        afterModel: function (model, transition) {
+        afterModel: function(model, transition) {
             this.checkOwnershipAndRedirect(model, transition);
         },
-        deactivate: function () {
+        deactivate: function() {
             this.checkToRollbackModel();
         }
     });

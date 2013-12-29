@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports[403] = function (message, request, response) {
+module.exports[403] = function(message, request, response) {
     var result = {
         status: 403
     };

@@ -9,21 +9,21 @@ var db = require('./db'),
 
 module.exports = db.Model.extend({
     tableName: 'memberships',
-    toJSON: function () {
+    toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
         return toUnderscore(model);
     },
-    format: function (attrs) {
+    format: function(attrs) {
         return toCamelCase(attrs);
     },
-    lobby: function () {
+    lobby: function() {
         return this.belongsTo(lobby);
     },
-    player: function () {
+    player: function() {
         return this.belongsTo(player);
     },
-    fetchWithRelated: function () {
+    fetchWithRelated: function() {
         return this.fetch({withRelated: relations});
     }
 });

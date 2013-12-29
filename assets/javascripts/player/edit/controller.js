@@ -1,16 +1,16 @@
-define(function (require) {
+define(function(require) {
     'use strict';
 
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
         actions: {
-            save: function () {
+            save: function() {
                 var model = this.get('model');
 
-                model.validate().then(function () {
+                model.validate().then(function() {
                     if (model.get('isDirty')) {
-                        model.save().then(function () {
+                        model.save().then(function() {
                             this.transitionToRoute('player');
                         }.bind(this));
                     } else {
