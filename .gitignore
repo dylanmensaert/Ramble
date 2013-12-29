@@ -7,6 +7,5 @@ node_modules/
 assets/bower_components/
 
 .tmp/
-.sass-cache/
 
 .idea/

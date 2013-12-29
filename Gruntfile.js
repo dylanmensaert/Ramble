@@ -10,7 +10,7 @@ module.exports = function (grunt) {
         //assets
         assets: 'assets',
         javascripts: 'assets/javascripts',
-        sass: 'assets/sass',
+        less: 'assets/less',
         stylesheets: '.tmp/public/stylesheets',
         images: 'assets/images',
         //prod
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         test: 'test',
         components: 'assets/bower_components',
         templatesjs: 'assets/javascripts/init/templates.js',
-        bootstrapFonts: 'assets/bower_components/sass-bootstrap/fonts'
+        bootstrapFonts: 'assets/bower_components/bootstrap/dist/fonts'
     };
 
     require('load-grunt-tasks')(grunt);
@@ -35,7 +35,6 @@ module.exports = function (grunt) {
             cleanup: {
                 src: [
                     '<%= config.templatesjs %>',
-                    '.sass-cache',
                     'node_modules',
                     '<%= config.components %>'
                 ]
@@ -94,21 +93,23 @@ module.exports = function (grunt) {
                 }
             }
         },
-        compass: {
+        less: {
             options: {
-                importPath: '<%= config.components %>',
-                sassDir: '<%= config.sass %>',
-                cssDir: '<%= config.stylesheets %>',
-                imagesDir: '<%= config.images %>',
-                javascriptsDir: '<%= config.javascripts %>',
-                boring: true
+                paths: ['<%= config.components %>'],
+                strictImports: true,
+                strictUnits: true
             },
             development: {
+                files: {
+                    '<%= config.stylesheets %>/main.css': '<%= config.less %>/main.less'
+                }
             },
             production: {
+                files: {
+                    '<%= config.stylesheets %>/main.css': '<%= config.less %>/main.less'
+                },
                 options: {
-                    environment: 'production',
-                    specify: ['<%= config.sass %>/main.scss']
+                    cleancss: true
                 }
             }
         },
@@ -167,9 +168,9 @@ module.exports = function (grunt) {
                 files: ['<%= config.javascripts %>/**/*.handlebars'],
                 tasks: ['emberTemplates:all']
             },
-            compass: {
-                files: ['<%= config.sass %>/**/*.scss'],
-                tasks: ['compass:development']
+            less: {
+                files: ['<%= config.less %>/**/*.less'],
+                tasks: ['less:development']
             },
             livereload: {
                 files: [
@@ -197,10 +198,10 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'compass:development', 'copy:development', 'copy:bootstrapFonts']);
+    grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'less:development', 'copy:development', 'copy:bootstrapFonts']);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'compass:development', 'csslint:all']);
-    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'compass:production', 'copy:production', 'copy:bootstrapFonts']);
+    grunt.registerTask('test', ['jshint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
+    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts']);
 
     grunt.registerTask('develop', ['concurrent:development']);
 

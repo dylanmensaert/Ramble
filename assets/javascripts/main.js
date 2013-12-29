@@ -13,7 +13,7 @@
             'ember-validations': '../bower_components/ember-dockyard-validations/validations/ember-validations-1.0.0.beta.1',
             'handlebars': '../bower_components/handlebars/handlebars.runtime',
             jquery: '../bower_components/jQuery/dist/jquery',
-            bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
+            bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
             'google-analytics': '../bower_components/google-analytics/index'
         },
         shim: {
