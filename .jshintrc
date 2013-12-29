@@ -76,7 +76,7 @@
     "nomen": false,
     "onevar": true,
     "passfail": false,
-    "white": true,
+    "white": false,
 
     "globals": {
         "sails": false,

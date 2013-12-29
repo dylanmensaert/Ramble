@@ -45,7 +45,7 @@ define(function(require) {
                 url;
 
             //TODO: should includeId?
-            data = store.serializerFor(type.typeKey).serialize(record, { includeId: true });
+            data = store.serializerFor(type.typeKey).serialize(record, {includeId: true});
             url = this.buildURL(type.typeKey, 'create');
 
             return this.request(url, data);

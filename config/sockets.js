@@ -207,7 +207,7 @@ module.exports.sockets = {
 
     // A Static instance that is used to serve the socket.io client and its dependencies.
     // (`undefined` indicates use default)
-    'static': undefined,
+    static: undefined,
 
     // The entry point where Socket.IO starts looking for incoming connections.
     // This should be the same between the client and the server.

@@ -20,8 +20,6 @@
  */
 
 module.exports.controllers = {
-
-
     /**
      * NOTE:
      * A lot of the configuration options below affect so-called "CRUD methods",

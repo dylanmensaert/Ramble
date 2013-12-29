@@ -10,8 +10,6 @@
  * http://sailsjs.org/#documentation
  */
 
-
-
 /**
  * (1) Core middleware
  *
@@ -28,7 +26,6 @@
  */
 
 module.exports.routes = {
-
     // By default, your root route (aka home page) points to a view
     // located at `views/home/index.ejs`
     //
@@ -44,13 +41,11 @@ module.exports.routes = {
      view: 'user/signup'
      }
 
-
      // Let's say you're building an email client, like Gmail
      // You might want your home route to serve an interface using custom logic.
      // In this scenario, you have a custom controller `MessageController`
      // with an `inbox` action.
      '/': 'MessageController.inbox'
-
 
      // Alternatively, you can use the more verbose syntax:
      '/': {
@@ -58,11 +53,9 @@ module.exports.routes = {
      action: 'inbox'
      }
 
-
      // If you decided to call your action `index` instead of `inbox`,
      // since the `index` action is the default, you can shortcut even further to:
      '/': 'MessageController'
-
 
      // Up until now, we haven't specified a specific HTTP method/verb
      // The routes above will apply to ALL verbs!
@@ -79,7 +72,6 @@ module.exports.routes = {
 
      // You would want to define the following route to handle your form:
      'post /signup': 'UserController.signup'
-
 
      // What about the ever-popular "vanity URLs" aka URL slugs?
      // (you might remember doing this with `mod_rewrite` in Apache)
@@ -106,7 +98,6 @@ module.exports.routes = {
  *     + its action `bar` is accessible at `/foo/bar`
  *     + its action `index` is accessible at `/foo/index`, and also `/foo`
  */
-
 
 /**
  * (4) Shortcut CRUD blueprints
@@ -154,12 +145,9 @@ module.exports.routes = {
  *
  */
 
-
-
 /**
  * (7) 404 (not found) handler
  *
  * Finally, if nothing else matched, the default 404 handler is triggered.
  * See `config/404.js` to adjust your app's 404 logic.
  */
-

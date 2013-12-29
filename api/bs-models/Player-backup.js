@@ -1,6 +1,6 @@
-/* global Player, Lobby */
 'use strict';
 
+/*
 var bcrypt = require('bcrypt'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     getLobbies = function(query, success) {
@@ -80,3 +80,4 @@ module.exports = {
         setHashedPassword(Player, values, next);
     }
 };
+*/

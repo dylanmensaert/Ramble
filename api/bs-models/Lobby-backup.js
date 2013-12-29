@@ -1,6 +1,6 @@
-/* global Lobby */
 'use strict';
 
+/*
 var bcrypt = require('bcrypt'),
     setHashedPassword = require('../helpers/setHashedPassword');
 
@@ -48,3 +48,4 @@ module.exports = {
         setHashedPassword(Lobby, values, next);
     }
 };
+*/
