@@ -100,9 +100,15 @@ module.exports = function (grunt) {
                 strictUnits: true
             },
             development: {
-                files: {
-                    '<%= config.stylesheets %>/main.css': '<%= config.less %>/main.less'
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.less %>',
+                        src: ['**/*.less'],
+                        dest: '<%= config.stylesheets %>',
+                        ext: '.css'
+                    }
+                ]
             },
             production: {
                 files: {
