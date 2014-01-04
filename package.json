@@ -16,14 +16,14 @@
     "dependencies": {
         "sails": "0.9.8",
         "sails-disk": "0.9.3",
-        "jade": "1.0.1",
+        "jade": "1.0.2",
         "optimist": "0.6.0",
         "lodash": "2.4.1",
         "underscore.string": "2.3.3",
         "bluebird": "0.11.6-0",
         "bookshelf": "0.6.2",
         "pg": "2.10.0",
-        "passport": "0.1.17",
+        "passport": "0.1.18",
         "passport-local": "0.1.6",
         "bcrypt": "0.7.7"
     },
