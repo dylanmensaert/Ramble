@@ -79,13 +79,6 @@
     "white": false,
 
     "globals": {
-        "sails": false,
-        "define": false,
-        "require": false,
-        "describe": false,
-        "it": false,
-        "runs": false,
-        "waitsFor": false,
-        "expect": false
+        "sails": false
     }
 }
