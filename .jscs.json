@@ -26,7 +26,6 @@
     "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
     "requireSpaceAfterBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
     "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
-    "requireCamelCaseOrUpperCaseIdentifiers": true,
     "disallowMultipleLineStrings": true,
     "disallowMultipleLineBreaks": true,
     "validateLineBreaks": "LF",

@@ -4,7 +4,9 @@
 var Lobby = require('../bs-models/lobby');
 
 module.exports = function(request, response, ok) {
-    Lobby.forge({id: request.param('id')}).fetch().then(function(lobby) {
+    Lobby.forge({
+        id: request.param('id')
+    }).fetch().then(function(lobby) {
         if (request.isAuthenticated() && request.user.id === lobby.attributes.owner_id) {
             ok();
         } else {

@@ -42,34 +42,28 @@ module.exports = function(grunt) {
         },
         copy: {
             bootstrapFonts: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= config.bootstrapFonts %>',
-                        src: ['**'],
-                        dest: '<%= config.prodFonts %>'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.bootstrapFonts %>',
+                    src: ['**'],
+                    dest: '<%= config.prodFonts %>'
+                }]
             },
             development: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= config.assets %>',
-                        src: ['**'],
-                        dest: '<%= config.tmpPublic %>'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.assets %>',
+                    src: ['**'],
+                    dest: '<%= config.tmpPublic %>'
+                }]
             },
             production: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= config.images %>',
-                        src: ['**'],
-                        dest: '<%= config.prodImages %>'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.images %>',
+                    src: ['**'],
+                    dest: '<%= config.prodImages %>'
+                }]
             }
         },
         emberTemplates: {
@@ -100,15 +94,13 @@ module.exports = function(grunt) {
                 strictUnits: true
             },
             development: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= config.less %>',
-                        src: ['**/*.less'],
-                        dest: '<%= config.stylesheets %>',
-                        ext: '.css'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.less %>',
+                    src: ['**/*.less'],
+                    dest: '<%= config.stylesheets %>',
+                    ext: '.css'
+                }]
             },
             production: {
                 files: {
@@ -177,8 +169,7 @@ module.exports = function(grunt) {
             }
         },
         'node-inspector': {
-            development: {
-            }
+            development: {}
         },
         watch: {
             emberTemplates: {

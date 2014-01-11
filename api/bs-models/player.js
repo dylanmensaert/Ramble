@@ -31,7 +31,9 @@ module.exports = db.Model.extend({
         return this.belongsToMany(lobby).through(membership);
     },
     fetchWithRelated: function() {
-        return this.fetch({withRelated: relations});
+        return this.fetch({
+            withRelated: relations
+        });
     },
     hashPassword: function() {
         return setHashedPassword(this.attributes);

@@ -10,7 +10,9 @@ module.exports = {
             ids = request.param('ids');
 
         if (id) {
-            Lobby.forge({id: id}).fetchWithRelated().then(function(lobby) {
+            Lobby.forge({
+                id: id
+            }).fetchWithRelated().then(function(lobby) {
                 response.send({
                     lobby: lobby
                 });
@@ -39,44 +41,46 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-                title: request.param('title'),
-                password: request.param('password'),
-                max_members: request.param('max_members'),
-                owner_id: request.user.id
-            },
+            title: request.param('title'),
+            password: request.param('password'),
+            max_members: request.param('max_members'),
+            owner_id: request.user.id
+        },
             lobby = Lobby.forge(values);
 
         lobby.hashPassword().then(function() {
             return lobby.save();
         }).then(function(lobby) {
-                response.send({
-                    lobby: lobby
-                });
+            response.send({
+                lobby: lobby
             });
+        });
     },
     update: function(request, response) {
         var values = {
-                id: request.param('id'),
-                title: request.param('title'),
-                password: request.param('password'),
-                max_members: request.param('max_members')
-            },
+            id: request.param('id'),
+            title: request.param('title'),
+            password: request.param('password'),
+            max_members: request.param('max_members')
+        },
             lobby = Lobby.forge(values);
 
         lobby.hashPassword().then(function() {
             return lobby.save();
         }).then(function(lobby) {
-                response.send({
-                    lobby: lobby
-                });
-
-                //Lobby.publishUpdate(lobby.id, lobby.toJSON());
+            response.send({
+                lobby: lobby
             });
+
+            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
+        });
     },
     destroy: function(request, response) {
         var id = request.param('id');
 
-        Lobby.forge({id: id}).destroy().then(function() {
+        Lobby.forge({
+            id: id
+        }).destroy().then(function() {
             response.send({
                 lobby: {
                     id: id

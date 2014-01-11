@@ -36,8 +36,8 @@ module.exports = {
         },
         fetchOwnedLobbies: function(next) {
             var query = {
-                    owner: this.id
-                },
+                owner: this.id
+            },
                 player = this;
 
             getLobbies(query, function(ownedLobbyIds) {
@@ -48,10 +48,10 @@ module.exports = {
         },
         fetchJoinedLobbies: function(next) {
             var query = {
-                    members: {
-                        contains: this.id
-                    }
-                },
+                members: {
+                    contains: this.id
+                }
+            },
                 player = this;
 
             getLobbies(query, function(joinedLobbyIds) {

@@ -29,7 +29,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: lobbies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: lobbies; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE lobbies (
@@ -61,7 +61,7 @@ ALTER SEQUENCE lobbies_id_seq OWNED BY lobbies.id;
 
 
 --
--- Name: memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: memberships; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE memberships (
@@ -91,7 +91,7 @@ ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
 
 
 --
--- Name: players; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: players; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE players (
@@ -143,7 +143,7 @@ ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::r
 
 
 --
--- Name: lobbies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: lobbies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY lobbies
@@ -151,7 +151,7 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: lobbies_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: lobbies_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY lobbies
@@ -159,7 +159,7 @@ ALTER TABLE ONLY lobbies
 
 
 --
--- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY memberships
@@ -167,7 +167,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: memberships_lobby_id_player_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: memberships_lobby_id_player_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY memberships
@@ -175,7 +175,7 @@ ALTER TABLE ONLY memberships
 
 
 --
--- Name: players_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: players_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY players
@@ -183,7 +183,7 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY players
@@ -191,7 +191,7 @@ ALTER TABLE ONLY players
 
 
 --
--- Name: players_username_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: players_username_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY players

@@ -24,7 +24,9 @@ module.exports = db.Model.extend({
         return this.belongsTo(player);
     },
     fetchWithRelated: function() {
-        return this.fetch({withRelated: relations});
+        return this.fetch({
+            withRelated: relations
+        });
     }
 });
 

@@ -6,11 +6,13 @@ var Player = require('../bs-models/player'),
 module.exports = {
     find: function(request, response) {
         var id = request.param('id'),
-        //TODO: needs to decode ids-parameter?
+            //TODO: needs to decode ids-parameter?
             ids = request.param('ids');
 
         if (id) {
-            Player.forge({id: id}).fetchWithRelated().then(function(player) {
+            Player.forge({
+                id: id
+            }).fetchWithRelated().then(function(player) {
                 response.send({
                     player: player
                 });
@@ -39,43 +41,45 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        },
             player = Player.forge(values);
 
         player.hashPassword().then(function() {
             return player.save();
         }).then(function(player) {
-                response.send({
-                    player: player
-                });
+            response.send({
+                player: player
             });
+        });
     },
     update: function(request, response) {
         var values = {
-                id: request.param('id'),
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+            id: request.param('id'),
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        },
             player = Player.forge(values);
 
         player.hashPassword().then(function() {
             return player.save();
         }).then(function(player) {
-                response.send({
-                    player: player
-                });
-
-                //Player.publishUpdate(player.id, player.toJSON());
+            response.send({
+                player: player
             });
+
+            //Player.publishUpdate(player.id, player.toJSON());
+        });
     },
     destroy: function(request, response) {
         var id = request.param('id');
 
-        Player.forge({id: id}).destroy().then(function() {
+        Player.forge({
+            id: id
+        }).destroy().then(function() {
             request.logOut();
 
             response.send({
