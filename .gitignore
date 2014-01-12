@@ -1,4 +1,4 @@
-# TODO: local.js may be removed when we move away from Sails.js
+# TODO: local.js may be removed when we move away from Sails.js test
 config/local.js
 api/bs-models/connection.js
 assets/javascripts/init/templates.js
