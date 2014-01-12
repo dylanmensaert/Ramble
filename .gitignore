@@ -1,4 +1,4 @@
-# TODO: local.js may be removed
+# TODO: local.js may be removed when we move away from Sails.js
 config/local.js
 api/bs-models/connection.js
 assets/javascripts/init/templates.js
@@ -8,4 +8,4 @@ assets/bower_components/
 
 .tmp/
 
-.idea/
+*.sublime-*
