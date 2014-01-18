@@ -1,6 +1,0 @@
-assets/javascripts/init/templates.js
-
-node_modules/**
-assets/bower_components/**
-
-.tmp/**
