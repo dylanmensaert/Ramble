@@ -151,6 +151,14 @@ module.exports = function(grunt) {
                 src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
             }
         },
+        jsonlint: {
+            dotfiles: {
+                src: ['.bowerrc', '.csslintrc', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+            },
+            dependencies: {
+                src: ['bower.json', 'package.json']
+            }
+        },
         csslint: {
             options: {
                 csslintrc: '.csslintrc'
@@ -162,6 +170,9 @@ module.exports = function(grunt) {
         open: {
             development: {
                 path: 'http://localhost:1337'
+            },
+            production: {
+                path: 'http://localhost:8080'
             }
         },
         nodemon: {
@@ -214,8 +225,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'less:development', 'copy:development', 'copy:bootstrapFonts']);
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'jscs', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
-    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts']);
+    grunt.registerTask('test', ['jshint', 'jscs', 'jsonlint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
+    grunt.registerTask('prod', [
+        'clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts', 'open:production'
+    ]);
 
     grunt.registerTask('develop', ['concurrent:development']);
 
