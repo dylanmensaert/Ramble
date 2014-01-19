@@ -172,7 +172,7 @@ module.exports = function(grunt) {
                 path: 'http://localhost:1337'
             },
             production: {
-                path: 'http://localhost:8080'
+                path: 'http://localhost:8001'
             }
         },
         nodemon: {
