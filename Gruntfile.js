@@ -159,6 +159,11 @@ module.exports = function(grunt) {
                 src: ['<%= config.stylesheets %>/**/*.css', '!<%= config.stylesheets %>/main.css']
             }
         },
+        open: {
+            development: {
+                path: 'http://localhost:1337'
+            }
+        },
         nodemon: {
             server: {
                 options: {
@@ -199,7 +204,7 @@ module.exports = function(grunt) {
         },
         concurrent: {
             development: {
-                tasks: ['nodemon:server', 'node-inspector:development', 'watch'],
+                tasks: ['nodemon:server', 'node-inspector:development', 'watch', 'open:development'],
                 options: {
                     logConcurrentOutput: true
                 }
