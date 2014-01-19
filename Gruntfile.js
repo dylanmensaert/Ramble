@@ -162,10 +162,11 @@ module.exports = function(grunt) {
         nodemon: {
             server: {
                 options: {
-                    watchedFolders: ['<%= config.api %>', '<%= config.config %>'],
+                    watch: ['<%= config.api %>', '<%= config.config %>'],
                     nodeArgs: ['--debug'],
                     delayTime: 0.1
-                }
+                },
+                script: 'app.js',
             }
         },
         'node-inspector': {

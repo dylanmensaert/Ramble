@@ -8,7 +8,7 @@
         "ember-data-shim": "1.0.0-beta.5",
         "ember-dockyard-validations": "*",
         "handlebars": "1.3.0",
-        "jQuery": "2.1.0-beta3",
+        "jQuery": "2.1.0-rc1",
         "bootstrap": "3.0.3",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
     },
