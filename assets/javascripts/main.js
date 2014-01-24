@@ -7,7 +7,7 @@
         paths: {
             io: '../bower_components/socket.io-client/dist/socket.io',
             ember: '../bower_components/ember/ember',
-            'ember-data': '../bower_components/ember-data-shim/ember-data',
+            'ember-data': '../bower_components/ember-data/ember-data',
             //TODO: Use Dockyards' easyform/validations via their bower-registry.
             'ember-easyform': '../bower_components/ember-dockyard-validations/easyForm/ember-easyForm-1.0.0.beta.1',
             'ember-validations': '../bower_components/ember-dockyard-validations/validations/ember-validations-1.0.0.beta.1',

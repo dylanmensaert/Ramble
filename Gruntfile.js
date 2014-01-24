@@ -121,7 +121,7 @@ module.exports = function(grunt) {
                     out: '<%= config.prodJavascripts %>/main.js',
                     paths: {
                         ember: '../bower_components/ember/ember.prod',
-                        'ember-data': '../bower_components/ember-data-shim/ember-data.prod'
+                        'ember-data': '../bower_components/ember-data/ember-data.prod'
                     }
                 }
             }
@@ -230,7 +230,7 @@ module.exports = function(grunt) {
         'clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts', 'open:production'
     ]);
 
-    grunt.registerTask('develop', ['concurrent:development']);
+    grunt.registerTask('dev', ['concurrent:development']);
 
     grunt.registerTask('cleanup', ['clean:tmpPublic', 'clean:cleanup']);
 };
