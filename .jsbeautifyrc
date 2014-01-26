@@ -1,15 +1,4 @@
 {
-    "html": {
-        "indent_inner_html": false,
-        "indent_size": 4,
-        "indent_char": " ",
-        "wrap_line_length": 160,
-        "brace_style": "collapse",
-        "unformatted": ["a", "sub", "sup", "b", "i", "u"],
-        "preserve_newlines": false,
-        "max_preserve_newlines": 2,
-        "indent_handlebars": true,
-    },
     "js": {
         "indent_size": 4,
         "indent_char": " ",

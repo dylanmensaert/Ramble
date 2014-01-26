@@ -171,10 +171,7 @@ module.exports = function(grunt) {
         },
         jsbeautifier: {
             options: {
-                config: '.jsbeautifyrc',
-                html: {
-                    fileTypes: ['.handlebars']
-                }
+                config: '.jsbeautifyrc'
             },
             client: {
                 src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
@@ -193,9 +190,6 @@ module.exports = function(grunt) {
             dependencies: {
                 src: ['bower.json', 'package.json']
             }
-            // handlebars: {
-            //     src: ['<%= config.javascripts %>/**/*.handlebars']
-            // }
         },
         csscomb: {
             options: {
@@ -209,6 +203,25 @@ module.exports = function(grunt) {
                     dest: '<%= config.less %>',
                 }]
             }
+        },
+        prettify: {
+            options: {
+                "indent_inner_html": false,
+                "indent": 4,
+                "indent_char": " ",
+                "wrap_line_length": 160,
+                "brace_style": "collapse",
+                "unformatted": ["a"],
+                "preserve_newlines": true,
+                "max_preserve_newlines": 3,
+                "indent_handlebars": true
+            },
+            all: {
+                expand: true,
+                cwd: '<%= config.javascripts %>',
+                src: ['**/*.handlebars'],
+                dest: '<%= config.javascripts %>'
+            },
         },
         open: {
             development: {
