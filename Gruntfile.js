@@ -153,7 +153,9 @@ module.exports = function(grunt) {
         },
         jsonlint: {
             dotfiles: {
-                src: ['.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+                src: [
+                    '.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
+                ]
             },
             dependencies: {
                 src: ['bower.json', 'package.json']
@@ -184,11 +186,13 @@ module.exports = function(grunt) {
                 src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
             },
             dotfiles: {
-                src: ['.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+                src: [
+                    '.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
+                ]
             },
             dependencies: {
                 src: ['bower.json', 'package.json']
-            },
+            }
             // handlebars: {
             //     src: ['<%= config.javascripts %>/**/*.handlebars']
             // }
@@ -263,13 +267,15 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'less:development', 'copy:development', 'copy:bootstrapFonts']);
-    //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'jscs', 'jsonlint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
     grunt.registerTask('prod', [
         'clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts', 'open:production'
     ]);
 
     grunt.registerTask('dev', ['concurrent:development']);
+
+    //TODO: Improve integration of unit tests!!
+    grunt.registerTask('test', ['jshint', 'jscs', 'jsonlint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
+    grunt.registerTask('tidy', ['jsbeautifier', 'csscomb:all']);
 
     grunt.registerTask('cleanup', ['clean:tmpPublic', 'clean:cleanup']);
 };
