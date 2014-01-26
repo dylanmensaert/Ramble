@@ -153,7 +153,7 @@ module.exports = function(grunt) {
         },
         jsonlint: {
             dotfiles: {
-                src: ['.bowerrc', '.csslintrc', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+                src: ['.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
             },
             dependencies: {
                 src: ['bower.json', 'package.json']
@@ -184,13 +184,26 @@ module.exports = function(grunt) {
                 src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
             },
             dotfiles: {
-                src: ['.bowerrc', '.csslintrc', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+                src: ['.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
             },
             dependencies: {
                 src: ['bower.json', 'package.json']
             },
-            handlebars: {
-                src: ['<%= config.javascripts %>/**/*.handlebars']
+            // handlebars: {
+            //     src: ['<%= config.javascripts %>/**/*.handlebars']
+            // }
+        },
+        csscomb: {
+            options: {
+                config: '.csscomb.json'
+            },
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.less %>',
+                    src: ['**/*.less'],
+                    dest: '<%= config.less %>',
+                }]
             }
         },
         open: {
