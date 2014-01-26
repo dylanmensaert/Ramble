@@ -17,6 +17,7 @@ module.exports = db.Model.extend({
     toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
+        //TODO: Use Bookshelf-visibility-plugin
         delete model.password;
 
         return toUnderscore(model);
