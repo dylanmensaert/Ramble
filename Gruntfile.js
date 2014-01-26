@@ -168,6 +168,15 @@ module.exports = function(grunt) {
             }
         },
         jsbeautifier: {
+            options: {
+                config: '.jsbeautifyrc',
+                css: {
+                    fileTypes: ['.less']
+                },
+                html: {
+                    fileTypes: ['.handlebars']
+                }
+            },
             client: {
                 src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
             },
@@ -187,16 +196,7 @@ module.exports = function(grunt) {
                 src: ['<%= config.javascripts %>/**/*.handlebars']
             },
             less: {
-                cwd: ['<%= config.less %>/**/*.less']
-            },
-            options: {
-                config: '.jsbeautifyrc',
-                css: {
-                    fileTypes: ['.less']
-                },
-                html: {
-                    fileTypes: ['.handlebars']
-                }
+                src: ['<%= config.less %>/**/*.less']
             }
         },
         open: {
