@@ -170,9 +170,6 @@ module.exports = function(grunt) {
         jsbeautifier: {
             options: {
                 config: '.jsbeautifyrc',
-                css: {
-                    fileTypes: ['.less']
-                },
                 html: {
                     fileTypes: ['.handlebars']
                 }
@@ -194,9 +191,6 @@ module.exports = function(grunt) {
             },
             handlebars: {
                 src: ['<%= config.javascripts %>/**/*.handlebars']
-            },
-            less: {
-                src: ['<%= config.less %>/**/*.less']
             }
         },
         open: {

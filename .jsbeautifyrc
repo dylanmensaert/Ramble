@@ -10,12 +10,6 @@
         "max_preserve_newlines": 2,
         "indent_handlebars": true,
     },
-    "css": {
-        "indent_size": 4,
-        "indent_char": " ",
-        "selector_separator": " ",
-        "end_with_newline": true
-    },
     "js": {
         "indent_size": 4,
         "indent_char": " ",
