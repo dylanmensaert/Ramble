@@ -167,6 +167,38 @@ module.exports = function(grunt) {
                 src: ['<%= config.stylesheets %>/**/*.css', '!<%= config.stylesheets %>/main.css']
             }
         },
+        jsbeautifier: {
+            client: {
+                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
+            },
+            test: {
+                src: ['<%= config.test %>/**/*.js']
+            },
+            server: {
+                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
+            },
+            dotfiles: {
+                src: ['.bowerrc', '.csslintrc', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc']
+            },
+            dependencies: {
+                src: ['bower.json', 'package.json']
+            },
+            handlebars: {
+                src: ['<%= config.javascripts %>/**/*.handlebars']
+            },
+            less: {
+                cwd: ['<%= config.less %>/**/*.less']
+            },
+            options: {
+                config: '.jsbeautifyrc',
+                css: {
+                    fileTypes: ['.less']
+                },
+                html: {
+                    fileTypes: ['.handlebars']
+                }
+            }
+        },
         open: {
             development: {
                 path: 'http://localhost:1337'
