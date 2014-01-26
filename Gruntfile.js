@@ -204,25 +204,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        prettify: {
-            options: {
-                "indent_inner_html": false,
-                "indent": 4,
-                "indent_char": " ",
-                "wrap_line_length": 160,
-                "brace_style": "collapse",
-                "unformatted": ["a"],
-                "preserve_newlines": true,
-                "max_preserve_newlines": 3,
-                "indent_handlebars": true
-            },
-            all: {
-                expand: true,
-                cwd: '<%= config.javascripts %>',
-                src: ['**/*.handlebars'],
-                dest: '<%= config.javascripts %>'
-            },
-        },
         open: {
             development: {
                 path: 'http://localhost:1337'
