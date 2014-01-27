@@ -266,8 +266,8 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['concurrent:development']);
 
     //TODO: Improve integration of unit tests!!
-    grunt.registerTask('test', ['jshint', 'jscs', 'jsonlint', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
-    grunt.registerTask('tidy', ['jsbeautifier', 'csscomb:all']);
+    grunt.registerTask('test', ['jshint:all', 'jscs:all', 'jsonlint:all', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
+    grunt.registerTask('tidy', ['jsbeautifier:all', 'csscomb:all']);
 
     grunt.registerTask('cleanup', ['clean:tmpPublic', 'clean:cleanup']);
 };
