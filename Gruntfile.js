@@ -40,7 +40,10 @@ module.exports = function(grunt) {
         css: '<%= paths.stylesheets %>/**/*.css',
         less: '<%= paths.less %>/**/*.less',
         mainCss: '<%= paths.stylesheets %>/main.css',
-        mainLess: '<%= paths.less %>/main.less'
+        mainLess: '<%= paths.less %>/main.less',
+        views: '<%= paths.views %>/**/*',
+        assets: '<%= paths.assets %>/*.*',
+        images: '<%= paths.images %>/**/*.*'
     };
 
     sources.javascripts = sources.client.concat(sources.test).concat(sources.server);
@@ -227,20 +230,23 @@ module.exports = function(grunt) {
                 files: ['<%= sources.less %>'],
                 tasks: ['less:development']
             },
-            // tidy: {
-            //     //TODO: watch to reformat
-            //     //'csscomb:all'
-            // },
+            jsbeautifier: {
+                files: ['<%= sources.javascriptsAndJson %>'],
+                tasks: ['jsbeautifier:all']
+            },
+            csscomb: {
+                 files: ['<%= sources.less %>'],
+                 tasks: ['csscomb:all']
+            },
             livereload: {
                 files: [
-                    //TODO: avoid duplication
-                    '<%= paths.assets %>/*.*',
-                    '<%= paths.api %>/**/*.js',
-                    '<%= paths.config %>/**/*.js',
-                    '<%= paths.views %>/**/*',
-                    '<%= paths.javascripts %>/**/*.js',
+                    '<%= sources.client %>',
+                    '<%= sources.server %>',
+                    '<%= sources.handlebars %>',
                     '<%= sources.mainCss %>',
-                    '<%= paths.images %>/**/*.*'
+                    '<%= sources.views %>',
+                    '<%= sources.assets %>',
+                    '<%= sources.images %>'
                 ],
                 tasks: ['copy:development'],
                 options: {
