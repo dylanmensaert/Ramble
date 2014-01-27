@@ -32,7 +32,7 @@ define(function(require) {
                 },
                 format: {
                     //TODO: This line prevents from adding - "disallowKeywords": ["with"] - in the .jscs.json.
-                    with: /\S+@\S+\.\S+/
+                    with: /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,6}$/i
                 }
             },
             ownedLobbies: {

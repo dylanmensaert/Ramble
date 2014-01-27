@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 var db = require('./db'),
@@ -7,13 +8,14 @@ var db = require('./db'),
     toUnderscore = require('../helpers/toUnderscore'),
     toCamelCase = require('../helpers/toCamelCase'),
     setHashedPassword = require('../helpers/setHashedPassword'),
-    verifyPassword = require('../helpers/verifyPassword');
+    verifyPassword = require('../helpers/verifyPassword'),
+    Fields = require('bookshelf-fields'),
+    Player;
 
-module.exports = db.Model.extend({
+db.plugin(Fields.plugin);
+
+Player = db.Model.extend({
     tableName: 'players',
-    username: null,
-    password: null,
-    email: null,
     toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
@@ -42,6 +44,34 @@ module.exports = db.Model.extend({
         return verifyPassword(password, this.attributes.password);
     }
 });
+
+Fields.enable_validation(Player);
+
+Fields.fields(Player, [
+    Fields.StringField, 'username', {
+        required: true
+    }, {
+        max_length: 50
+    }, {
+        not_null: true
+    }
+], [
+    Fields.StringField, 'password', {
+        required: true
+    }, {
+        not_null: true
+    }
+], [
+    Fields.EmailField, 'email', {
+        required: true
+    }, {
+        max_length: 50
+    }, {
+        not_null: true
+    }
+]);
+
+module.exports = Player;
 
 lobby = require('./lobby');
 membership = require('./membership');

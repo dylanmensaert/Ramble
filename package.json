@@ -22,6 +22,7 @@
         "underscore.string": "2.3.3",
         "bluebird": "1.0.0",
         "bookshelf": "0.6.2",
+        "bookshelf-fields": "0.1.0",
         "pg": "2.11.1",
         "passport": "0.2.0",
         "passport-local": "0.1.6",
