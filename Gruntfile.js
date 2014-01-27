@@ -1,7 +1,10 @@
 'use strict';
 
 module.exports = function(grunt) {
-    var config = {
+    var config,
+        sources;
+
+    config = {
         //server
         api: 'api',
         config: 'config',
@@ -20,21 +23,42 @@ module.exports = function(grunt) {
         //other
         test: 'test',
         components: 'assets/bower_components',
-        templatesjs: 'assets/javascripts/init/templates.js',
         bootstrapFonts: 'assets/bower_components/bootstrap/dist/fonts'
     };
+
+    sources = {
+        client: ['<%= config.javascripts %>/**/*.js', '!<%= sources.templatesjs %>'],
+        test: ['<%= config.test %>/**/*.js'],
+        server: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
+        dotfiles: [
+            '.bowerrc', '.csscomb.json', '.csslintrc', '.jsbeautifyrc', '.jscs.json',
+            '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
+        ],
+        dependencies: ['bower.json', 'package.json'],
+        templatesjs: 'assets/javascripts/init/templates.js',
+        handlebars: '<%= config.javascripts %>/**/*.handlebars',
+        css: '<%= config.stylesheets %>/**/*.css',
+        less: '<%= config.less %>/**/*.less',
+        mainCss: '<%= config.stylesheets %>/main.css',
+        mainLess: '<%= config.less %>/main.less'
+    };
+
+    sources.javascripts = sources.client.concat(sources.test).concat(sources.server);
+    sources.json = sources.dotfiles.concat(sources.dependencies);
+    sources.javascriptsAndJson = sources.javascripts.concat(sources.json);
 
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         config: config,
+        sources: sources,
         clean: {
             tmpPublic: {
                 src: ['<%= config.tmpPublic %>']
             },
             cleanup: {
                 src: [
-                    '<%= config.templatesjs %>',
+                    '<%= sources.templatesjs %>',
                     'node_modules',
                     '<%= config.components %>'
                 ]
@@ -70,7 +94,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     amd: true,
-                    templateBasePath: '<%= config.javascripts %>' + '/',
+                    templateBasePath: '<%= config.javascripts %>/',
                     templateName: function(sourceFile) {
                         var templateName = sourceFile;
 
@@ -83,7 +107,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '<%= config.templatesjs %>': '<%= config.javascripts %>/**/*.handlebars'
+                    '<%= sources.templatesjs %>': '<%= sources.handlebars %>'
                 }
             }
         },
@@ -104,7 +128,7 @@ module.exports = function(grunt) {
             },
             production: {
                 files: {
-                    '<%= config.stylesheets %>/main.css': '<%= config.less %>/main.less'
+                    '<%= sources.mainCss %>': '<%= sources.mainLess %>'
                 },
                 options: {
                     cleancss: true
@@ -130,35 +154,18 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: true
             },
-            client: {
-                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
-            },
-            test: {
-                src: ['<%= config.test %>/**/*.js']
-            },
-            server: {
-                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
+            all: {
+                src: '<%= sources.javascripts %>'
             }
         },
         jscs: {
-            client: {
-                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
-            },
-            test: {
-                src: ['<%= config.test %>/**/*.js']
-            },
-            server: {
-                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
+            all: {
+                src: '<%= sources.javascripts %>'
             }
         },
         jsonlint: {
-            dotfiles: {
-                src: [
-                    '.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
-                ]
-            },
-            dependencies: {
-                src: ['bower.json', 'package.json']
+            all: {
+                src: '<%= sources.json %>'
             }
         },
         csslint: {
@@ -166,29 +173,15 @@ module.exports = function(grunt) {
                 csslintrc: '.csslintrc'
             },
             all: {
-                src: ['<%= config.stylesheets %>/**/*.css', '!<%= config.stylesheets %>/main.css']
+                src: ['<%= sources.css %>', '!<%= sources.mainCss %>']
             }
         },
         jsbeautifier: {
             options: {
                 config: '.jsbeautifyrc'
             },
-            client: {
-                src: ['<%= config.javascripts %>/**/*.js', '!<%= config.templatesjs %>']
-            },
-            test: {
-                src: ['<%= config.test %>/**/*.js']
-            },
-            server: {
-                src: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js']
-            },
-            dotfiles: {
-                src: [
-                    '.bowerrc', '.csslintrc', '.csscomb.json', '.jscs.json', '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
-                ]
-            },
-            dependencies: {
-                src: ['bower.json', 'package.json']
+            all: {
+                src: '<%= sources.javascriptsAndJson %>'
             }
         },
         csscomb: {
@@ -227,21 +220,26 @@ module.exports = function(grunt) {
         },
         watch: {
             emberTemplates: {
-                files: ['<%= config.javascripts %>/**/*.handlebars'],
+                files: ['<%= sources.handlebars %>'],
                 tasks: ['emberTemplates:all']
             },
             less: {
-                files: ['<%= config.less %>/**/*.less'],
+                files: ['<%= sources.less %>'],
                 tasks: ['less:development']
             },
+            // tidy: {
+            //     //TODO: watch to reformat
+            //     //'csscomb:all'
+            // },
             livereload: {
                 files: [
+                    //TODO: avoid duplication
                     '<%= config.assets %>/*.*',
                     '<%= config.api %>/**/*.js',
                     '<%= config.config %>/**/*.js',
                     '<%= config.views %>/**/*',
                     '<%= config.javascripts %>/**/*.js',
-                    '<%= config.stylesheets %>/main.css',
+                    '<%= sources.mainCss %>',
                     '<%= config.images %>/**/*.*'
                 ],
                 tasks: ['copy:development'],
