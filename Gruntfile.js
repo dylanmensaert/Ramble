@@ -188,9 +188,6 @@ module.exports = function(grunt) {
             }
         },
         csscomb: {
-            options: {
-                config: '.csscomb.json'
-            },
             all: {
                 files: [{
                     expand: true,
@@ -235,8 +232,8 @@ module.exports = function(grunt) {
                 tasks: ['jsbeautifier:all']
             },
             csscomb: {
-                 files: ['<%= sources.less %>'],
-                 tasks: ['csscomb:all']
+                files: ['<%= sources.less %>'],
+                tasks: ['csscomb:all']
             },
             livereload: {
                 files: [
