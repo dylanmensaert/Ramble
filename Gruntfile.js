@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = function(grunt) {
-    var config,
+    var paths,
         sources;
 
-    config = {
+    paths = {
         //server
         api: 'api',
         config: 'config',
@@ -27,20 +27,20 @@ module.exports = function(grunt) {
     };
 
     sources = {
-        client: ['<%= config.javascripts %>/**/*.js', '!<%= sources.templatesjs %>'],
-        test: ['<%= config.test %>/**/*.js'],
-        server: ['*.js', '<%= config.api %>/**/*.js', '<%= config.config %>/**/*.js'],
+        client: ['<%= paths.javascripts %>/**/*.js', '!<%= sources.templatesjs %>'],
+        test: ['<%= paths.test %>/**/*.js'],
+        server: ['*.js', '<%= paths.api %>/**/*.js', '<%= paths.config %>/**/*.js'],
         dotfiles: [
             '.bowerrc', '.csscomb.json', '.csslintrc', '.jsbeautifyrc', '.jscs.json',
-            '.jshintrc', '<%= config.javascripts %>/.jshintrc', '<%= config.test %>/.jshintrc'
+            '.jshintrc', '<%= paths.javascripts %>/.jshintrc', '<%= paths.test %>/.jshintrc'
         ],
         dependencies: ['bower.json', 'package.json'],
         templatesjs: 'assets/javascripts/init/templates.js',
-        handlebars: '<%= config.javascripts %>/**/*.handlebars',
-        css: '<%= config.stylesheets %>/**/*.css',
-        less: '<%= config.less %>/**/*.less',
-        mainCss: '<%= config.stylesheets %>/main.css',
-        mainLess: '<%= config.less %>/main.less'
+        handlebars: '<%= paths.javascripts %>/**/*.handlebars',
+        css: '<%= paths.stylesheets %>/**/*.css',
+        less: '<%= paths.less %>/**/*.less',
+        mainCss: '<%= paths.stylesheets %>/main.css',
+        mainLess: '<%= paths.less %>/main.less'
     };
 
     sources.javascripts = sources.client.concat(sources.test).concat(sources.server);
@@ -50,17 +50,17 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        config: config,
+        paths: paths,
         sources: sources,
         clean: {
             tmpPublic: {
-                src: ['<%= config.tmpPublic %>']
+                src: ['<%= paths.tmpPublic %>']
             },
             cleanup: {
                 src: [
                     '<%= sources.templatesjs %>',
                     'node_modules',
-                    '<%= config.components %>'
+                    '<%= paths.components %>'
                 ]
             }
         },
@@ -68,25 +68,25 @@ module.exports = function(grunt) {
             bootstrapFonts: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.bootstrapFonts %>',
+                    cwd: '<%= paths.bootstrapFonts %>',
                     src: ['**'],
-                    dest: '<%= config.prodFonts %>'
+                    dest: '<%= paths.prodFonts %>'
                 }]
             },
             development: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.assets %>',
+                    cwd: '<%= paths.assets %>',
                     src: ['**'],
-                    dest: '<%= config.tmpPublic %>'
+                    dest: '<%= paths.tmpPublic %>'
                 }]
             },
             production: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.images %>',
+                    cwd: '<%= paths.images %>',
                     src: ['**'],
-                    dest: '<%= config.prodImages %>'
+                    dest: '<%= paths.prodImages %>'
                 }]
             }
         },
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     amd: true,
-                    templateBasePath: '<%= config.javascripts %>/',
+                    templateBasePath: '<%= paths.javascripts %>/',
                     templateName: function(sourceFile) {
                         var templateName = sourceFile;
 
@@ -113,16 +113,16 @@ module.exports = function(grunt) {
         },
         less: {
             options: {
-                paths: ['<%= config.components %>'],
+                paths: ['<%= paths.components %>'],
                 strictImports: true,
                 strictUnits: true
             },
             development: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.less %>',
+                    cwd: '<%= paths.less %>',
                     src: ['**/*.less'],
-                    dest: '<%= config.stylesheets %>',
+                    dest: '<%= paths.stylesheets %>',
                     ext: '.css'
                 }]
             },
@@ -138,11 +138,11 @@ module.exports = function(grunt) {
         requirejs: {
             all: {
                 options: {
-                    baseUrl: '<%= config.javascripts %>',
+                    baseUrl: '<%= paths.javascripts %>',
                     name: '../bower_components/almond/almond',
                     include: ['main'],
-                    mainConfigFile: '<%= config.javascripts %>/main.js',
-                    out: '<%= config.prodJavascripts %>/main.js',
+                    mainConfigFile: '<%= paths.javascripts %>/main.js',
+                    out: '<%= paths.prodJavascripts %>/main.js',
                     paths: {
                         ember: '../bower_components/ember/ember.prod',
                         'ember-data': '../bower_components/ember-data/ember-data.prod'
@@ -191,9 +191,9 @@ module.exports = function(grunt) {
             all: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.less %>',
+                    cwd: '<%= paths.less %>',
                     src: ['**/*.less'],
-                    dest: '<%= config.less %>',
+                    dest: '<%= paths.less %>',
                 }]
             }
         },
@@ -208,7 +208,7 @@ module.exports = function(grunt) {
         nodemon: {
             server: {
                 options: {
-                    watch: ['<%= config.api %>', '<%= config.config %>'],
+                    watch: ['<%= paths.api %>', '<%= paths.config %>'],
                     nodeArgs: ['--debug'],
                     delayTime: 0.1
                 },
@@ -234,13 +234,13 @@ module.exports = function(grunt) {
             livereload: {
                 files: [
                     //TODO: avoid duplication
-                    '<%= config.assets %>/*.*',
-                    '<%= config.api %>/**/*.js',
-                    '<%= config.config %>/**/*.js',
-                    '<%= config.views %>/**/*',
-                    '<%= config.javascripts %>/**/*.js',
+                    '<%= paths.assets %>/*.*',
+                    '<%= paths.api %>/**/*.js',
+                    '<%= paths.config %>/**/*.js',
+                    '<%= paths.views %>/**/*',
+                    '<%= paths.javascripts %>/**/*.js',
                     '<%= sources.mainCss %>',
-                    '<%= config.images %>/**/*.*'
+                    '<%= paths.images %>/**/*.*'
                 ],
                 tasks: ['copy:development'],
                 options: {
