@@ -58,11 +58,7 @@ module.exports = function(grunt) {
                 src: ['<%= paths.tmpPublic %>']
             },
             cleanup: {
-                src: [
-                    '<%= sources.templatesjs %>',
-                    'node_modules',
-                    '<%= paths.components %>'
-                ]
+                src: ['<%= sources.templatesjs %>', 'node_modules', '<%= paths.components %>']
             }
         },
         copy: {
@@ -237,14 +233,8 @@ module.exports = function(grunt) {
                 tasks: ['csscomb:all']
             },
             livereload: {
-                files: [
-                    '<%= sources.client %>',
-                    '<%= sources.server %>',
-                    '<%= sources.handlebars %>',
-                    '<%= sources.mainCss %>',
-                    '<%= sources.views %>',
-                    '<%= sources.assets %>',
-                    '<%= sources.images %>'
+                files: ['<%= sources.client %>', '<%= sources.server %>', '<%= sources.handlebars %>', '<%= sources.mainCss %>', '<%= sources.views %>',
+                    '<%= sources.assets %>', '<%= sources.images %>'
                 ],
                 tasks: ['copy:development'],
                 options: {
@@ -263,8 +253,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['clean:tmpPublic', 'emberTemplates:all', 'less:development', 'copy:development', 'copy:bootstrapFonts']);
-    grunt.registerTask('prod', [
-        'clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts', 'open:production'
+    grunt.registerTask('prod', ['clean:tmpPublic', 'emberTemplates:all', 'requirejs:all', 'less:production', 'copy:production', 'copy:bootstrapFonts',
+        'open:production'
     ]);
 
     grunt.registerTask('dev', ['concurrent:development']);
