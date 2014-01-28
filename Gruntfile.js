@@ -30,12 +30,10 @@ module.exports = function(grunt) {
         client: ['<%= paths.javascripts %>/**/*.js', '!<%= sources.templatesjs %>'],
         test: ['<%= paths.test %>/**/*.js'],
         server: ['*.js', '<%= paths.api %>/**/*.js', '<%= paths.config %>/**/*.js'],
-        dotfiles: [
-            '.bowerrc', '.csscomb.json', '.csslintrc', '.jsbeautifyrc', '.jscs.json',
-            '.jshintrc', '<%= paths.javascripts %>/.jshintrc', '<%= paths.test %>/.jshintrc'
-        ],
+        rcfiles: ['.bowerrc', '.csslintrc', '.jsbeautifyrc', '.jshintrc'],
+        configJson: ['.csscomb.json', '.jscs.json', '<%= paths.javascripts %>/.jshintrc', '<%= paths.test %>/.jshintrc'],
         dependencies: ['bower.json', 'package.json'],
-        templatesjs: 'assets/javascripts/init/templates.js',
+        templatesjs: '<%= paths.javascripts %>/init/templates.js',
         handlebars: '<%= paths.javascripts %>/**/*.handlebars',
         css: '<%= paths.stylesheets %>/**/*.css',
         less: '<%= paths.less %>/**/*.less',
@@ -47,7 +45,7 @@ module.exports = function(grunt) {
     };
 
     sources.javascripts = sources.client.concat(sources.test).concat(sources.server);
-    sources.json = sources.dotfiles.concat(sources.dependencies);
+    sources.json = sources.rcfiles.concat(sources.configJson).concat(sources.dependencies);
     sources.javascriptsAndJson = sources.javascripts.concat(sources.json);
 
     require('load-grunt-tasks')(grunt);
@@ -181,7 +179,10 @@ module.exports = function(grunt) {
         },
         jsbeautifier: {
             options: {
-                config: '.jsbeautifyrc'
+                config: '.jsbeautifyrc',
+                js: {
+                    fileTypes: '<%= sources.rcfiles %>'
+                }
             },
             all: {
                 src: '<%= sources.javascriptsAndJson %>'
