@@ -52,22 +52,16 @@ Fields.fields(Player, [
         required: true
     }, {
         max_length: 50
-    }, {
-        not_null: true
     }
 ], [
     Fields.StringField, 'password', {
         required: true
-    }, {
-        not_null: true
     }
 ], [
     Fields.EmailField, 'email', {
         required: true
     }, {
         max_length: 50
-    }, {
-        not_null: true
     }
 ]);
 

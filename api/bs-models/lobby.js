@@ -53,20 +53,18 @@ Fields.fields(Lobby, [
         required: true
     }, {
         max_length: 50
-    }, {
-        not_null: true
     }
 ], [
     Fields.StringField, 'password', {
         required: true
-    }, {
-        not_null: true
     }
 ], [
     Fields.IntField, 'maxMembers', {
         required: true
-    }, {
-        not_null: true
+    }
+], [
+    Fields.IntField, 'owner_id', {
+        required: true
     }
 ]);
 
