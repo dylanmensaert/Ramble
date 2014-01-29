@@ -11,7 +11,7 @@
             'ember-easyform': '../bower_components/ember-easyform/index',
             'ember-validations': '../bower_components/ember-validations/index',
             handlebars: '../bower_components/handlebars/handlebars.runtime',
-            jquery: '../bower_components/jQuery/dist/jquery',
+            jquery: '../bower_components/jquery/jquery',
             bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
             'google-analytics': '../bower_components/google-analytics/index'
         },

@@ -30,5 +30,7 @@ module.exports = db.Model.extend({
     }
 });
 
+//TODO: Add validation
+
 lobby = require('./lobby');
 player = require('./player');
