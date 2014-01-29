@@ -1,13 +1,16 @@
+/* jshint camelcase: false */
 'use strict';
 
 var db = require('./db'),
-    lobby,
-    player,
+    Fields = require('bookshelf-fields'),
+    Membership,
+    Lobby,
+    Player,
+    relations = require('./relations').membership,
     toUnderscore = require('../helpers/toUnderscore'),
-    toCamelCase = require('../helpers/toCamelCase'),
-    relations = require('./relations').membership;
+    toCamelCase = require('../helpers/toCamelCase');
 
-module.exports = db.Model.extend({
+Membership = db.Model.extend({
     tableName: 'memberships',
     toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
@@ -18,10 +21,10 @@ module.exports = db.Model.extend({
         return toCamelCase(attrs);
     },
     lobby: function() {
-        return this.belongsTo(lobby);
+        return this.belongsTo(Lobby);
     },
     player: function() {
-        return this.belongsTo(player);
+        return this.belongsTo(Player);
     },
     fetchWithRelated: function() {
         return this.fetch({
@@ -30,7 +33,19 @@ module.exports = db.Model.extend({
     }
 });
 
-//TODO: Add validation
+Fields.enable_validation(Membership);
 
-lobby = require('./lobby');
-player = require('./player');
+Fields.fields(Membership, [
+    Fields.IntField, 'lobby_id', {
+        required: true
+    }
+], [
+    Fields.IntField, 'player_id', {
+        required: true
+    }
+]);
+
+module.exports = Membership;
+
+Lobby = require('./lobby');
+Player = require('./player');

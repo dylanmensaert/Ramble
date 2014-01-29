@@ -2,17 +2,15 @@
 'use strict';
 
 var db = require('./db'),
-    lobby,
-    membership,
+    Fields = require('bookshelf-fields'),
+    Player,
+    Lobby,
+    Membership,
     relations = require('./relations').player,
     toUnderscore = require('../helpers/toUnderscore'),
     toCamelCase = require('../helpers/toCamelCase'),
     setHashedPassword = require('../helpers/setHashedPassword'),
-    verifyPassword = require('../helpers/verifyPassword'),
-    Fields = require('bookshelf-fields'),
-    Player;
-
-db.plugin(Fields.plugin);
+    verifyPassword = require('../helpers/verifyPassword');
 
 Player = db.Model.extend({
     tableName: 'players',
@@ -27,10 +25,10 @@ Player = db.Model.extend({
         return toCamelCase(attrs);
     },
     ownedLobbies: function() {
-        return this.hasMany(lobby, 'owner_id');
+        return this.hasMany(Lobby, 'owner_id');
     },
     joinedLobbies: function() {
-        return this.belongsToMany(lobby).through(membership);
+        return this.belongsToMany(Lobby).through(Membership);
     },
     fetchWithRelated: function() {
         return this.fetch({
@@ -67,5 +65,5 @@ Fields.fields(Player, [
 
 module.exports = Player;
 
-lobby = require('./lobby');
-membership = require('./membership');
+Lobby = require('./lobby');
+Membership = require('./membership');
