@@ -31,7 +31,7 @@ define(function(require) {
                     maximum: 50
                 },
                 format: {
-                    //TODO: This line prevents from adding - "disallowKeywords": ["with"] - in the .jscs.json.
+                    //TODO: This line prevents from adding - "disallowKeywords": ["with"] - in the .jscsrc.
                     with: /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,6}$/i
                 }
             },

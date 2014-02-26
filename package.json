@@ -20,7 +20,7 @@
         "optimist": "0.6.1",
         "lodash": "2.4.1",
         "underscore.string": "2.3.3",
-        "bluebird": "1.0.5",
+        "bluebird": "1.0.7",
         "bookshelf": "0.6.4",
         "bookshelf-fields": "0.1.0",
         "pg": "2.11.1",
@@ -29,12 +29,12 @@
         "bcrypt": "0.7.7"
     },
     "devDependencies": {
-        "load-grunt-tasks": "0.3.0",
+        "load-grunt-tasks": "0.4.0",
         "grunt": "0.4.2",
         "grunt-ember-templates": "0.4.18",
         "grunt-contrib-less": "0.9.0",
         "grunt-contrib-jshint": "0.8.0",
-        "grunt-jscs-checker": "0.3.2",
+        "grunt-jscs-checker": "0.4.0",
         "grunt-jsonlint": "1.0.4",
         "grunt-contrib-csslint": "0.2.0",
         "grunt-mocha": "0.4.10",
