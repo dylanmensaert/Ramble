@@ -16,7 +16,7 @@
     "dependencies": {
         "sails": "0.9.9",
         "sails-disk": "0.9.3",
-        "jade": "1.1.5",
+        "jade": "1.2.0",
         "optimist": "0.6.1",
         "lodash": "2.4.1",
         "underscore.string": "2.3.3",
@@ -40,7 +40,7 @@
         "grunt-mocha": "0.4.10",
         "grunt-contrib-clean": "0.5.0",
         "grunt-contrib-copy": "0.5.0",
-        "grunt-contrib-requirejs": "0.4.1",
+        "grunt-contrib-requirejs": "0.4.3",
         "grunt-jsbeautifier": "0.2.6",
         "grunt-csscomb": "2.0.1",
         "grunt-open": "0.2.3",
