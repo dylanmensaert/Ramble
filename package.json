@@ -20,7 +20,7 @@
         "optimist": "0.6.1",
         "lodash": "2.4.1",
         "underscore.string": "2.3.3",
-        "bluebird": "1.1.0",
+        "bluebird": "1.1.1",
         "bookshelf": "0.6.8",
         "bookshelf-fields": "0.1.0",
         "pg": "2.11.1",
@@ -32,9 +32,9 @@
         "load-grunt-tasks": "0.4.0",
         "grunt": "0.4.4",
         "grunt-ember-templates": "0.4.20",
-        "grunt-contrib-less": "0.10.0",
+        "grunt-contrib-less": "0.11.0",
         "grunt-contrib-jshint": "0.9.2",
-        "grunt-jscs-checker": "0.4.0",
+        "grunt-jscs-checker": "0.4.1",
         "grunt-jsonlint": "1.0.4",
         "grunt-contrib-csslint": "0.2.0",
         "grunt-mocha": "0.4.10",
@@ -46,7 +46,7 @@
         "grunt-open": "0.2.3",
         "grunt-nodemon": "0.2.1",
         "grunt-node-inspector": "0.1.3",
-        "grunt-contrib-watch": "0.6.0",
+        "grunt-contrib-watch": "0.6.1",
         "grunt-concurrent": "0.5.0"
     }
 }
