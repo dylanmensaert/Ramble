@@ -26,7 +26,6 @@
     "undef": true,
     "unused": true,
     "strict": true,
-    "trailing": true,
 
     "asi": false,
     "boss": false,
@@ -38,7 +37,6 @@
     "evil": false,
     "expr": false,
     "funcscope": false,
-    "gcl": false,
     "globalstrict": false,
     "iterator": false,
     "lastsemic": false,
@@ -50,7 +48,6 @@
     "notypeof": false,
     "proto": false,
     "scripturl": false,
-    "smarttabs": false,
     "shadow": false,
     "sub": false,
     "supernew": false,
@@ -73,11 +70,6 @@
     "worker": false,
     "wsh": false,
     "yui": false,
-
-    "nomen": false,
-    "onevar": true,
-    "passfail": false,
-    "white": false,
 
     "globals": {
         "sails": false
