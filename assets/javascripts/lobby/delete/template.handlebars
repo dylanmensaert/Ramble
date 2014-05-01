@@ -5,8 +5,12 @@
 </div>
 
 <div>
-    <button {{action 'delete'}} class="btn btn-danger">
-        Delete
+    <button {{action 'delete'}} class="btn btn-primary" {{bind-attr disabled=isSaving}}>
+        {{#if isSaving}}
+            Deleting...
+        {{else}}
+            Delete
+        {{/if}}
     </button>
 
     {{#link-to 'lobby' this classNames='btn btn-default'}}

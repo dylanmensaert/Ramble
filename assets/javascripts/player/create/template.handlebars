@@ -4,8 +4,12 @@
     {{input password placeholder='Password'}}
     {{input passwordConfirmation placeholder='Password confirmation'}}
 
-    <button {{action 'create'}} class="btn btn-primary">
-        Sign up
+    <button {{action 'create'}} class="btn btn-primary" {{bind-attr disabled=isSaving}}>
+        {{#if isSaving}}
+            Signing up...
+        {{else}}
+            Sign up
+        {{/if}}
     </button>
 
     {{#link-to 'index' classNames='btn btn-default'}}

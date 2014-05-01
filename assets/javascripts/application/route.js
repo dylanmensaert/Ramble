@@ -23,6 +23,16 @@ define(function(require) {
             }.bind(this));
         },
         actions: {
+            //TODO: Consider using the params: transition, originRoute
+            loading: function() {
+                if (this.get('controller')) {
+                    this.set('controller.isLoading', true);
+
+                    this.router.one('didTransition', function() {
+                        this.set('controller.isLoading', false);
+                    }.bind(this));
+                }
+            },
             updateTitle: function(tokens) {
                 this._super(tokens);
 
