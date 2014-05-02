@@ -1,7 +1,4 @@
-#bootstrapRef() {
-  @import: 'bootstrap/less/bootstrap':
-}
-
+//TODO: import bootstrap (reference) and implement mixins to reduce code on html side.
 .my-loading-bar {
     position: fixed;
     z-index: 2000;
@@ -9,14 +6,8 @@
     height: 3px;
     margin: 0;
 
-    bootstrapRef > .progress;
-    bootstrapRef > .progress-striped;
-    bootstrapRef > .active;
-
     .my-inner-loading-bar {
         width: inherit;
-
-        bootstrapRef > .progress-bar;
     }
 }
 
