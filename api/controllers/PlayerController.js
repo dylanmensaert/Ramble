@@ -41,10 +41,10 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        },
             player = Player.forge(values);
 
         player.hashPassword().then(function() {
@@ -57,11 +57,11 @@ module.exports = {
     },
     update: function(request, response) {
         var values = {
-                id: request.param('id'),
-                username: request.param('username'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+            id: request.param('id'),
+            username: request.param('username'),
+            password: request.param('password'),
+            email: request.param('email')
+        },
             player = Player.forge(values);
 
         player.hashPassword().then(function() {

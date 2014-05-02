@@ -41,11 +41,11 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-                title: request.param('title'),
-                password: request.param('password'),
-                max_members: request.param('max_members'),
-                owner_id: request.user.id
-            },
+            title: request.param('title'),
+            password: request.param('password'),
+            max_members: request.param('max_members'),
+            owner_id: request.user.id
+        },
             lobby = Lobby.forge(values);
 
         lobby.hashPassword().then(function() {
@@ -58,11 +58,11 @@ module.exports = {
     },
     update: function(request, response) {
         var values = {
-                id: request.param('id'),
-                title: request.param('title'),
-                password: request.param('password'),
-                max_members: request.param('max_members')
-            },
+            id: request.param('id'),
+            title: request.param('title'),
+            password: request.param('password'),
+            max_members: request.param('max_members')
+        },
             lobby = Lobby.forge(values);
 
         lobby.hashPassword().then(function() {
