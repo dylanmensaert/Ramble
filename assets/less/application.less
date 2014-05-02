@@ -1,9 +1,23 @@
+#bootstrapRef() {
+  @import: 'bootstrap/less/bootstrap':
+}
+
 .my-loading-bar {
     position: fixed;
     z-index: 2000;
     width: 100%;
     height: 3px;
     margin: 0;
+
+    bootstrapRef > .progress;
+    bootstrapRef > .progress-striped;
+    bootstrapRef > .active;
+
+    .my-inner-loading-bar {
+        width: inherit;
+
+        bootstrapRef > .progress-bar;
+    }
 }
 
 .my-row-h3 {
