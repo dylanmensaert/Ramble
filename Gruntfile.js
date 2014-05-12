@@ -244,7 +244,7 @@ module.exports = function(grunt) {
         },
         concurrent: {
             development: {
-                tasks: ['nodemon:server', 'node-inspector:development', 'watch', 'open:development'],
+                tasks: ['nodemon:server', 'node-inspector:development', 'watch'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -257,7 +257,7 @@ module.exports = function(grunt) {
         'open:production'
     ]);
 
-    grunt.registerTask('dev', ['concurrent:development']);
+    grunt.registerTask('dev', ['concurrent:development', 'open:development']);
 
     //TODO: Improve integration of unit tests!!
     grunt.registerTask('test', ['jshint:all', 'jscs:all', 'jsonlint:all', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
