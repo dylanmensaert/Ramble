@@ -196,11 +196,8 @@ module.exports = function(grunt) {
         },
         open: {
             development: {
-                path: 'http://localhost:1337',
-                //TODO: work with openOn?
-                options: {
-                    delay: 200
-                }
+                path: 'http://localhost:1337'
+                //TODO: Open when sails server started. (options:openOn)
             },
             production: {
                 path: 'http://localhost:8001'
