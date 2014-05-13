@@ -196,7 +196,11 @@ module.exports = function(grunt) {
         },
         open: {
             development: {
-                path: 'http://localhost:1337'
+                path: 'http://localhost:1337',
+                //TODO: work with openOn?
+                options: {
+                    delay: 200
+                }
             },
             production: {
                 path: 'http://localhost:8001'
@@ -209,7 +213,7 @@ module.exports = function(grunt) {
                     nodeArgs: ['--debug'],
                     delayTime: 0.1
                 },
-                script: 'app.js',
+                script: 'app.js'
             }
         },
         'node-inspector': {
@@ -244,7 +248,7 @@ module.exports = function(grunt) {
         },
         concurrent: {
             development: {
-                tasks: ['nodemon:server', 'node-inspector:development', 'watch'],
+                tasks: ['nodemon:server', 'node-inspector:development', 'watch', 'open:development'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -257,7 +261,7 @@ module.exports = function(grunt) {
         'open:production'
     ]);
 
-    grunt.registerTask('dev', ['concurrent:development', 'open:development']);
+    grunt.registerTask('dev', ['concurrent:development']);
 
     //TODO: Improve integration of unit tests!!
     grunt.registerTask('test', ['jshint:all', 'jscs:all', 'jsonlint:all', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
