@@ -1,6 +1,16 @@
 define(function(require) {
     'use strict';
 
+    require('init/templates');
+    require('init/presentation');
+    require('init/router');
+
+    require('application/init');
+    require('index/init');
+    require('login/init');
+    require('player/init');
+    require('lobby/init');
+
     var App = require('init/app'),
         DS = require('ember-data');
 
@@ -11,18 +21,6 @@ define(function(require) {
             return this.get('currentState.isValid');
         }.property('currentState.isValid')
     });
-
-    require('init/templates');
-    require('init/presentation');
-    require('init/socket');
-    require('init/session');
-    require('init/router');
-
-    require('application/init');
-    require('index/init');
-    require('login/init');
-    require('player/init');
-    require('lobby/init');
 
     App.advanceReadiness();
 });

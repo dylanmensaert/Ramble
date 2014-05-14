@@ -1,8 +1,10 @@
 define(function(require) {
     'use strict';
 
+    require('init/injections');
+
     var Ember = require('ember'),
-        adapter = require('init/adapter'),
+        adapter = require('application/adapter'),
         App;
 
     App = Ember.Application.create({
