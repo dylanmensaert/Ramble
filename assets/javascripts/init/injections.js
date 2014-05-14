@@ -2,12 +2,12 @@ define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
-        sessionInjection = require('session/injection'),
-        socketInjection = require('socket/injection');
+        injectSession = require('session/inject'),
+        injectSocket = require('socket/inject');
 
     Ember.onLoad('Ember.Application', function(Application) {
-        Application.initializer(sessionInjection);
+        injectSession(Application);
 
-        Application.initializer(socketInjection);
+        injectSocket(Application);
     });
 });
