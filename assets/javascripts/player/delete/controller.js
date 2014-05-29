@@ -12,7 +12,6 @@ define(function(require) {
                 model.save().then(function() {
                     this.send('logout');
                 }.bind(this));
-
                 //TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.
                 //model.get('joinedLobbies').clear();
                 //model.get('ownedLobbies').clear();

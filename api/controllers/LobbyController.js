@@ -16,7 +16,6 @@ module.exports = {
                 response.send({
                     lobby: lobby
                 });
-
                 //Lobby.subscribe(request.socket, lobby);
             });
         } else if (ids) {
@@ -24,7 +23,6 @@ module.exports = {
                 response.send({
                     lobbies: lobbies
                 });
-
                 //Lobby.subscribe(request.socket);
                 //Lobby.subscribe(request.socket, lobbies);
             });
@@ -33,7 +31,6 @@ module.exports = {
                 response.send({
                     lobbies: lobbies
                 });
-
                 //Lobby.subscribe(request.socket);
                 //Lobby.subscribe(request.socket, lobbies);
             });
@@ -71,7 +68,6 @@ module.exports = {
             response.send({
                 lobby: lobby
             });
-
             //Lobby.publishUpdate(lobby.id, lobby.toJSON());
         });
     },
@@ -86,7 +82,6 @@ module.exports = {
                     id: id
                 }
             });
-
             //Lobby.publishDestroy(lobby.id);
         });
     }

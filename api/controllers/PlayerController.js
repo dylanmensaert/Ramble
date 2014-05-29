@@ -16,7 +16,6 @@ module.exports = {
                 response.send({
                     player: player
                 });
-
                 //Player.subscribe(request.socket, player);
             });
         } else if (ids) {
@@ -24,7 +23,6 @@ module.exports = {
                 response.send({
                     players: players
                 });
-
                 //Player.subscribe(request.socket);
                 //Player.subscribe(request.socket, players);
             });
@@ -33,7 +31,6 @@ module.exports = {
                 response.send({
                     players: players
                 });
-
                 //Player.subscribe(request.socket);
                 //Player.subscribe(request.socket, players);
             });
@@ -70,7 +67,6 @@ module.exports = {
             response.send({
                 player: player
             });
-
             //Player.publishUpdate(player.id, player.toJSON());
         });
     },
@@ -87,7 +83,6 @@ module.exports = {
                     id: id
                 }
             });
-
             //Player.publishDestroy(player.id);
         });
     }

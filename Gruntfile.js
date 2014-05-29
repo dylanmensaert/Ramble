@@ -190,7 +190,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: '<%= paths.less %>',
                     src: ['**/*.less'],
-                    dest: '<%= paths.less %>',
+                    dest: '<%= paths.less %>'
                 }]
             }
         },
