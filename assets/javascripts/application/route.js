@@ -15,15 +15,15 @@ define(function(require) {
         },
         registerSocketMessages: function() {
             this.get('socket').on('message', function(message) {
-                //TODO: If destroy then unload from ember-data.
+                // TODO: If destroy then unload from ember-data.
                 if (message.verb !== 'destroy') {
-                    //TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
+                    // TODO: If created new model locally, it will be duplicated because Sails first broadcasts, before sending response to sender
                     this.get('store').push(message.model, message.data);
                 }
             }.bind(this));
         },
         actions: {
-            //TODO: Consider using the params: transition, originRoute
+            // TODO: Consider using the params: transition, originRoute
             loading: function() {
                 if (this.get('controller')) {
                     this.set('controller.isLoading', true);
@@ -46,11 +46,11 @@ define(function(require) {
                     title: documentTitle
                 });
             },
-            /*error: function (error) {
-             //TODO: Make error-handling more robust?
+            /* error: function (error) {
+             // TODO: Make error-handling more robust?
              console.debug(error);
              this.transitionTo('index');
-             },*/
+             }, */
             logout: function() {
                 this.controllerFor('login').send('logout');
             }

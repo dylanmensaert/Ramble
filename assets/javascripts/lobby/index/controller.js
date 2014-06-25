@@ -8,8 +8,8 @@ define(function(require) {
             return this.get('session.account') === this.get('owner');
         }.property('session.account', 'owner'),
         isMemberOfLobby: function() {
-            //TODO: Use the new 'Ember.computed.filterBy' to improve performance!
-            //see: https://github.com/emberjs/ember.js/blob/master/packages/ember-runtime/lib/computed/reduce_computed_macros.js#L256
+            // TODO: Use the new 'Ember.computed.filterBy' to improve performance!
+            // see: https://github.com/emberjs/ember.js/blob/master/packages/ember-runtime/lib/computed/reduce_computed_macros.js#L256
             return this.get('members').contains(this.get('session.account'));
         }.property('members.@each', 'session.account'),
         actions: {
@@ -21,8 +21,8 @@ define(function(require) {
                 if (this.get('session.isLoggedIn')) {
                     this.get('socket').emit('get', json, function(data) {
                         if (data.status === 200) {
-                            //TODO: show notification?
-                            //TODO: Update data in ember-data store? or via websockets?
+                            // TODO: show notification?
+                            // TODO: Update data in ember-data store? or via websockets?
                             return undefined;
                         }
                     }.bind(this));
@@ -37,7 +37,7 @@ define(function(require) {
 
                 this.get('socket').emit('get', json, function(data) {
                     if (data.status === 200) {
-                        //TODO: show notification?
+                        // TODO: show notification?
                         return undefined;
                     }
                 }.bind(this));
@@ -52,7 +52,7 @@ define(function(require) {
 
                 this.get('socket').emit('get', json, function(data) {
                     if (data.status === 200) {
-                        //TODO: show notification?
+                        // TODO: show notification?
                         return undefined;
                     }
                 }.bind(this));

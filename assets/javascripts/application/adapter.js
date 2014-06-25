@@ -44,7 +44,7 @@ define(function(require) {
             var data,
                 url;
 
-            //TODO: should includeId?
+            // TODO: should includeId?
             data = store.serializerFor(type.typeKey).serialize(record, {
                 includeId: true
             });
@@ -57,7 +57,7 @@ define(function(require) {
                 id,
                 url;
 
-            //TODO: should includeId?
+            // TODO: should includeId?
             data = store.serializerFor(type.typeKey).serialize(record);
             id = record.get('id');
 
@@ -118,7 +118,7 @@ define(function(require) {
                     if (data.status) {
                         Ember.run(null, reject, data);
                     } else {
-                        //TODO: handle server's validation-errors? probably just check uniqueness before. other validations are same on client/server
+                        // TODO: handle server's validation-errors? probably just check uniqueness before. other validations are same on client/server
                         Ember.run(null, resolve, data);
                     }
                 });

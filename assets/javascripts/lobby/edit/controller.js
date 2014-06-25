@@ -6,7 +6,7 @@ define(function(require) {
     return Ember.ObjectController.extend({
         actions: {
             save: function() {
-                //TODO: Code is very similar to player/edit. Remove duplication?
+                // TODO: Code is very similar to player/edit. Remove duplication?
                 var model = this.get('model');
 
                 model.validate().then(function() {

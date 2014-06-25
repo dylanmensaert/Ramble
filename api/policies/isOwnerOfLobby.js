@@ -10,7 +10,7 @@ module.exports = function(request, response, ok) {
         if (request.isAuthenticated() && request.user.id === lobby.attributes.owner_id) {
             ok();
         } else {
-            //TODO: Check if error and send it as response (ex: if lobby not found)
+            // TODO: Check if error and send it as response (ex: if lobby not found)
             response.forbidden('You are not permitted to perform this action.');
         }
     });

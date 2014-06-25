@@ -6,7 +6,7 @@ module.exports[400] = function(validationErrors, redirectTo, request, response) 
         status: 400
     };
 
-    //TODO: Will we even use these validationErrors? We never use badRequest-handler..
+    // TODO: Will we even use these validationErrors? We never use badRequest-handler..
     if (validationErrors) {
         result.validationErrors = validationErrors;
     }

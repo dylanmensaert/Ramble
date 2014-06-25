@@ -6,7 +6,7 @@ var Player = require('../bs-models/player'),
 module.exports = {
     find: function(request, response) {
         var id = request.param('id'),
-            //TODO: needs to decode ids-parameter?
+            // TODO: needs to decode ids-parameter?
             ids = request.param('ids');
 
         if (id) {
@@ -16,23 +16,23 @@ module.exports = {
                 response.send({
                     player: player
                 });
-                //Player.subscribe(request.socket, player);
+                // Player.subscribe(request.socket, player);
             });
         } else if (ids) {
             Players.forge().findMany(ids).then(function(players) {
                 response.send({
                     players: players
                 });
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
+                // Player.subscribe(request.socket);
+                // Player.subscribe(request.socket, players);
             });
         } else {
             Players.forge().findQuery(request.params.all()).then(function(players) {
                 response.send({
                     players: players
                 });
-                //Player.subscribe(request.socket);
-                //Player.subscribe(request.socket, players);
+                // Player.subscribe(request.socket);
+                // Player.subscribe(request.socket, players);
             });
         }
     },
@@ -67,7 +67,7 @@ module.exports = {
             response.send({
                 player: player
             });
-            //Player.publishUpdate(player.id, player.toJSON());
+            // Player.publishUpdate(player.id, player.toJSON());
         });
     },
     destroy: function(request, response) {
@@ -83,7 +83,7 @@ module.exports = {
                     id: id
                 }
             });
-            //Player.publishDestroy(player.id);
+            // Player.publishDestroy(player.id);
         });
     }
 };

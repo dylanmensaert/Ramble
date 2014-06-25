@@ -16,23 +16,23 @@ module.exports = {
                 response.send({
                     lobby: lobby
                 });
-                //Lobby.subscribe(request.socket, lobby);
+                // Lobby.subscribe(request.socket, lobby);
             });
         } else if (ids) {
             Lobbies.forge().findMany(ids).then(function(lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
+                // Lobby.subscribe(request.socket);
+                // Lobby.subscribe(request.socket, lobbies);
             });
         } else {
             Lobbies.forge().findQuery(request.params.all()).then(function(lobbies) {
                 response.send({
                     lobbies: lobbies
                 });
-                //Lobby.subscribe(request.socket);
-                //Lobby.subscribe(request.socket, lobbies);
+                // Lobby.subscribe(request.socket);
+                // Lobby.subscribe(request.socket, lobbies);
             });
         }
     },
@@ -68,7 +68,7 @@ module.exports = {
             response.send({
                 lobby: lobby
             });
-            //Lobby.publishUpdate(lobby.id, lobby.toJSON());
+            // Lobby.publishUpdate(lobby.id, lobby.toJSON());
         });
     },
     destroy: function(request, response) {
@@ -82,7 +82,7 @@ module.exports = {
                     id: id
                 }
             });
-            //Lobby.publishDestroy(lobby.id);
+            // Lobby.publishDestroy(lobby.id);
         });
     }
 };

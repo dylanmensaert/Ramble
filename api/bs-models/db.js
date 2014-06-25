@@ -1,6 +1,6 @@
 'use strict';
 
-//TODO: Rename "bs-models" folder to just "models" once sails allows it
+// TODO: Rename "bs-models" folder to just "models" once sails allows it
 var Bookshelf = require('bookshelf'),
     Fields = require('bookshelf-fields'),
     db,

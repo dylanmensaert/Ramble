@@ -10,7 +10,7 @@ define(function(require) {
         classNames: ['form-control']
     });
 
-    //TODO: Ember automatically binds to 'autofocus' nowadays
+    // TODO: Ember automatically binds to 'autofocus' nowadays
     Ember.FocussedTextField = Ember.TextField.extend({
         attributeBindings: ['autofocus'],
         autofocus: 'autofocus'

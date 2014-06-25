@@ -5,10 +5,10 @@ var Membership = require('../bs-models/membership'),
     deleteMembership;
 
 deleteMembership = function(values, response) {
-    //TODO: Can be shorter? : Membership.forge(values).destroy().then(function () {
+    // TODO: Can be shorter? : Membership.forge(values).destroy().then(function () {
     Membership.forge().query().where(values).del().then(function() {
         response.send({
-            //TODO: Look into what to send to client
+            // TODO: Look into what to send to client
             lobby: {
                 id: values.lobby_id
             }
@@ -23,7 +23,7 @@ module.exports = {
             player_id: request.user.id
         };
 
-        //TODO: Check the password!
+        // TODO: Check the password!
         Membership.forge(values).save().then(function(lobby) {
             response.send({
                 lobby: lobby

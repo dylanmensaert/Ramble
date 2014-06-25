@@ -5,22 +5,22 @@ module.exports = function(grunt) {
         sources;
 
     paths = {
-        //server
+        // server
         api: 'api',
         config: 'config',
         views: 'views',
         tmpPublic: '.tmp/public',
-        //assets
+        // assets
         assets: 'assets',
         javascripts: 'assets/javascripts',
         less: 'assets/less',
         stylesheets: '.tmp/public/stylesheets',
         images: 'assets/images',
-        //prod
+        // prod
         prodJavascripts: '.tmp/public/javascripts',
         prodImages: '.tmp/public/images',
         prodFonts: '.tmp/public/fonts',
-        //other
+        // other
         test: 'test',
         components: 'assets/bower_components',
         bootstrapFonts: 'assets/bower_components/bootstrap/dist/fonts'
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
         open: {
             development: {
                 path: 'http://localhost:1337'
-                //TODO: Open when sails server started. (options:openOn)
+                // TODO: Open when sails server started. (options:openOn)
             },
             production: {
                 path: 'http://localhost:8001'
@@ -260,7 +260,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('dev', ['concurrent:development']);
 
-    //TODO: Improve integration of unit tests!!
+    // TODO: Improve integration of unit tests!!
     grunt.registerTask('test', ['jshint:all', 'jscs:all', 'jsonlint:all', 'emberTemplates:all', 'requirejs:all', 'less:development', 'csslint:all']);
     grunt.registerTask('tidy', ['jsbeautifier:all', 'csscomb:all']);
 

@@ -9,7 +9,7 @@ define(function(require) {
         }.property(),
         beforeModel: function(transition) {
             if (!this.get('session.isLoggedIn')) {
-                //TODO: Shouldn't always set session.attemptedTransition? Only when clicking join and not loggedIn?
+                // TODO: Shouldn't always set session.attemptedTransition? Only when clicking join and not loggedIn?
                 this.set('session.attemptedTransition', transition);
             }
         }

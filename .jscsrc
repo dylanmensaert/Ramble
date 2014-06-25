@@ -27,6 +27,12 @@
     "disallowSpacesInNamedFunctionExpression": {
         "beforeOpeningRoundBrace": true
     },
+    "requireSpacesInFunctionDeclaration": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInFunctionDeclaration": {
+        "beforeOpeningRoundBrace": true
+    },
     "requireMultipleVarDecl": true,
     "requireBlocksOnNewline": true,
     "disallowPaddingNewlinesInBlocks": true,
@@ -37,16 +43,13 @@
     "disallowQuotedKeysInObjects": true,
     "disallowSpaceAfterObjectKeys": true,
     "requireCommaBeforeLineBreak": true,
-    "requireOperatorBeforeLineBreak": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-    "disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-    "requireRightStickedOperators": ["!"],
-    "disallowRightStickedOperators": ["?", "+", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-    "requireLeftStickedOperators": [","],
+    "requireOperatorBeforeLineBreak": ["?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
     "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
     "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
-    "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
-    "requireSpaceAfterBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
+    "requireSpaceBeforeBinaryOperators": ["=", "+", "-", "/", "*", "==", "===", "!=", "!=="],
+    "requireSpaceAfterBinaryOperators": ["=", ",", "+", "-", "/", "*", "==", "===", "!=", "!=="],
     "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+    "disallowKeywords": ["with"],
     "disallowMultipleLineStrings": true,
     "disallowMultipleLineBreaks": true,
     "validateLineBreaks": "LF",
@@ -61,9 +64,11 @@
     "requireCapitalizedConstructors": true,
     "safeContextKeyword": "that",
     "requireDotNotation": true,
+    "disallowYodaConditions": true,
     "validateJSDoc": {
         "checkParamNames": true,
         "checkRedundantParams": true,
         "requireParamTypes": true
-    }
+    },
+    "requireSpaceAfterLineComment": true
 }

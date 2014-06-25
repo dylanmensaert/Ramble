@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(collection, relations, queryParams) {
-    //TODO: Implement sort.
+    // TODO: Implement sort.
     var limit = queryParams.limit,
         offset = queryParams.offset,
         query;
