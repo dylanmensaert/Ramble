@@ -11,7 +11,7 @@
         "ember-easyform": "http://builds.dockyard.com.s3.amazonaws.com/ember-easyForm/canary/ember-easyForm.js",
         "handlebars": "1.3.0",
         "jquery": "2.1.1",
-        "bootstrap": "3.1.1",
+        "bootstrap": "3.2.0",
         "google-analytics": "https://ssl.google-analytics.com/analytics.js"
     },
     "devDependencies": {
