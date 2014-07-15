@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('underscore.string');
+
 module.exports = function(grunt) {
     var paths,
         sources;
@@ -96,6 +98,7 @@ module.exports = function(grunt) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace('/template', '');
+                        templateName = _.camelize(templateName)
 
                         return templateName;
                     },
