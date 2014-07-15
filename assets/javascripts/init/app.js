@@ -1,3 +1,4 @@
+/* global sails: true */
 define(function(require) {
     'use strict';
 
@@ -11,7 +12,7 @@ define(function(require) {
         ready: function() {
             Ember.$('.my-loading-bar').remove();
         },
-        LOG_TRANSITIONS: true
+        LOG_TRANSITIONS: sails.config.environment === 'development'
     });
 
     App.deferReadiness();
