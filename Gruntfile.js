@@ -98,7 +98,7 @@ module.exports = function(grunt) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace('/template', '');
-                        templateName = _.camelize(templateName)
+                        templateName = _.camelize(templateName);
 
                         return templateName;
                     },
