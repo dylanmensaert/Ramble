@@ -62,7 +62,7 @@
     {{#if memberships}}
         <div class="list-group">
             {{#each memberships}}
-                {{partial 'player/helpers/item' this.player}}
+                {{render 'player/helpers/item' this.player}}
             {{/each}}
         </div>
     {{else}}
