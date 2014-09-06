@@ -1,25 +1,15 @@
 /* jshint camelcase: false */
 'use strict';
 
-var db = require('./db'),
+var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Membership,
     Lobby,
     Player,
-    relations = require('./relations').membership,
-    toUnderscore = require('../helpers/toUnderscore'),
-    toCamelCase = require('../helpers/toCamelCase');
+    relations = require('./relations').membership;
 
-Membership = db.Model.extend({
+Membership = Model.extend({
     tableName: 'memberships',
-    toJSON: function() {
-        var model = db.Model.prototype.toJSON.apply(this, arguments);
-
-        return toUnderscore(model);
-    },
-    format: function(attrs) {
-        return toCamelCase(attrs);
-    },
     lobby: function() {
         return this.belongsTo(Lobby);
     },

@@ -43,5 +43,12 @@ define(function(require) {
             this.route('list');
             this.route('create');
         });
+
+        this.resource('membership', function() {
+            this.route('index', {
+                path: ':membership_id'
+            });
+            this.route('list');
+        });
     });
 });

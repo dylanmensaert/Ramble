@@ -1,10 +1,10 @@
 'use strict';
 
 var bcrypt = require('bcrypt'),
-    Promise = require('bluebird');
+    bluebird = require('bluebird');
 
 module.exports = function(password, hash) {
-    var compare = Promise.promisify(bcrypt.compare, bcrypt);
+    var compare = bluebird.promisify(bcrypt.compare, bcrypt);
 
     return compare(password, hash);
 };

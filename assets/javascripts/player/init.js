@@ -22,6 +22,4 @@ define(function(require) {
 
     App.PlayerCreateRoute = require('player/create/route');
     App.PlayerCreateController = require('player/create/controller');
-
-    App.PlayerSerializer = require('player/serializer');
 });

@@ -4,7 +4,7 @@
     </h2>
 
     <h3>
-        ({{members.length}}/{{maxMembers}})
+        ({{currentMembers}}/{{maxMembers}})
     </h3>
 
     <div>
@@ -36,8 +36,8 @@
     </h3>
 
     <p>
-        {{#link-to 'player' owner}}
-            {{owner.username}}
+        {{#link-to 'player' ownership.player}}
+            {{ownership.player.username}}
         {{/link-to}}
     </p>
 </div>
@@ -59,10 +59,10 @@
         </div>
     </div>
 
-    {{#if members.length}}
+    {{#if memberships}}
         <div class="list-group">
-            {{#each members}}
-                {{partial 'player/helpers/item'}}
+            {{#each memberships}}
+                {{partial 'player/helpers/item' this.player}}
             {{/each}}
         </div>
     {{else}}

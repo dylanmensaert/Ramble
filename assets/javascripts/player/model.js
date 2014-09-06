@@ -8,11 +8,11 @@ define(function(require) {
         username: DS.attr('string'),
         password: DS.attr('string'),
         email: DS.attr('string'),
-        ownedLobbies: DS.hasMany('lobby', {
-            inverse: 'owner'
+        ownerships: DS.hasMany('membership', {
+            async: true
         }),
-        joinedLobbies: DS.hasMany('lobby', {
-            inverse: 'members'
+        memberships: DS.hasMany('membership', {
+            async: true
         }),
         validations: {
             username: {
@@ -35,10 +35,10 @@ define(function(require) {
                     with: /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,6}$/i
                 }
             },
-            ownedLobbies: {
+            ownerships: {
 
             },
-            joinedLobbies: {
+            memberships: {
 
             }
         }

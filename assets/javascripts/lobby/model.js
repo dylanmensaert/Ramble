@@ -8,12 +8,15 @@ define(function(require) {
         title: DS.attr('string'),
         password: DS.attr('string'),
         maxMembers: DS.attr('number'),
-        owner: DS.belongsTo('player', {
-            inverse: 'ownedLobbies'
+        ownership: DS.belongsTo('membership'),
+        memberships: DS.hasMany('membership', {
+            async: true
         }),
-        members: DS.hasMany('player', {
-            inverse: 'joinedLobbies'
-        }),
+        currentMembers: function() {
+            var membership = this.get('memberships');
+
+            return membership.get('length') + 1;
+        }.property('memberships.@each'),
         validations: {
             title: {
                 presence: true,
@@ -26,14 +29,15 @@ define(function(require) {
                 confirmation: true
             },
             maxMembers: {
-                numericality: {
-                    onlyInteger: true
-                }
+                // TODO: https://github.com/dockyard/ember-validations/issues/124
+                // numericality: {
+                //     onlyInteger: true
+                // }
             },
-            owner: {
+            ownership: {
 
             },
-            members: {
+            memberships: {
 
             }
         }

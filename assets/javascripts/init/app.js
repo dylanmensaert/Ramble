@@ -16,6 +16,7 @@ define(function(require) {
 
     App.deferReadiness();
 
+    App.ApplicationSerializer = require('application/serializer');
     App.ApplicationAdapter = adapter.extend({
         namespace: 'api'
     });

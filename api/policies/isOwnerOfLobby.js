@@ -1,17 +1,25 @@
 /* jshint camelcase: false */
 'use strict';
 
-var Lobby = require('../bs-models/lobby');
+var Membership = require('../bs-models/membership');
 
+// TODO: Duplicate to isMemberOfLobby
 module.exports = function(request, response, ok) {
-    Lobby.forge({
-        id: request.param('id')
-    }).fetch().then(function(lobby) {
-        if (request.isAuthenticated() && request.user.id === lobby.attributes.owner_id) {
+    var lobby_id = request.param('id'),
+        player_id = request.user.id;
+
+    Membership.forge({
+        lobby_id: lobby_id,
+        player_id: player_id,
+        type: 'owner'
+    }).fetch().then(function(membership) {
+        if (request.isAuthenticated() && membership) {
             ok();
         } else {
-            // TODO: Check if error and send it as response (ex: if lobby not found)
-            response.forbidden('You are not permitted to perform this action.');
+            response.send({
+                status: 403,
+                message: 'You are not permitted to perform this action.'
+            });
         }
     });
 };

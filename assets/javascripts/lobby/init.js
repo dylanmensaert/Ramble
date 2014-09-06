@@ -22,6 +22,4 @@ define(function(require) {
 
     App.LobbyCreateRoute = require('lobby/create/route');
     App.LobbyCreateController = require('lobby/create/controller');
-
-    App.LobbySerializer = require('lobby/serializer');
 });

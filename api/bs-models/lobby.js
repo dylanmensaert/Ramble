@@ -1,35 +1,29 @@
 /* jshint camelcase: false */
 'use strict';
 
-var db = require('./db'),
+var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Lobby,
-    Player,
     Membership,
     relations = require('./relations').lobby,
-    toUnderscore = require('../helpers/toUnderscore'),
-    toCamelCase = require('../helpers/toCamelCase'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
-Lobby = db.Model.extend({
+Lobby = Model.extend({
     tableName: 'lobbies',
-    toJSON: function() {
-        var model = db.Model.prototype.toJSON.apply(this, arguments);
-
-        // TODO: Use Bookshelf-visibility-plugin
-        delete model.password;
-
-        return toUnderscore(model);
+    ownership: function() {
+        return this.hasOne(Membership).query({
+            where: {
+                type: 'owner'
+            }
+        });
     },
-    format: function(attrs) {
-        return toCamelCase(attrs);
-    },
-    owner: function() {
-        return this.belongsTo(Player, 'owner_id');
-    },
-    members: function() {
-        return this.belongsToMany(Player).through(Membership);
+    memberships: function() {
+        return this.hasMany(Membership).query({
+            where: {
+                type: 'member'
+            }
+        });
     },
     fetchWithRelated: function() {
         return this.fetch({
@@ -60,13 +54,8 @@ Fields.fields(Lobby, [
     Fields.IntField, 'maxMembers', {
         required: true
     }
-], [
-    Fields.IntField, 'owner_id', {
-        required: true
-    }
 ]);
 
 module.exports = Lobby;
 
-Player = require('./player');
 Membership = require('./membership');

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    lobby: ['owner', 'members'],
-    player: ['ownedLobbies', 'joinedLobbies'],
+    lobby: ['ownership', 'memberships'],
+    player: ['ownerships', 'memberships'],
     membership: ['lobby', 'player']
 };
