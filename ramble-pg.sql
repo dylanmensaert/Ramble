@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.13
 -- Dumped by pg_dump version 9.1.13
--- Started on 2014-09-06 23:21:33 CEST
+-- Started on 2014-09-07 16:00:25 CEST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -45,7 +45,9 @@ CREATE TABLE lobbies (
     title character varying(50) NOT NULL,
     password character varying NOT NULL,
     "maxMembers" integer NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    "createdAt" timestamp with time zone,
+    "updatedAt" timestamp with time zone
 );
 
 
@@ -86,7 +88,9 @@ CREATE TABLE memberships (
     player_id integer NOT NULL,
     lobby_id integer NOT NULL,
     id integer NOT NULL,
-    type character varying
+    type character varying,
+    "createdAt" timestamp with time zone,
+    "updatedAt" timestamp with time zone
 );
 
 
@@ -94,7 +98,7 @@ ALTER TABLE public.memberships OWNER TO root;
 
 --
 -- TOC entry 166 (class 1259 OID 16556)
--- Dependencies: 5 165
+-- Dependencies: 165 5
 -- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -127,7 +131,9 @@ CREATE TABLE players (
     username character varying(50) NOT NULL,
     password character varying NOT NULL,
     email character varying(50) NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    "createdAt" timestamp with time zone,
+    "updatedAt" timestamp with time zone
 );
 
 
@@ -135,7 +141,7 @@ ALTER TABLE public.players OWNER TO root;
 
 --
 -- TOC entry 163 (class 1259 OID 16435)
--- Dependencies: 164 5
+-- Dependencies: 5 164
 -- Name: players_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -191,8 +197,8 @@ ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::r
 -- Data for Name: lobbies; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY lobbies (title, password, "maxMembers", id) FROM stdin;
-lobby van brother    b    10    1
+COPY lobbies (title, password, "maxMembers", id, "createdAt", "updatedAt") FROM stdin;
+lobby van brother    b    10    1    \N    \N
 \.
 
 
@@ -211,8 +217,8 @@ SELECT pg_catalog.setval('lobbies_id_seq', 5, true);
 -- Data for Name: memberships; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY memberships (player_id, lobby_id, id, type) FROM stdin;
-14    1    1    owner
+COPY memberships (player_id, lobby_id, id, type, "createdAt", "updatedAt") FROM stdin;
+14    1    1    owner    \N    \N
 \.
 
 
@@ -231,8 +237,8 @@ SELECT pg_catalog.setval('memberships_id_seq', 4, true);
 -- Data for Name: players; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY players (username, password, email, id) FROM stdin;
-poe    $2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe    poe@gmail.com    14
+COPY players (username, password, email, id, "createdAt", "updatedAt") FROM stdin;
+poe    $2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe    poe@gmail.com    14    \N    \N
 \.
 
 
@@ -242,7 +248,7 @@ poe    $2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe    poe@gmail
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('players_id_seq', 15, true);
+SELECT pg_catalog.setval('players_id_seq', 21, true);
 
 
 --
@@ -327,7 +333,7 @@ ALTER TABLE ONLY memberships
 
 --
 -- TOC entry 1818 (class 2606 OID 16578)
--- Dependencies: 164 1809 165 1927
+-- Dependencies: 1809 164 165 1927
 -- Name: player_lobby_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -347,7 +353,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2014-09-06 23:21:33 CEST
+-- Completed on 2014-09-07 16:00:25 CEST
 
 --
 -- PostgreSQL database dump complete

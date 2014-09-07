@@ -45,9 +45,7 @@ module.exports = {
             },
             lobby = Lobby.forge(values);
 
-        lobby.hashPassword().then(function() {
-            return lobby.save();
-        }).then(function(lobby) {
+        lobby.save().then(function(lobby) {
             response.send({
                 lobby: lobby
             });
@@ -62,9 +60,7 @@ module.exports = {
             },
             lobby = Lobby.forge(values);
 
-        lobby.hashPassword().then(function() {
-            return lobby.save();
-        }).then(function(lobby) {
+        lobby.save().then(function(lobby) {
             response.send({
                 lobby: lobby
             });

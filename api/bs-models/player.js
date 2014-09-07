@@ -4,9 +4,7 @@
 var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Player,
-    Membership,
-    setHashedPassword = require('../helpers/setHashedPassword'),
-    verifyPassword = require('../helpers/verifyPassword');
+    Membership;
 
 Player = Model.extend({
     tableName: 'players',
@@ -23,12 +21,6 @@ Player = Model.extend({
                 type: 'member'
             }
         });
-    },
-    hashPassword: function() {
-        return setHashedPassword(this.attributes);
-    },
-    verifyPassword: function(password) {
-        return verifyPassword(password, this.attributes.password);
     }
 });
 
@@ -41,10 +33,12 @@ Fields.fields(Player, [
         max_length: 50
     }
 ], [
+    // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
     Fields.StringField, 'password', {
-        required: true
+        required: false
     }
 ], [
+    // TODO: Check if client validation is compatible with this one.
     Fields.EmailField, 'email', {
         required: true
     }, {

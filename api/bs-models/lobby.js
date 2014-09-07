@@ -4,9 +4,7 @@
 var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Lobby,
-    Membership,
-    setHashedPassword = require('../helpers/setHashedPassword'),
-    verifyPassword = require('../helpers/verifyPassword');
+    Membership;
 
 Lobby = Model.extend({
     tableName: 'lobbies',
@@ -23,12 +21,6 @@ Lobby = Model.extend({
                 type: 'member'
             }
         });
-    },
-    hashPassword: function() {
-        return setHashedPassword(this.attributes);
-    },
-    verifyPassword: function(password) {
-        return verifyPassword(password, this.attributes.password);
     }
 });
 
@@ -41,8 +33,9 @@ Fields.fields(Lobby, [
         max_length: 50
     }
 ], [
+    // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
     Fields.StringField, 'password', {
-        required: true
+        required: false
     }
 ], [
     Fields.IntField, 'maxMembers', {

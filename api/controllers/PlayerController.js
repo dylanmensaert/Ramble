@@ -44,9 +44,7 @@ module.exports = {
             },
             player = Player.forge(values);
 
-        player.hashPassword().then(function() {
-            return player.save();
-        }).then(function(player) {
+        player.save().then(function(player) {
             response.send({
                 player: player
             });
@@ -61,9 +59,7 @@ module.exports = {
             },
             player = Player.forge(values);
 
-        player.hashPassword().then(function() {
-            return player.save();
-        }).then(function(player) {
+        player.save().then(function(player) {
             response.send({
                 player: player
             });
