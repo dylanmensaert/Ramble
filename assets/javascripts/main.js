@@ -15,6 +15,15 @@
             bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
             'google-analytics': '../bower_components/google-analytics/index'
         },
+        map: {
+            '*': {
+                jquery: 'jquery-private'
+            },
+
+            'jquery-private': {
+                jquery: 'jquery'
+            }
+        },
         shim: {
             ember: {
                 deps: ['jquery', 'handlebars'],
