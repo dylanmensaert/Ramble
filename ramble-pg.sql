@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.13
 -- Dumped by pg_dump version 9.1.13
--- Started on 2014-09-07 16:00:25 CEST
+-- Started on 2014-09-07 20:51:56 CEST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -44,10 +44,10 @@ SET default_with_oids = false;
 CREATE TABLE lobbies (
     title character varying(50) NOT NULL,
     password character varying NOT NULL,
-    "maxMembers" integer NOT NULL,
+    max_members integer NOT NULL,
     id integer NOT NULL,
-    "createdAt" timestamp with time zone,
-    "updatedAt" timestamp with time zone
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
 );
 
 
@@ -89,8 +89,8 @@ CREATE TABLE memberships (
     lobby_id integer NOT NULL,
     id integer NOT NULL,
     type character varying,
-    "createdAt" timestamp with time zone,
-    "updatedAt" timestamp with time zone
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
 );
 
 
@@ -132,8 +132,8 @@ CREATE TABLE players (
     password character varying NOT NULL,
     email character varying(50) NOT NULL,
     id integer NOT NULL,
-    "createdAt" timestamp with time zone,
-    "updatedAt" timestamp with time zone
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
 );
 
 
@@ -197,8 +197,9 @@ ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::r
 -- Data for Name: lobbies; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY lobbies (title, password, "maxMembers", id, "createdAt", "updatedAt") FROM stdin;
+COPY lobbies (title, password, max_members, id, created_at, updated_at) FROM stdin;
 lobby van brother    b    10    1    \N    \N
+Awesome lobby    $2a$10$.k9zKRaejoCFh0PJ8dXXhe.A2SlfhA5BJWvStzYL6jNRNPkEdDpkW    100    6    2014-09-07 20:49:17.217+02    2014-09-07 20:49:17.217+02
 \.
 
 
@@ -208,7 +209,7 @@ lobby van brother    b    10    1    \N    \N
 -- Name: lobbies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('lobbies_id_seq', 5, true);
+SELECT pg_catalog.setval('lobbies_id_seq', 6, true);
 
 
 --
@@ -217,7 +218,7 @@ SELECT pg_catalog.setval('lobbies_id_seq', 5, true);
 -- Data for Name: memberships; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY memberships (player_id, lobby_id, id, type, "createdAt", "updatedAt") FROM stdin;
+COPY memberships (player_id, lobby_id, id, type, created_at, updated_at) FROM stdin;
 14    1    1    owner    \N    \N
 \.
 
@@ -237,8 +238,9 @@ SELECT pg_catalog.setval('memberships_id_seq', 4, true);
 -- Data for Name: players; Type: TABLE DATA; Schema: public; Owner: root
 --
 
-COPY players (username, password, email, id, "createdAt", "updatedAt") FROM stdin;
+COPY players (username, password, email, id, created_at, updated_at) FROM stdin;
 poe    $2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe    poe@gmail.com    14    \N    \N
+dylan    $2a$10$M2tr6U9PfyP1S2EFP0IFR.3JWijDchrkX9z3WiLSlChoMoJQ5PJ4e    dylanmensaert@gmail.com    23    2014-09-07 16:53:57.395+02    2014-09-07 16:53:57.395+02
 \.
 
 
@@ -248,7 +250,7 @@ poe    $2a$10$OdLNb52u8Z4uQCtGRA.0me50esjVB13tabwxGI3jCboHHV.bt3uWe    poe@gmail
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
 --
 
-SELECT pg_catalog.setval('players_id_seq', 21, true);
+SELECT pg_catalog.setval('players_id_seq', 23, true);
 
 
 --
@@ -353,7 +355,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2014-09-07 16:00:25 CEST
+-- Completed on 2014-09-07 20:51:56 CEST
 
 --
 -- PostgreSQL database dump complete

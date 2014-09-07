@@ -4,6 +4,8 @@
 var db = require('./db'),
     Model,
     relationships = require('./relationships'),
+    toUnderscore = require('../helpers/toUnderscore'),
+    toCamelCase = require('../helpers/toCamelCase'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
@@ -19,7 +21,7 @@ Model = db.Model.extend({
         // this.on('destroyed', this.unsetFields);
         // this.on('fetched', this.unsetFields);
     },
-    hasTimestamps: ['createdAt', 'updatedAt'],
+    hasTimestamps: true,
     // unsetFields: function() {
     //     this.unset('password', {
     //         silent: true
@@ -30,7 +32,10 @@ Model = db.Model.extend({
 
         delete model.password;
 
-        return model;
+        return toCamelCase(model);
+    },
+    format: function(attributes) {
+        return toUnderscore(attributes);
     },
     fetchWithRelated: function() {
         var relations = relationships.get(this.tableName);

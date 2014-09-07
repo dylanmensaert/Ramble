@@ -1,4 +1,3 @@
-/* jshint camelcase: false */
 'use strict';
 
 var Membership = require('../bs-models/membership'),
@@ -11,7 +10,7 @@ deleteMembership = function(values, response) {
         response.send({
             // TODO: Look into what to send to client
             lobby: {
-                id: values.lobby_id
+                id: values.lobbyId
             }
         });
     });
@@ -51,8 +50,8 @@ module.exports = {
     },
     join: function(request, response) {
         var values = {
-            lobby_id: request.param('id'),
-            player_id: request.user.id
+            lobbyId: request.param('id'),
+            playerId: request.user.id
         };
 
         // TODO: Check the password!
@@ -64,16 +63,16 @@ module.exports = {
     },
     leave: function(request, response) {
         var values = {
-            lobby_id: request.param('id'),
-            player_id: request.user.id
+            lobbyId: request.param('id'),
+            playerId: request.user.id
         };
 
         deleteMembership(values, response);
     },
     kick: function(request, response) {
         var values = {
-            lobby_id: request.param('id'),
-            player_id: request.param('player').id
+            lobbyId: request.param('id'),
+            playerId: request.param('player').id
         };
 
         deleteMembership(values, response);

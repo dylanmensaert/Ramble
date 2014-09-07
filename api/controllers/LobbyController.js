@@ -1,4 +1,3 @@
-/* jshint camelcase: false */
 'use strict';
 
 var Lobby = require('../bs-models/lobby'),
@@ -40,8 +39,7 @@ module.exports = {
         var values = {
                 title: request.param('title'),
                 password: request.param('password'),
-                max_members: request.param('max_members'),
-                owner_id: request.user.id
+                maxMembers: request.param('maxMembers')
             },
             lobby = Lobby.forge(values);
 
@@ -56,7 +54,7 @@ module.exports = {
                 id: request.param('id'),
                 title: request.param('title'),
                 password: request.param('password'),
-                max_members: request.param('max_members')
+                maxMembers: request.param('maxMembers')
             },
             lobby = Lobby.forge(values);
 
