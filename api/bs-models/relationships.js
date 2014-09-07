@@ -2,7 +2,13 @@
 
 module.exports = {
     get: function(type) {
-        return this[type];
+        var value;
+
+        if (this.hasOwnProperty(type)) {
+            value = this[type];
+        }
+
+        return value;
     },
     lobbies: ['ownership', 'memberships'],
     players: ['ownerships', 'memberships'],

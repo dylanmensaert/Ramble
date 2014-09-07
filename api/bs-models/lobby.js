@@ -34,9 +34,8 @@ Fields.fields(Lobby, [
     }
 ], [
     // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
-    // Current solution through unsetFields in model.js
     Fields.StringField, 'password', {
-        required: true
+        required: false
     }
 ], [
     Fields.IntField, 'maxMembers', {

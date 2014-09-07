@@ -7,24 +7,28 @@ var db = require('./db'),
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
+// TODO: Implement password functionality as mixin into correct objects.
 Model = db.Model.extend({
     initialize: function() {
         this.on('saving', this.hashPassword);
 
         // TODO: Find another way to implement this instead of events?
         // Cannot use toJSON delete since this is getting used by Field validation.
-        this.on('saved', this.unsetFields);
-        this.on('destroyed', this.unsetFields);
-        this.on('fetched', this.unsetFields);
+        // Update: Cannot implement this as such since password authentication will not work.
+        // this.on('saved', this.unsetFields);
+        // this.on('destroyed', this.unsetFields);
+        // this.on('fetched', this.unsetFields);
     },
     hasTimestamps: ['createdAt', 'updatedAt'],
-    unsetFields: function() {
-        this.unset('password', {
-            silent: true
-        });
-    },
+    // unsetFields: function() {
+    //     this.unset('password', {
+    //         silent: true
+    //     });
+    // },
     toJSON: function() {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
+
+        delete model.password;
 
         return model;
     },
