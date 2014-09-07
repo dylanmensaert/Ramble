@@ -1,17 +1,8 @@
 'use strict';
 
-var db = require('./db'),
-    Lobby = require('./lobby'),
-    relations = require('./relations').lobby,
-    findMany = require('../helpers/findMany'),
-    findQuery = require('../helpers/findQuery');
+var Collection = require('./collection'),
+    Lobby = require('./lobby');
 
-module.exports = db.Collection.extend({
-    model: Lobby,
-    findMany: function(ids) {
-        return findMany(this, relations, ids);
-    },
-    findQuery: function(queryParams) {
-        return findQuery(this, relations, queryParams);
-    }
+module.exports = Collection.extend({
+    model: Lobby
 });

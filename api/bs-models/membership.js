@@ -5,8 +5,7 @@ var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Membership,
     Lobby,
-    Player,
-    relations = require('./relations').membership;
+    Player;
 
 Membership = Model.extend({
     tableName: 'memberships',
@@ -15,11 +14,6 @@ Membership = Model.extend({
     },
     player: function() {
         return this.belongsTo(Player);
-    },
-    fetchWithRelated: function() {
-        return this.fetch({
-            withRelated: relations
-        });
     }
 });
 

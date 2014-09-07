@@ -5,7 +5,6 @@ var Model = require('./model'),
     Fields = require('bookshelf-fields'),
     Player,
     Membership,
-    relations = require('./relations').player,
     setHashedPassword = require('../helpers/setHashedPassword'),
     verifyPassword = require('../helpers/verifyPassword');
 
@@ -23,11 +22,6 @@ Player = Model.extend({
             where: {
                 type: 'member'
             }
-        });
-    },
-    fetchWithRelated: function() {
-        return this.fetch({
-            withRelated: relations
         });
     },
     hashPassword: function() {
