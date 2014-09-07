@@ -34,8 +34,9 @@ Fields.fields(Player, [
     }
 ], [
     // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
+    // Current solution through unsetFields in model.js
     Fields.StringField, 'password', {
-        required: false
+        required: true
     }
 ], [
     // TODO: Check if client validation is compatible with this one.
