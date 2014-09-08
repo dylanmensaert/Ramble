@@ -33,6 +33,12 @@
     "disallowSpacesInFunctionDeclaration": {
         "beforeOpeningRoundBrace": true
     },
+    "requireSpacesInFunction": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInFunction": {
+        "beforeOpeningRoundBrace": true
+    },
     "requireMultipleVarDecl": true,
     "requireBlocksOnNewline": true,
     "disallowPaddingNewlinesInBlocks": true,
@@ -70,5 +76,7 @@
         "checkRedundantParams": true,
         "requireParamTypes": true
     },
-    "requireSpaceAfterLineComment": true
+    "requireSpaceAfterLineComment": true,
+    "requireAnonymousFunctions": true,
+    "disallowNewlineBeforeBlockStatements": true
 }
