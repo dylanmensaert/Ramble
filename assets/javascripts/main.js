@@ -19,7 +19,6 @@
             '*': {
                 jquery: 'jquery-private'
             },
-
             'jquery-private': {
                 jquery: 'jquery'
             }
