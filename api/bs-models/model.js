@@ -27,10 +27,12 @@ Model = db.Model.extend({
     //         silent: true
     //     });
     // },
-    toJSON: function() {
+    toJSON: function(options) {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
-        delete model.password;
+        if (!options.validating) {
+            delete model.password;
+        }
 
         return toCamelCase(model);
     },

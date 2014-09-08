@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('underscore.string');
+// var _ = require('underscore.string');
 
 module.exports = function(grunt) {
     var paths,
@@ -98,7 +98,8 @@ module.exports = function(grunt) {
                         var templateName = sourceFile;
 
                         templateName = templateName.replace('/template', '');
-                        templateName = _.camelize(templateName);
+                        // TODO: See if this is required for models consisting of 2+ words
+                        // templateName = _.camelize(templateName);
 
                         return templateName;
                     },

@@ -43,6 +43,8 @@ module.exports = {
             },
             lobby = Lobby.forge(values);
 
+        // TODO: request.user.id
+
         lobby.save().then(function(lobby) {
             response.send({
                 lobby: lobby
