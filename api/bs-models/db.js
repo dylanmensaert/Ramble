@@ -2,15 +2,19 @@
 
 // TODO: Rename "bs-models" folder to just "models" once sails allows it
 var Bookshelf = require('bookshelf'),
+    Knex = require('knex'),
     Fields = require('bookshelf-fields'),
-    db,
-    connection = require('./connection');
+    connection = require('./connection'),
+    knex,
+    db;
 
-db = Bookshelf.initialize({
+knex = Knex({
     debug: true,
     client: 'pg',
     connection: connection
 });
+
+db = Bookshelf(knex);
 
 db.plugin(Fields.plugin);
 
