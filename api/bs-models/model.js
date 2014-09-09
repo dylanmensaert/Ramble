@@ -10,9 +10,9 @@ var db = require('./db'),
     verifyPassword = require('../helpers/verifyPassword'),
     isValidating;
 
-    isValidating = function(options) {
-        return options && options.isValidating;
-    };
+isValidating = function(options) {
+    return options && options.isValidating;
+};
 
 // TODO: Implement password functionality as mixin into correct objects.
 Model = db.Model.extend({

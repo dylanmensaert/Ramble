@@ -1,3 +1,4 @@
+/* jshint newcap: false */
 'use strict';
 
 // TODO: Rename "bs-models" folder to just "models" once sails allows it
@@ -16,6 +17,6 @@ knex = Knex({
 
 db = Bookshelf(knex);
 
-db.plugin(Fields.plugin);
+db.plugin(Fields.plugin());
 
 module.exports = db;
