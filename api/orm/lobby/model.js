@@ -1,13 +1,28 @@
 /* jshint camelcase: false */
 'use strict';
 
-var Model = require('./model'),
+var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
     Lobby,
     Membership;
 
 Lobby = Model.extend({
     tableName: 'lobbies',
+    initialize: function() {
+        var values;
+
+        Model.prototype.initialize.apply(this, arguments);
+
+        this.on('created', function(model, response, options) {
+            values = {
+                lobbyId: model.id,
+                playerId: options.userId,
+                type: 'owner'
+            };
+
+            Membership.forge(values).save();
+        });
+    },
     ownership: function() {
         return this.hasOne(Membership).query({
             where: {
@@ -35,7 +50,7 @@ Fields.fields(Lobby, [
 ], [
     // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
     Fields.StringField, 'password', {
-        required: false
+        required: true
     }
 ], [
     Fields.IntField, 'maxMembers', {
@@ -45,4 +60,4 @@ Fields.fields(Lobby, [
 
 module.exports = Lobby;
 
-Membership = require('./membership');
+Membership = require('../membership/model');

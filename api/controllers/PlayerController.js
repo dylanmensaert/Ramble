@@ -1,7 +1,7 @@
 'use strict';
 
-var Player = require('../bs-models/player'),
-    Players = require('../bs-models/players');
+var Player = require('../orm/player/model'),
+    Players = require('../orm/player/collection');
 
 module.exports = {
     find: function(request, response) {

@@ -1,7 +1,7 @@
 'use strict';
 
-var Lobby = require('../bs-models/lobby'),
-    Lobbies = require('../bs-models/lobbies');
+var Lobby = require('../orm/lobby/model'),
+    Lobbies = require('../orm/lobby/collection');
 
 module.exports = {
     find: function(request, response) {
@@ -41,11 +41,12 @@ module.exports = {
                 password: request.param('password'),
                 maxMembers: request.param('maxMembers')
             },
+            options = {
+                userId: request.user.id
+            },
             lobby = Lobby.forge(values);
 
-        // TODO: request.user.id
-
-        lobby.save().then(function(lobby) {
+        lobby.save(null, options).then(function(lobby) {
             response.send({
                 lobby: lobby
             });

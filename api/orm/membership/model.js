@@ -1,7 +1,7 @@
 /* jshint camelcase: false */
 'use strict';
 
-var Model = require('./model'),
+var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
     Membership,
     Lobby,
@@ -31,5 +31,5 @@ Fields.fields(Membership, [
 
 module.exports = Membership;
 
-Lobby = require('./lobby');
-Player = require('./player');
+Lobby = require('../lobby/model');
+Player = require('../player/model');

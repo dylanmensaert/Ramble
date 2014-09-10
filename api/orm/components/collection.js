@@ -1,7 +1,7 @@
 'use strict';
 
-var db = require('./db'),
-    relationships = require('./relationships'),
+var db = require('../db'),
+    relationships = require('../relationships'),
     findMany = require('../helpers/findMany'),
     findQuery = require('../helpers/findQuery');
 

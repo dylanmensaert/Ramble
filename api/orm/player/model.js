@@ -1,7 +1,7 @@
 /* jshint camelcase: false */
 'use strict';
 
-var Model = require('./model'),
+var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
     Player,
     Membership;
@@ -35,7 +35,7 @@ Fields.fields(Player, [
 ], [
     // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
     Fields.StringField, 'password', {
-        required: false
+        required: true
     }
 ], [
     // TODO: Check if client validation is compatible with this one.
@@ -48,4 +48,4 @@ Fields.fields(Player, [
 
 module.exports = Player;
 
-Membership = require('./membership');
+Membership = require('../membership/model');

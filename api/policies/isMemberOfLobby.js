@@ -1,7 +1,7 @@
 /* jshint camelcase: false */
 'use strict';
 
-var Membership = require('../bs-models/membership');
+var Membership = require('../orm/membership/model');
 
 // TODO: Duplicate to isOwnerOfLobby
 module.exports = function(request, response, ok) {

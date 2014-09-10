@@ -2,7 +2,7 @@
 
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    Player = require('../api/bs-models/player');
+    Player = require('../api/orm/player/model');
 
 passport.serializeUser(function(player, done) {
     done(null, player.id);
