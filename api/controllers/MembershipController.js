@@ -39,7 +39,7 @@ module.exports = {
         var values = {
             lobbyId: request.param('id'),
             playerId: request.user.id,
-            type: request.param('type')
+            type: 'member'
         };
 
         // TODO: Check the password!

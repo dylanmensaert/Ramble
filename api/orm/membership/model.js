@@ -3,12 +3,18 @@
 
 var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
+    events = require('./events'),
     Membership,
     Lobby,
     Player;
 
 Membership = Model.extend({
     tableName: 'memberships',
+    initialize: function() {
+        Model.prototype.initialize.apply(this, arguments);
+
+        events.init(this);
+    },
     lobby: function() {
         return this.belongsTo(Lobby);
     },

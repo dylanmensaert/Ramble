@@ -3,25 +3,16 @@
 
 var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
+    events = require('./events'),
     Lobby,
     Membership;
 
 Lobby = Model.extend({
     tableName: 'lobbies',
     initialize: function() {
-        var values;
-
         Model.prototype.initialize.apply(this, arguments);
 
-        this.on('created', function(model, response, options) {
-            values = {
-                lobbyId: model.id,
-                playerId: options.userId,
-                type: 'owner'
-            };
-
-            Membership.forge(values).save();
-        });
+        events.init(this);
     },
     ownership: function() {
         return this.hasOne(Membership).query({

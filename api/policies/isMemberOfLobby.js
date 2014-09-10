@@ -1,16 +1,15 @@
-/* jshint camelcase: false */
 'use strict';
 
 var Membership = require('../orm/membership/model');
 
 // TODO: Duplicate to isOwnerOfLobby
 module.exports = function(request, response, ok) {
-    var lobby_id = request.param('id'),
-        player_id = request.user.id;
+    var lobbyId = request.param('id'),
+        playerId = request.user.id;
 
     Membership.forge({
-        lobby_id: lobby_id,
-        player_id: player_id,
+        lobbyId: lobbyId,
+        playerId: playerId,
         type: 'member'
     }).fetch().then(function(membership) {
         if (request.isAuthenticated() && membership) {
