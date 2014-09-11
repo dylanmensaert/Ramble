@@ -1,11 +1,13 @@
 'use strict';
 
 var Membership,
+    bluebird = require('bluebird'),
     reassignOwnership,
     hasMembershipId;
 
 reassignOwnership = function(model, value, options) {
-    var values;
+    var values,
+        promise;
 
     if (model.type === 'member' && hasMembershipId(options)) {
         values = {
@@ -13,8 +15,10 @@ reassignOwnership = function(model, value, options) {
             type: 'owner'
         };
 
-        Membership.forge(values).save();
+        promise = Membership.forge(values).save();
     }
+
+    return promise;
 };
 
 hasMembershipId = function(options) {
@@ -28,6 +32,8 @@ module.exports = {
         Membership.on('change:type', this.onTypeChanged);
     },
     onTypeChanged: function(model, value, options) {
-        reassignOwnership(model, value, options);
+        return bluebird.all([
+            reassignOwnership(model, value, options)
+        ]);
     }
 };

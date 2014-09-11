@@ -3,11 +3,17 @@
 
 var Model = require('../components/model'),
     Fields = require('bookshelf-fields'),
+    events = require('./events'),
     Player,
     Membership;
 
 Player = Model.extend({
     tableName: 'players',
+    initialize: function() {
+        Model.prototype.initialize.apply(this, arguments);
+
+        events.init(this);
+    },
     ownerships: function() {
         return this.hasMany(Membership).query({
             where: {

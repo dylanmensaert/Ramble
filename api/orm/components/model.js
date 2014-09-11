@@ -6,7 +6,7 @@ var db = require('../db'),
     relationships = require('../relationships'),
     toUnderscore = require('../helpers/toUnderscore'),
     toCamelCase = require('../helpers/toCamelCase'),
-    setHashedPassword = require('../helpers/setHashedPassword'),
+    events = require('./events'),
     verifyPassword = require('../helpers/verifyPassword'),
     isValidating;
 
@@ -17,7 +17,7 @@ isValidating = function(options) {
 // TODO: Implement password functionality as mixin into correct objects.
 Model = db.Model.extend({
     initialize: function() {
-        this.on('saving', this.hashPassword);
+        events.init(this);
     },
     hasTimestamps: true,
     toJSON: function(options) {
@@ -38,9 +38,6 @@ Model = db.Model.extend({
         return this.fetch({
             withRelated: relations
         });
-    },
-    hashPassword: function() {
-        return setHashedPassword(this.attributes);
     },
     verifyPassword: function(password) {
         return verifyPassword(password, this.attributes.password);

@@ -1,6 +1,8 @@
 'use strict';
 
 var Lobby,
+    bluebird = require('bluebird'),
+    Membership = require('../membership/model'),
     createOwnership,
     destroyChildren;
 
@@ -11,14 +13,14 @@ createOwnership = function(model, response, options) {
         type: 'owner'
     };
 
-    Lobby.forge(values).save();
+    return Membership.forge(values).save();
 };
 
 destroyChildren = function(model) {
-    // TODO: bulk is possible but events are not called as such
-    // Memberships.query().whereIn('id', [ids]).del().then(..
-    model.ownership().destroy();
-    model.memberships().invokeThen('destroy');
+    return bluebird.all([
+        model.ownership().destroy(),
+        model.memberships().invokeThen('destroy')
+    ]);
 };
 
 module.exports = {
@@ -29,9 +31,13 @@ module.exports = {
         Lobby.on('destroying', this.onDestroying);
     },
     onCreated: function(model, response, options) {
-        createOwnership(model, response, options);
+        return bluebird.all([
+            createOwnership(model, response, options)
+        ]);
     },
     onDestroying: function(model, response, options) {
-        destroyChildren(model, response, options);
+        return bluebird.all([
+            destroyChildren(model, response, options)
+        ]);
     }
 };

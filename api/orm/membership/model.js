@@ -26,11 +26,11 @@ Membership = Model.extend({
 Fields.enable_validation(Membership);
 
 Fields.fields(Membership, [
-    Fields.IntField, 'lobby_id', {
+    Fields.IntField, 'lobbyId', {
         required: true
     }
 ], [
-    Fields.IntField, 'player_id', {
+    Fields.IntField, 'playerId', {
         required: true
     }
 ]);
