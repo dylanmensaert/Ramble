@@ -1,6 +1,6 @@
 # TODO: local.js may be removed when we move away from Sails.js
 config/local.js
-api/bs-models/connection.js
+api/orm/connection.js
 assets/javascripts/init/templates.js
 
 node_modules/
