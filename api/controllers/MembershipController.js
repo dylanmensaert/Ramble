@@ -37,7 +37,7 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-            lobbyId: request.param('id'),
+            lobbyId: request.param('lobbyId'),
             playerId: request.user.id,
             type: 'member'
         };
