@@ -42,7 +42,7 @@ define(function(require) {
                 json = {
                     url: '/api/auth/login',
                     data: {
-                        name: player.get('name'),
+                        username: player.get('name'),
                         password: player.get('password')
                     }
                 };

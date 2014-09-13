@@ -22,7 +22,7 @@ module.exports.express = {
 
         passport.use(new LocalStrategy(function(username, password, done) {
             Player.forge({
-                username: username
+                name: username
             }).fetchWithRelated().then(function(playerResult) {
                 if (!playerResult) {
                     done(null, false);

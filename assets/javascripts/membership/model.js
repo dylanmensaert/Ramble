@@ -5,8 +5,12 @@ define(function(require) {
         EmberValidations = require('ember-validations');
 
     return DS.Model.extend(EmberValidations.Mixin, {
-        player: DS.belongsTo('player'),
-        lobby: DS.belongsTo('lobby'),
+        player: DS.belongsTo('player', {
+            async: true
+        }),
+        lobby: DS.belongsTo('lobby', {
+            async: true
+        }),
         validations: {
             player: {
 

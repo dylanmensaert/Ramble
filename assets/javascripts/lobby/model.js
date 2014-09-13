@@ -8,15 +8,15 @@ define(function(require) {
         title: DS.attr('string'),
         password: DS.attr('string'),
         maxMembers: DS.attr('number'),
-        ownership: DS.belongsTo('membership'),
+        ownership: DS.belongsTo('membership', {
+            async: true
+        }),
         memberships: DS.hasMany('membership', {
             async: true
         }),
         currentMembers: function() {
-            var membership = this.get('memberships');
-
-            return membership.get('length') + 1;
-        }.property('memberships.@each'),
+            return this.get('memberships.length') + 1;
+        }.property('memberships.length'),
         validations: {
             title: {
                 presence: true,
