@@ -11,7 +11,7 @@ define(function(require) {
                 model.destroyRecord().then(function() {
                     this.send('logout');
                 }.bind(this));
-                // TODO: Leave all of the account's joined lobbies AND delete all its owned lobbies before deleting the account.
+                // TODO: Leave all of the user's joined lobbies AND delete all its owned lobbies before deleting the user.
                 // model.get('joinedLobbies').clear();
                 // model.get('ownedLobbies').clear();
             }

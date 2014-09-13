@@ -33,7 +33,7 @@ Player = Model.extend({
 Fields.enable_validation(Player);
 
 Fields.fields(Player, [
-    Fields.StringField, 'username', {
+    Fields.StringField, 'name', {
         required: true
     }, {
         max_length: 50

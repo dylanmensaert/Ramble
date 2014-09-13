@@ -5,7 +5,7 @@ define(function(require) {
 
     return Ember.Route.extend(require('helpers/update-title'), require('login/helpers/ownership-check'), require('helpers/model-rollback'), {
         title: function() {
-            return this.controller.get('username') + ' - Edit';
+            return this.controller.get('name') + ' - Edit';
         }.property(),
         afterModel: function(model, transition) {
             this.checkOwnershipAndRedirect(model, transition);

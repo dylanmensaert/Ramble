@@ -4,10 +4,10 @@ define(function(require) {
     var Ember = require('ember');
 
     return Ember.Object.extend({
-        account: null,
+        user: null,
         isLoggedIn: function() {
-            return this.get('account') !== null;
-        }.property('account'),
+            return this.get('user') !== null;
+        }.property('user'),
         attemptedTransition: null
     });
 });

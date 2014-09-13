@@ -24,12 +24,12 @@ define(function(require) {
             this.get('socket').emit('get', json, function(data) {
                 if (data.status === 200) {
                     this.get('store').find('player', data.player.id).then(function(player) {
-                        this.set('session.account', player);
+                        this.set('session.user', player);
 
                         this.retryTransition();
                     }.bind(this));
                 } else {
-                    this.set('session.account', null);
+                    this.set('session.user', null);
                 }
             }.bind(this));
         },
@@ -42,7 +42,7 @@ define(function(require) {
                 json = {
                     url: '/api/auth/login',
                     data: {
-                        username: player.get('username'),
+                        name: player.get('name'),
                         password: player.get('password')
                     }
                 };
@@ -51,10 +51,10 @@ define(function(require) {
                     this.get('socket').emit('get', json, function(data) {
                         if (data.status === 200) {
                             this.get('store').find('player', data.player.id).then(function(player) {
-                                this.set('session.account', player);
+                                this.set('session.user', player);
 
                                 if (!this.retryTransition()) {
-                                    this.transitionToRoute('player', this.get('session.account'));
+                                    this.transitionToRoute('player', this.get('session.user'));
                                 }
                             }.bind(this));
                         } else {
@@ -70,7 +70,7 @@ define(function(require) {
 
                 this.get('socket').emit('get', json, function(data) {
                     if (data.status === 200 || data.status === 403) {
-                        this.set('session.account', null);
+                        this.set('session.user', null);
 
                         this.transitionToRoute('index');
                     }

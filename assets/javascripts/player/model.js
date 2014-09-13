@@ -5,7 +5,7 @@ define(function(require) {
         EmberValidations = require('ember-validations');
 
     return DS.Model.extend(EmberValidations.Mixin, {
-        username: DS.attr('string'),
+        name: DS.attr('string'),
         password: DS.attr('string'),
         email: DS.attr('string'),
         ownerships: DS.hasMany('membership', {
@@ -15,7 +15,7 @@ define(function(require) {
             async: true
         }),
         validations: {
-            username: {
+            name: {
                 presence: true,
                 length: {
                     maximum: 50

@@ -7,7 +7,7 @@ define(function(require) {
         checkOwnershipAndRedirect: function(owner, transition) {
             if (!this.get('session.isLoggedIn')) {
                 this.redirectToLogin(transition);
-            } else if (this.get('session.account') !== owner) {
+            } else if (this.get('session.user') !== owner) {
                 this.transitionTo('index');
             }
         }

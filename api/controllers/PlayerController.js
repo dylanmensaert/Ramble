@@ -38,7 +38,7 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-                username: request.param('username'),
+                name: request.param('name'),
                 password: request.param('password'),
                 email: request.param('email')
             },
@@ -53,7 +53,7 @@ module.exports = {
     update: function(request, response) {
         var values = {
                 id: request.param('id'),
-                username: request.param('username'),
+                name: request.param('name'),
                 password: request.param('password'),
                 email: request.param('email')
             },

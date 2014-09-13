@@ -5,7 +5,7 @@ define(function(require) {
 
     return Ember.Route.extend(require('helpers/update-title'), {
         title: function() {
-            return this.controller.get('username');
+            return this.controller.get('name');
         }.property()
     });
 });
