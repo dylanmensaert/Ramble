@@ -8,12 +8,15 @@ define(function(require) {
         name: DS.attr('string'),
         password: DS.attr('string'),
         email: DS.attr('string'),
-        ownerships: DS.hasMany('membership', {
-            async: true
-        }),
         memberships: DS.hasMany('membership', {
             async: true
         }),
+        membershipsOfTypeHost: function() {
+            return this.get('memberships.[]').filterBy('data.type', 'host');
+        }.property('memberships.@each.type'),
+        membershipsOfTypeParticipant: function() {
+            return this.get('memberships.[]').filterBy('data.type', 'participant');
+        }.property('memberships.@each'),
         validations: {
             name: {
                 presence: true,
@@ -34,9 +37,6 @@ define(function(require) {
                     // TODO: This line prevents from adding - "disallowKeywords": ["with"] - in the .jscsrc.
                     with: /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,6}$/i
                 }
-            },
-            ownerships: {
-
             },
             memberships: {
 

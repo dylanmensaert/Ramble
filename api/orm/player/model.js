@@ -14,19 +14,8 @@ Player = Model.extend({
 
         events.init(this);
     },
-    ownerships: function() {
-        return this.hasMany(Membership).query({
-            where: {
-                type: 'owner'
-            }
-        });
-    },
     memberships: function() {
-        return this.hasMany(Membership).query({
-            where: {
-                type: 'member'
-            }
-        });
+        return this.hasMany(Membership);
     }
 });
 

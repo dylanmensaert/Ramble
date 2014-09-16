@@ -4,31 +4,27 @@ define(function(require) {
     var Ember = require('ember');
 
     return Ember.ObjectController.extend({
-        userMembership: function() {
+        membershipOfUser: function() {
             var user = this.get('session.user'),
                 lobbyId = this.get('model.id'),
-                userMembership;
+                membershipOfUser;
 
             if (user) {
-                userMembership = user.get('ownerships').filterBy('lobby.id', lobbyId);
-
-                if (Ember.isEmpty(userMembership)) {
-                    userMembership = user.get('memberships').filterBy('lobby.id', lobbyId);
-                }
+                membershipOfUser = user.get('memberships').findBy('lobby.id', lobbyId);
             }
 
-            return userMembership;
+            return membershipOfUser;
         }.property('model.id', 'session.user'),
-        isOwnerOfLobby: function() {
-            var type = this.get('userMembership.type');
+        isHost: function() {
+            var type = this.get('membershipOfUser.type');
 
             return type === 'owner';
-        }.property('userMembership.type'),
-        isMemberOfLobby: function() {
-            var type = this.get('userMembership.type');
+        }.property('membershipOfUser.type'),
+        isParticipant: function() {
+            var type = this.get('membershipOfUser.type');
 
             return type === 'member';
-        }.property('userMembership.type'),
+        }.property('membershipOfUser.type'),
         actions: {
             join: function() {
                 var json = {
@@ -52,7 +48,7 @@ define(function(require) {
             },
             leave: function() {
                 var json = {
-                    url: '/api/memberships/destroy/' + this.get('userMembership.id')
+                    url: '/api/memberships/destroy/' + this.get('membershipOfUser.id')
                 };
 
                 this.get('socket').emit('get', json, function(data) {
@@ -64,7 +60,7 @@ define(function(require) {
             },
             kick: function(player) {
                 var json = {
-                    url: '/api/memberships/destroy/' + this.get('userMembership.id'),
+                    url: '/api/memberships/destroy/' + this.get('membershipOfUser.id'),
                     data: {
                         player: player
                     }

@@ -10,7 +10,7 @@ module.exports = {
 
         return value;
     },
-    lobbies: ['ownership', 'memberships'],
-    players: ['ownerships', 'memberships'],
+    lobbies: ['memberships'],
+    players: ['memberships'],
     memberships: ['lobby', 'player']
 };

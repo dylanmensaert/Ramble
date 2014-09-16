@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "sails": "0.9.16",
-        "sails-disk": "0.9.3",
+        "sails-disk": "0.10.3",
         "jade": "1.6.0",
         "optimist": "0.6.1",
         "lodash": "2.4.1",

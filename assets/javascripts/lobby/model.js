@@ -8,15 +8,15 @@ define(function(require) {
         title: DS.attr('string'),
         password: DS.attr('string'),
         maxMembers: DS.attr('number'),
-        ownership: DS.belongsTo('membership', {
-            async: true
-        }),
         memberships: DS.hasMany('membership', {
             async: true
         }),
-        currentMembers: function() {
-            return this.get('memberships.length') + 1;
-        }.property('memberships.length'),
+        membershipOfTypeHost: function() {
+            return this.get('memberships.[]').findBy('data.type', 'host');
+        }.property('memberships.@each.type'),
+        membershipsOfTypeParticipant: function() {
+            return this.get('memberships.[]').filterBy('data.type', 'participant');
+        }.property('memberships.@each.type'),
         validations: {
             title: {
                 presence: true,
@@ -33,9 +33,6 @@ define(function(require) {
                 // numericality: {
                 //     onlyInteger: true
                 // }
-            },
-            ownership: {
-
             },
             memberships: {
 

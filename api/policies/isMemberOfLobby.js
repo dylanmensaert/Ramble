@@ -10,7 +10,7 @@ module.exports = function(request, response, ok) {
     Membership.forge({
         lobbyId: lobbyId,
         playerId: playerId,
-        type: 'member'
+        type: 'participant'
     }).fetch().then(function(membership) {
         if (request.isAuthenticated() && membership) {
             ok();

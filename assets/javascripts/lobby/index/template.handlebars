@@ -4,11 +4,11 @@
     </h2>
 
     <h3>
-        ({{currentMembers}}/{{maxMembers}})
+        ({{memberships.length}}/{{maxMembers}})
     </h3>
 
     <div>
-        {{#if isOwnerOfLobby}}
+        {{#if isHost}}
             {{#link-to 'lobby.edit' this classNames='btn btn-default'}}
                 Edit
             {{/link-to}}
@@ -17,7 +17,7 @@
                 Delete
             {{/link-to}}
         {{else}}
-            {{#if isMemberOfLobby}}
+            {{#if isParticipant}}
                 <button {{action 'leave'}} class="btn btn-danger">
                     Leave
                 </button>
@@ -32,12 +32,12 @@
 
 <div>
     <h3>
-        Owner
+        Host
     </h3>
 
     <p>
-        {{#link-to 'player' ownership.player}}
-            {{ownership.player.name}}
+        {{#link-to 'player' membershipOfTypeHost.player}}
+            {{membershipOfTypeHost.player.name}}
         {{/link-to}}
     </p>
 </div>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="col-xs-6">
-            {{#if isOwnerOfLobby}}
+            {{#if isHost}}
                 <strong class="pull-right">
                     Kick
                 </strong>
@@ -59,9 +59,9 @@
         </div>
     </div>
 
-    {{#if memberships}}
+    {{#if membershipsOfTypeParticipant}}
         <div class="list-group">
-            {{#each memberships}}
+            {{#each membershipsOfTypeParticipant}}
                 {{render 'player/helpers/item' player}}
             {{/each}}
         </div>

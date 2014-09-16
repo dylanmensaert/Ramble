@@ -3,14 +3,14 @@
 var Lobby,
     bluebird = require('bluebird'),
     Membership = require('../membership/model'),
-    createOwnership,
+    createMembershipOfTypeHost,
     destroyChildren;
 
-createOwnership = function(model, response, options) {
+createMembershipOfTypeHost = function(model, response, options) {
     var values = {
         lobbyId: model.id,
         playerId: options.userId,
-        type: 'owner'
+        type: 'host'
     };
 
     return Membership.forge(values).save();
@@ -18,7 +18,6 @@ createOwnership = function(model, response, options) {
 
 destroyChildren = function(model) {
     return bluebird.all([
-        model.ownership().destroy(),
         model.memberships().invokeThen('destroy')
     ]);
 };
@@ -32,7 +31,7 @@ module.exports = {
     },
     onCreated: function(model, response, options) {
         return bluebird.all([
-            createOwnership(model, response, options)
+            createMembershipOfTypeHost(model, response, options)
         ]);
     },
     onDestroying: function(model, response, options) {

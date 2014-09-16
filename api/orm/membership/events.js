@@ -2,17 +2,17 @@
 
 var Membership,
     bluebird = require('bluebird'),
-    reassignOwnership,
+    reassignMembershipOfTypeHost,
     hasMembershipId;
 
-reassignOwnership = function(model, value, options) {
+reassignMembershipOfTypeHost = function(model, value, options) {
     var values,
         promise;
 
-    if (model.type === 'member' && hasMembershipId(options)) {
+    if (model.type === 'participant' && hasMembershipId(options)) {
         values = {
             id: options.membershipId,
-            type: 'owner'
+            type: 'host'
         };
 
         promise = Membership.forge(values).save();
@@ -33,7 +33,7 @@ module.exports = {
     },
     onTypeChanged: function(model, value, options) {
         return bluebird.all([
-            reassignOwnership(model, value, options)
+            reassignMembershipOfTypeHost(model, value, options)
         ]);
     }
 };

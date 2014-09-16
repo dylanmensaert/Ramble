@@ -7,12 +7,7 @@ var db = require('../db'),
     toUnderscore = require('../helpers/toUnderscore'),
     toCamelCase = require('../helpers/toCamelCase'),
     events = require('./events'),
-    verifyPassword = require('../helpers/verifyPassword'),
-    isValidating;
-
-isValidating = function(options) {
-    return options && options.validating;
-};
+    verifyPassword = require('../helpers/verifyPassword');
 
 // TODO: Implement password functionality as mixin into correct objects.
 Model = db.Model.extend({
@@ -23,11 +18,15 @@ Model = db.Model.extend({
     toJSON: function(options) {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
-        if (!isValidating(options)) {
+        if (!options.validating) {
             delete model.password;
         }
 
-        return toCamelCase(model);
+        if (!options.withRelated) {
+            model = toCamelCase(model);
+        }
+
+        return model;
     },
     format: function(attributes) {
         return toUnderscore(attributes);
