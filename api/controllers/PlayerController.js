@@ -18,20 +18,18 @@ module.exports = {
         });
     },
     create: function(request, response) {
-        var values = _.pick(request.params.all(), 'name', 'password', 'email'),
-            player = Player.forge(values);
+        var values = _.pick(request.params.all(), 'name', 'password', 'email');
 
-        player.save().then(function(player) {
+        Player.forge(values).save().then(function(player) {
             response.send({
                 player: player
             });
         });
     },
     update: function(request, response) {
-        var values = _.pick(request.params.all(), 'id', 'name', 'password', 'email'),
-            player = Player.forge(values);
+        var values = _.pick(request.params.all(), 'id', 'name', 'password', 'email');
 
-        player.save().then(function(player) {
+        Player.forge(values).save().then(function(player) {
             response.send({
                 player: player
             });

@@ -32,12 +32,11 @@ module.exports = {
     },
     update: function(request, response) {
         var values = {
-                id: request.param('id'),
-                type: request.param('type')
-            },
-            membership = Membership.forge(values);
+            id: request.param('id'),
+            type: request.param('type')
+        };
 
-        membership.save().then(function(membership) {
+        Membership.forge(values).save().then(function(membership) {
             response.send({
                 membership: membership
             });

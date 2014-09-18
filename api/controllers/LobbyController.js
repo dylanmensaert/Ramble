@@ -21,20 +21,18 @@ module.exports = {
         var values = _.pick(request.params.all(), 'title', 'password', 'maxMembers'),
             options = {
                 userId: request.user.id
-            },
-            lobby = Lobby.forge(values);
+            };
 
-        lobby.save(null, options).then(function(lobby) {
+        Lobby.forge(values).save(null, options).then(function(lobby) {
             response.send({
                 lobby: lobby
             });
         });
     },
     update: function(request, response) {
-        var values = _.pick(request.params.all(), 'id', 'title', 'password', 'maxMembers'),
-            lobby = Lobby.forge(values);
+        var values = _.pick(request.params.all(), 'id', 'title', 'password', 'maxMembers');
 
-        lobby.save().then(function(lobby) {
+        Lobby.forge(values).save().then(function(lobby) {
             response.send({
                 lobby: lobby
             });
