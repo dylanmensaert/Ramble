@@ -34,8 +34,8 @@ define(function(require) {
                 data;
 
             url = this.buildURL(type.typeKey, 'find');
-            data = {
-                ids: ids
+            data = function() {
+                this.whereIn('id', ids);
             };
 
             return this.request(url, data);

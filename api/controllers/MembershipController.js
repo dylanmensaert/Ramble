@@ -2,40 +2,19 @@
 
 var Membership = require('../orm/membership/model'),
     Memberships = require('../orm/membership/collection'),
-    cleanQuery = require('./helpers/cleanQuery');
+    toQuery = require('./helpers/toQuery');
 
 module.exports = {
     find: function(request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            query = cleanQuery(request.params.all());
+        var query = toQuery(request.params.all());
 
-        if (id) {
-            Membership.forge({
-                id: id
-            }).fetchWithRelated().then(function(membership) {
-                response.send({
-                    membership: membership
-                });
-                // Membership.subscribe(request.socket, membership);
+        Memberships.forge().findQuery(query).then(function(memberships) {
+            response.send({
+                memberships: memberships
             });
-        } else if (ids) {
-            Memberships.forge().findMany(ids).then(function(memberships) {
-                response.send({
-                    memberships: memberships
-                });
-                // Membership.subscribe(request.socket);
-                // Membership.subscribe(request.socket, memberships);
-            });
-        } else {
-            Memberships.forge().findQuery(query).then(function(memberships) {
-                response.send({
-                    memberships: memberships
-                });
-                // Membership.subscribe(request.socket);
-                // Membership.subscribe(request.socket, memberships);
-            });
-        }
+            // Membership.subscribe(request.socket);
+            // Membership.subscribe(request.socket, memberships);
+        });
     },
     create: function(request, response) {
         var values = {

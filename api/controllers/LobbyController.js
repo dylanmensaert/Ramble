@@ -2,40 +2,19 @@
 
 var Lobby = require('../orm/lobby/model'),
     Lobbies = require('../orm/lobby/collection'),
-    cleanQuery = require('./helpers/cleanQuery');
+    toQuery = require('./helpers/toQuery');
 
 module.exports = {
     find: function(request, response) {
-        var id = request.param('id'),
-            ids = request.param('ids'),
-            query = cleanQuery(request.params.all());
+        var query = toQuery(request.params.all());
 
-        if (id) {
-            Lobby.forge({
-                id: id
-            }).fetchWithRelated().then(function(lobby) {
-                response.send({
-                    lobby: lobby
-                });
-                // Lobby.subscribe(request.socket, lobby);
+        Lobbies.forge().findQuery(query).then(function(lobbies) {
+            response.send({
+                lobbies: lobbies
             });
-        } else if (ids) {
-            Lobbies.forge().findMany(ids).then(function(lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-                // Lobby.subscribe(request.socket);
-                // Lobby.subscribe(request.socket, lobbies);
-            });
-        } else {
-            Lobbies.forge().findQuery(query).then(function(lobbies) {
-                response.send({
-                    lobbies: lobbies
-                });
-                // Lobby.subscribe(request.socket);
-                // Lobby.subscribe(request.socket, lobbies);
-            });
-        }
+            // Lobby.subscribe(request.socket);
+            // Lobby.subscribe(request.socket, lobbies);
+        });
     },
     create: function(request, response) {
         var values = {

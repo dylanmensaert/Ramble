@@ -46,15 +46,20 @@ define(function(require) {
     };
 
     return DS.RESTSerializer.extend({
-        extractArray: function(store, type, payload) {
-            deserializeArray(type, payload[type.typeKey.pluralize()]);
-
-            return this._super(store, type, payload);
-        },
         extractSingle: function(store, type, payload, id) {
             deserializeSingle(type, payload[type.typeKey]);
 
             return this._super(store, type, payload, id);
+        },
+        extractFind: function(store, type, payload) {
+            deserializeArray(type, payload[type.typeKey.pluralize()]);
+
+            return this._super(store, type, payload);
+        },
+        extractArray: function(store, type, payload) {
+            deserializeArray(type, payload[type.typeKey.pluralize()]);
+
+            return this._super(store, type, payload);
         }
     });
 });
