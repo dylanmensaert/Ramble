@@ -2,7 +2,8 @@
 
 var Lobby = require('../orm/lobby/model'),
     Lobbies = require('../orm/lobby/collection'),
-    toQuery = require('./helpers/toQuery');
+    toQuery = require('./helpers/toQuery'),
+    _ = require('underscore');
 
 module.exports = {
     find: function(request, response) {
@@ -17,11 +18,7 @@ module.exports = {
         });
     },
     create: function(request, response) {
-        var values = {
-                title: request.param('title'),
-                password: request.param('password'),
-                maxMembers: request.param('maxMembers')
-            },
+        var values = _.pick(request.params.all(), 'title', 'password', 'maxMembers'),
             options = {
                 userId: request.user.id
             },
@@ -34,12 +31,7 @@ module.exports = {
         });
     },
     update: function(request, response) {
-        var values = {
-                id: request.param('id'),
-                title: request.param('title'),
-                password: request.param('password'),
-                maxMembers: request.param('maxMembers')
-            },
+        var values = _.pick(request.params.all(), 'id', 'title', 'password', 'maxMembers'),
             lobby = Lobby.forge(values);
 
         lobby.save().then(function(lobby) {

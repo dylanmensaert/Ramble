@@ -2,7 +2,8 @@
 
 var Player = require('../orm/player/model'),
     Players = require('../orm/player/collection'),
-    toQuery = require('./helpers/toQuery');
+    toQuery = require('./helpers/toQuery'),
+    _ = require('underscore');
 
 module.exports = {
     find: function(request, response) {
@@ -17,11 +18,7 @@ module.exports = {
         });
     },
     create: function(request, response) {
-        var values = {
-                name: request.param('name'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+        var values = _.pick(request.params.all(), 'name', 'password', 'email'),
             player = Player.forge(values);
 
         player.save().then(function(player) {
@@ -31,12 +28,7 @@ module.exports = {
         });
     },
     update: function(request, response) {
-        var values = {
-                id: request.param('id'),
-                name: request.param('name'),
-                password: request.param('password'),
-                email: request.param('email')
-            },
+        var values = _.pick(request.params.all(), 'id', 'name', 'password', 'email'),
             player = Player.forge(values);
 
         player.save().then(function(player) {
