@@ -1,12 +1,14 @@
 'use strict';
 
 var Lobby = require('../orm/lobby/model'),
-    Lobbies = require('../orm/lobby/collection');
+    Lobbies = require('../orm/lobby/collection'),
+    cleanQuery = require('./helpers/cleanQuery');
 
 module.exports = {
     find: function(request, response) {
         var id = request.param('id'),
-            ids = request.param('ids');
+            ids = request.param('ids'),
+            query = cleanQuery(request.params.all());
 
         if (id) {
             Lobby.forge({
@@ -26,7 +28,7 @@ module.exports = {
                 // Lobby.subscribe(request.socket, lobbies);
             });
         } else {
-            Lobbies.forge().findQuery(request.params.all()).then(function(lobbies) {
+            Lobbies.forge().findQuery(query).then(function(lobbies) {
                 response.send({
                     lobbies: lobbies
                 });

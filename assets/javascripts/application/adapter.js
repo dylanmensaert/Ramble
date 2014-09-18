@@ -77,25 +77,18 @@ define(function(require) {
         buildURL: function(type, action, id) {
             var host = this.get('host'),
                 namespace = this.get('namespace'),
-                urlParts = [],
+                urlParts,
                 url;
 
-            if (host) {
-                urlParts.push(host);
-            }
+            urlParts = [
+                host,
+                namespace,
+                type,
+                action,
+                id
+            ];
 
-            if (namespace) {
-                urlParts.push(namespace);
-            }
-
-            urlParts.push(Ember.String.pluralize(type));
-            urlParts.push(action);
-
-            if (id) {
-                urlParts.push(id);
-            }
-
-            url = urlParts.join('/');
+            url = urlParts.compact().join('/');
 
             if (!host) {
                 url = '/' + url;

@@ -28,7 +28,7 @@ define(function(require) {
         actions: {
             join: function() {
                 var json = {
-                    url: '/api/memberships/create',
+                    url: '/api/membership/create',
                     data: {
                         lobbyId: this.get('model.id')
                     }
@@ -48,7 +48,7 @@ define(function(require) {
             },
             leave: function() {
                 var json = {
-                    url: '/api/memberships/destroy/' + this.get('membershipOfUser.id')
+                    url: '/api/membership/destroy/' + this.get('membershipOfUser.id')
                 };
 
                 this.get('socket').emit('get', json, function(data) {
@@ -60,7 +60,7 @@ define(function(require) {
             },
             kick: function(player) {
                 var json = {
-                    url: '/api/memberships/destroy/' + this.get('membershipOfUser.id'),
+                    url: '/api/membership/destroy/' + this.get('membershipOfUser.id'),
                     data: {
                         player: player
                     }

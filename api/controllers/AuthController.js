@@ -3,11 +3,6 @@
 var passport = require('passport');
 
 module.exports = {
-    _config: {
-        blueprints: {
-            pluralize: false
-        }
-    },
     login: function(request, response) {
         passport.authenticate('local', function(error, player) {
             if (error) {

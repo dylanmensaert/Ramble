@@ -1,12 +1,14 @@
 'use strict';
 
 var Membership = require('../orm/membership/model'),
-    Memberships = require('../orm/membership/collection');
+    Memberships = require('../orm/membership/collection'),
+    cleanQuery = require('./helpers/cleanQuery');
 
 module.exports = {
     find: function(request, response) {
         var id = request.param('id'),
-            ids = request.param('ids');
+            ids = request.param('ids'),
+            query = cleanQuery(request.params.all());
 
         if (id) {
             Membership.forge({
@@ -26,7 +28,7 @@ module.exports = {
                 // Membership.subscribe(request.socket, memberships);
             });
         } else {
-            Memberships.forge().findQuery(request.params.all()).then(function(memberships) {
+            Memberships.forge().findQuery(query).then(function(memberships) {
                 response.send({
                     memberships: memberships
                 });

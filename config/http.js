@@ -16,7 +16,10 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-module.exports.express = {
+module.exports.http = {
+    middleware: {
+        custom: true
+    },
     customMiddleware: function(app) {
         var player;
 

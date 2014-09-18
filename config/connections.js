@@ -1,9 +1,8 @@
 'use strict';
 
-module.exports.adapters = {
-    default: 'disk',
+module.exports = {
     // TODO: For development only..changed to Postgres + Bookshelf
-    disk: {
-        module: 'sails-disk'
+    localDiskDb: {
+        adapter: 'sails-disk'
     }
 };

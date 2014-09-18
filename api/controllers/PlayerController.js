@@ -1,13 +1,15 @@
 'use strict';
 
 var Player = require('../orm/player/model'),
-    Players = require('../orm/player/collection');
+    Players = require('../orm/player/collection'),
+    cleanQuery = require('./helpers/cleanQuery');
 
 module.exports = {
     find: function(request, response) {
         var id = request.param('id'),
             // TODO: needs to decode ids-parameter?
-            ids = request.param('ids');
+            ids = request.param('ids'),
+            query = cleanQuery(request.params.all());
 
         if (id) {
             Player.forge({
@@ -27,7 +29,7 @@ module.exports = {
                 // Player.subscribe(request.socket, players);
             });
         } else {
-            Players.forge().findQuery(request.params.all()).then(function(players) {
+            Players.forge().findQuery(query).then(function(players) {
                 response.send({
                     players: players
                 });

@@ -14,11 +14,12 @@
         "production": "NODE_ENV=production PORT=8001 node app.js"
     },
     "dependencies": {
-        "sails": "0.9.16",
+        "sails": "0.10.5",
         "sails-disk": "0.10.3",
         "jade": "1.6.0",
         "optimist": "0.6.1",
         "lodash": "2.4.1",
+        "underscore": "1.7.0",
         "underscore.string": "2.3.3",
         "bluebird": "2.3.2",
         "bookshelf": "0.7.7",

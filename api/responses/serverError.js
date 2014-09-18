@@ -1,9 +1,10 @@
 'use strict';
 
-module.exports[500] = function(errors, request, response) {
+module.exports = function(errors) {
     var result = {
-        status: 500
-    };
+            status: 500
+        },
+        response = this.res;
 
     sails.log.error('Server Error (500)');
     // TODO: Show message of each error separately, otherwise the console.log just shows "[Object]"
