@@ -3,7 +3,10 @@ define(function(require) {
     'use strict';
 
     var Ember = require('ember'),
-        googleAnalytics = require('google-analytics');
+        googleAnalytics = require('google-analytics'),
+        didLoad = function() {
+            this.set('controller.isLoading', false);
+        };
 
     return Ember.Route.extend(require('helpers/update-title'), {
         title: 'Ramble',
@@ -23,14 +26,16 @@ define(function(require) {
             }.bind(this));
         },
         actions: {
-            // TODO: Consider using the params: transition, originRoute
-            loading: function() {
+            loading: function(transition) {
                 if (this.get('controller')) {
                     this.set('controller.isLoading', true);
 
-                    this.router.one('didTransition', function() {
-                        this.set('controller.isLoading', false);
-                    }.bind(this));
+                    transition.then(didLoad.bind(this), didLoad.bind(this));
+                }
+            },
+            error: function(error) {
+                if (this.get('controller')) {
+                    this.set('controller.error', error);
                 }
             },
             updateTitle: function(tokens) {

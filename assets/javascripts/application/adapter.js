@@ -44,24 +44,17 @@ define(function(require) {
             var data,
                 url;
 
-            // TODO: should includeId?
-            data = store.serializerFor(type.typeKey).serialize(record, {
-                includeId: true
-            });
+            data = store.serializerFor(type.typeKey).serialize(record);
             url = this.buildURL(type.typeKey, 'create');
 
             return this.request(url, data);
         },
         updateRecord: function(store, type, record) {
             var data,
-                id,
                 url;
 
-            // TODO: should includeId?
             data = store.serializerFor(type.typeKey).serialize(record);
-            id = record.get('id');
-
-            url = this.buildURL(type.typeKey, 'update', id);
+            url = this.buildURL(type.typeKey, 'update', record.get('id'));
 
             return this.request(url, data);
         },
