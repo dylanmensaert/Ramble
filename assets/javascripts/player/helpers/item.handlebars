@@ -1,7 +1,7 @@
 {{#link-to 'player' this classNames='list-group-item'}}
     {{id}} - {{name}}
 
-    {{#if controller.isOwnerOfLobby}}
+    {{#if controller.isHost}}
         <button {{action 'kick' this bubbles=false}} class="close pull-right">
             &times;
         </button>
