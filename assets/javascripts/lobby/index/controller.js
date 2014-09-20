@@ -20,58 +20,22 @@ define(function(require) {
 
             return type === 'host';
         }.property('membershipOfUser.type'),
-        isParticipant: function() {
-            var type = this.get('membershipOfUser.data.type');
-
-            return type === 'participant';
-        }.property('membershipOfUser.type'),
         actions: {
             join: function() {
-                var json = {
-                    url: '/api/membership/create',
-                    data: {
-                        lobbyId: this.get('model.id')
-                    }
-                };
-
+                // TODO: Handle isLoggedIn on server and response via adapter?
                 if (this.get('session.isLoggedIn')) {
-                    this.get('socket').emit('get', json, function(data) {
-                        if (data.status === 200) {
-                            // TODO: show notification?
-                            // TODO: Update data in ember-data store? or via websockets?
-                            return undefined;
-                        }
-                    }.bind(this));
+                    this.get('store').createRecord('membership', {
+                        lobby: this.get('model')
+                    }).save();
                 } else {
                     this.transitionToRoute('login');
                 }
             },
             leave: function() {
-                var json = {
-                    url: '/api/membership/destroy/' + this.get('membershipOfUser.id')
-                };
-
-                this.get('socket').emit('get', json, function(data) {
-                    if (data.status === 200) {
-                        // TODO: show notification?
-                        return undefined;
-                    }
-                }.bind(this));
+                this.get('membershipOfUser').destroyRecord();
             },
-            kick: function(player) {
-                var json = {
-                    url: '/api/membership/destroy/' + this.get('membershipOfUser.id'),
-                    data: {
-                        player: player
-                    }
-                };
-
-                this.get('socket').emit('get', json, function(data) {
-                    if (data.status === 200) {
-                        // TODO: show notification?
-                        return undefined;
-                    }
-                }.bind(this));
+            kick: function(membership) {
+                membership.destroyRecord();
             }
         }
     });

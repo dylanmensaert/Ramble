@@ -18,7 +18,7 @@ module.exports = {
     },
     create: function(request, response) {
         var values = {
-            lobbyId: request.param('lobbyId'),
+            lobbyId: request.param('lobby'),
             playerId: request.user.id,
             type: 'participant'
         };

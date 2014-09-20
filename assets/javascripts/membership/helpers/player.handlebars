@@ -1,0 +1,9 @@
+{{#link-to 'player' this.player classNames='list-group-item'}}
+    {{player.id}} - {{player.name}}
+
+    {{#if controller.isHost}}
+        <button {{action 'kick' this bubbles=false}} class="close pull-right">
+            &times;
+        </button>
+    {{/if}}
+{{/link-to}}

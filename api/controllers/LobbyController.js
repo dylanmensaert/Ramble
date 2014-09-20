@@ -38,19 +38,5 @@ module.exports = {
             });
             // Lobby.publishUpdate(lobby.id, lobby.toJSON());
         });
-    },
-    destroy: function(request, response) {
-        var id = request.param('id');
-
-        Lobby.forge({
-            id: id
-        }).destroy().then(function() {
-            response.send({
-                lobby: {
-                    id: id
-                }
-            });
-            // Lobby.publishDestroy(lobby.id);
-        });
     }
 };
