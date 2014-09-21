@@ -10,13 +10,13 @@ define(function(require) {
                 membershipOfUser;
 
             if (user) {
-                membershipOfUser = user.get('data.memberships').findBy('data.lobby.id', lobbyId);
+                membershipOfUser = user.get('memberships').findBy('data.lobby.id', lobbyId);
             }
 
             return membershipOfUser;
-        }.property('model.id', 'session.user'),
+        }.property('model.id', 'session.user.memberships.@each.lobby.id'),
         isHost: function() {
-            var type = this.get('membershipOfUser.data.type');
+            var type = this.get('membershipOfUser.type');
 
             return type === 'host';
         }.property('membershipOfUser.type'),

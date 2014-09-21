@@ -5,6 +5,7 @@ define(function(require) {
         EmberValidations = require('ember-validations');
 
     return DS.Model.extend(EmberValidations.Mixin, {
+        type: DS.attr('string'),
         player: DS.belongsTo('player', {
             async: true
         }),

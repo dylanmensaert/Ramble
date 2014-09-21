@@ -12,10 +12,10 @@ define(function(require) {
             async: true
         }),
         membershipsOfTypeHost: function() {
-            return this.get('memberships.[]').filterBy('data.type', 'host');
+            return this.get('memberships').filterBy('type', 'host');
         }.property('memberships.@each.type'),
         membershipsOfTypeParticipant: function() {
-            return this.get('memberships.[]').filterBy('data.type', 'participant');
+            return this.get('memberships').filterBy('type', 'participant');
         }.property('memberships.@each'),
         validations: {
             name: {

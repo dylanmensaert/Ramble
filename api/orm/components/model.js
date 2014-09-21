@@ -18,11 +18,11 @@ Model = db.Model.extend({
     toJSON: function(options) {
         var model = db.Model.prototype.toJSON.apply(this, arguments);
 
-        if (!options.validating) {
+        if (!options || !options.validating) {
             delete model.password;
         }
 
-        if (!options.withRelated) {
+        if (!options || !options.withRelated) {
             model = toCamelCase(model);
         }
 
