@@ -11,8 +11,6 @@ define(function(require) {
                 model.destroyRecord().then(function() {
                     this.transitionToRoute('lobby.list');
                 }.bind(this));
-                // TODO: Associated members of this lobby don't get this lobby removed from their joinedLobbies-array.
-                // model.get('members').clear();
             }
         }
     });
