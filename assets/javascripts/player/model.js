@@ -16,7 +16,7 @@ define(function(require) {
         }.property('memberships.@each.type'),
         membershipsOfTypeParticipant: function() {
             return this.get('memberships').filterBy('type', 'participant');
-        }.property('memberships.@each'),
+        }.property('memberships.@each.type'),
         validations: {
             name: {
                 presence: true,
