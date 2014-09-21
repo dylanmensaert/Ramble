@@ -28,7 +28,6 @@ Fields.fields(Player, [
         max_length: 50
     }
 ], [
-    // TODO: Set as required issue: https://github.com/bogus34/bookshelf-fields/issues/6
     Fields.StringField, 'password', {
         required: true
     }
