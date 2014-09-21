@@ -9,7 +9,7 @@ isValid = function(validations, assert) {
     if (_.isFunction(assert)) {
         isValid = assert(validations);
     } else {
-        isValid = _.every(validations)
+        isValid = _.every(validations);
     }
 
     return isValid;
@@ -23,4 +23,4 @@ module.exports = function(assert) {
             response.forbidden('You are not permitted to perform this action.');
         }
     };
-}
+};
