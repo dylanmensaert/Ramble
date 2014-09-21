@@ -13,7 +13,7 @@ define(function(require) {
     // TODO: Ember automatically binds to 'autofocus' nowadays
     Ember.FocussedTextField = Ember.TextField.extend({
         attributeBindings: ['autofocus'],
-        autofocus: 'autofocus'
+        autofocus: true
     });
 
     EmberEasyForm.Config.registerInputType('focussed_textfield', Ember.FocussedTextField);
