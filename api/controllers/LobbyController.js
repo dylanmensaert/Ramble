@@ -1,7 +1,7 @@
 'use strict';
 
-var Lobby = require('../orm/lobby/model'),
-    Lobbies = require('../orm/lobby/collection'),
+var Lobby = require('../bs-models/lobby/model'),
+    Lobbies = require('../bs-models/lobby/collection'),
     toQuery = require('./helpers/toQuery'),
     _ = require('underscore');
 

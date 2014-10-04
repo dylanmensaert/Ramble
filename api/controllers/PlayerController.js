@@ -1,7 +1,7 @@
 'use strict';
 
-var Player = require('../orm/player/model'),
-    Players = require('../orm/player/collection'),
+var Player = require('../bs-models/player/model'),
+    Players = require('../bs-models/player/collection'),
     toQuery = require('./helpers/toQuery'),
     _ = require('underscore');
 

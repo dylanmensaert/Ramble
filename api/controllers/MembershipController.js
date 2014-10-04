@@ -1,7 +1,7 @@
 'use strict';
 
-var Membership = require('../orm/membership/model'),
-    Memberships = require('../orm/membership/collection'),
+var Membership = require('../bs-models/membership/model'),
+    Memberships = require('../bs-models/membership/collection'),
     toQuery = require('./helpers/toQuery');
 
 module.exports = {

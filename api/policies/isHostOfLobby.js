@@ -1,6 +1,6 @@
 'use strict';
 
-var Membership = require('../orm/membership/model');
+var Membership = require('../bs-models/membership/model');
 
 module.exports = function(request, response, next) {
     var values = {
