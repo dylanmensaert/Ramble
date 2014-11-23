@@ -145,8 +145,9 @@ module.exports = function(grunt) {
                     mainConfigFile: '<%= paths.javascripts %>/main.js',
                     out: '<%= paths.prodJavascripts %>/main.js',
                     paths: {
-                        ember: '../bower_components/ember/ember.prod',
-                        'ember-data': '../bower_components/ember-data/ember-data.prod'
+                        // TODO: Uncomment when fixed: http://stackoverflow.com/questions/26086667/ember-data-cannot-read-property-async-of-undefined
+                        // ember: '../bower_components/ember/ember.prod',
+                        // 'ember-data': '../bower_components/ember-data/ember-data.prod'
                     }
                 }
             }

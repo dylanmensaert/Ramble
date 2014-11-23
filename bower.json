@@ -6,7 +6,6 @@
         "requirejs-bower": "2.1.15",
         "socket.io-client": "0.9.17",
         "ember": "1.8.1",
-        // TODO: Reference valid build for ember-data: http://stackoverflow.com/questions/26086667/ember-data-cannot-read-property-async-of-undefined
         "ember-data": "http://builds.emberjs.com/canary/ember-data.js",
         "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/canary/ember-validations.js",
         "ember-easyform": "http://builds.dockyard.com.s3.amazonaws.com/ember-easyForm/canary/ember-easyForm.js",
