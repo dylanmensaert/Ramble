@@ -5,7 +5,7 @@ define(function(require) {
         EmberValidations = require('ember-validations');
 
     return DS.Model.extend(EmberValidations.Mixin, {
-        createdAt: DS.attr('date'),
-        updatedAt: DS.attr('date')
+        createdAt: DS.attr('dateTime'),
+        updatedAt: DS.attr('dateTime')
     });
 });

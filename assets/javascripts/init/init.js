@@ -2,15 +2,15 @@ define(function(require) {
     'use strict';
 
     require('init/templates');
-    require('init/presentation');
     require('init/router');
+    require('init/models');
+
+    require('presentation/init');
+    require('transforms/init');
 
     require('application/init');
     require('index/init');
     require('login/init');
-    require('player/init');
-    require('lobby/init');
-    require('membership/init');
 
     var App = require('init/app'),
         DS = require('ember-data');

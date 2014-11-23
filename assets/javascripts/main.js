@@ -13,6 +13,7 @@
             handlebars: '../bower_components/handlebars/handlebars.runtime',
             jquery: '../bower_components/jquery/dist/jquery',
             bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+            moment: '../bower_components/momentjs/moment',
             'google-analytics': '../bower_components/google-analytics/index'
         },
         map: {
