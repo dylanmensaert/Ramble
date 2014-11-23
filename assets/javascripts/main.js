@@ -7,7 +7,7 @@
         paths: {
             io: '../bower_components/socket.io-client/dist/socket.io',
             ember: '../bower_components/ember/ember',
-            'ember-data': '../bower_components/ember-data/ember-data',
+            'ember-data': '../bower_components/ember-data/index',
             'ember-easyform': '../bower_components/ember-easyform/index',
             'ember-validations': '../bower_components/ember-validations/index',
             handlebars: '../bower_components/handlebars/handlebars.runtime',

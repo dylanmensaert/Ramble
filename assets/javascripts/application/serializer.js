@@ -6,8 +6,9 @@ define(function(require) {
         Ember = require('ember'),
         deserializeArray,
         deserializeSingle,
-        convertToId,
-        convertToIds;
+        deserializeRelationship,
+        deserializeBelongsTo,
+        deserializeHasMany;
 
     deserializeArray = function(type, records) {
         records.forEach(function(record) {
@@ -18,30 +19,37 @@ define(function(require) {
     deserializeSingle = function(type, record) {
         var relationshipsByName = Ember.get(type, 'relationshipsByName'),
             relationship,
-            key,
             property;
 
         for (property in record) {
-            if (record.hasOwnProperty(property) && relationshipsByName.has(property)) {
-                relationship = relationshipsByName.get(property);
-                key = relationship.type.typeKey.pluralize();
+            if (record.hasOwnProperty(property)) {
+                property = property.replace(/Id$/, '');
 
-                if (relationship.kind === 'belongsTo') {
-                    convertToId(record, property);
-                } else if (relationship.kind === 'hasMany') {
-                    convertToIds(record[property]);
+                if (relationshipsByName.has(property)) {
+                    relationship = relationshipsByName.get(property);
+
+                    deserializeRelationship(record, property, relationship);
                 }
             }
         }
     };
 
-    convertToId = function(record, property) {
-        record[property] = record[property].id;
+    deserializeRelationship = function(record, property, relationship) {
+        if (relationship.kind === 'belongsTo') {
+            deserializeBelongsTo(record, property);
+        } else if (relationship.kind === 'hasMany') {
+            deserializeHasMany(record[property]);
+        }
     };
 
-    convertToIds = function(records) {
+    deserializeBelongsTo = function(record, property) {
+        record[property] = record[property + 'Id'];
+        delete record[property + 'Id'];
+    };
+
+    deserializeHasMany = function(records) {
         for (var index = records.length - 1; index >= 0; index -= 1) {
-            convertToId(records, index);
+            records[index] = records[index].id;
         }
     };
 

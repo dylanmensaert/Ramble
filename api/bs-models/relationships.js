@@ -11,6 +11,5 @@ module.exports = {
         return value;
     },
     lobbies: ['memberships'],
-    players: ['memberships'],
-    memberships: ['lobby', 'player']
+    players: ['memberships']
 };

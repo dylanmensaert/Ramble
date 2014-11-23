@@ -201,7 +201,7 @@ module.exports = function(grunt) {
         open: {
             development: {
                 path: 'http://localhost:1337'
-                // TODO: Open when sails server started. (options:openOn)
+                    // TODO: Open when sails server started. (options:openOn)
             },
             production: {
                 path: 'http://localhost:8001'
@@ -238,7 +238,8 @@ module.exports = function(grunt) {
                 tasks: ['csscomb:all']
             },
             livereload: {
-                files: ['<%= sources.client %>', '<%= sources.server %>', '<%= sources.handlebars %>', '<%= sources.mainCss %>', '<%= sources.views %>',
+                files: ['<%= sources.client %>', '<%= sources.server %>', '<%= sources.handlebars %>', '<%= sources.mainCss %>',
+                    '<%= sources.views %>',
                     '<%= sources.assets %>', '<%= sources.images %>'
                 ],
                 tasks: ['copy:development'],

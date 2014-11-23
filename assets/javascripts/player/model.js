@@ -2,9 +2,9 @@ define(function(require) {
     'use strict';
 
     var DS = require('ember-data'),
-        EmberValidations = require('ember-validations');
+        Model = require('components/model');
 
-    return DS.Model.extend(EmberValidations.Mixin, {
+    return Model.extend({
         name: DS.attr('string'),
         password: DS.attr('string'),
         email: DS.attr('string'),
