@@ -1,6 +1,8 @@
 define(function(require) {
     'use strict';
 
+    // TODO: Integrate socket.io v1.0 when supported by sails.
+    // Follow: https://github.com/balderdashy/sails/issues/1443
     var io = require('io'),
         socket = io.connect();
 
