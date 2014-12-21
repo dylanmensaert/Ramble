@@ -9,9 +9,9 @@ define(function(require) {
             return moment(serialized);
         },
         serialize: function(deserialized) {
-            var serializedDate = null;
+            var serializedDate;
 
-            if (deserialized.isValid()) {
+            if (deserialized && deserialized.isValid()) {
                 serializedDate = deserialized.toISOString();
             }
 
