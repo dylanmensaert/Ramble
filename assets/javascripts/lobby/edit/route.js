@@ -8,7 +8,7 @@ define(function(require) {
             return this.controller.get('title') + ' - Edit';
         }.property(),
         afterModel: function(model, transition) {
-            this.checkOwnershipAndRedirect(model.get('owner'), transition);
+            this.checkOwnershipAndRedirect(model.get('membershipOfTypeHost.player'), transition);
         },
         deactivate: function() {
             this.checkToRollbackModel();

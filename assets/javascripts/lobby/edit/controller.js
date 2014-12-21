@@ -11,7 +11,7 @@ define(function(require) {
 
                 model.validate().then(function() {
                     model.save().then(function() {
-                        this.transitionToRoute('lobby');
+                        this.transitionToRoute('lobby', model);
                     }.bind(this));
                 }.bind(this));
             }

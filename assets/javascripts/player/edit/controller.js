@@ -10,7 +10,7 @@ define(function(require) {
 
                 model.validate().then(function() {
                     model.save().then(function() {
-                        this.transitionToRoute('player');
+                        this.transitionToRoute('player', model);
                     }.bind(this));
                 }.bind(this));
             }

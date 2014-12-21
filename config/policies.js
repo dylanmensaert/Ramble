@@ -21,6 +21,7 @@ module.exports.policies = {
     },
     player: {
         find: true,
+        create: true,
         update: authorize(['isOwnerOfAccount']),
         destroy: authorize(['isOwnerOfAccount'])
     },

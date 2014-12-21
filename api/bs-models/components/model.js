@@ -3,6 +3,7 @@
 
 var db = require('../db'),
     Model,
+    // TODO: Implement relationsToFetch which contains all hasMany relationships. This should be used instead of relationships file.
     relationships = require('../relationships'),
     toUnderscore = require('../helpers/toUnderscore'),
     toCamelCase = require('../helpers/toCamelCase'),
