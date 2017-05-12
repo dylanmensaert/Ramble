@@ -6,4 +6,4 @@
 
 A simple strategic 2D multiplayer browser-game based on conquest and exploration of a huge world.
 
-See the [wiki](https://github.com/dimitrisuls/Ramble/wiki) for more information.
+See the [wiki](https://github.com/dylan/Ramble/wiki) for more information.
